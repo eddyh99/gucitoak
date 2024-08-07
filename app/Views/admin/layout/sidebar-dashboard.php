@@ -16,7 +16,7 @@
         <li class="menu-item <?= @$active_dash?>">
             <a href="<?= BASE_URL ?>dashboard" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Dashboard</div>
+                <div data-i18n="Dashboard">Dashboard</div>
             </a>
         </li>
         <li class="menu-header small text-uppercase">
@@ -25,7 +25,25 @@
         <li class="menu-item <?= @$active_user?>">
             <a href="<?= BASE_URL ?>user" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-user"></i>
-                <div data-i18n="Analytics">User</div>
+                <div data-i18n="Master User">User</div>
+            </a>
+        </li>
+        <li class="menu-item <?= @$active_cabang?>">
+            <a href="<?= BASE_URL ?>cabang" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-buildings"></i>
+                <div data-i18n="Master Cabang">Cabang</div>
+            </a>
+        </li>
+        <li class="menu-item <?= @$active_kategori?>">
+            <a href="<?= BASE_URL ?>kategori" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-category-alt"></i>
+                <div data-i18n="Master Kategori">Kategori</div>
+            </a>
+        </li>
+        <li class="menu-item <?= @$active_satuan?>">
+            <a href="<?= BASE_URL ?>satuan" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-layer"></i>
+                <div data-i18n="Master Satuan">Satuan</div>
             </a>
         </li>
     </ul>
@@ -44,15 +62,91 @@
         <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
             <!-- Search -->
             <div class="navbar-nav align-items-center">
-            <div class="nav-item d-flex align-items-center">
-                <i class="bx bx-search fs-4 lh-0"></i>
-                <input
-                type="text"
-                class="form-control border-0 shadow-none"
-                placeholder="Search..."
-                aria-label="Search..."
-                />
-            </div>
+                <div class="nav-item d-flex align-items-center">
+                    <!-- <i class="bx bx-search fs-4 lh-0"></i>
+                    <input
+                        type="text"
+                        class="form-control border-0 shadow-none"
+                        placeholder="Search..."
+                        aria-label="Search..."
+                    /> -->
+                    <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                        <i class="bx bx-grid-alt bx-md fs-4"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-start p-0">
+                        <div class="dropdown-menu-header border-bottom">
+                            <div class="dropdown-header d-flex align-items-center py-3">
+                                <h6 class="mb-0 me-auto">Shortcuts</h6>
+                            </div>
+                        </div>
+                        <div class="dropdown-shortcuts-list scrollable-container pe">
+                            <div class="row row-bordered overflow-visible g-0">
+                            <div class="dropdown-shortcuts-item col">
+                                <span class="dropdown-shortcuts-icon rounded-circle mb-3">
+                                    <i class="bx bx-calendar bx-26px text-heading"></i>
+                                </span>
+                                <a href="app-calendar.html" class="stretched-link">Calendar</a>
+                                <small>Appointments</small>
+                            </div>
+                            <div class="dropdown-shortcuts-item col">
+                                <span class="dropdown-shortcuts-icon rounded-circle mb-3">
+                                <i class="bx bx-food-menu bx-26px text-heading"></i>
+                                </span>
+                                <a href="app-invoice-list.html" class="stretched-link">Invoice App</a>
+                                <small>Manage Accounts</small>
+                            </div>
+                            </div>
+                            <div class="row row-bordered overflow-visible g-0">
+                            <div class="dropdown-shortcuts-item col">
+                                <span class="dropdown-shortcuts-icon rounded-circle mb-3">
+                                <i class="bx bx-user bx-26px text-heading"></i>
+                                </span>
+                                <a href="app-user-list.html" class="stretched-link">User App</a>
+                                <small>Manage Users</small>
+                            </div>
+                            <div class="dropdown-shortcuts-item col">
+                                <span class="dropdown-shortcuts-icon rounded-circle mb-3">
+                                <i class="bx bx-check-shield bx-26px text-heading"></i>
+                                </span>
+                                <a href="app-access-roles.html" class="stretched-link">Role Management</a>
+                                <small>Permission</small>
+                            </div>
+                            </div>
+                            <div class="row row-bordered overflow-visible g-0">
+                            <div class="dropdown-shortcuts-item col">
+                                <span class="dropdown-shortcuts-icon rounded-circle mb-3">
+                                <i class="bx bx-pie-chart-alt-2 bx-26px text-heading"></i>
+                                </span>
+                                <a href="index.html" class="stretched-link">Dashboard</a>
+                                <small>User Dashboard</small>
+                            </div>
+                            <div class="dropdown-shortcuts-item col">
+                                <span class="dropdown-shortcuts-icon rounded-circle mb-3">
+                                <i class="bx bx-cog bx-26px text-heading"></i>
+                                </span>
+                                <a href="pages-account-settings-account.html" class="stretched-link">Setting</a>
+                                <small>Account Settings</small>
+                            </div>
+                            </div>
+                            <div class="row row-bordered overflow-visible g-0">
+                            <div class="dropdown-shortcuts-item col">
+                                <span class="dropdown-shortcuts-icon rounded-circle mb-3">
+                                <i class="bx bx-help-circle bx-26px text-heading"></i>
+                                </span>
+                                <a href="pages-faq.html" class="stretched-link">FAQs</a>
+                                <small>FAQs &amp; Articles</small>
+                            </div>
+                            <div class="dropdown-shortcuts-item col">
+                                <span class="dropdown-shortcuts-icon rounded-circle mb-3">
+                                <i class="bx bx-window-open bx-26px text-heading"></i>
+                                </span>
+                                <a href="modal-examples.html" class="stretched-link">Modals</a>
+                                <small>Useful Popups</small>
+                            </div>
+                            </div>
+                        <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></div>
+                    </div>
+                </div>
             </div>
             <!-- /Search -->
 

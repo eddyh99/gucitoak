@@ -2,45 +2,47 @@
 
 namespace App\Controllers;
 
-class User extends BaseController
+class Cabang extends BaseController
 {
     public function index()
     {
         $mdata = [
-            'title'     => 'List User - ' . NAMETITLE,
-            'content'   => 'admin/master/user/index',
-            'extra'     => 'admin/master/user/js/_js_index',
-            'active_user'   => 'active'
+            'title'     => 'List Cabang - ' . NAMETITLE,
+            'content'   => 'admin/master/cabang/index',
+            'extra'     => 'admin/master/cabang/js/_js_index',
+            'active_cabang'   => 'active'
         ];
 
         return view('admin/layout/wrapper', $mdata);
     }
 
-    public function list_all_user()
+    public function list_all_cabang()
     {
         $data = [
             (object) [
-                "username" => "admin",
-                "namalengkap"   => "Ari Pramana",
-                "role"  => "admin"
+                "namacabang"    => "Gudang",
+                "alamat"        => "Jln Pahlawan 123",
+                "lat"           => "123456",
+                "long"          => "6543231",
             ],
             (object) [
-                "username" => "kasir",
-                "namalengkap"   => "Kasir 123",
-                "role"  => "kasir"
+                "namacabang"    => "Gudang Return",
+                "alamat"        => "Jln Hasanudin",
+                "lat"           => "12345",
+                "long"          => "654321"
             ]
         ];
 
         echo json_encode($data);
     }
 
-    public function tambah_user()
+    public function tambah_cabang()
     {
         $mdata = [
-            'title'     => 'Tambah User - ' . NAMETITLE,
-            'content'   => 'admin/master/user/tambah_user',
-            'extra'     => 'admin/master/user/js/_js_index',
-            'active_user'   => 'active'
+            'title'     => 'Tambah Cabang - ' . NAMETITLE,
+            'content'   => 'admin/master/cabang/tambah_cabang',
+            'extra'     => 'admin/master/cabang/js/_js_index',
+            'active_cabang'   => 'active'
         ];
 
         return view('admin/layout/wrapper', $mdata);
@@ -52,20 +54,20 @@ class User extends BaseController
 
         // Validation Field
         $rules = $this->validate([
-            'username'     => [
-                'label'     => 'Username or Email',
+            'cabang'     => [
+                'label'     => 'Nama Cabang',
                 'rules'     => 'trim|required'
             ],
-            'nama'     => [
-                'label'     => 'Nama Lengkap',
+            'alamat'     => [
+                'label'     => 'Alamat',
                 'rules'     => 'trim|required'
             ],
-            'password'     => [
-                'label'     => 'Password',
+            'lat'     => [
+                'label'     => 'Latitude',
                 'rules'     => 'trim|required'
             ],
-            'role'     => [
-                'label'     => 'Role',
+            'long'     => [
+                'label'     => 'Longitude',
                 'rules'     => 'trim|required'
             ],
         ]);
@@ -73,15 +75,15 @@ class User extends BaseController
         // Checking Validation
         if(!$rules){
             session()->setFlashdata('failed', $this->validation->listErrors());
-            return redirect()->to(BASE_URL . "user/tambah_user")->withInput();
+            return redirect()->to(BASE_URL . "cabang/tambah_cabang")->withInput();
         }
         
         // Initial Data
         $mdata = [
-            'username'  => htmlspecialchars($this->request->getVar('username')),
-            'nama'      => htmlspecialchars($this->request->getVar('nama')),
-            'password'  => sha1(htmlspecialchars($this->request->getVar('password'))),
-            'role'      => htmlspecialchars($this->request->getVar('role')),
+            'cabang'    => htmlspecialchars($this->request->getVar('cabang')),
+            'alamat'    => htmlspecialchars($this->request->getVar('alamat')),
+            'lat'       => htmlspecialchars($this->request->getVar('lat')),
+            'long'      => htmlspecialchars($this->request->getVar('long')),
         ];
         
         // @todo::Mengubah endpoint beserta field nya
@@ -91,28 +93,28 @@ class User extends BaseController
 
         if (@$response->status != 200) {
             session()->setFlashdata('failed', $result->error);
-            return redirect()->to(BASE_URL . "user/tambah_user")->withInput();
+            return redirect()->to(BASE_URL . "cabang/tambah_cabang")->withInput();
         }else{
             session()->setFlashdata('success', $result->messages);
-            return redirect()->to(BASE_URL . "user")->withInput();
+            return redirect()->to(BASE_URL . "cabang")->withInput();
         }
     }
 
-    public function edit_user($username)
+    public function edit_cabang($cabangname)
     {
         $mdata = [
-            'title'     => 'Edit User - ' . NAMETITLE,
-            'content'   => 'admin/master/user/edit_user',
-            'extra'     => 'admin/master/user/js/_js_index',
-            'active_user'   => 'active'
+            'title'     => 'Edit Cabang - ' . NAMETITLE,
+            'content'   => 'admin/master/cabang/edit_cabang',
+            'extra'     => 'admin/master/cabang/js/_js_index',
+            'active_cabang'   => 'active'
         ];
 
         return view('admin/layout/wrapper', $mdata);
     }
 
 
-    // @todo::Integrasi Hapus User
-    public function hapus_user($username)
+    // @todo::Integrasi Hapus cabang
+    public function hapus_cabang($username)
     {
         $username_delete = base64_decode($this->security->xss_clean($username));
 

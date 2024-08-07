@@ -134,3 +134,44 @@
   transition: all .2s ease-in-out;
   z-index: -1;
 }
+
+
+.layout-navbar .dropdown-shortcuts-list {
+  max-height: 30rem !important;
+  overflow-y: scroll;
+}
+
+.layout-navbar .dropdown-shortcuts-item {
+  text-align: center !important;
+  padding: 1.5rem !important;
+}
+
+.layout-navbar .dropdown-shortcuts-item .dropdown-shortcuts-icon {
+  height: 3.125rem;
+  width: 3.125rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #edeef0;
+  color: #384551
+}
+
+.layout-navbar .dropdown-shortcuts-item a, 
+.layout-navbar .dropdown-shortcuts-item a:hover {
+  display: block;
+  margin-bottom: 0;
+  color: #384551 !important;
+  font-weight: 500;
+}
+
+.stretched-link::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  content: "";
+}
