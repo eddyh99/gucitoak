@@ -8,8 +8,8 @@ class Satuan extends BaseController
     {
         $mdata = [
             'title'     => 'List Satuan - ' . NAMETITLE,
-            'content'   => 'admin/master/satuan/index',
-            'extra'     => 'admin/master/satuan/js/_js_index',
+            'content'   => 'admin/satuan/index',
+            'extra'     => 'admin/satuan/js/_js_index',
             'active_satuan'   => 'active'
         ];
 
@@ -18,39 +18,18 @@ class Satuan extends BaseController
 
     public function list_all_satuan()
     {
-        $data = [
-            (object) [
-                "satuan"    => "Ctn",
-            ],
-            (object) [
-                "satuan"    => "Botol",
-            ],
-            (object) [
-                "satuan"    => "Pcs",
-            ],
-            (object) [
-                "satuan"    => "Bonus",
-            ],
-            (object) [
-                "satuan"    => "Renceng",
-            ],
-            (object) [
-                "satuan"    => "Ball",
-            ],
-            (object) [
-                "satuan"    => "Box",
-            ],
-        ];
-
-        echo json_encode($data);
+        $url = URLAPI . "/v1/satuan/getall_satuan";
+		$response = foodysAPI($url);
+        $result = $response->result->message;
+        echo json_encode($result);
     }
 
     public function tambah_satuan()
     {
         $mdata = [
             'title'     => 'Tambah Satuan - ' . NAMETITLE,
-            'content'   => 'admin/master/satuan/tambah_satuan',
-            'extra'     => 'admin/master/satuan/js/_js_index',
+            'content'   => 'admin/satuan/tambah_satuan',
+            'extra'     => 'admin/satuan/js/_js_index',
             'active_satuan'   => 'active'
         ];
 
@@ -61,70 +40,113 @@ class Satuan extends BaseController
     public function tambah_proccess()
     {
 
-        // Validation Field
-        $rules = $this->validate([
+        $validation = $this->validation;
+        $validation->setRules([
             'satuan'     => [
-                'label'     => 'Satuan',
+                'label'     => 'Nama Satuan',
                 'rules'     => 'trim|required'
             ],
         ]);
 
         // Checking Validation
-        if(!$rules){
+        if (!$validation->withRequest($this->request)->run()){
             session()->setFlashdata('failed', $this->validation->listErrors());
             return redirect()->to(BASE_URL . "satuan/tambah_satuan")->withInput();
         }
         
         // Initial Data
         $mdata = [
-            'satuan'    => htmlspecialchars($this->request->getVar('satuan')),
+            'namasatuan'      => htmlspecialchars($this->request->getVar('satuan')),
         ];
         
         // @todo::Mengubah endpoint beserta field nya
-        $url = URLAPI . "/v1/user/adduser";
+        $url = URLAPI . "/v1/satuan/add_satuan";
         $response = foodysAPI($url, json_encode($mdata));
-        $result = $response->result->messages;
-
+        $result = $response->result;
+        // echo "<pre>".print_r($response,true)."</pre>";
+        //  die;
         if (@$response->status != 200) {
-            session()->setFlashdata('failed', $result->error);
+            session()->setFlashdata('failed', $result->message);
             return redirect()->to(BASE_URL . "satuan/tambah_satuan")->withInput();
         }else{
-            session()->setFlashdata('success', $result->messages);
-            return redirect()->to(BASE_URL . "satuan")->withInput();
+            session()->setFlashdata('success', $result->message);
+            return redirect()->to(BASE_URL . "satuan");
         }
     }
 
-    public function edit_satuan($satuanname)
+    public function edit_satuan($satuan)
     {
+        $satuan=base64_decode($satuan);
+        $url = URLAPI . "/v1/satuan/getsatuan_byid?id=".$satuan;
+		$response = foodysAPI($url);
+        $result = $response->result->message;
+        // print_r($result);
+        // die;
         $mdata = [
-            'title'     => 'Edit Satuan - ' . NAMETITLE,
-            'content'   => 'admin/master/satuan/edit_satuan',
-            'extra'     => 'admin/master/satuan/js/_js_index',
-            'active_satuan'   => 'active'
+            'title'     => 'Edit satuan - ' . NAMETITLE,
+            'content'   => 'admin/satuan/edit_satuan',
+            'extra'     => 'admin/satuan/js/_js_index',
+            'active_satuan'   => 'active',
+            'satuan'  => $result
         ];
 
         return view('admin/layout/wrapper', $mdata);
     }
 
-
-    // @todo::Integrasi Hapus satuan
-    public function hapus_satuan($username)
+    public function ubah_satuan()
     {
-        $username_delete = base64_decode($this->security->xss_clean($username));
 
-        $url = URLAPI . "/v1/user/deleteUser?username=".$username_delete;
+        $validation = $this->validation;
+        $validation->setRules([
+            'satuan'     => [
+                'label'     => 'Namal',
+                'rules'     => 'trim|required'
+            ],
+        ]);
+
+        $idsatuan=$this->request->getVar('idsatuan');
+
+        // Checking Validation
+        if (!$validation->withRequest($this->request)->run()){
+            session()->setFlashdata('failed', $this->validation->listErrors());
+            return redirect()->to(BASE_URL . "satuan/edit_satuan/".base64_encode($idsatuan))->withInput();
+        }
+        
+        // Initial Data
+        $mdata = [
+            'namasatuan'      => htmlspecialchars($this->request->getVar('satuan')),
+        ];
+        
+
+        // @todo::Mengubah endpoint beserta field nya
+        $url = URLAPI . "/v1/satuan/ubah_satuan?id=".$idsatuan;
+        $response = foodysAPI($url, json_encode($mdata));
+        $result = $response->result;
+        // echo "<pre>".print_r($result,true)."</pre>";
+        // die;
+        if (@$response->status != 200) {
+            session()->setFlashdata('failed', $result->message);
+            return redirect()->to(BASE_URL . "satuan/edit_satuan/".base64_encode($idsatuan))->withInput();
+        }else{
+            session()->setFlashdata('success', $result->message);
+            return redirect()->to(BASE_URL . "satuan")->withInput();
+        }
+    }
+
+    public function hapus_satuan($satuan)
+    {
+        $satuan = base64_decode($satuan);
+        $url = URLAPI . "/v1/satuan/hapus_satuan?id=".$satuan;
 		$response = foodysAPI($url);
         $result = $response->result;
 
 
         if($response->status == 200){
-            $this->session->set_flashdata('success', $result->messages);
-			redirect('user');
-			return;
+            session()->setFlashdata('success', $result->message);
+            return redirect()->to(BASE_URL . "satuan");
         }else{
-            $this->session->set_flashdata('error', $result->messages->error);
-            redirect('user');
-            return;
+            session()->setFlashdata('failed', $result->message);
+            return redirect()->to(BASE_URL . "satuan");
         }
     }
 

@@ -46,7 +46,6 @@ class Auth extends BaseController
         $url = URLAPI . "/auth/signin";
 		$response = foodysAPI($url, json_encode($mdata));
         $result = $response->result->messages;
-
         if (@$response->status != 200) {
             session()->setFlashdata('failed', $result->error);
             return redirect()->to(BASE_URL)->withInput();
@@ -57,6 +56,12 @@ class Auth extends BaseController
         // @todo::Meng redirect sukses login
         session()->setFlashdata('success', "Selamat datang <b>".$result->username."</b>");
         return redirect()->to(BASE_URL . "dashboard");
+    }
+    
+    
+    public function logout(){
+        session()->destroy();
+        return redirect()->to(BASE_URL);
     }
 
 }
