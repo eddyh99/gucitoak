@@ -7,9 +7,9 @@ class Kategori extends BaseController
     public function index()
     {
         $mdata = [
-            'title'     => 'List Kategori - ' . NAMETITLE,
-            'content'   => 'admin/master/kategori/index',
-            'extra'     => 'admin/master/kategori/js/_js_index',
+            'title'     => 'List kategori - ' . NAMETITLE,
+            'content'   => 'admin/kategori/index',
+            'extra'     => 'admin/kategori/js/_js_index',
             'active_kategori'   => 'active'
         ];
 
@@ -18,81 +18,18 @@ class Kategori extends BaseController
 
     public function list_all_kategori()
     {
-        $data = [
-            (object) [
-                "kategori"    => "Dry Food",
-            ],
-            (object) [
-                "kategori"    => "Fast Food",
-            ],
-            (object) [
-                "kategori"    => "Food",
-            ],
-            (object) [
-                "kategori"    => "Dry Food",
-            ],
-            (object) [
-                "kategori"    => "Fast Food",
-            ],
-            (object) [
-                "kategori"    => "Food",
-            ],
-            (object) [
-                "kategori"    => "Dry Food",
-            ],
-            (object) [
-                "kategori"    => "Fast Food",
-            ],
-            (object) [
-                "kategori"    => "Food",
-            ],
-            (object) [
-                "kategori"    => "Dry Food",
-            ],
-            (object) [
-                "kategori"    => "Fast Food",
-            ],
-            (object) [
-                "kategori"    => "Food",
-            ],
-            (object) [
-                "kategori"    => "Dry Food",
-            ],
-            (object) [
-                "kategori"    => "Fast Food",
-            ],
-            (object) [
-                "kategori"    => "Food",
-            ],
-            (object) [
-                "kategori"    => "Dry Food",
-            ],
-            (object) [
-                "kategori"    => "Fast Food",
-            ],
-            (object) [
-                "kategori"    => "Food",
-            ],
-            (object) [
-                "kategori"    => "Dry Food",
-            ],
-            (object) [
-                "kategori"    => "Fast Food",
-            ],
-            (object) [
-                "kategori"    => "Food",
-            ],
-        ];
-
-        echo json_encode($data);
+        $url = URLAPI . "/v1/kategori/getall_kategori";
+		$response = foodysAPI($url);
+        $result = $response->result->message;
+        echo json_encode($result);
     }
 
     public function tambah_kategori()
     {
         $mdata = [
-            'title'     => 'Tambah Kategori - ' . NAMETITLE,
-            'content'   => 'admin/master/kategori/tambah_kategori',
-            'extra'     => 'admin/master/kategori/js/_js_index',
+            'title'     => 'Tambah kategori - ' . NAMETITLE,
+            'content'   => 'admin/kategori/tambah_kategori',
+            'extra'     => 'admin/kategori/js/_js_index',
             'active_kategori'   => 'active'
         ];
 
@@ -103,70 +40,112 @@ class Kategori extends BaseController
     public function tambah_proccess()
     {
 
-        // Validation Field
-        $rules = $this->validate([
+        $validation = $this->validation;
+        $validation->setRules([
             'kategori'     => [
                 'label'     => 'Kategori',
-                'rules'     => 'trim|required'
+                'rules'     => 'required'
             ],
         ]);
 
         // Checking Validation
-        if(!$rules){
+        if (!$validation->withRequest($this->request)->run()){
             session()->setFlashdata('failed', $this->validation->listErrors());
             return redirect()->to(BASE_URL . "kategori/tambah_kategori")->withInput();
         }
         
         // Initial Data
         $mdata = [
-            'kategori'    => htmlspecialchars($this->request->getVar('kategori')),
+            'namakategori'      => htmlspecialchars($this->request->getVar('kategori')),
         ];
         
         // @todo::Mengubah endpoint beserta field nya
-        $url = URLAPI . "/v1/user/adduser";
+        $url = URLAPI . "/v1/kategori/add_kategori";
         $response = foodysAPI($url, json_encode($mdata));
-        $result = $response->result->messages;
-
-        if (@$response->status != 200) {
-            session()->setFlashdata('failed', $result->error);
+        $result = $response->result;
+        // echo "<pre>".print_r($result,true)."</pre>";
+        // die;
+        if (@$response->status != 201) {
+            session()->setFlashdata('failed', $result->message);
             return redirect()->to(BASE_URL . "kategori/tambah_kategori")->withInput();
         }else{
-            session()->setFlashdata('success', $result->messages);
+            session()->setFlashdata('success', $result->message);
             return redirect()->to(BASE_URL . "kategori")->withInput();
         }
     }
 
-    public function edit_kategori($kategoriname)
+    public function edit_kategori($kategori)
     {
+        $kategori=base64_decode($kategori);
+        $url = URLAPI . "/v1/kategori/getkategori_byid?id=".$kategori;
+		$response = foodysAPI($url);
+        $result = $response->result->message;
+        // print_r($result);
+        // die;
         $mdata = [
-            'title'     => 'Edit Kategori - ' . NAMETITLE,
-            'content'   => 'admin/master/kategori/edit_kategori',
-            'extra'     => 'admin/master/kategori/js/_js_index',
-            'active_kategori'   => 'active'
+            'title'     => 'Edit kategori - ' . NAMETITLE,
+            'content'   => 'admin/kategori/edit_kategori',
+            'extra'     => 'admin/kategori/js/_js_index',
+            'active_kategori'   => 'active',
+            'kategori'  => $result
         ];
 
         return view('admin/layout/wrapper', $mdata);
     }
 
-
-    // @todo::Integrasi Hapus kategori
-    public function hapus_kategori($username)
+    public function ubah_kategori()
     {
-        $username_delete = base64_decode($this->security->xss_clean($username));
 
-        $url = URLAPI . "/v1/user/deleteUser?username=".$username_delete;
+        $validation = $this->validation;
+        $validation->setRules([
+            'kategori'     => [
+                'label'     => 'Kategori',
+                'rules'     => 'required'
+            ],
+        ]);
+
+        $idkategori=$this->request->getVar('idkategori');
+        // Checking Validation
+        if (!$validation->withRequest($this->request)->run()){
+            session()->setFlashdata('failed', $this->validation->listErrors());
+            return redirect()->to(BASE_URL . "kategori/edit_kategori/".base64_encode($idkategori))->withInput();
+        }
+        
+        // Initial Data
+        $mdata = [
+            'namakategori'      => htmlspecialchars($this->request->getVar('kategori')),
+        ];
+        
+
+        // @todo::Mengubah endpoint beserta field nya
+        $url = URLAPI . "/v1/kategori/ubah_kategori?id=".$idkategori;
+        $response = foodysAPI($url, json_encode($mdata));
+        $result = $response->result;
+        // echo "<pre>".print_r($result,true)."</pre>";
+        // die;
+        if (@$response->status != 200) {
+            session()->setFlashdata('failed', $result->message);
+            return redirect()->to(BASE_URL . "kategori/ubah_kategori")->withInput();
+        }else{
+            session()->setFlashdata('success', $result->message);
+            return redirect()->to(BASE_URL . "kategori")->withInput();
+        }
+    }
+
+    public function hapus_kategori($kategori)
+    {
+        $kategori = base64_decode($kategori);
+        $url = URLAPI . "/v1/kategori/hapus_kategori?id=".$kategori;
 		$response = foodysAPI($url);
         $result = $response->result;
 
 
         if($response->status == 200){
-            $this->session->set_flashdata('success', $result->messages);
-			redirect('user');
-			return;
+            session()->setFlashdata('success', $result->message);
+            return redirect()->to(BASE_URL . "kategori");
         }else{
-            $this->session->set_flashdata('error', $result->messages->error);
-            redirect('user');
-            return;
+            session()->setFlashdata('error', $result->message);
+            return redirect()->to(BASE_URL . "kategori");
         }
     }
 

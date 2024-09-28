@@ -21,11 +21,11 @@
                     <!-- Logo -->
                     <div class="app-brand justify-content-center">
                         <a href="index.html" class="app-brand-link gap-2">
-                            <img class="img-fluid" src="<?= BASE_URL ?>assets/img/logo.png" alt="Guci Toak Logo" data-aos="flip-up"  data-aos-duration="3000">
+                            <img class="img-fluid" src="<?= BASE_URL ?>assets/img/logo.png" alt="foodys Logo" data-aos="flip-up"  data-aos-duration="3000">
                         </a>
                     </div>
                     <!-- /Logo -->
-                    <h4 class="mb-2">Welcome to Guci Toak! 👋</h4>
+                    <h4 class="mb-2">Welcome to Foodys! 👋</h4>
                     <p class="mb-4">Please sign-in to your account and start the Point of Sales Web Application</p>
                     <form id="formAuthentication" class="mb-3" action="<?= BASE_URL ?>auth/signin_proccess" method="POST">
                         <div class="mb-3">

@@ -8,8 +8,8 @@ class User extends BaseController
     {
         $mdata = [
             'title'     => 'List User - ' . NAMETITLE,
-            'content'   => 'admin/master/user/index',
-            'extra'     => 'admin/master/user/js/_js_index',
+            'content'   => 'admin/user/index',
+            'extra'     => 'admin/user/js/_js_index',
             'active_user'   => 'active'
         ];
 
@@ -38,8 +38,8 @@ class User extends BaseController
     {
         $mdata = [
             'title'     => 'Tambah User - ' . NAMETITLE,
-            'content'   => 'admin/master/user/tambah_user',
-            'extra'     => 'admin/master/user/js/_js_index',
+            'content'   => 'admin/user/tambah_user',
+            'extra'     => 'admin/user/js/_js_index',
             'active_user'   => 'active'
         ];
 
@@ -102,8 +102,8 @@ class User extends BaseController
     {
         $mdata = [
             'title'     => 'Edit User - ' . NAMETITLE,
-            'content'   => 'admin/master/user/edit_user',
-            'extra'     => 'admin/master/user/js/_js_index',
+            'content'   => 'admin/user/edit_user',
+            'extra'     => 'admin/user/js/_js_index',
             'active_user'   => 'active'
         ];
 
@@ -111,7 +111,6 @@ class User extends BaseController
     }
 
 
-    // @todo::Integrasi Hapus User
     public function hapus_user($username)
     {
         $username_delete = base64_decode($this->security->xss_clean($username));
