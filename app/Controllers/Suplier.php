@@ -10,7 +10,8 @@ class Suplier extends BaseController
             'title'     => 'List suplier - ' . NAMETITLE,
             'content'   => 'admin/suplier/index',
             'extra'     => 'admin/suplier/js/_js_index',
-            'active_suplier'   => 'active'
+            'menuactive_setup'   => 'active open',
+            'supplier_active'   => 'active'
         ];
 
         return view('admin/layout/wrapper', $mdata);
@@ -19,7 +20,7 @@ class Suplier extends BaseController
     public function list_all_suplier()
     {
         $url = URLAPI . "/v1/suplier/getall_suplier";
-		$response = foodysAPI($url);
+		$response = gucitoakAPI($url);
         $result = $response->result->message;
         echo json_encode($result);
     }
@@ -80,7 +81,7 @@ class Suplier extends BaseController
         // die;
         // @todo::Mengubah endpoint beserta field nya
         $url = URLAPI . "/v1/suplier/add_suplier";
-        $response = foodysAPI($url, json_encode($mdata));
+        $response = gucitoakAPI($url, json_encode($mdata));
         $result = $response->result;
         // echo "<pre>".print_r($result,true)."</pre>";
         // die;
@@ -97,7 +98,7 @@ class Suplier extends BaseController
     {
         $suplier=base64_decode($suplier);
         $url = URLAPI . "/v1/suplier/getsuplier_byid?id=".$suplier;
-		$response = foodysAPI($url);
+		$response = gucitoakAPI($url);
         $result = $response->result->message;
         // print_r($result);
         // die;
@@ -157,7 +158,7 @@ class Suplier extends BaseController
 
         // @todo::Mengubah endpoint beserta field nya
         $url = URLAPI . "/v1/suplier/ubah_suplier?id=".$idsuplier;
-        $response = foodysAPI($url, json_encode($mdata));
+        $response = gucitoakAPI($url, json_encode($mdata));
         $result = $response->result;
         // echo "<pre>".print_r($result,true)."</pre>";
         // die;
@@ -174,7 +175,7 @@ class Suplier extends BaseController
     {
         $suplier = base64_decode($suplier);
         $url = URLAPI . "/v1/suplier/hapus_suplier?id=".$suplier;
-		$response = foodysAPI($url);
+		$response = gucitoakAPI($url);
         $result = $response->result;
 
 

@@ -10,7 +10,8 @@ class Sales extends BaseController
             'title'     => 'List sales - ' . NAMETITLE,
             'content'   => 'admin/sales/index',
             'extra'     => 'admin/sales/js/_js_index',
-            'active_sales'   => 'active'
+            'menuactive_setup'   => 'active open',
+            'sales_active'   => 'active'
         ];
 
         return view('admin/layout/wrapper', $mdata);
@@ -19,7 +20,7 @@ class Sales extends BaseController
     public function list_all_sales()
     {
         $url = URLAPI . "/v1/sales/getall_sales";
-		$response = foodysAPI($url);
+		$response = gucitoakAPI($url);
         $result = $response->result->message;
         echo json_encode($result);
     }
@@ -78,7 +79,7 @@ class Sales extends BaseController
         // die;
         // @todo::Mengubah endpoint beserta field nya
         $url = URLAPI . "/v1/sales/add_sales";
-        $response = foodysAPI($url, json_encode($mdata));
+        $response = gucitoakAPI($url, json_encode($mdata));
         $result = $response->result;
         // echo "<pre>".print_r($result,true)."</pre>";
         // die;
@@ -95,7 +96,7 @@ class Sales extends BaseController
     {
         $sales=base64_decode($sales);
         $url = URLAPI . "/v1/sales/getsales_byid?id=".$sales;
-		$response = foodysAPI($url);
+		$response = gucitoakAPI($url);
         $result = $response->result->message;
         // print_r($result);
         // die;
@@ -152,7 +153,7 @@ class Sales extends BaseController
 
         // @todo::Mengubah endpoint beserta field nya
         $url = URLAPI . "/v1/sales/ubah_sales?id=".$idsales;
-        $response = foodysAPI($url, json_encode($mdata));
+        $response = gucitoakAPI($url, json_encode($mdata));
         $result = $response->result;
         // echo "<pre>".print_r($result,true)."</pre>";
         // die;
@@ -169,7 +170,7 @@ class Sales extends BaseController
     {
         $sales = base64_decode($sales);
         $url = URLAPI . "/v1/sales/hapus_sales?id=".$sales;
-		$response = foodysAPI($url);
+		$response = gucitoakAPI($url);
         $result = $response->result;
 
 
@@ -180,6 +181,33 @@ class Sales extends BaseController
             session()->setFlashdata('error', $result->message);
             return redirect()->to(BASE_URL . "sales");
         }
+    }
+
+    
+    public function list_assign_sales()
+    {
+        $mdata = [
+            'title'     => 'Assign Sales - ' . NAMETITLE,
+            'content'   => 'admin/sales/list_assignsales',
+            'extra'     => 'admin/sales/js/_js_assignsales',
+            'menuactive_master'   => 'active open',
+            'assignsales_active'   => 'active'
+        ];
+
+        return view('admin/layout/wrapper', $mdata);
+    }
+    
+    public function assign_sales()
+    {
+        $mdata = [
+            'title'     => 'Assign Sales - ' . NAMETITLE,
+            'content'   => 'admin/sales/assignsales',
+            'extra'     => 'admin/sales/js/_js_assignsales',
+            'menuactive_master'   => 'active open',
+            'assignsales_active'   => 'active'
+        ];
+
+        return view('admin/layout/wrapper', $mdata);
     }
 
 

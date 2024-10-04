@@ -106,6 +106,18 @@
                                             </div>
                                         </div>
                                         <div class="mb-3">
+                                            <label class="form-label" for="nama">Harga 3</label>
+                                            <div class="input-group input-group-merge">
+                                                <input
+                                                    type="number"
+                                                    class="form-control"
+                                                    id="harga3"
+                                                    placeholder="100000"
+                                                    name="harga3"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
                                             <label class="form-label" for="nama">Discount (%)</label>
                                             <div class="input-group input-group-merge">
                                                 <input

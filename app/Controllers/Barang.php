@@ -10,7 +10,8 @@ class Barang extends BaseController
             'title'     => 'List barang - ' . NAMETITLE,
             'content'   => 'admin/barang/index',
             'extra'     => 'admin/barang/js/_js_index',
-            'active_barang'   => 'active'
+            'menuactive_setup'   => 'active open',
+            'barang_active'   => 'active'
         ];
 
         return view('admin/layout/wrapper', $mdata);
@@ -19,7 +20,7 @@ class Barang extends BaseController
     public function list_all_barang()
     {
         $url = URLAPI . "/v1/barang/getall_barang";
-		$response = foodysAPI($url);
+		$response = gucitoakAPI($url);
         $result = $response->result->message;
         echo json_encode($result);
     }
@@ -78,7 +79,7 @@ class Barang extends BaseController
         // die;
         // @todo::Mengubah endpoint beserta field nya
         $url = URLAPI . "/v1/barang/add_barang";
-        $response = foodysAPI($url, json_encode($mdata));
+        $response = gucitoakAPI($url, json_encode($mdata));
         $result = $response->result;
         // echo "<pre>".print_r($result,true)."</pre>";
         // die;
@@ -95,7 +96,7 @@ class Barang extends BaseController
     {
         $barang=base64_decode($barang);
         $url = URLAPI . "/v1/barang/getbarang_byid?id=".$barang;
-		$response = foodysAPI($url);
+		$response = gucitoakAPI($url);
         $result = $response->result->message;
         // print_r($result);
         // die;
@@ -152,7 +153,7 @@ class Barang extends BaseController
 
         // @todo::Mengubah endpoint beserta field nya
         $url = URLAPI . "/v1/barang/ubah_barang?id=".$idbarang;
-        $response = foodysAPI($url, json_encode($mdata));
+        $response = gucitoakAPI($url, json_encode($mdata));
         $result = $response->result;
         // echo "<pre>".print_r($result,true)."</pre>";
         // die;
@@ -169,7 +170,7 @@ class Barang extends BaseController
     {
         $barang = base64_decode($barang);
         $url = URLAPI . "/v1/barang/hapus_barang?id=".$barang;
-		$response = foodysAPI($url);
+		$response = gucitoakAPI($url);
         $result = $response->result;
 
 

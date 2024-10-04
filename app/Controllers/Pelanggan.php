@@ -10,7 +10,8 @@ class Pelanggan extends BaseController
             'title'     => 'List pelanggan - ' . NAMETITLE,
             'content'   => 'admin/pelanggan/index',
             'extra'     => 'admin/pelanggan/js/_js_index',
-            'active_pelanggan'   => 'active'
+            'menuactive_setup'   => 'active open',
+            'pelanggan_active'   => 'active'
         ];
 
         return view('admin/layout/wrapper', $mdata);
@@ -19,7 +20,7 @@ class Pelanggan extends BaseController
     public function list_all_pelanggan()
     {
         $url = URLAPI . "/v1/pelanggan/getall_pelanggan";
-		$response = foodysAPI($url);
+		$response = gucitoakAPI($url);
         $result = $response->result->message;
         echo json_encode($result);
     }
@@ -79,7 +80,7 @@ class Pelanggan extends BaseController
         // die;
         // @todo::Mengubah endpoint beserta field nya
         $url = URLAPI . "/v1/pelanggan/add_pelanggan";
-        $response = foodysAPI($url, json_encode($mdata));
+        $response = gucitoakAPI($url, json_encode($mdata));
         $result = $response->result;
         // echo "<pre>".print_r($response,true)."</pre>";
         // die;
@@ -96,7 +97,7 @@ class Pelanggan extends BaseController
     {
         $pelanggan=base64_decode($pelanggan);
         $url = URLAPI . "/v1/pelanggan/getpelanggan_byid?id=".$pelanggan;
-		$response = foodysAPI($url);
+		$response = gucitoakAPI($url);
         $result = $response->result->message;
         // print_r($result);
         // die;
@@ -158,7 +159,7 @@ class Pelanggan extends BaseController
 
         // @todo::Mengubah endpoint beserta field nya
         $url = URLAPI . "/v1/pelanggan/ubah_pelanggan?id=".$idpelanggan;
-        $response = foodysAPI($url, json_encode($mdata));
+        $response = gucitoakAPI($url, json_encode($mdata));
         $result = $response->result;
         // echo "<pre>".print_r($result,true)."</pre>";
         // die;
@@ -175,7 +176,7 @@ class Pelanggan extends BaseController
     {
         $pelanggan = base64_decode($pelanggan);
         $url = URLAPI . "/v1/pelanggan/hapus_pelanggan?id=".$pelanggan;
-		$response = foodysAPI($url);
+		$response = gucitoakAPI($url);
         $result = $response->result;
 
 

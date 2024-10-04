@@ -44,7 +44,7 @@ class Auth extends BaseController
         
         // @todo::Mengubah endpoint beserta field nya
         $url = URLAPI . "/auth/signin";
-		$response = foodysAPI($url, json_encode($mdata));
+		$response = gucitoakAPI($url, json_encode($mdata));
         $result = $response->result->messages;
         if (@$response->status != 200) {
             session()->setFlashdata('failed', $result->error);

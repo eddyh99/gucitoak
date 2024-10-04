@@ -8,9 +8,10 @@ class Cabang extends BaseController
     {
         $mdata = [
             'title'     => 'List Cabang - ' . NAMETITLE,
-            'content'   => 'admin/master/cabang/index',
-            'extra'     => 'admin/master/cabang/js/_js_index',
-            'active_cabang'   => 'active'
+            'content'   => 'admin/cabang/index',
+            'extra'     => 'admin/cabang/js/_js_index',
+            'menuactive_setup'   => 'active open',
+            'cabang_active'   => 'active'
         ];
 
         return view('admin/layout/wrapper', $mdata);
@@ -88,7 +89,7 @@ class Cabang extends BaseController
         
         // @todo::Mengubah endpoint beserta field nya
         $url = URLAPI . "/v1/user/adduser";
-        $response = foodysAPI($url, json_encode($mdata));
+        $response = gucitoakAPI($url, json_encode($mdata));
         $result = $response->result->messages;
 
         if (@$response->status != 200) {
@@ -125,7 +126,7 @@ class Cabang extends BaseController
         }
 
         $url = URLAPI . "/v1/user/deleteUser?username=".$username_delete;
-		$response = foodysAPI($url);
+		$response = gucitoakAPI($url);
         $result = $response->result;
 
 

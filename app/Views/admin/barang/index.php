@@ -49,6 +49,7 @@
                                         <th>Stok Min</th>
                                         <th>Harga 1</th>
                                         <th>Harga 2</th>
+                                        <th>Harga 3</th>
                                         <th>Disc (%)</th>
                                         <th>Disc (fxd)</th>
                                         <th>Action</th>

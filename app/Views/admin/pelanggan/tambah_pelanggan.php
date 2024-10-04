@@ -90,6 +90,14 @@
                                     </div>
                                 </div>
                                 <div class="mb-3">
+                                    <label class="form-label" for="harga">Jenis Harga</label>
+                                    <select name="harga" class="form-select" id="harga">
+                                        <option value="">Harga 1</option>
+                                        <option value="">Harga 2</option>
+                                        <option value="">Harga 3</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
                                     <label class="form-label" for="nama">Plafon</label>
                                     <div class="input-group input-group-merge">
                                         <input

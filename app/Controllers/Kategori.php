@@ -10,7 +10,8 @@ class Kategori extends BaseController
             'title'     => 'List kategori - ' . NAMETITLE,
             'content'   => 'admin/kategori/index',
             'extra'     => 'admin/kategori/js/_js_index',
-            'active_kategori'   => 'active'
+            'menuactive_setup'   => 'active open',
+            'kategori_active'   => 'active'
         ];
 
         return view('admin/layout/wrapper', $mdata);
@@ -19,7 +20,7 @@ class Kategori extends BaseController
     public function list_all_kategori()
     {
         $url = URLAPI . "/v1/kategori/getall_kategori";
-		$response = foodysAPI($url);
+		$response = gucitoakAPI($url);
         $result = $response->result->message;
         echo json_encode($result);
     }
@@ -61,7 +62,7 @@ class Kategori extends BaseController
         
         // @todo::Mengubah endpoint beserta field nya
         $url = URLAPI . "/v1/kategori/add_kategori";
-        $response = foodysAPI($url, json_encode($mdata));
+        $response = gucitoakAPI($url, json_encode($mdata));
         $result = $response->result;
         // echo "<pre>".print_r($result,true)."</pre>";
         // die;
@@ -78,7 +79,7 @@ class Kategori extends BaseController
     {
         $kategori=base64_decode($kategori);
         $url = URLAPI . "/v1/kategori/getkategori_byid?id=".$kategori;
-		$response = foodysAPI($url);
+		$response = gucitoakAPI($url);
         $result = $response->result->message;
         // print_r($result);
         // die;
@@ -119,7 +120,7 @@ class Kategori extends BaseController
 
         // @todo::Mengubah endpoint beserta field nya
         $url = URLAPI . "/v1/kategori/ubah_kategori?id=".$idkategori;
-        $response = foodysAPI($url, json_encode($mdata));
+        $response = gucitoakAPI($url, json_encode($mdata));
         $result = $response->result;
         // echo "<pre>".print_r($result,true)."</pre>";
         // die;
@@ -136,7 +137,7 @@ class Kategori extends BaseController
     {
         $kategori = base64_decode($kategori);
         $url = URLAPI . "/v1/kategori/hapus_kategori?id=".$kategori;
-		$response = foodysAPI($url);
+		$response = gucitoakAPI($url);
         $result = $response->result;
 
 

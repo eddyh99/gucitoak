@@ -6,11 +6,14 @@ class User extends BaseController
 {
     public function index()
     {
+
+
         $mdata = [
             'title'     => 'List User - ' . NAMETITLE,
             'content'   => 'admin/user/index',
             'extra'     => 'admin/user/js/_js_index',
-            'active_user'   => 'active'
+            'menuactive_setup'   => 'active open',
+            'user_active'   => 'active'
         ];
 
         return view('admin/layout/wrapper', $mdata);
@@ -86,7 +89,7 @@ class User extends BaseController
         
         // @todo::Mengubah endpoint beserta field nya
         $url = URLAPI . "/v1/user/adduser";
-        $response = foodysAPI($url, json_encode($mdata));
+        $response = gucitoakAPI($url, json_encode($mdata));
         $result = $response->result->messages;
 
         if (@$response->status != 200) {
@@ -122,7 +125,7 @@ class User extends BaseController
         }
 
         $url = URLAPI . "/v1/user/deleteUser?username=".$username_delete;
-		$response = foodysAPI($url);
+		$response = gucitoakAPI($url);
         $result = $response->result;
 
 

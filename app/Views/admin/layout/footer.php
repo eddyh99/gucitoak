@@ -12,6 +12,7 @@
         
         <!-- Vendors JS -->
         <script src="<?= BASE_URL?>assets/vendor/libs/apex-charts/apexcharts.js"></script>
+        <!-- <script src="<?= BASE_URL?>assets/vendor/libs/select2/select2.js"></script> -->
         
         <!-- Datatables JS -->
         <!-- <script src="<?= BASE_URL?>assets/js/tables-datatables-basic.js"></script>

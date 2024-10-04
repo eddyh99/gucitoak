@@ -49,6 +49,7 @@
                                         <th>Alamat</th>
                                         <th>Kota</th>
                                         <th>No. Telp</th>
+                                        <th>Harga</th>
                                         <th>Plafon</th>
                                         <th>Action</th>
                                     </tr>
