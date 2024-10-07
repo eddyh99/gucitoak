@@ -31,7 +31,7 @@ class Barang extends BaseController
             'title'     => 'Tambah barang - ' . NAMETITLE,
             'content'   => 'admin/barang/tambah_barang',
             'extra'     => 'admin/barang/js/_js_index',
-            'active_barang'   => 'active'
+            'menuactive_setup'   => 'active open',
         ];
 
         return view('admin/layout/wrapper', $mdata);

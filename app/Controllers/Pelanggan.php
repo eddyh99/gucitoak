@@ -31,7 +31,7 @@ class Pelanggan extends BaseController
             'title'     => 'Tambah pelanggan - ' . NAMETITLE,
             'content'   => 'admin/pelanggan/tambah_pelanggan',
             'extra'     => 'admin/pelanggan/js/_js_index',
-            'active_pelanggan'   => 'active'
+            'menuactive_setup'   => 'active open',
         ];
 
         return view('admin/layout/wrapper', $mdata);

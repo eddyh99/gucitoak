@@ -27,66 +27,69 @@
                         </div>
                         <div class="card-body">
                             <form action="<?= BASE_URL ?>sales/tambah_proccess" method="POST">
-                                <div class="mb-3">
-                                    <label class="form-label" for="username">Nama Sales</label>
-                                    <div class="input-group input-group-merge">
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            id="sales"
-                                            placeholder="John_Doe"
-                                            name="sales"
-                                        />
+                                <div class="row row-cols-3">
+
+                                    <div class="mb-3">
+                                        <label class="form-label" for="username">Nama Sales</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="sales"
+                                                placeholder="Nama Sales"
+                                                name="sales"
+                                            />
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label" for="nama">Alamat</label>
-                                    <div class="input-group input-group-merge">
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            id="alamat"
-                                            placeholder="Jl. HOS Cokroaminoto...."
-                                            name="alamat"
-                                        />
+                                    <div class="mb-3">
+                                        <label class="form-label" for="nama">Alamat</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="alamat"
+                                                placeholder="Alamat"
+                                                name="alamat"
+                                            />
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="mb-3">
-                                    <div class="d-flex justify-content-between">
-                                        <label class="form-label" for="password">Kota</label>
+                                    <div class="mb-3">
+                                        <div class="d-flex justify-content-between">
+                                            <label class="form-label" for="password">Kota</label>
+                                        </div>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="text"
+                                                id="kota"
+                                                class="form-control"
+                                                name="kota"
+                                                placeholder="Kota"
+                                            />
+                                        </div>
                                     </div>
-                                    <div class="input-group input-group-merge">
-                                        <input
-                                            type="text"
-                                            id="kota"
-                                            class="form-control"
-                                            name="kota"
-                                            placeholder="Badung"
-                                        />
+                                    <div class="mb-3">
+                                        <label class="form-label" for="nama">telp</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="telp"
+                                                placeholder="Telphone"
+                                                name="telp"
+                                            />
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label" for="nama">telp</label>
-                                    <div class="input-group input-group-merge">
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            id="telp"
-                                            placeholder="08225455222"
-                                            name="telp"
-                                        />
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label" for="nama">Omzet</label>
-                                    <div class="input-group input-group-merge">
-                                        <input
-                                            type="number"
-                                            class="form-control"
-                                            id="omzet"
-                                            placeholder="100000000"
-                                            name="omzet"
-                                        />
+                                    <div class="mb-3">
+                                        <label class="form-label" for="nama">Omzet</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="number"
+                                                class="form-control"
+                                                id="omzet"
+                                                placeholder="Omzet"
+                                                name="omzet"
+                                            />
+                                        </div>
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Save Data</button>

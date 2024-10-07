@@ -31,7 +31,7 @@ class Sales extends BaseController
             'title'     => 'Tambah sales - ' . NAMETITLE,
             'content'   => 'admin/sales/tambah_sales',
             'extra'     => 'admin/sales/js/_js_index',
-            'active_sales'   => 'active'
+            'menuactive_setup'   => 'active open',
         ];
 
         return view('admin/layout/wrapper', $mdata);

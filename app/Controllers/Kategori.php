@@ -31,7 +31,7 @@ class Kategori extends BaseController
             'title'     => 'Tambah kategori - ' . NAMETITLE,
             'content'   => 'admin/kategori/tambah_kategori',
             'extra'     => 'admin/kategori/js/_js_index',
-            'active_kategori'   => 'active'
+            'menuactive_setup'   => 'active open',
         ];
 
         return view('admin/layout/wrapper', $mdata);
