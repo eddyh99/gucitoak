@@ -38,6 +38,8 @@
                                                 id="sales"
                                                 placeholder="Nama Sales"
                                                 name="sales"
+                                                value="<?= set_value('sales') ?>"
+                                                required
                                             />
                                         </div>
                                     </div>
@@ -50,6 +52,8 @@
                                                 id="alamat"
                                                 placeholder="Alamat"
                                                 name="alamat"
+                                                value="<?= set_value('alamat') ?>"
+                                                required
                                             />
                                         </div>
                                     </div>
@@ -64,6 +68,8 @@
                                                 class="form-control"
                                                 name="kota"
                                                 placeholder="Kota"
+                                                value="<?= set_value('kota') ?>"
+                                                required
                                             />
                                         </div>
                                     </div>
@@ -76,6 +82,9 @@
                                                 id="telp"
                                                 placeholder="Telphone"
                                                 name="telp"
+                                                value="<?= set_value('telp') ?>"
+                                                required
+                                                maxlength="13"
                                             />
                                         </div>
                                     </div>
@@ -83,16 +92,18 @@
                                         <label class="form-label" for="nama">Omzet</label>
                                         <div class="input-group input-group-merge">
                                             <input
-                                                type="number"
-                                                class="form-control"
+                                                type="text"
+                                                class="form-control price-input"
                                                 id="omzet"
                                                 placeholder="Omzet"
                                                 name="omzet"
+                                                value="<?= set_value('omzet') ?>"
+                                                required
                                             />
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Save Data</button>
+                                <button type="submit" class="btn btn-primary">Simpan Data</button>
                             </form>
                         </div>
                     </div>

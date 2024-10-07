@@ -224,3 +224,38 @@
 .menu-link-inside, .menu-link-inside i {
   color: #697a8d;
 }
+
+.sub-menu {
+  background-color: #ffffff;
+  position: absolute;
+  left: 11rem;
+  top: 0;
+  z-index: 9999999;
+  display: none;
+  height: 100%;
+  padding-top: 1rem;
+  box-shadow: -3px 3px 3px #0000000c;
+  overflow-y: auto;
+}
+
+.sub-menu .ul-sub-menu {
+  padding-left: 0rem;
+}
+
+body:has(.menu-item.master:hover) .sub-menu.master,
+.sub-menu.master:hover{
+  display: block;
+}
+
+
+body:has(.menu-item.setup:hover) .sub-menu.setup,
+.sub-menu.setup:hover{
+  display: block;
+}
+
+body:has(.menu-item.persediaan:hover) .sub-menu.persediaan,
+.sub-menu.persediaan:hover{
+  display: block;
+}
+
+

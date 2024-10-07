@@ -1,5 +1,5 @@
 <?php if(!empty(session('failed'))): ?>
-    <div id="failedtoast" class="bs-toast toast toast-placement-ex m-3 fade bg-danger top-0 end-0" role="alert" aria-live="assertive" aria-atomic="true" data-delay="1000">
+    <div id="failedtoast" class="bs-toast toast toast-placement-ex m-3 fade bg-danger top-  0 end-0" role="alert" aria-live="assertive" aria-atomic="true" data-delay="1000">
         <div class="toast-header">
             <i class="bx bx-bell me-2"></i>
             <div class="me-auto fw-semibold">Error</div>
@@ -31,7 +31,9 @@
                         <div class="col-lg-12 col-md-12 col-12 mb-2">
                             <div class="card">
                                 <div class="card-body">
-                                    <a href="<?= BASE_URL?>sales/tambah_sales" class="btn btn-primary">Tambah Sales</a>
+                                    <a href="<?= BASE_URL?>sales/tambah_sales" class="btn btn-primary">
+                                        Tambah Sales
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -48,6 +50,7 @@
                                         <th>Alamat</th>
                                         <th>Kota</th>
                                         <th>No. Telp</th>
+                                        <th>Omzet</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>

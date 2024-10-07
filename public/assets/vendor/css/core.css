@@ -15087,7 +15087,7 @@ html:not(.layout-menu-fixed) .menu-inner-shadow {
 }
 .menu-vertical .menu-item .menu-link,
 .menu-vertical .menu-block {
-  padding: 0.625rem 1rem;
+  padding: 1.625rem 1rem;
 }
 .menu-vertical .menu-header {
   margin: 1rem 0 0.5rem 0;

@@ -33,7 +33,7 @@ class Auth extends BaseController
         // Checking Validation
         if(!$rules){
             session()->setFlashdata('failed', $this->validation->listErrors());
-            return redirect()->to(BASE_URL )->withInput();
+            return redirect()->to(BASE_URL)->withInput();
         }
         
         // Initial Data

@@ -23,6 +23,7 @@ class Sales extends BaseController
 		$response = gucitoakAPI($url);
         $result = $response->result->message;
         echo json_encode($result);
+        die;
     }
 
     public function tambah_sales()
@@ -41,11 +42,16 @@ class Sales extends BaseController
     public function tambah_proccess()
     {
 
-        $validation = $this->validation;
-        $validation->setRules([
+        // Convert and remove replace coma (,) in omzet value
+        $omzet = $this->request->getVar("omzet");
+        $new_omzet = str_replace(',', '', $omzet);
+        $_POST["omzet"] = $new_omzet;
+
+        // Validation Rules
+        $rules = $this->validate([
             'sales'     => [
                 'label'     => 'Nama Sales',
-                'rules'     => 'required'
+                'rules'     => 'required|trim'
             ],
             'alamat'     => [
                 'label'     => 'Alamat',
@@ -56,39 +62,42 @@ class Sales extends BaseController
                 'rules'     => 'required'
             ],
             'telp'     => [
-                'label'     => 'Telp',
+                'label'     => 'Telphone',
+                'rules'     => 'required'
+            ],
+            'omzet'     => [
+                'label'     => 'Omzet',
                 'rules'     => 'required'
             ],
         ]);
 
         // Checking Validation
-        if (!$validation->withRequest($this->request)->run()){
+        if (!$rules){
             session()->setFlashdata('failed', $this->validation->listErrors());
             return redirect()->to(BASE_URL . "sales/tambah_sales")->withInput();
         }
         
         // Initial Data
         $mdata = [
-            'namasales'     => htmlspecialchars($this->request->getVar('sales')),
-            'alamat'        => htmlspecialchars($this->request->getVar('alamat')),
-            'kota'          => htmlspecialchars($this->request->getVar('kota')),
-            'telp'          => htmlspecialchars($this->request->getVar('telp')),
-            'omzet'         => filter_var($this->request->getVar('omzet'),FILTER_SANITIZE_NUMBER_INT),
+            'namasales'     => trim(htmlspecialchars($this->request->getVar('sales'))),
+            'alamat'        => trim(htmlspecialchars($this->request->getVar('alamat'))),
+            'kota'          => trim(htmlspecialchars($this->request->getVar('kota'))),
+            'telp'          => trim(htmlspecialchars($this->request->getVar('telp'))),
+            'omzet'         => trim(filter_var($this->request->getVar('omzet'),FILTER_SANITIZE_NUMBER_INT)),
         ];
-        // echo "<pre>".print_r($mdata,true)."</pre>";
-        // die;
+
         // @todo::Mengubah endpoint beserta field nya
         $url = URLAPI . "/v1/sales/add_sales";
         $response = gucitoakAPI($url, json_encode($mdata));
         $result = $response->result;
         // echo "<pre>".print_r($result,true)."</pre>";
         // die;
-        if (@$response->status != 201) {
+        if (@$response->status != 200) {
             session()->setFlashdata('failed', $result->message);
             return redirect()->to(BASE_URL . "sales/tambah_sales")->withInput();
         }else{
             session()->setFlashdata('success', $result->message);
-            return redirect()->to(BASE_URL . "sales")->withInput();
+            return redirect()->to(BASE_URL . "sales");
         }
     }
 
@@ -114,8 +123,13 @@ class Sales extends BaseController
     public function ubah_sales()
     {
 
-        $validation = $this->validation;
-        $validation->setRules([
+        // Convert and remove replace coma (,) in omzet value
+        $omzet = $this->request->getVar("omzet");
+        $new_omzet = str_replace(',', '', $omzet);
+        $_POST["omzet"] = $new_omzet;
+
+        // Validation Rules
+        $rules = $this->validate([
             'sales'     => [
                 'label'     => 'Nama Sales',
                 'rules'     => 'required'
@@ -129,14 +143,19 @@ class Sales extends BaseController
                 'rules'     => 'required'
             ],
             'telp'     => [
-                'label'     => 'Telp',
+                'label'     => 'Telphone',
+                'rules'     => 'required'
+            ],
+            'omzet'     => [
+                'label'     => 'Omzet',
                 'rules'     => 'required'
             ],
         ]);
 
-        $idsales=$this->request->getVar('idsales');
+        $idsales = $this->request->getVar('idsales');
+
         // Checking Validation
-        if (!$validation->withRequest($this->request)->run()){
+        if (!$rules){
             session()->setFlashdata('failed', $this->validation->listErrors());
             return redirect()->to(BASE_URL . "sales/edit_sales/".base64_encode($idsales))->withInput();
         }
