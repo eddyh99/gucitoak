@@ -34,7 +34,7 @@
                                             type="text"
                                             class="form-control"
                                             id="kategori"
-                                            placeholder="Frozen Food"
+                                            placeholder="Nama Kategori"
                                             name="kategori"
                                         />
                                     </div>

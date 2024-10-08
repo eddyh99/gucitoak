@@ -31,7 +31,7 @@ class Suplier extends BaseController
             'title'     => 'Tambah suplier - ' . NAMETITLE,
             'content'   => 'admin/suplier/tambah_suplier',
             'extra'     => 'admin/suplier/js/_js_index',
-            'active_suplier'   => 'active'
+            'menuactive_setup'   => 'active open',
         ];
 
         return view('admin/layout/wrapper', $mdata);

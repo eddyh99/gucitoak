@@ -15,135 +15,179 @@
         <!-- Dashboard -->
         <li class="menu-item <?= @$active_dash?>">
             <a href="<?= BASE_URL ?>dashboard" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Dashboard</div>
+                <i class="menu-icon tf-icons bx bx-home-circle "></i>
+                <div data-i18n="Analytics" class="text-center">Dashboard</div>
             </a>
         </li>
-        <li class="menu-header small text-uppercase">
+
+        <!-- <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Setup</span>
-        </li>
-        <li class="menu-item <?= @$menuactive_setup ?>">
+        </li> -->
+        <li class="menu-item setup <?= @$menuactive_setup ?>">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-cog"></i>
-                <div data-i18n="Account Settings">Setup Data</div>
+                <div data-i18n="Account Settings" class="text-center">Setup Data</div>
             </a>
-            <ul class="menu-sub">
-                <li class="menu-item <?= @$user_active ?>">
-                    <a href="<?= BASE_URL ?>user" class="menu-link">
-                        <div data-i18n="User">User</div>
-                    </a>
-                </li>
-                <li class="menu-item <?= @$cabang_active ?>">
-                    <a href="<?= BASE_URL ?>cabang" class="menu-link">
-                        <div data-i18n="Cabang">Cabang</div>
-                    </a>
-                </li>
-                <li class="menu-item <?= @$sales_active ?>">
-                    <a href="<?= BASE_URL ?>sales" class="menu-link">
-                        <div data-i18n="Sales">Sales</div>
-                    </a>
-                </li>
-                <li class="menu-item <?= @$kategori_active ?>">
-                    <a href="<?= BASE_URL ?>kategori" class="menu-link">
-                        <div data-i18n="Kategori">Kategori</div>
-                    </a>
-                </li>
-                <li class="menu-item <?= @$satuan_active ?>">
-                    <a href="<?= BASE_URL ?>satuan" class="menu-link">
-                        <div data-i18n="Satuan">Satuan</div>
-                    </a>
-                </li>
-                <li class="menu-item <?= @$barang_active ?>">
-                    <a href="<?= BASE_URL ?>barang" class="menu-link">
-                        <div data-i18n="Barang">Barang</div>
-                    </a>
-                </li>
-                <li class="menu-item <?= @$supplier_active ?>">
-                    <a href="<?= BASE_URL ?>suplier" class="menu-link">
-                        <div data-i18n="Supplier">Supplier</div>
-                    </a>
-                </li>
-                <li class="menu-item <?= @$pelanggan_active ?>">
-                    <a href="<?= BASE_URL ?>pelanggan" class="menu-link">
-                        <div data-i18n="Pelanggan">Pelanggan</div>
-                    </a>
-                </li>
-            </ul>
         </li>
 
-        <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Master</span>
-        </li>
-        <li class="menu-item <?= @$menuactive_master ?>">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
+      <li class="menu-item master <?= @$menuactive_master ?>">
+            <a href="javascript:void(0);" class="menu-link  menu-toggle">
                 <i class="menu-icon tf-icons bx bx-layer-plus"></i>
-                <div data-i18n="Account Settings">Master Data</div>
+                <div data-i18n="Account Settings"  class="text-center">Master Data</div>
             </a>
-            <ul class="menu-sub">
-                <li class="menu-item <?= @$assignsales_active ?>">
-                    <a href="<?= BASE_URL ?>sales/list_assign_sales" class="menu-link">
-                        <div data-i18n="Assign Sales">Assign Sales</div>
-                    </a>
-                </li>
-                
-            </ul>
         </li>
-        <!-- <li class="menu-item <?= @$active_sales?>">
-            <a href="<?= BASE_URL ?>sales" class="menu-link">
-                <i class="menu-icon tf-icons bx bxs-id-card"></i>
-                <div data-i18n="Analytics">Sales</div>
-            </a>
-        </li> -->
-        <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Persediaan</span>
-        </li>
-        <li class="menu-item <?= @$menuactive_persediaan ?>">
+
+        <li class="menu-item persediaan <?= @$menuactive_persediaan ?>">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-package"></i>
-                <div data-i18n="Account Settings">Persediaan Barang</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item <?= @$stokbarang_active ?>">
-                    <a href="<?= BASE_URL ?>stok" class="menu-link">
-                        <div data-i18n="User">Stok Barang</div>
-                    </a>
-                </li>
-                <li class="menu-item <?= @$stokopname_active ?>">
-                    <a href="<?= BASE_URL ?>sales" class="menu-link">
-                        <div data-i18n="Sales">Stok Opname</div>
-                    </a>
-                </li>
-                <li class="menu-item <?= @$stokmutasi_active ?>">
-                    <a href="<?= BASE_URL ?>pelanggan" class="menu-link">
-                        <div data-i18n="Pelanggan">Mutasi Stok</div>
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <!-- <li class="menu-item <?= @$active_stok?>">
-            <a href="<?= BASE_URL ?>stok" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-user"></i>
-                <div data-i18n="Analytics">Stok Barang</div>
+                <div data-i18n="Account Settings" class="text-center">Persediaan Barang</div>
             </a>
         </li>
-        <li class="menu-item <?= @$active_opname?>">
-            <a href="<?= BASE_URL ?>opname" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-user"></i>
-                <div data-i18n="Analytics">Stok Opname</div>
-            </a>
-        </li>
-        <li class="menu-item <?= @$active_mutasi?>">
-            <a href="<?= BASE_URL ?>mutasi" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-user"></i>
-                <div data-i18n="Analytics">Mutasi Stok</div>
-            </a>
-        </li> -->
-
     </ul>
 </aside>
 
-<div class="layout-page">
+<div class="sub-menu setup">
+    <ul class="ul-sub-menu">
+        <li class="menu-item">
+            <a href="<?= BASE_URL ?>user/tambah_user" class="menu-link-inside d-flex justify-content-start align-items-center px-4 py-2">
+                <i class="menu-icon fs-5 tf-icons bx bx-plus-circle px-2"></i>
+                <div data-i18n="User" style="font-size: 12px;">Tambah User</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="<?= BASE_URL ?>user" class="menu-link-inside d-flex justify-content-start align-items-center px-4 py-2">
+                <i class="menu-icon fs-5 tf-icons bx bx-list-ol px-2"></i>
+                <div data-i18n="User" style="font-size: 12px;">List User</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="<?= BASE_URL ?>sales/tambah_sales" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
+                <i class="menu-icon fs-5 tf-icons bx bx-plus-circle px-2"></i>
+                <div data-i18n="Sales" style="font-size: 12px;">Tambah Sales</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="<?= BASE_URL ?>sales" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
+                <i class="menu-icon fs-5 tf-icons bx bx-list-ol px-2"></i>
+                <div data-i18n="Sales" style="font-size: 12px;">List Sales</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="<?= BASE_URL ?>kategori/tambah_kategori" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
+                <i class="menu-icon fs-5 tf-icons bx bx-plus-circle px-2"></i>
+                <div data-i18n="Kategori" style="font-size: 12px;">Tambah Kategori</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="<?= BASE_URL ?>kategori" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
+                <i class="menu-icon fs-5 tf-icons bx bx-list-ol px-2"></i>
+                <div data-i18n="Kategori" style="font-size: 12px;">List Kategori</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="<?= BASE_URL ?>satuan/tambah_satuan" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
+            <i class="menu-icon fs-5 tf-icons bx bx-plus-circle px-2"></i>
+                <div data-i18n="Satuan" style="font-size: 12px;">Tambah Satuan</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="<?= BASE_URL ?>satuan" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
+            <i class="menu-icon fs-5 tf-icons bx bx-list-ol px-2"></i>
+                <div data-i18n="Satuan" style="font-size: 12px;">List Satuan</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="<?= BASE_URL ?>barang/tambah_barang" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
+                <i class="menu-icon fs-5 tf-icons bx bx-plus-circle px-2"></i>
+                <div data-i18n="Barang" style="font-size: 12px;">Tambah Barang</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="<?= BASE_URL ?>barang" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
+                <i class="menu-icon fs-5 tf-icons bx bx-list-ol px-2"></i>
+                <div data-i18n="Barang" style="font-size: 12px;">List Barang</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="<?= BASE_URL ?>suplier/tambah_suplier" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
+            <i class="menu-icon fs-5 tf-icons bx bx-plus-circle px-2"></i>
+                <div data-i18n="Supplier" style="font-size: 12px;">Tambah Supplier</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="<?= BASE_URL ?>suplier" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
+            <i class="menu-icon fs-5 tf-icons bx bx-list-ol px-2"></i>
+                <div data-i18n="Supplier" style="font-size: 12px;">List  Supplier</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="<?= BASE_URL ?>pelanggan/tambah_pelanggan" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
+                <i class="menu-icon fs-5 tf-icons bx bx-plus-circle px-2"></i>
+                <div data-i18n="Pelanggan" style="font-size: 12px;">Tambah Pelanggan</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="<?= BASE_URL ?>pelanggan" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
+                <i class="menu-icon fs-5 tf-icons bx bx-list-ol px-2"></i>
+                <div data-i18n="Pelanggan" style="font-size: 12px;">List Pelanggan</div>
+            </a>
+        </li>
+    </ul>
+</div>
 
+<div class="sub-menu master">
+    <ul class="ul-sub-menu">
+        <li class="menu-item">
+            <a href="<?= BASE_URL ?>sales/assign_sales" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
+                <i class="menu-icon fs-5 tf-icons bx bx-plus-circle px-2"></i>
+                <div data-i18n="Assign Sales" style="font-size: 12px;">Assign Sales</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="<?= BASE_URL ?>sales/list_assign_sales" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
+                <i class="menu-icon fs-5 tf-icons bx bx-list-ol px-2"></i>
+                <div data-i18n="Assign Sales" style="font-size: 12px;">List Assign Sales</div>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="sub-menu persediaan">
+    <ul class="ul-sub-menu">
+        <li class="menu-item">
+            <a href="<?= BASE_URL ?>stok" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
+                <i class="menu-icon fs-5 tf-icons bx bx-plus-circle px-2"></i>
+                <div data-i18n="User" style="font-size: 12px;">Tambah Stok</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="<?= BASE_URL ?>stok" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
+                <i class="menu-icon fs-5 tf-icons bx bx-list-ol px-2"></i>
+                <div data-i18n="User" style="font-size: 12px;">List Stok</div>
+            </a>
+        </li>
+        <li class="menu-item ">
+            <a href="<?= BASE_URL ?>opname" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
+                <i class="menu-icon fs-5 tf-icons bx bx-box px-2"></i>
+                <div data-i18n="Stok Opname" style="font-size: 12px;">Stok Opname</div>
+            </a>
+        </li>
+        <li class="menu-item <?= @$stokopnamekonfirm_active ?>">
+            <a href="<?= BASE_URL ?>opname/konfirm" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
+                <i class="menu-icon fs-5 tf-icons bx bx-check-shield px-2"></i>
+                <div data-i18n="Konfirm Opname" style="font-size: 12px;">Konfirm Opname</div>
+            </a>
+        </li>
+        <li class="menu-item <?= @$stokmutasi_active ?>">
+            <a href="<?= BASE_URL ?>pelanggan" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
+                <i class="menu-icon fs-5 tf-icons bx bx-list-ol px-2"></i>
+                <div data-i18n="Mutasi Stok" style="font-size: 12px;">Mutasi Stok</div>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="layout-page">
     <!-- Navbar -->
     <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
         <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">

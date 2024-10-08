@@ -34,7 +34,7 @@
                                             type="text"
                                             class="form-control"
                                             id="satuan"
-                                            placeholder="Pcs"
+                                            placeholder="Nama Satuan"
                                             name="satuan"
                                         />
                                     </div>

@@ -31,7 +31,7 @@ class Satuan extends BaseController
             'title'     => 'Tambah Satuan - ' . NAMETITLE,
             'content'   => 'admin/satuan/tambah_satuan',
             'extra'     => 'admin/satuan/js/_js_index',
-            'active_satuan'   => 'active'
+            'menuactive_setup'   => 'active open',
         ];
 
         return view('admin/layout/wrapper', $mdata);

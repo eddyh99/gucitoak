@@ -27,119 +27,115 @@
                         </div>
                         <div class="card-body">
                             <form action="<?= BASE_URL ?>suplier/tambah_proccess" method="POST">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="mb-3">
-                                            <label class="form-label" for="username">Nama Barang</label>
-                                            <div class="input-group input-group-merge">
-                                                <input
-                                                    type="text"
-                                                    class="form-control"
-                                                    id="suplier"
-                                                    placeholder="John_Doe"
-                                                    name="suplier"
-                                                />
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label" for="nama">Kategori</label>
-                                            <div class="input-group input-group-merge">
-                                                <input
-                                                    type="text"
-                                                    class="form-control"
-                                                    id="alamat"
-                                                    placeholder="Jl. HOS Cokroaminoto...."
-                                                    name="alamat"
-                                                />
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <div class="d-flex justify-content-between">
-                                                <label class="form-label" for="password">Satuan</label>
-                                            </div>
-                                            <div class="input-group input-group-merge">
-                                                <input
-                                                    type="text"
-                                                    id="kota"
-                                                    class="form-control"
-                                                    name="kota"
-                                                    placeholder="Badung"
-                                                />
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label" for="nama">Stok Min</label>
-                                            <div class="input-group input-group-merge">
-                                                <input
-                                                    type="text"
-                                                    class="form-control"
-                                                    id="telp"
-                                                    placeholder="08225455222"
-                                                    name="telp"
-                                                />
-                                            </div>
+                                <div class="row row-cols-3">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="username">Nama Barang</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="suplier"
+                                                placeholder="Nama Barang"
+                                                name="suplier"
+                                            />
                                         </div>
                                     </div>
-                                    <div class="col-6">
-                                        <div class="mb-3">
-                                            <label class="form-label" for="nama">Harga 1</label>
-                                            <div class="input-group input-group-merge">
-                                                <input
-                                                    type="number"
-                                                    class="form-control"
-                                                    id="harga1"
-                                                    placeholder="100000"
-                                                    name="harga1"
-                                                />
-                                            </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="nama">Kategori</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="alamat"
+                                                placeholder="Kategori"
+                                                name="alamat"
+                                            />
                                         </div>
-                                        <div class="mb-3">
-                                            <label class="form-label" for="nama">Harga 2</label>
-                                            <div class="input-group input-group-merge">
-                                                <input
-                                                    type="number"
-                                                    class="form-control"
-                                                    id="harga2"
-                                                    placeholder="100000"
-                                                    name="harga2"
-                                                />
-                                            </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="d-flex justify-content-between">
+                                            <label class="form-label" for="password">Satuan</label>
                                         </div>
-                                        <div class="mb-3">
-                                            <label class="form-label" for="nama">Harga 3</label>
-                                            <div class="input-group input-group-merge">
-                                                <input
-                                                    type="number"
-                                                    class="form-control"
-                                                    id="harga3"
-                                                    placeholder="100000"
-                                                    name="harga3"
-                                                />
-                                            </div>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="text"
+                                                id="kota"
+                                                class="form-control"
+                                                name="kota"
+                                                placeholder="Satuan"
+                                            />
                                         </div>
-                                        <div class="mb-3">
-                                            <label class="form-label" for="nama">Discount (%)</label>
-                                            <div class="input-group input-group-merge">
-                                                <input
-                                                    type="text"
-                                                    class="form-control"
-                                                    id="discount_pct"
-                                                    placeholder="5"
-                                                    name="discount_pct"
-                                                />
-                                            </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="nama">Stok Min</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="telp"
+                                                placeholder="Stok Min"
+                                                name="telp"
+                                            />
                                         </div>
-                                        <div class="mb-3">
-                                            <label class="form-label" for="nama">Discount (Fixed)</label>
-                                            <div class="input-group input-group-merge">
-                                                <input
-                                                    type="text"
-                                                    class="form-control"
-                                                    id="discount_fxd"
-                                                    placeholder="50000"
-                                                    name="discount_fxd"
-                                                />
-                                            </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="nama">Harga 1</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="number"
+                                                class="form-control"
+                                                id="harga1"
+                                                placeholder="Harga 1"
+                                                name="harga1"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="nama">Harga 2</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="number"
+                                                class="form-control"
+                                                id="harga2"
+                                                placeholder="Harga 2"
+                                                name="harga2"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="nama">Harga 3</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="number"
+                                                class="form-control"
+                                                id="harga3"
+                                                placeholder="Harga 3"
+                                                name="harga3"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="nama">Discount (%)</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="discount_pct"
+                                                placeholder="Discount (%)"
+                                                name="discount_pct"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="nama">Discount (Fixed)</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="discount_fxd"
+                                                placeholder="Discount (Fixed)"
+                                                name="discount_fxd"
+                                            />
                                         </div>
                                     </div>
                                 </div>

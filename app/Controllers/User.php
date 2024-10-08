@@ -43,7 +43,7 @@ class User extends BaseController
             'title'     => 'Tambah User - ' . NAMETITLE,
             'content'   => 'admin/user/tambah_user',
             'extra'     => 'admin/user/js/_js_index',
-            'active_user'   => 'active'
+            'menuactive_setup'   => 'active open',
         ];
 
         return view('admin/layout/wrapper', $mdata);

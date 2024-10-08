@@ -18,13 +18,19 @@
             "scrollX": true,
             "dom": 'Bfrtip',
             "buttons": [
-                'excel', 'pdf',
+                  {
+                        extend: 'pdf',
+                        exportOptions: {
+                              columns: "th:not(:last-child)"
+                        }
+                  }
+                  , 
+                  'excel'
             ],
 		"ajax": {
 			"url": "<?= BASE_URL ?>sales/list_all_sales",
 			"type": "POST",
 			"dataSrc":function (data){
-				console.log(data);
 				return data;							
 			}
 		},
@@ -33,6 +39,18 @@
 			{ data: 'alamat' },
 			{ data: 'kota' },
 			{ data: 'telp' },
+                  { 
+                   data: "omzet", 
+                   "mRender": function(data, type, full, meta) {
+                        if (type === 'display') {
+                            return parseFloat(data).toLocaleString('en-US', {
+                                minimumFractionDigits: 0,
+                                maximumFractionDigits: 0
+                            });
+                        }
+                        return data;
+                    } 
+                },
 			{ 
                    data: null, "mRender": function(data, type, full, meta) {
                               var edit = `<a href="<?= BASE_URL ?>sales/edit_sales/${encodeURI(btoa(full.id))}">
