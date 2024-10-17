@@ -14,11 +14,7 @@ function gucitoakAPI($url, $postData = NULL)
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
-    // $result = json_decode(curl_exec($ch));
-    $result = (object) array(
-        'result'        => json_decode(curl_exec($ch)),
-        'status'        => curl_getinfo($ch)['http_code']
-    );
+    $result = json_decode(curl_exec($ch));
     curl_close($ch);
     return $result;
 }

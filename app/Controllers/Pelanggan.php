@@ -21,7 +21,7 @@ class Pelanggan extends BaseController
     {
         $url = URLAPI . "/v1/pelanggan/getall_pelanggan";
 		$response = gucitoakAPI($url);
-        $result = $response->result->message;
+        $result = $response->message;
         echo json_encode($result);
     }
 
@@ -41,71 +41,86 @@ class Pelanggan extends BaseController
     public function tambah_proccess()
     {
 
-        $validation = $this->validation;
-        $validation->setRules([
+        // Validation Rules
+        $rules = $this->validate([
             'pelanggan'     => [
                 'label'     => 'Nama pelanggan',
-                'rules'     => 'trim|required'
+                'rules'     => 'required'
+            ],
+            'pemilik'     => [
+                'label'     => 'Pemilik',
+                'rules'     => 'required'
             ],
             'alamat'     => [
                 'label'     => 'Alamat',
-                'rules'     => 'trim|required'
+                'rules'     => 'required'
             ],
             'kota'     => [
                 'label'     => 'Kota',
-                'rules'     => 'trim|required'
+                'rules'     => 'required'
             ],
             'telp'     => [
                 'label'     => 'Telp',
-                'rules'     => 'trim|required'
+                'rules'     => 'required'
+            ],
+            'harga'     => [
+                'label'     => 'Harga',
+                'rules'     => 'required'
             ],
         ]);
 
         // Checking Validation
-        if (!$validation->withRequest($this->request)->run()){
+        if (!$rules){
             session()->setFlashdata('failed', $this->validation->listErrors());
             return redirect()->to(BASE_URL . "pelanggan/tambah_pelanggan")->withInput();
         }
         
         // Initial Data
+        // FILTER HTML SPECIAL CHARS
+        // FILTER TRIM DATA
+        // FILTER SANITIZE NUMBER INTEGER
         $mdata = [
-            'namapelanggan' => htmlspecialchars($this->request->getVar('pelanggan')),
-            'pemilik'       => htmlspecialchars($this->request->getVar('pemilik')),
-            'alamat'        => htmlspecialchars($this->request->getVar('alamat')),
-            'kota'          => htmlspecialchars($this->request->getVar('kota')),
-            'telp'          => htmlspecialchars($this->request->getVar('telp')),
-            'plafon'        => filter_var($this->request->getVar('plafon'),FILTER_SANITIZE_NUMBER_INT),
+            'namapelanggan' => trim(htmlspecialchars($this->request->getVar('pelanggan'))),
+            'pemilik'       => trim(htmlspecialchars($this->request->getVar('pemilik'))),
+            'alamat'        => trim(htmlspecialchars($this->request->getVar('alamat'))),
+            'kota'          => trim(htmlspecialchars($this->request->getVar('kota'))),
+            'telp'          => trim(htmlspecialchars($this->request->getVar('telp'))),
+            'harga'         => trim(htmlspecialchars($this->request->getVar('harga'))),
+            'plafon'        => trim(filter_var($this->request->getVar('plafon'), FILTER_SANITIZE_NUMBER_INT)),
         ];
-        // echo "<pre>".print_r($mdata,true)."</pre>";
-        // die;
-        // @todo::Mengubah endpoint beserta field nya
+
+
+        // CALL API
         $url = URLAPI . "/v1/pelanggan/add_pelanggan";
         $response = gucitoakAPI($url, json_encode($mdata));
-        $result = $response->result;
-        // echo "<pre>".print_r($response,true)."</pre>";
-        // die;
-        if (@$response->status != 200) {
-            session()->setFlashdata('failed', $result->message);
-            return redirect()->to(BASE_URL . "pelanggan/tambah_pelanggan")->withInput();
-        }else{
-            session()->setFlashdata('success', $result->message);
+        $result = $response->message;
+        
+        // Checking response API
+        if ($response->code == 200 || $response->code == 201) {
+            session()->setFlashdata('success', $result);
             return redirect()->to(BASE_URL . "pelanggan")->withInput();
+        }else{
+            session()->setFlashdata('failed', $result);
+            return redirect()->to(BASE_URL . "pelanggan/tambah_pelanggan")->withInput();
         }
     }
 
     public function edit_pelanggan($pelanggan)
     {
+        // GET Segment id pelanggan
         $pelanggan=base64_decode($pelanggan);
+
+        // CALL API
         $url = URLAPI . "/v1/pelanggan/getpelanggan_byid?id=".$pelanggan;
 		$response = gucitoakAPI($url);
-        $result = $response->result->message;
-        // print_r($result);
-        // die;
+        $result = $response->message;
+
+        
         $mdata = [
             'title'     => 'Edit pelanggan - ' . NAMETITLE,
             'content'   => 'admin/pelanggan/edit_pelanggan',
             'extra'     => 'admin/pelanggan/js/_js_index',
-            'active_pelanggan'   => 'active',
+            'menuactive_setup'   => 'active open',
             'pelanggan'  => $result
         ];
 
@@ -115,8 +130,8 @@ class Pelanggan extends BaseController
     public function ubah_pelanggan()
     {
 
-        $validation = $this->validation;
-        $validation->setRules([
+        // Validation Rules
+        $rules = $this->validate([
             'pelanggan'     => [
                 'label'     => 'Nama pelanggan',
                 'rules'     => 'required'
@@ -136,55 +151,59 @@ class Pelanggan extends BaseController
         ]);
 
         $idpelanggan=$this->request->getVar('idpelanggan');
+
         // Checking Validation
-        if (!$validation->withRequest($this->request)->run()){
+        if (!$rules){
             session()->setFlashdata('failed', $this->validation->listErrors());
             return redirect()->to(BASE_URL . "/pelanggan/edit_pelanggan/".base64_encode($idpelanggan))->withInput();
         }
         
         // Initial Data
+        // FILTER HTML SPECIAL CHARS
+        // FILTER TRIM DATA
+        // FILTER SANITIZE NUMBER INTEGER
         $mdata = [
-            'namapelanggan'     => htmlspecialchars($this->request->getVar('pelanggan')),
-            'pemilik'       => htmlspecialchars($this->request->getVar('pemilik')),
-            'alamat'        => htmlspecialchars($this->request->getVar('alamat')),
-            'kota'          => htmlspecialchars($this->request->getVar('kota')),
-            'telp'          => htmlspecialchars($this->request->getVar('telp')),
-            'plafon'        => filter_var($this->request->getVar('plafon'),FILTER_SANITIZE_NUMBER_INT),
+            'namapelanggan' => trim(htmlspecialchars($this->request->getVar('pelanggan'))),
+            'pemilik'       => trim(htmlspecialchars($this->request->getVar('pemilik'))),
+            'alamat'        => trim(htmlspecialchars($this->request->getVar('alamat'))),
+            'kota'          => trim(htmlspecialchars($this->request->getVar('kota'))),
+            'telp'          => trim(htmlspecialchars($this->request->getVar('telp'))),
+            'harga'         => trim(htmlspecialchars($this->request->getVar('harga'))),
+            'plafon'        => trim(filter_var($this->request->getVar('plafon'), FILTER_SANITIZE_NUMBER_INT)),
         ];
-        
-        // echo "<pre>".print_r($mdata,true)."</pre>";
-        // die;
+    
 
-        
-
-        // @todo::Mengubah endpoint beserta field nya
+        // CALL API
         $url = URLAPI . "/v1/pelanggan/ubah_pelanggan?id=".$idpelanggan;
         $response = gucitoakAPI($url, json_encode($mdata));
-        $result = $response->result;
-        // echo "<pre>".print_r($result,true)."</pre>";
-        // die;
-        if (@$response->status != 200) {
-            session()->setFlashdata('failed', $result->message);
-            return redirect()->to(BASE_URL . "pelanggan/edit_pelanggan/".base64_encode($idpelanggan))->withInput();
-        }else{
-            session()->setFlashdata('success', $result->message);
+        $result = $response->message;
+        
+
+        if ($response->code == 200 || $response->code == 201) {
+            session()->setFlashdata('success', $result);
             return redirect()->to(BASE_URL . "pelanggan")->withInput();
+        }else{
+            session()->setFlashdata('failed', $result);
+            return redirect()->to(BASE_URL . "pelanggan/edit_pelanggan/".base64_encode($idpelanggan))->withInput();
         }
     }
 
     public function hapus_pelanggan($pelanggan)
     {
+        // Get segment id pelanggan
         $pelanggan = base64_decode($pelanggan);
+
+        // CALL API
         $url = URLAPI . "/v1/pelanggan/hapus_pelanggan?id=".$pelanggan;
 		$response = gucitoakAPI($url);
-        $result = $response->result;
+        $result = $response->message;
 
 
-        if($response->status == 200){
-            session()->setFlashdata('success', $result->message);
+        if($response->code == 200){
+            session()->setFlashdata('error', $result);
             return redirect()->to(BASE_URL . "pelanggan");
         }else{
-            session()->setFlashdata('error', $result->message);
+            session()->setFlashdata('success', $result);
             return redirect()->to(BASE_URL . "pelanggan");
         }
     }

@@ -1,7 +1,7 @@
 <?php if(!empty(session('failed'))): ?>
     <div id="failedtoast" class="bs-toast toast toast-placement-ex m-3 fade bg-danger top-0 end-0" role="alert" aria-live="assertive" aria-atomic="true" data-delay="1000">
         <div class="toast-header">
-            <i class="bx bx-bell me-2"></i>
+            <i class="bx bx-x me-2"></i>
             <div class="me-auto fw-semibold">Error</div>
             <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
@@ -30,7 +30,7 @@
                                 <div class="row row-cols-3">
 
                                     <div class="mb-3">
-                                        <label class="form-label" for="username">Nama Toko</label>
+                                        <label class="form-label" for="pelanggan">Nama Toko</label>
                                         <div class="input-group input-group-merge">
                                             <input
                                                 type="text"
@@ -38,11 +38,13 @@
                                                 id="pelanggan"
                                                 placeholder="Nama Toko"
                                                 name="pelanggan"
+                                                required
+                                                value="<?= set_value('pelanggan') ?>"
                                             />
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label" for="username">Pemilik</label>
+                                        <label class="form-label" for="pemilik">Pemilik</label>
                                         <div class="input-group input-group-merge">
                                             <input
                                                 type="text"
@@ -50,11 +52,13 @@
                                                 id="pemilik"
                                                 placeholder="Pemilik"
                                                 name="pemilik"
+                                                required
+                                                value="<?= set_value('pemilik') ?>"
                                             />
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label" for="nama">Alamat</label>
+                                        <label class="form-label" for="alamat">Alamat</label>
                                         <div class="input-group input-group-merge">
                                             <input
                                                 type="text"
@@ -62,12 +66,14 @@
                                                 id="alamat"
                                                 placeholder="Alamat"
                                                 name="alamat"
+                                                required
+                                                value="<?= set_value('alamat') ?>"
                                             />
                                         </div>
                                     </div>
                                     <div class="mb-3">
                                         <div class="d-flex justify-content-between">
-                                            <label class="form-label" for="password">Kota</label>
+                                            <label class="form-label" for="kota">Kota</label>
                                         </div>
                                         <div class="input-group input-group-merge">
                                             <input
@@ -76,11 +82,13 @@
                                                 class="form-control"
                                                 name="kota"
                                                 placeholder="Kota"
+                                                required
+                                                value="<?= set_value('kota') ?>"
                                             />
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label" for="nama">telp</label>
+                                        <label class="form-label" for="telp">telp</label>
                                         <div class="input-group input-group-merge">
                                             <input
                                                 type="text"
@@ -88,31 +96,35 @@
                                                 id="telp"
                                                 placeholder="Telphone"
                                                 name="telp"
+                                                maxlength="13"
+                                                required
+                                                value="<?= set_value('telp') ?>"
                                             />
                                         </div>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label" for="harga">Jenis Harga</label>
                                         <select name="harga" class="form-select" id="harga">
-                                            <option value="">Harga 1</option>
-                                            <option value="">Harga 2</option>
-                                            <option value="">Harga 3</option>
+                                            <option value="Harga 1" selected>Harga 1</option>
+                                            <option value="Harga 2">Harga 2</option>
+                                            <option value="Harga 3">Harga 3</option>
                                         </select>
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label" for="nama">Plafon</label>
+                                        <label class="form-label" for="plafon">Plafon</label>
                                         <div class="input-group input-group-merge">
                                             <input
-                                                type="number"
-                                                class="form-control"
+                                                type="text"
+                                                class="form-control price-input"
                                                 id="plafon"
                                                 placeholder="Plafon"
                                                 name="plafon"
+                                                value="<?= set_value('plafon') ?>"
                                             />
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Save Data</button>
+                                <button type="submit" class="btn btn-primary">Simpan Data</button>
                             </form>
                         </div>
                     </div>

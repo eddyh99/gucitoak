@@ -28,20 +28,21 @@
                         <div class="card-body">
                             <form action="<?= BASE_URL ?>kategori/ubah_kategori" method="POST">
                                 <div class="mb-3">
-                                    <label class="form-label" for="username">Nama Kategori</label>
+                                    <label class="form-label" for="kategori">Nama Kategori</label>
                                     <input type="hidden" name="idkategori" value="<?=$kategori->id?>">
                                     <div class="input-group input-group-merge">
                                         <input
                                             type="text"
                                             class="form-control"
                                             id="kategori"
-                                            placeholder="Frozen Food"
+                                            placeholder="Nama Kategori"
                                             name="kategori"
                                             value="<?=$kategori->namakategori?>"
+                                            required
                                         />
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Save Data</button>
+                                <button type="submit" class="btn btn-primary">Edit Data</button>
                             </form>
                         </div>
                     </div>

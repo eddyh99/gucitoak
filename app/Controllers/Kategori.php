@@ -21,7 +21,7 @@ class Kategori extends BaseController
     {
         $url = URLAPI . "/v1/kategori/getall_kategori";
 		$response = gucitoakAPI($url);
-        $result = $response->result->message;
+        $result = $response->message;
         echo json_encode($result);
     }
 
@@ -41,8 +41,8 @@ class Kategori extends BaseController
     public function tambah_proccess()
     {
 
-        $validation = $this->validation;
-        $validation->setRules([
+        // Validation Rules
+        $rules = $this->validate([
             'kategori'     => [
                 'label'     => 'Kategori',
                 'rules'     => 'required'
@@ -50,44 +50,49 @@ class Kategori extends BaseController
         ]);
 
         // Checking Validation
-        if (!$validation->withRequest($this->request)->run()){
+        if (!$rules){
             session()->setFlashdata('failed', $this->validation->listErrors());
             return redirect()->to(BASE_URL . "kategori/tambah_kategori")->withInput();
         }
         
         // Initial Data
+        // FILTER HTML special chars
+        // FILTER Trim Chars
         $mdata = [
-            'namakategori'      => htmlspecialchars($this->request->getVar('kategori')),
+            'namakategori'      => trim(htmlspecialchars($this->request->getVar('kategori'))),
         ];
         
-        // @todo::Mengubah endpoint beserta field nya
+        // CALL API
         $url = URLAPI . "/v1/kategori/add_kategori";
         $response = gucitoakAPI($url, json_encode($mdata));
-        $result = $response->result;
-        // echo "<pre>".print_r($result,true)."</pre>";
-        // die;
-        if (@$response->status != 201) {
-            session()->setFlashdata('failed', $result->message);
-            return redirect()->to(BASE_URL . "kategori/tambah_kategori")->withInput();
+        $result = $response->message;
+
+
+        // Checking response API
+        if ($response->code == 200 || $response->code == 201){
+            session()->setFlashdata('success', $result);
+            return redirect()->to(BASE_URL . "kategori");
         }else{
-            session()->setFlashdata('success', $result->message);
-            return redirect()->to(BASE_URL . "kategori")->withInput();
+            session()->setFlashdata('failed', $result);
+            return redirect()->to(BASE_URL . "kategori/tambah_kategori")->withInput();
         }
     }
 
     public function edit_kategori($kategori)
     {
-        $kategori=base64_decode($kategori);
+        // get parameter and decode
+        $kategori = base64_decode($kategori);
+
+        // CALL API
         $url = URLAPI . "/v1/kategori/getkategori_byid?id=".$kategori;
 		$response = gucitoakAPI($url);
-        $result = $response->result->message;
-        // print_r($result);
-        // die;
+        $result = $response->message;
+
         $mdata = [
             'title'     => 'Edit kategori - ' . NAMETITLE,
             'content'   => 'admin/kategori/edit_kategori',
             'extra'     => 'admin/kategori/js/_js_index',
-            'active_kategori'   => 'active',
+            'menuactive_setup'   => 'active open',
             'kategori'  => $result
         ];
 
@@ -97,55 +102,62 @@ class Kategori extends BaseController
     public function ubah_kategori()
     {
 
-        $validation = $this->validation;
-        $validation->setRules([
+        // Validation Rule
+        $rules = $this->validate([
             'kategori'     => [
                 'label'     => 'Kategori',
                 'rules'     => 'required'
             ],
         ]);
 
-        $idkategori=$this->request->getVar('idkategori');
+        $idkategori = $this->request->getVar('idkategori');
+
         // Checking Validation
-        if (!$validation->withRequest($this->request)->run()){
+        if (!$rules){
             session()->setFlashdata('failed', $this->validation->listErrors());
             return redirect()->to(BASE_URL . "kategori/edit_kategori/".base64_encode($idkategori))->withInput();
         }
         
         // Initial Data
+        // FILTER HTML Special Chars
+        // FILTER Trim Chars
         $mdata = [
-            'namakategori'      => htmlspecialchars($this->request->getVar('kategori')),
+            'namakategori'      => trim(htmlspecialchars($this->request->getVar('kategori'))),
         ];
         
-
-        // @todo::Mengubah endpoint beserta field nya
+        // CALL API
         $url = URLAPI . "/v1/kategori/ubah_kategori?id=".$idkategori;
         $response = gucitoakAPI($url, json_encode($mdata));
-        $result = $response->result;
-        // echo "<pre>".print_r($result,true)."</pre>";
-        // die;
-        if (@$response->status != 200) {
-            session()->setFlashdata('failed', $result->message);
-            return redirect()->to(BASE_URL . "kategori/ubah_kategori")->withInput();
-        }else{
-            session()->setFlashdata('success', $result->message);
+        $result = $response->message;
+
+        // Check Response API
+        if ($response->code == 200 || $response->code == 201) {
+            session()->setFlashdata('success', $result);
             return redirect()->to(BASE_URL . "kategori")->withInput();
+            exit();
+        }else{
+            session()->setFlashdata('failed', $result);
+            return redirect()->to(BASE_URL . "kategori/edit_kategori/".base64_encode($idkategori))->withInput();
+            exit();
         }
     }
 
     public function hapus_kategori($kategori)
     {
+        // Get parameters 
         $kategori = base64_decode($kategori);
+
+        // CALL API
         $url = URLAPI . "/v1/kategori/hapus_kategori?id=".$kategori;
 		$response = gucitoakAPI($url);
-        $result = $response->result;
+        $result = $response->message;
 
-
-        if($response->status == 200){
-            session()->setFlashdata('success', $result->message);
+        // Check response API
+        if($response->code == 200 || $response->code == 201){
+            session()->setFlashdata('success', $result);
             return redirect()->to(BASE_URL . "kategori");
         }else{
-            session()->setFlashdata('error', $result->message);
+            session()->setFlashdata('error', $result);
             return redirect()->to(BASE_URL . "kategori");
         }
     }

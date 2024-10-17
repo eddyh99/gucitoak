@@ -1,7 +1,7 @@
 <?php if(!empty(session('failed'))): ?>
     <div id="failedtoast" class="bs-toast toast toast-placement-ex m-3 fade bg-danger top-0 end-0" role="alert" aria-live="assertive" aria-atomic="true" data-delay="1000">
         <div class="toast-header">
-            <i class="bx bx-bell me-2"></i>
+            <i class="bx bx-x me-2"></i>
             <div class="me-auto fw-semibold">Error</div>
             <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
@@ -28,20 +28,20 @@
                         <div class="card-body">
                             <form action="<?= BASE_URL ?>satuan/ubah_satuan" method="POST">
                                 <div class="mb-3">
-                                    <label class="form-label" for="username">Nama Satuan</label>
+                                    <label class="form-label" for="satuan">Nama Satuan</label>
                                     <input type="hidden" name="idsatuan" value="<?=$satuan->id?>">
                                     <div class="input-group input-group-merge">
                                         <input
                                             type="text"
                                             class="form-control"
                                             id="satuan"
-                                            placeholder="PCS"
+                                            placeholder="Nama Satuan"
                                             name="satuan"
                                             value="<?=$satuan->namasatuan?>"
                                         />
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Save Data</button>
+                                <button type="submit" class="btn btn-primary">Edit Data</button>
                             </form>
                         </div>
                     </div>

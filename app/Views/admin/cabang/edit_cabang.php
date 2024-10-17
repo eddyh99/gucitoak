@@ -26,68 +26,64 @@
                             <h5 class="mb-1">Edit Cabang</h5>
                         </div>
                         <div class="card-body">
-                            <form action="<?= BASE_URL ?>cabang/tambah_proccess" method="POST">
-                                <div class="mb-3">
-                                    <label class="form-label" for="cabang">Nama Cabang</label>
-                                    <div class="input-group input-group-merge">
-                                        <span id="cabang2" class="input-group-text">
-                                            <i class="bx bx-buildings"></i>
-                                        </span>
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            id="cabang"
-                                            placeholder="Gudang 1"
-                                            name="cabang"
-                                        />
+                            <form action="<?= BASE_URL ?>cabang/ubah_proccess" method="POST">
+                                <input type="hidden" name="idcabang" value="<?= base64_encode($cabang->id); ?>">
+                                <div class="row row-cols-3">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="cabang">Nama Cabang</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="cabang"
+                                                placeholder="Nama Cabang"
+                                                name="cabang"
+                                                value="<?= $cabang->namacabang; ?>"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="alamat">Alamat</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="alamat"
+                                                placeholder="Alamat"
+                                                name="alamat"
+                                                value="<?= $cabang->alamat; ?>"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="lat">Latitude</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="lat"
+                                                placeholder="Latitude"
+                                                name="lat"
+                                                value="<?= $cabang->lat; ?>"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="long">Longitude</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="long"
+                                                placeholder="Longitude"
+                                                name="long"
+                                                value="<?= $cabang->long; ?>"
+                                            />
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label class="form-label" for="alamat">Alamat</label>
-                                    <div class="input-group input-group-merge">
-                                        <span id="alamat2" class="input-group-text">
-                                            <i class="bx bx-map"></i>
-                                        </span>
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            id="alamat"
-                                            placeholder="Jln Hasanudin 123"
-                                            name="alamat"
-                                        />
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label" for="lat">Latitude</label>
-                                    <div class="input-group input-group-merge">
-                                        <span id="lat2" class="input-group-text">
-                                            <i class="bx bx-map"></i>
-                                        </span>
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            id="lat"
-                                            placeholder="Jln Hasanudin 123"
-                                            name="lat"
-                                        />
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label" for="long">Longitude</label>
-                                    <div class="input-group input-group-merge">
-                                        <span id="long2" class="input-group-text">
-                                            <i class="bx bx-map"></i>
-                                        </span>
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            id="long"
-                                            placeholder="Jln Hasanudin 123"
-                                            name="long"
-                                        />
-                                    </div>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Update cabang</button>
+                                <small>Tips mencari Latitude dan Longitude<a target="_blank" href="https://support.google.com/maps/answer/18539?hl=en&co=GENIE.Platform%3DDesktop"> click disini</a></small><br><br>
+                                <button type="submit" class="btn btn-primary">Edit Data</button>
                             </form>
                         </div>
                     </div>

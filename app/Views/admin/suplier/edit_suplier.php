@@ -1,7 +1,7 @@
 <?php if(!empty(session('failed'))): ?>
     <div id="failedtoast" class="bs-toast toast toast-placement-ex m-3 fade bg-danger top-0 end-0" role="alert" aria-live="assertive" aria-atomic="true" data-delay="1000">
         <div class="toast-header">
-            <i class="bx bx-bell me-2"></i>
+            <i class="bx bx-x me-2"></i>
             <div class="me-auto fw-semibold">Error</div>
             <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
@@ -28,100 +28,117 @@
                         <div class="card-body">
                             <form action="<?= BASE_URL ?>suplier/ubah_suplier" method="POST">
                                 <input type="hidden" name="idsuplier" value="<?=$suplier->id?>">
-                                <div class="mb-3">
-                                    <label class="form-label" for="username">Nama suplier</label>
-                                    <div class="input-group input-group-merge">
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            id="suplier"
-                                            placeholder="John_Doe"
-                                            name="suplier"
-                                            value="<?=$suplier->namasuplier?>"
-                                        />
+                                <div class="row row-cols-3">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="suplier">Nama suplier</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="suplier"
+                                                placeholder="Nama Suplier"
+                                                name="suplier"
+                                                value="<?=$suplier->namasuplier?>"
+                                                
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="pemilik">Nama Pemilik</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="pemilik"
+                                                placeholder="Nama Pemilik"
+                                                name="pemilik"
+                                                value="<?=$suplier->pemilik?>"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="nama">Alamat</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="alamat"
+                                                placeholder="Alamat"
+                                                name="alamat"
+                                                value="<?=$suplier->alamat?>"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="d-flex justify-content-between">
+                                            <label class="form-label" for="kota">Kota</label>
+                                        </div>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="text"
+                                                id="kota"
+                                                class="form-control"
+                                                name="kota"
+                                                placeholder="Kota"
+                                                value="<?=$suplier->kota?>"
+                                                
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="telp">telp</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="telp"
+                                                placeholder="No Telphone"
+                                                name="telp"
+                                                value="<?=$suplier->telp?>"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="norek">No. Rek</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="norek"
+                                                placeholder="No Rekening"
+                                                name="norek"
+                                                value="<?=$suplier->norek?>"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="namabank">Nama Bank</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="namabank"
+                                                placeholder="Nama Bank"
+                                                name="namabank"
+                                                value="<?=$suplier->namabank?>"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="anbank">An. Bank</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="anbank"
+                                                placeholder="Atas Nama Bank"
+                                                name="anbank"
+                                                value="<?=$suplier->anbank?>"
+                                            />
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label class="form-label" for="nama">Alamat</label>
-                                    <div class="input-group input-group-merge">
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            id="alamat"
-                                            placeholder="Jl. HOS Cokroaminoto...."
-                                            name="alamat"
-                                            value="<?=$suplier->alamat?>"
-                                        />
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <div class="d-flex justify-content-between">
-                                        <label class="form-label" for="password">Kota</label>
-                                    </div>
-                                    <div class="input-group input-group-merge">
-                                        <input
-                                            type="text"
-                                            id="kota"
-                                            class="form-control"
-                                            name="kota"
-                                            placeholder="Badung"
-                                            value="<?=$suplier->kota?>"
-                                        />
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label" for="nama">telp</label>
-                                    <div class="input-group input-group-merge">
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            id="telp"
-                                            placeholder="08225455222"
-                                            name="telp"
-                                            value="<?=$suplier->telp?>"
-                                        />
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label" for="nama">No. Rek</label>
-                                    <div class="input-group input-group-merge">
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            id="norek"
-                                            placeholder="0123 456 789"
-                                            name="norek"
-                                            value="<?=$suplier->norek?>"
-                                        />
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label" for="nama">Nama Bank</label>
-                                    <div class="input-group input-group-merge">
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            id="namabank"
-                                            placeholder="BCA"
-                                            name="namabank"
-                                            value="<?=$suplier->namabank?>"
-                                        />
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label" for="nama">An. Bank</label>
-                                    <div class="input-group input-group-merge">
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            id="anbank"
-                                            placeholder="Budi Sukarjo"
-                                            name="anbank"
-                                            value="<?=$suplier->anbank?>"
-                                        />
-                                    </div>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Save Data</button>
+                                <button type="submit" class="btn btn-primary">Edit Data</button>
                             </form>
                         </div>
                     </div>

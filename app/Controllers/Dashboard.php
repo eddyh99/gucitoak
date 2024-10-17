@@ -4,6 +4,15 @@ namespace App\Controllers;
 
 class Dashboard extends BaseController
 {
+    // public function __construct()
+    // {
+    //     $session = session();
+    //     if(!$session->has('logged_user')){
+    //         header("Location:".BASE_URL );
+    //         exit();
+    //     }
+    // }
+
     public function index()
     {
         $mdata = [

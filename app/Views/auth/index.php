@@ -1,7 +1,7 @@
 <?php if(!empty(session('failed'))): ?>
     <div id="failedtoast" class="bs-toast toast toast-placement-ex m-3 fade bg-danger top-0 end-0" role="alert" aria-live="assertive" aria-atomic="true" data-delay="1000">
         <div class="toast-header">
-            <i class="bx bx-bell me-2"></i>
+            <i class="bx bx-x me-2"></i>
             <div class="me-auto fw-semibold">Error</div>
             <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
@@ -25,11 +25,11 @@
                         </a>
                     </div>
                     <!-- /Logo -->
-                    <h4 class="mb-2">Welcome to Foodys! 👋</h4>
+                    <h4 class="mb-2">Welcome to Guci Toak! 👋</h4>
                     <p class="mb-4">Please sign-in to your account and start the Point of Sales Web Application</p>
                     <form id="formAuthentication" class="mb-3" action="<?= BASE_URL ?>auth/signin_proccess" method="POST">
                         <div class="mb-3">
-                            <label for="email" class="form-label">Email or Username</label>
+                            <label for="email" class="form-label">Username or Email</label>
                             <input
                                 type="text"
                                 class="form-control"

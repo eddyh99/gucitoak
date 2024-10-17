@@ -21,7 +21,7 @@ class Suplier extends BaseController
     {
         $url = URLAPI . "/v1/suplier/getall_suplier";
 		$response = gucitoakAPI($url);
-        $result = $response->result->message;
+        $result = $response->message;
         echo json_encode($result);
     }
 
@@ -41,10 +41,14 @@ class Suplier extends BaseController
     public function tambah_proccess()
     {
 
-        $validation = $this->validation;
-        $validation->setRules([
+        // Validation Rules
+        $rules = $this->validate([
             'suplier'     => [
                 'label'     => 'Nama suplier',
+                'rules'     => 'required'
+            ],
+            'pemilik'     => [
+                'label'     => 'Nama Pemilik',
                 'rules'     => 'required'
             ],
             'alamat'     => [
@@ -59,54 +63,72 @@ class Suplier extends BaseController
                 'label'     => 'Telp',
                 'rules'     => 'required'
             ],
+            'norek'     => [
+                'label'     => 'No Rekening',
+                'rules'     => 'required'
+            ],
+            'namabank'     => [
+                'label'     => 'Nama Bank',
+                'rules'     => 'required'
+            ],
+            'anbank'     => [
+                'label'     => 'Atas Nama Bank',
+                'rules'     => 'required'
+            ],
         ]);
 
         // Checking Validation
-        if (!$validation->withRequest($this->request)->run()){
+        if (!$rules){
             session()->setFlashdata('failed', $this->validation->listErrors());
             return redirect()->to(BASE_URL . "suplier/tambah_suplier")->withInput();
         }
         
         // Initial Data
+        // FILTER HTML special chars
+        // FILTER Trim Chars
         $mdata = [
-            'namasuplier'     => htmlspecialchars($this->request->getVar('suplier')),
-            'alamat'        => htmlspecialchars($this->request->getVar('alamat')),
-            'kota'          => htmlspecialchars($this->request->getVar('kota')),
-            'telp'          => htmlspecialchars($this->request->getVar('telp')),
-            'norek'          => htmlspecialchars($this->request->getVar('norek')),
-            'namabank'          => htmlspecialchars($this->request->getVar('namabank')),
-            'anbank'          => htmlspecialchars($this->request->getVar('anbank')),
+            'namasuplier'       => trim(htmlspecialchars($this->request->getVar('suplier'))),
+            'pemilik'            => trim(htmlspecialchars($this->request->getVar('pemilik'))),
+            'alamat'            => trim(htmlspecialchars($this->request->getVar('alamat'))),
+            'kota'              => trim(htmlspecialchars($this->request->getVar('kota'))),
+            'telp'              => trim(htmlspecialchars($this->request->getVar('telp'))),
+            'norek'             => trim(htmlspecialchars($this->request->getVar('norek'))),
+            'namabank'          => trim(htmlspecialchars($this->request->getVar('namabank'))),
+            'anbank'            => trim(htmlspecialchars($this->request->getVar('anbank'))),
         ];
-        // echo "<pre>".print_r($mdata,true)."</pre>";
-        // die;
-        // @todo::Mengubah endpoint beserta field nya
+
+        // CALL API
         $url = URLAPI . "/v1/suplier/add_suplier";
         $response = gucitoakAPI($url, json_encode($mdata));
-        $result = $response->result;
-        // echo "<pre>".print_r($result,true)."</pre>";
-        // die;
-        if (@$response->status != 201) {
-            session()->setFlashdata('failed', $result->message);
-            return redirect()->to(BASE_URL . "suplier/tambah_suplier")->withInput();
-        }else{
-            session()->setFlashdata('success', $result->message);
+        $result = $response->message;
+    
+
+        // Checking response API
+        if ($response->code == 200 || $response->code == 201) {
+            session()->setFlashdata('success', $result);
             return redirect()->to(BASE_URL . "suplier")->withInput();
+        }else{
+            session()->setFlashdata('failed', $result);
+            return redirect()->to(BASE_URL . "suplier/tambah_suplier")->withInput();
         }
     }
 
+
     public function edit_suplier($suplier)
     {
+        // GET id supplier from segment
         $suplier=base64_decode($suplier);
+
+        // CALL API
         $url = URLAPI . "/v1/suplier/getsuplier_byid?id=".$suplier;
 		$response = gucitoakAPI($url);
-        $result = $response->result->message;
-        // print_r($result);
-        // die;
+        $result = $response->message;
+
         $mdata = [
             'title'     => 'Edit suplier - ' . NAMETITLE,
             'content'   => 'admin/suplier/edit_suplier',
             'extra'     => 'admin/suplier/js/_js_index',
-            'active_suplier'   => 'active',
+            'menuactive_setup'   => 'active open',
             'suplier'  => $result
         ];
 
@@ -116,74 +138,97 @@ class Suplier extends BaseController
     public function ubah_suplier()
     {
 
-        $validation = $this->validation;
-        $validation->setRules([
+        // Validation Rules
+        $rules = $this->validate([
             'suplier'     => [
                 'label'     => 'Nama suplier',
-                'rules'     => 'trim|required'
+                'rules'     => 'required'
+            ],
+            'pemilik'     => [
+                'label'     => 'Nama Pemilik',
+                'rules'     => 'required'
             ],
             'alamat'     => [
                 'label'     => 'Alamat',
-                'rules'     => 'trim|required'
+                'rules'     => 'required'
             ],
             'kota'     => [
                 'label'     => 'Kota',
-                'rules'     => 'trim|required'
+                'rules'     => 'required'
             ],
             'telp'     => [
                 'label'     => 'Telp',
-                'rules'     => 'trim|required'
+                'rules'     => 'required'
+            ],
+            'norek'     => [
+                'label'     => 'No Rekening',
+                'rules'     => 'required'
+            ],
+            'namabank'     => [
+                'label'     => 'Nama Bank',
+                'rules'     => 'required'
+            ],
+            'anbank'     => [
+                'label'     => 'Atas Nama Bank',
+                'rules'     => 'required'
             ],
         ]);
 
-        $idsuplier=$this->request->getVar('idsuplier');
+        $idsuplier = $this->request->getVar('idsuplier');
 
         // Checking Validation
-        if (!$validation->withRequest($this->request)->run()){
+        if (!$rules){
             session()->setFlashdata('failed', $this->validation->listErrors());
             return redirect()->to(BASE_URL . "suplier/edit_suplier/".base64_encode($idsuplier))->withInput();
         }
         
         // Initial Data
+        // FILTER HTML special chars
+        // FILTER Trim Chars
         $mdata = [
-            'namasuplier'     => htmlspecialchars($this->request->getVar('suplier')),
-            'alamat'        => htmlspecialchars($this->request->getVar('alamat')),
-            'kota'          => htmlspecialchars($this->request->getVar('kota')),
-            'telp'          => htmlspecialchars($this->request->getVar('telp')),
-            'norek'          => htmlspecialchars($this->request->getVar('norek')),
-            'namabank'          => htmlspecialchars($this->request->getVar('namabank')),
-            'anbank'          => htmlspecialchars($this->request->getVar('anbank')),
+            'namasuplier'       => trim(htmlspecialchars($this->request->getVar('suplier'))),
+            'pemilik'           => trim(htmlspecialchars($this->request->getVar('pemilik'))),
+            'alamat'            => trim(htmlspecialchars($this->request->getVar('alamat'))),
+            'kota'              => trim(htmlspecialchars($this->request->getVar('kota'))),
+            'telp'              => trim(htmlspecialchars($this->request->getVar('telp'))),
+            'norek'             => trim(htmlspecialchars($this->request->getVar('norek'))),
+            'namabank'          => trim(htmlspecialchars($this->request->getVar('namabank'))),
+            'anbank'            => trim(htmlspecialchars($this->request->getVar('anbank'))),
         ];
-        
 
-        // @todo::Mengubah endpoint beserta field nya
+
+        // CALL API
         $url = URLAPI . "/v1/suplier/ubah_suplier?id=".$idsuplier;
         $response = gucitoakAPI($url, json_encode($mdata));
-        $result = $response->result;
-        // echo "<pre>".print_r($result,true)."</pre>";
-        // die;
-        if (@$response->status != 200) {
-            session()->setFlashdata('failed', $result->message);
-            return redirect()->to(BASE_URL . "suplier/edit_suplier/".base64_encode($idsuplier))->withInput();
-        }else{
-            session()->setFlashdata('success', $result->message);
+        $result = $response->message;
+      
+
+         // Checking response API
+        if ($response->code == 200 || $response->code == 201) {
+            session()->setFlashdata('success', $result);
             return redirect()->to(BASE_URL . "suplier")->withInput();
+        }else{
+            session()->setFlashdata('failed', $result);
+            return redirect()->to(BASE_URL . "suplier/edit_suplier/".base64_encode($idsuplier))->withInput();
         }
     }
 
     public function hapus_suplier($suplier)
     {
+        // Get Segment id supplier
         $suplier = base64_decode($suplier);
+
+        // CALL API
         $url = URLAPI . "/v1/suplier/hapus_suplier?id=".$suplier;
 		$response = gucitoakAPI($url);
-        $result = $response->result;
+        $result = $response->message;
 
 
-        if($response->status == 200){
-            session()->setFlashdata('success', $result->message);
+        if($response->code == 200){
+            session()->setFlashdata('success', $result);
             return redirect()->to(BASE_URL . "suplier");
         }else{
-            session()->setFlashdata('error', $result->message);
+            session()->setFlashdata('error', $result);
             return redirect()->to(BASE_URL . "suplier");
         }
     }

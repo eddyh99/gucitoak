@@ -21,7 +21,7 @@ class Satuan extends BaseController
     {
         $url = URLAPI . "/v1/satuan/getall_satuan";
 		$response = gucitoakAPI($url);
-        $result = $response->result->message;
+        $result = $response->message;
         echo json_encode($result);
     }
 
@@ -41,53 +41,58 @@ class Satuan extends BaseController
     public function tambah_proccess()
     {
 
-        $validation = $this->validation;
-        $validation->setRules([
+        // Validation Rules
+        $rules = $this->validate([
             'satuan'     => [
                 'label'     => 'Nama Satuan',
-                'rules'     => 'trim|required'
+                'rules'     => 'required'
             ],
         ]);
 
         // Checking Validation
-        if (!$validation->withRequest($this->request)->run()){
+        if (!$rules){
             session()->setFlashdata('failed', $this->validation->listErrors());
             return redirect()->to(BASE_URL . "satuan/tambah_satuan")->withInput();
         }
         
         // Initial Data
+        // FILTER HTML special chars
+        // FILTER Trim Chars
         $mdata = [
-            'namasatuan'      => htmlspecialchars($this->request->getVar('satuan')),
+            'namasatuan'      => trim(htmlspecialchars($this->request->getVar('satuan'))),
         ];
         
-        // @todo::Mengubah endpoint beserta field nya
+        // CALL API
         $url = URLAPI . "/v1/satuan/add_satuan";
         $response = gucitoakAPI($url, json_encode($mdata));
-        $result = $response->result;
-        // echo "<pre>".print_r($response,true)."</pre>";
-        //  die;
-        if (@$response->status != 200) {
-            session()->setFlashdata('failed', $result->message);
-            return redirect()->to(BASE_URL . "satuan/tambah_satuan")->withInput();
-        }else{
-            session()->setFlashdata('success', $result->message);
+        $result = $response->message;
+        
+
+        // Checking response API
+        if ($response->code == 200 || $response->code == 201) {
+            session()->setFlashdata('success', $result);
             return redirect()->to(BASE_URL . "satuan");
+        }else{
+            session()->setFlashdata('failed', $result);
+            return redirect()->to(BASE_URL . "satuan/tambah_satuan")->withInput();
         }
     }
 
     public function edit_satuan($satuan)
     {
+        // get parameter and decode
         $satuan=base64_decode($satuan);
+        
+        // CALL API 
         $url = URLAPI . "/v1/satuan/getsatuan_byid?id=".$satuan;
 		$response = gucitoakAPI($url);
-        $result = $response->result->message;
-        // print_r($result);
-        // die;
+        $result = $response->message;
+
         $mdata = [
             'title'     => 'Edit satuan - ' . NAMETITLE,
             'content'   => 'admin/satuan/edit_satuan',
             'extra'     => 'admin/satuan/js/_js_index',
-            'active_satuan'   => 'active',
+            'menuactive_setup'   => 'active open',
             'satuan'  => $result
         ];
 
@@ -97,56 +102,60 @@ class Satuan extends BaseController
     public function ubah_satuan()
     {
 
-        $validation = $this->validation;
-        $validation->setRules([
+        // Validation Rules
+        $rules = $this->validate([
             'satuan'     => [
-                'label'     => 'Namal',
-                'rules'     => 'trim|required'
+                'label'     => 'Nama Satuan',
+                'rules'     => 'required'
             ],
         ]);
 
-        $idsatuan=$this->request->getVar('idsatuan');
+        $idsatuan = $this->request->getVar('idsatuan');
 
         // Checking Validation
-        if (!$validation->withRequest($this->request)->run()){
+        if (!$rules){
             session()->setFlashdata('failed', $this->validation->listErrors());
             return redirect()->to(BASE_URL . "satuan/edit_satuan/".base64_encode($idsatuan))->withInput();
         }
         
         // Initial Data
+        // FILTER HTML special chars
+        // FILTER Trim Chars
         $mdata = [
-            'namasatuan'      => htmlspecialchars($this->request->getVar('satuan')),
+            'namasatuan'      => trim(htmlspecialchars($this->request->getVar('satuan'))),
         ];
         
-
-        // @todo::Mengubah endpoint beserta field nya
+        // CALL API
         $url = URLAPI . "/v1/satuan/ubah_satuan?id=".$idsatuan;
         $response = gucitoakAPI($url, json_encode($mdata));
-        $result = $response->result;
-        // echo "<pre>".print_r($result,true)."</pre>";
-        // die;
-        if (@$response->status != 200) {
-            session()->setFlashdata('failed', $result->message);
-            return redirect()->to(BASE_URL . "satuan/edit_satuan/".base64_encode($idsatuan))->withInput();
-        }else{
-            session()->setFlashdata('success', $result->message);
+        $result = $response->message;
+
+
+        if ($response->code == 200 || $response->code == 201) {
+            session()->setFlashdata('success', $result);
             return redirect()->to(BASE_URL . "satuan")->withInput();
+        }else{
+            session()->setFlashdata('failed', $result);
+            return redirect()->to(BASE_URL . "satuan/edit_satuan/".base64_encode($idsatuan))->withInput();
         }
     }
 
     public function hapus_satuan($satuan)
     {
+        // Get Parameter
         $satuan = base64_decode($satuan);
+
+        // CALL API
         $url = URLAPI . "/v1/satuan/hapus_satuan?id=".$satuan;
 		$response = gucitoakAPI($url);
-        $result = $response->result;
+        $result = $response->message;
 
 
-        if($response->status == 200){
-            session()->setFlashdata('success', $result->message);
+        if($response->code == 200 || $response->code == 201){
+            session()->setFlashdata('success', $result);
             return redirect()->to(BASE_URL . "satuan");
         }else{
-            session()->setFlashdata('failed', $result->message);
+            session()->setFlashdata('failed', $result);
             return redirect()->to(BASE_URL . "satuan");
         }
     }
