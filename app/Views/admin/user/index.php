@@ -1,7 +1,7 @@
 <?php if(!empty(session('failed'))): ?>
     <div id="failedtoast" class="bs-toast toast toast-placement-ex m-3 fade bg-danger top-0 end-0" role="alert" aria-live="assertive" aria-atomic="true" data-delay="1000">
         <div class="toast-header">
-            <i class="bx bx-bell me-2"></i>
+            <i class="bx bx-x me-2"></i>
             <div class="me-auto fw-semibold">Error</div>
             <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
@@ -15,8 +15,11 @@
     <div id="successtoast" class="bs-toast toast toast-placement-ex m-3 fade bg-success top-0 end-0" role="alert" aria-live="assertive" aria-atomic="true" data-delay="1000">
         <div class="toast-header">
             <i class="bx bx-bell me-2"></i>
-            <div class="me-auto fw-semibold"><?= session('success')?></div>
+            <div class="me-auto fw-semibold">Berhasil</div>
             <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            <?= session('success')?>
         </div>
     </div>
 <?php endif;?>
@@ -31,7 +34,7 @@
                         <div class="col-lg-12 col-md-12 col-12 mb-2">
                             <div class="card">
                                 <div class="card-body">
-                                    <a href="<?= BASE_URL?>user/tambah_user" class="btn btn-primary">Tambah User</a>
+                                    <a href="<?= BASE_URL?>user/tambah_user" class="btn btn-primary">Tambah Pengguna</a>
                                 </div>
                             </div>
                         </div>
@@ -40,12 +43,11 @@
                 <div class="col-lg-12 mb-4 order-1">
                     <div class="card border-expat w-100">
                         <div class="card-body">
-                            <h5 class="card-title fw-semibold mb-4">List Users</h5>
+                            <h5 class="card-title fw-semibold mb-4">List Pengguna</h5>
                             <table id="table_list_user" class="table table-striped" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>Username</th>
-                                        <th>Nama Lengkap</th>
                                         <th>Role</th>
                                         <th>Action</th>
                                     </tr>

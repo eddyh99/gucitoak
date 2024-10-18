@@ -1,7 +1,7 @@
 <?php if(!empty(session('failed'))): ?>
     <div id="failedtoast" class="bs-toast toast toast-placement-ex m-3 fade bg-danger top-0 end-0" role="alert" aria-live="assertive" aria-atomic="true" data-delay="1000">
         <div class="toast-header">
-            <i class="bx bx-bell me-2"></i>
+            <i class="bx bx-x me-2"></i>
             <div class="me-auto fw-semibold">Error</div>
             <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
@@ -30,7 +30,7 @@
                                 <div class="row row-cols-3">
 
                                     <div class="mb-3">
-                                        <label class="form-label" for="username">Nama Sales</label>
+                                        <label class="form-label" for="sales">Nama Sales</label>
                                         <div class="input-group input-group-merge">
                                             <input
                                                 type="text"
@@ -44,7 +44,7 @@
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label" for="nama">Alamat</label>
+                                        <label class="form-label" for="alamat">Alamat</label>
                                         <div class="input-group input-group-merge">
                                             <input
                                                 type="text"
@@ -74,7 +74,7 @@
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label" for="nama">telp</label>
+                                        <label class="form-label" for="telp">telp</label>
                                         <div class="input-group input-group-merge">
                                             <input
                                                 type="text"
@@ -89,7 +89,7 @@
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label" for="nama">Omzet</label>
+                                        <label class="form-label" for="omzet">Omzet</label>
                                         <div class="input-group input-group-merge">
                                             <input
                                                 type="text"

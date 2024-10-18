@@ -21,17 +21,29 @@ class Barang extends BaseController
     {
         $url = URLAPI . "/v1/barang/getall_barang";
 		$response = gucitoakAPI($url);
-        $result = $response->result->message;
+        $result = $response->message;
         echo json_encode($result);
     }
 
     public function tambah_barang()
     {
+
+        // Kategori
+        $urlkategori = URLAPI . "/v1/kategori/getall_kategori";
+		$resultkategori = gucitoakAPI($urlkategori)->message;
+
+        // Satuan
+        $urlsatuan = URLAPI . "/v1/satuan/getall_satuan";
+		$resultsatuan = gucitoakAPI($urlsatuan)->message;
+
+        
         $mdata = [
             'title'     => 'Tambah barang - ' . NAMETITLE,
             'content'   => 'admin/barang/tambah_barang',
             'extra'     => 'admin/barang/js/_js_index',
             'menuactive_setup'   => 'active open',
+            'kategori'  => $resultkategori,
+            'satuan'    => $resultsatuan
         ];
 
         return view('admin/layout/wrapper', $mdata);
@@ -41,71 +53,93 @@ class Barang extends BaseController
     public function tambah_proccess()
     {
 
-        $validation = $this->validation;
-        $validation->setRules([
-            'barang'     => [
+        // Validation Rules
+        $rules = $this->validate([
+            'namabarang'     => [
                 'label'     => 'Nama barang',
                 'rules'     => 'required'
             ],
-            'alamat'     => [
-                'label'     => 'Alamat',
+            'kategori'     => [
+                'label'     => 'Kategori',
                 'rules'     => 'required'
             ],
-            'kota'     => [
-                'label'     => 'Kota',
+            'satuan'     => [
+                'label'     => 'Satuan',
                 'rules'     => 'required'
             ],
-            'telp'     => [
-                'label'     => 'Telp',
+            'stokmin'     => [
+                'label'     => 'Stok Minimum',
+                'rules'     => 'required'
+            ],
+            'harga1'     => [
+                'label'     => 'Harga 1',
                 'rules'     => 'required'
             ],
         ]);
 
         // Checking Validation
-        if (!$validation->withRequest($this->request)->run()){
+        if (!$rules){
             session()->setFlashdata('failed', $this->validation->listErrors());
             return redirect()->to(BASE_URL . "barang/tambah_barang")->withInput();
         }
         
         // Initial Data
+        // FILTER HTML Special Char
+        // FILTER Trim Char
+        // FILTER SANITIZE INTEGER
         $mdata = [
-            'namabarang'     => htmlspecialchars($this->request->getVar('barang')),
-            'alamat'        => htmlspecialchars($this->request->getVar('alamat')),
-            'kota'          => htmlspecialchars($this->request->getVar('kota')),
-            'telp'          => htmlspecialchars($this->request->getVar('telp')),
-            'omzet'         => filter_var($this->request->getVar('omzet'),FILTER_SANITIZE_NUMBER_INT),
+            'namabarang'    => trim(htmlspecialchars($this->request->getVar('namabarang'))),
+            'idkategori'    => htmlspecialchars($this->request->getVar('kategori')),
+            'idsatuan'      => htmlspecialchars($this->request->getVar('satuan')),
+            'stokmin'       => filter_var($this->request->getVar('stokmin'), FILTER_SANITIZE_NUMBER_INT),
+            'harga1'        => filter_var($this->request->getVar('harga1'), FILTER_SANITIZE_NUMBER_INT),
+            'harga2'        => filter_var($this->request->getVar('harga2'), FILTER_SANITIZE_NUMBER_INT),
+            'harga3'        => filter_var($this->request->getVar('harga3'), FILTER_SANITIZE_NUMBER_INT),
+            'disc_pct'      => htmlspecialchars($this->request->getVar('discount_pct')),
+            'disc_fxd'      => filter_var($this->request->getVar('discount_fxd'), FILTER_SANITIZE_NUMBER_INT),
         ];
-        // echo "<pre>".print_r($mdata,true)."</pre>";
-        // die;
-        // @todo::Mengubah endpoint beserta field nya
+
+        // CALL API
         $url = URLAPI . "/v1/barang/add_barang";
         $response = gucitoakAPI($url, json_encode($mdata));
-        $result = $response->result;
-        // echo "<pre>".print_r($result,true)."</pre>";
-        // die;
-        if (@$response->status != 201) {
-            session()->setFlashdata('failed', $result->message);
-            return redirect()->to(BASE_URL . "barang/tambah_barang")->withInput();
-        }else{
-            session()->setFlashdata('success', $result->message);
+        $result = $response->message;
+
+        // Checking Response API
+        if ($response->code == 200 || $response->code == 201) {
+            session()->setFlashdata('success', $result);
             return redirect()->to(BASE_URL . "barang")->withInput();
+        }else{
+            session()->setFlashdata('failed', $result);
+            return redirect()->to(BASE_URL . "barang/tambah_barang")->withInput();
         }
     }
 
     public function edit_barang($barang)
     {
+        // GET Segment id barang
         $barang=base64_decode($barang);
+
+        // CALL API
         $url = URLAPI . "/v1/barang/getbarang_byid?id=".$barang;
 		$response = gucitoakAPI($url);
-        $result = $response->result->message;
-        // print_r($result);
-        // die;
+        $result = $response->message;
+
+        // Kategori
+        $urlkategori = URLAPI . "/v1/kategori/getall_kategori";
+        $resultkategori = gucitoakAPI($urlkategori)->message;
+
+        // Satuan
+        $urlsatuan = URLAPI . "/v1/satuan/getall_satuan";
+        $resultsatuan = gucitoakAPI($urlsatuan)->message;
+      
         $mdata = [
             'title'     => 'Edit barang - ' . NAMETITLE,
             'content'   => 'admin/barang/edit_barang',
             'extra'     => 'admin/barang/js/_js_index',
-            'active_barang'   => 'active',
-            'barang'  => $result
+            'menuactive_setup'   => 'active open',
+            'barang'  => $result,
+            'kategori'  => $resultkategori,
+            'satuan'    => $resultsatuan
         ];
 
         return view('admin/layout/wrapper', $mdata);
@@ -114,71 +148,87 @@ class Barang extends BaseController
     public function ubah_barang()
     {
 
-        $validation = $this->validation;
-        $validation->setRules([
-            'barang'     => [
+        // Validation Rules
+        $rules = $this->validate([
+            'namabarang'     => [
                 'label'     => 'Nama barang',
                 'rules'     => 'required'
             ],
-            'alamat'     => [
-                'label'     => 'Alamat',
+            'kategori'     => [
+                'label'     => 'Kategori',
                 'rules'     => 'required'
             ],
-            'kota'     => [
-                'label'     => 'Kota',
+            'satuan'     => [
+                'label'     => 'Satuan',
                 'rules'     => 'required'
             ],
-            'telp'     => [
-                'label'     => 'Telp',
+            'stokmin'     => [
+                'label'     => 'Stok Minimum',
+                'rules'     => 'required'
+            ],
+            'harga1'     => [
+                'label'     => 'Harga 1',
                 'rules'     => 'required'
             ],
         ]);
 
-        $idbarang=$this->request->getVar('idbarang');
+
+        $idbarang = $this->request->getVar('idbarang');
+
         // Checking Validation
-        if (!$validation->withRequest($this->request)->run()){
+        if (!$rules){
             session()->setFlashdata('failed', $this->validation->listErrors());
             return redirect()->to(BASE_URL . "barang/edit_barang/".base64_encode($idbarang))->withInput();
         }
         
         // Initial Data
+        // FILTER HTML Special Char
+        // FILTER Trim Char
+        // FILTER SANITIZE INTEGER
         $mdata = [
-            'namabarang'     => htmlspecialchars($this->request->getVar('barang')),
-            'alamat'        => htmlspecialchars($this->request->getVar('alamat')),
-            'kota'          => htmlspecialchars($this->request->getVar('kota')),
-            'telp'          => htmlspecialchars($this->request->getVar('telp')),
-            'omzet'         => filter_var($this->request->getVar('omzet'),FILTER_SANITIZE_NUMBER_INT),
+            'namabarang'    => trim(htmlspecialchars($this->request->getVar('namabarang'))),
+            'idkategori'    => htmlspecialchars($this->request->getVar('kategori')),
+            'idsatuan'      => htmlspecialchars($this->request->getVar('satuan')),
+            'stokmin'       => filter_var($this->request->getVar('stokmin'), FILTER_SANITIZE_NUMBER_INT),
+            'harga1'        => filter_var($this->request->getVar('harga1'), FILTER_SANITIZE_NUMBER_INT),
+            'harga2'        => filter_var($this->request->getVar('harga2'), FILTER_SANITIZE_NUMBER_INT),
+            'harga3'        => filter_var($this->request->getVar('harga3'), FILTER_SANITIZE_NUMBER_INT),
+            'disc_pct'      => htmlspecialchars($this->request->getVar('discount_pct')),
+            'disc_fxd'      => filter_var($this->request->getVar('discount_fxd'), FILTER_SANITIZE_NUMBER_INT),
         ];
+
         
 
-        // @todo::Mengubah endpoint beserta field nya
+        // CALL API
         $url = URLAPI . "/v1/barang/ubah_barang?id=".$idbarang;
         $response = gucitoakAPI($url, json_encode($mdata));
-        $result = $response->result;
-        // echo "<pre>".print_r($result,true)."</pre>";
-        // die;
-        if (@$response->status != 200) {
-            session()->setFlashdata('failed', $result->message);
-            return redirect()->to(BASE_URL . "barang/edit_barang/".base64_encode($idbarang))->withInput();
-        }else{
-            session()->setFlashdata('success', $result->message);
+        $result = $response->message;
+
+
+        if ($response->code == 200 || $response->code == 201) {
+            session()->setFlashdata('success', $result);
             return redirect()->to(BASE_URL . "barang")->withInput();
+        }else{
+            session()->setFlashdata('failed', $result);
+            return redirect()->to(BASE_URL . "barang/edit_barang/".base64_encode($idbarang))->withInput();
         }
     }
 
     public function hapus_barang($barang)
     {
+        // Get segment id barang
         $barang = base64_decode($barang);
+        // CALL API
         $url = URLAPI . "/v1/barang/hapus_barang?id=".$barang;
 		$response = gucitoakAPI($url);
-        $result = $response->result;
+        $result = $response->message;
 
 
-        if($response->status == 200){
-            session()->setFlashdata('success', $result->message);
+        if($response->code == 200){
+            session()->setFlashdata('success', $result);
             return redirect()->to(BASE_URL . "barang");
         }else{
-            session()->setFlashdata('error', $result->message);
+            session()->setFlashdata('error', $result);
             return redirect()->to(BASE_URL . "barang");
         }
     }

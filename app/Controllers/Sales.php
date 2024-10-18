@@ -21,7 +21,7 @@ class Sales extends BaseController
     {
         $url = URLAPI . "/v1/sales/getall_sales";
 		$response = gucitoakAPI($url);
-        $result = $response->result->message;
+        $result = $response->message;
         echo json_encode($result);
         die;
     }
@@ -51,7 +51,7 @@ class Sales extends BaseController
         $rules = $this->validate([
             'sales'     => [
                 'label'     => 'Nama Sales',
-                'rules'     => 'required|trim'
+                'rules'     => 'required'
             ],
             'alamat'     => [
                 'label'     => 'Alamat',
@@ -78,42 +78,51 @@ class Sales extends BaseController
         }
         
         // Initial Data
+        // FILTER HTML SPECIAL CHARS
+        // FILTER TRIM DATA
+        // FILTER SANITIZE NUMBER INTEGER
         $mdata = [
             'namasales'     => trim(htmlspecialchars($this->request->getVar('sales'))),
             'alamat'        => trim(htmlspecialchars($this->request->getVar('alamat'))),
             'kota'          => trim(htmlspecialchars($this->request->getVar('kota'))),
             'telp'          => trim(htmlspecialchars($this->request->getVar('telp'))),
-            'omzet'         => trim(filter_var($this->request->getVar('omzet'),FILTER_SANITIZE_NUMBER_INT)),
+            'omzet'         => trim(filter_var($this->request->getVar('omzet'), FILTER_SANITIZE_NUMBER_INT)),
         ];
 
-        // @todo::Mengubah endpoint beserta field nya
+
+        // CALL API
         $url = URLAPI . "/v1/sales/add_sales";
         $response = gucitoakAPI($url, json_encode($mdata));
-        $result = $response->result;
-        // echo "<pre>".print_r($result,true)."</pre>";
-        // die;
-        if (@$response->status != 200) {
+        $result = $response->message;
+
+
+        // Check response API
+        if ($response->code == 200 || $response->code == 201) {
+            session()->setFlashdata('success', $result);
+            return redirect()->to(BASE_URL . "sales");
+            exit();
+        }else{
             session()->setFlashdata('failed', $result->message);
             return redirect()->to(BASE_URL . "sales/tambah_sales")->withInput();
-        }else{
-            session()->setFlashdata('success', $result->message);
-            return redirect()->to(BASE_URL . "sales");
+            exit();
         }
     }
 
     public function edit_sales($sales)
     {
+        // Get segment idsales
         $sales=base64_decode($sales);
+
+        // Call API
         $url = URLAPI . "/v1/sales/getsales_byid?id=".$sales;
 		$response = gucitoakAPI($url);
-        $result = $response->result->message;
-        // print_r($result);
-        // die;
+        $result = $response->message;
+        
         $mdata = [
             'title'     => 'Edit sales - ' . NAMETITLE,
             'content'   => 'admin/sales/edit_sales',
             'extra'     => 'admin/sales/js/_js_index',
-            'active_sales'   => 'active',
+            'menuactive_setup'   => 'active open',
             'sales'  => $result
         ];
 
@@ -161,43 +170,52 @@ class Sales extends BaseController
         }
         
         // Initial Data
+        // FILTER HTML SPECIAL CHARS
+        // FILTER TRIM DATA
+        // FILTER SANITIZE NUMBER INTEGER
         $mdata = [
-            'namasales'     => htmlspecialchars($this->request->getVar('sales')),
-            'alamat'        => htmlspecialchars($this->request->getVar('alamat')),
-            'kota'          => htmlspecialchars($this->request->getVar('kota')),
-            'telp'          => htmlspecialchars($this->request->getVar('telp')),
-            'omzet'         => filter_var($this->request->getVar('omzet'),FILTER_SANITIZE_NUMBER_INT),
+            'namasales'     => trim(htmlspecialchars($this->request->getVar('sales'))),
+            'alamat'        => trim(htmlspecialchars($this->request->getVar('alamat'))),
+            'kota'          => trim(htmlspecialchars($this->request->getVar('kota'))),
+            'telp'          => trim(htmlspecialchars($this->request->getVar('telp'))),
+            'omzet'         => trim(filter_var($this->request->getVar('omzet'), FILTER_SANITIZE_NUMBER_INT)),
         ];
         
 
-        // @todo::Mengubah endpoint beserta field nya
+        // CALL API
         $url = URLAPI . "/v1/sales/ubah_sales?id=".$idsales;
         $response = gucitoakAPI($url, json_encode($mdata));
-        $result = $response->result;
-        // echo "<pre>".print_r($result,true)."</pre>";
-        // die;
-        if (@$response->status != 200) {
+        $result = $response->message;
+
+
+        // Checking response API
+        if ($response->code == 200 || $response->code == 201) {
+            session()->setFlashdata('success', $result);
+            return redirect()->to(BASE_URL . "sales")->withInput();
+            exit();
+        }else{
             session()->setFlashdata('failed', $result->message);
             return redirect()->to(BASE_URL . "sales/edit_sales/".base64_encode($idsales))->withInput();
-        }else{
-            session()->setFlashdata('success', $result->message);
-            return redirect()->to(BASE_URL . "sales")->withInput();
+            exit();
         }
     }
 
     public function hapus_sales($sales)
     {
-        $sales = base64_decode($sales);
-        $url = URLAPI . "/v1/sales/hapus_sales?id=".$sales;
+        // GET id sales from segment
+        $idsales = base64_decode($sales);
+
+        // CALL API
+        $url = URLAPI . "/v1/sales/hapus_sales?id=".$idsales;
 		$response = gucitoakAPI($url);
-        $result = $response->result;
+        $result = $response->message;
 
-
-        if($response->status == 200){
-            session()->setFlashdata('success', $result->message);
+        // Check response API
+        if($response->code == 200){
+            session()->setFlashdata('success', $result);
             return redirect()->to(BASE_URL . "sales");
         }else{
-            session()->setFlashdata('error', $result->message);
+            session()->setFlashdata('error', $result);
             return redirect()->to(BASE_URL . "sales");
         }
     }

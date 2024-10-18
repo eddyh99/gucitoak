@@ -1,7 +1,7 @@
 <?php if(!empty(session('failed'))): ?>
     <div id="failedtoast" class="bs-toast toast toast-placement-ex m-3 fade bg-danger top-  0 end-0" role="alert" aria-live="assertive" aria-atomic="true" data-delay="1000">
         <div class="toast-header">
-            <i class="bx bx-bell me-2"></i>
+            <i class="bx bx-x me-2"></i>
             <div class="me-auto fw-semibold">Error</div>
             <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
@@ -15,8 +15,11 @@
     <div id="successtoast" class="bs-toast toast toast-placement-ex m-3 fade bg-success top-0 end-0" role="alert" aria-live="assertive" aria-atomic="true" data-delay="1000">
         <div class="toast-header">
             <i class="bx bx-bell me-2"></i>
-            <div class="me-auto fw-semibold"><?= session('success')?></div>
+            <div class="me-auto fw-semibold">Berhasil</div>
             <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            <?= session('success')?>
         </div>
     </div>
 <?php endif;?>

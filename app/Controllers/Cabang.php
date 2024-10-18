@@ -11,7 +11,6 @@ class Cabang extends BaseController
             'content'   => 'admin/cabang/index',
             'extra'     => 'admin/cabang/js/_js_index',
             'menuactive_setup'   => 'active open',
-            'cabang_active'   => 'active'
         ];
 
         return view('admin/layout/wrapper', $mdata);
@@ -19,31 +18,19 @@ class Cabang extends BaseController
 
     public function list_all_cabang()
     {
-        $data = [
-            (object) [
-                "namacabang"    => "Gudang",
-                "alamat"        => "Jln Pahlawan 123",
-                "lat"           => "123456",
-                "long"          => "6543231",
-            ],
-            (object) [
-                "namacabang"    => "Gudang Return",
-                "alamat"        => "Jln Hasanudin",
-                "lat"           => "12345",
-                "long"          => "654321"
-            ]
-        ];
-
-        echo json_encode($data);
+        $url = URLAPI . "/v1/cabang/getall_cabang";
+		$response = gucitoakAPI($url);
+        $result = $response->message;
+        echo json_encode($result);
     }
 
     public function tambah_cabang()
     {
         $mdata = [
             'title'     => 'Tambah Cabang - ' . NAMETITLE,
-            'content'   => 'admin/master/cabang/tambah_cabang',
-            'extra'     => 'admin/master/cabang/js/_js_index',
-            'active_cabang'   => 'active'
+            'content'   => 'admin/cabang/tambah_cabang',
+            'extra'     => 'admin/cabang/js/_js_index',
+            'menuactive_setup'   => 'active open',
         ];
 
         return view('admin/layout/wrapper', $mdata);
@@ -57,19 +44,19 @@ class Cabang extends BaseController
         $rules = $this->validate([
             'cabang'     => [
                 'label'     => 'Nama Cabang',
-                'rules'     => 'trim|required'
+                'rules'     => 'required'
             ],
             'alamat'     => [
                 'label'     => 'Alamat',
-                'rules'     => 'trim|required'
+                'rules'     => 'required'
             ],
             'lat'     => [
                 'label'     => 'Latitude',
-                'rules'     => 'trim|required'
+                'rules'     => 'required'
             ],
             'long'     => [
                 'label'     => 'Longitude',
-                'rules'     => 'trim|required'
+                'rules'     => 'required'
             ],
         ]);
 
@@ -80,64 +67,125 @@ class Cabang extends BaseController
         }
         
         // Initial Data
+        // FILTER HTML Special char
+        // FILER Trim char
         $mdata = [
-            'cabang'    => htmlspecialchars($this->request->getVar('cabang')),
-            'alamat'    => htmlspecialchars($this->request->getVar('alamat')),
-            'lat'       => htmlspecialchars($this->request->getVar('lat')),
-            'long'      => htmlspecialchars($this->request->getVar('long')),
+            'namacabang'    => trim(htmlspecialchars($this->request->getVar('cabang'))),
+            'alamat'        => trim(htmlspecialchars($this->request->getVar('alamat'))),
+            'lat'           => trim(htmlspecialchars($this->request->getVar('lat'))),
+            'long'          => trim(htmlspecialchars($this->request->getVar('long'))),
         ];
         
-        // @todo::Mengubah endpoint beserta field nya
-        $url = URLAPI . "/v1/user/adduser";
+        // CALL API
+        $url = URLAPI . "/v1/cabang/add_cabang";
         $response = gucitoakAPI($url, json_encode($mdata));
-        $result = $response->result->messages;
+        $result = $response->message;
 
-        if (@$response->status != 200) {
-            session()->setFlashdata('failed', $result->error);
-            return redirect()->to(BASE_URL . "cabang/tambah_cabang")->withInput();
-        }else{
-            session()->setFlashdata('success', $result->messages);
+        // Check response API
+        if ($response->code == 200 || $response->code == 201) {
+            session()->setFlashdata('success', $result);
             return redirect()->to(BASE_URL . "cabang")->withInput();
+        }else{
+            session()->setFlashdata('failed', $result);
+            return redirect()->to(BASE_URL . "cabang/tambah_cabang")->withInput();
         }
+
     }
 
-    public function edit_cabang($cabangname)
+    public function edit_cabang($cabang)
     {
+        // GET Segment id cabang
+        $idcabang = base64_decode($cabang);
+
+        // CALL API
+        $url = URLAPI . "/v1/cabang/getcabang_byid?id=".$idcabang;
+        $response = gucitoakAPI($url);
+        $result = $response->message;
+
+
         $mdata = [
             'title'     => 'Edit Cabang - ' . NAMETITLE,
-            'content'   => 'admin/master/cabang/edit_cabang',
-            'extra'     => 'admin/master/cabang/js/_js_index',
-            'active_cabang'   => 'active'
+            'content'   => 'admin/cabang/edit_cabang',
+            'extra'     => 'admin/cabang/js/_js_index',
+            'menuactive_setup'   => 'active open',
+            'cabang'    => $result
         ];
 
         return view('admin/layout/wrapper', $mdata);
     }
 
-
-    // @todo::Integrasi Hapus cabang
-    public function hapus_cabang($username)
+    public function ubah_proccess()
     {
-        $username_delete = base64_decode($this->security->xss_clean($username));
 
-        if ($username_delete=="admin"){
-            $this->session->set_flashdata('success', "Admin can't be deleted");
-            redirect("user");
-            return;
+        // Validation Field
+        $rules = $this->validate([
+            'cabang'     => [
+                'label'     => 'Nama Cabang',
+                'rules'     => 'required'
+            ],
+            'alamat'     => [
+                'label'     => 'Alamat',
+                'rules'     => 'required'
+            ],
+            'lat'     => [
+                'label'     => 'Latitude',
+                'rules'     => 'required'
+            ],
+            'long'     => [
+                'label'     => 'Longitude',
+                'rules'     => 'required'
+            ],
+        ]);
+
+        $idcabang = $this->request->getVar('idcabang');
+
+        // Checking Validation
+        if(!$rules){
+            session()->setFlashdata('failed', $this->validation->listErrors());
+            return redirect()->to(BASE_URL."cabang/edit_cabang/".$idcabang)->withInput();
         }
+        
+        // Initial Data
+        // FILTER HTML Special char
+        // FILER Trim char
+        $mdata = [
+            'namacabang'    => trim(htmlspecialchars($this->request->getVar('cabang'))),
+            'alamat'        => trim(htmlspecialchars($this->request->getVar('alamat'))),
+            'lat'           => trim(htmlspecialchars($this->request->getVar('lat'))),
+            'long'          => trim(htmlspecialchars($this->request->getVar('long'))),
+        ];
+        
+        // CALL API
+        $url = URLAPI . "/v1/cabang/ubah_cabang?id=".base64_decode($idcabang);
+        $response = gucitoakAPI($url, json_encode($mdata));
+        $result = $response->message;
 
-        $url = URLAPI . "/v1/user/deleteUser?username=".$username_delete;
-		$response = gucitoakAPI($url);
-        $result = $response->result;
-
-
-        if($response->status == 200){
-            $this->session->set_flashdata('success', $result->messages);
-			redirect('user');
-			return;
+        // Check response API
+        if ($response->code == 200 || $response->code == 201) {
+            session()->setFlashdata('success', $result);
+            return redirect()->to(BASE_URL . "cabang")->withInput();
         }else{
-            $this->session->set_flashdata('error', $result->messages->error);
-            redirect('user');
-            return;
+            session()->setFlashdata('failed', $result);
+            return redirect()->to(BASE_URL."cabang/edit_cabang/".$idcabang)->withInput();
+        }
+    }
+
+
+    public function hapus_cabang($cabang)
+    {
+        // Get segment id cabang
+        $idcabang = base64_decode($cabang);
+        // CALL API
+        $url = URLAPI . "/v1/cabang/hapus_cabang?id=".$idcabang;
+        $response = gucitoakAPI($url);
+        $result = $response->message;
+
+        if($response->code == 200){
+            session()->setFlashdata('success', $result);
+            return redirect()->to(BASE_URL . "cabang");
+        }else{
+            session()->setFlashdata('error', $result);
+            return redirect()->to(BASE_URL . "cabang");
         }
     }
 

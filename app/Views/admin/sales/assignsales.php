@@ -41,7 +41,7 @@
                                     <div class="col-6">
                                         <div class="mb-3">
                                             <label class="form-label" for="barang">Barang</label>
-                                            <select class="barangselect2" multiple="multiple" id="barang[]" name="barcode" >
+                                            <select class="barangselect2 form-control" multiple="multiple" id="barang[]" name="barcode" >
                                                 <option value=""></option>
                                                 <option value="1">Permen</option>
                                                 <option value="1">Sabun</option>

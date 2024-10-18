@@ -30,6 +30,9 @@
         <script src="<?= BASE_URL?>assets/js/dashboards-analytics.js"></script>
         <script src="<?= BASE_URL?>assets/js/ui-toasts.js"></script>
 
+        <!-- Sweet Alert -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
         <?php
             if (@isset($extra)) {
                 echo view(@$extra);
@@ -42,6 +45,14 @@
                 aDec: '.',
                 aForm: true,
                 vMax: '99999999999',
+                vMin: '0'
+            });
+
+            $(".disc-input").autoNumeric('init', {
+                aSep: ',',
+                aDec: '.',
+                aForm: true,
+                vMax: '9.999',
                 vMin: '0'
             });
         </script>

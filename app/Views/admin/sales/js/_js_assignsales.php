@@ -10,8 +10,6 @@
         $('.barangselect2').select2({
             placeholder: "Pilih Barang",
             allowClear: true,
-            theme: "bootstrap", 
-            width: "100%"
         });
 
         $('.salesselect2').select2({

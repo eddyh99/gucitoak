@@ -227,12 +227,12 @@
 
 .sub-menu {
   background-color: #ffffff;
-  position: absolute;
+  position: fixed;
   left: 11rem;
   top: 0;
   z-index: 9999999;
   display: none;
-  height: 100%;
+  height: 100vh;
   padding-top: 1rem;
   box-shadow: -3px 3px 3px #0000000c;
   overflow-y: auto;
@@ -258,4 +258,7 @@ body:has(.menu-item.persediaan:hover) .sub-menu.persediaan,
   display: block;
 }
 
+.dt-buttons {
+  margin-top: 1rem !important;
+}
 

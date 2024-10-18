@@ -31,7 +31,7 @@
                                 <div class="row row-cols-3">
 
                                     <div class="mb-3">
-                                        <label class="form-label" for="username">Nama Sales</label>
+                                        <label class="form-label" for="sales">Nama Sales</label>
                                         <div class="input-group input-group-merge">
                                             <input
                                                 type="text"
@@ -45,7 +45,7 @@
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label" for="nama">Alamat</label>
+                                        <label class="form-label" for="alamat">Alamat</label>
                                         <div class="input-group input-group-merge">
                                             <input
                                                 type="text"
@@ -60,7 +60,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <div class="d-flex justify-content-between">
-                                            <label class="form-label" for="password">Kota</label>
+                                            <label class="form-label" for="kota">Kota</label>
                                         </div>
                                         <div class="input-group input-group-merge">
                                             <input
@@ -75,7 +75,7 @@
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label" for="nama">telp</label>
+                                        <label class="form-label" for="telp">telp</label>
                                         <div class="input-group input-group-merge">
                                             <input
                                                 type="text"
@@ -89,7 +89,7 @@
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label" for="nama">Omzet</label>
+                                        <label class="form-label" for="omzet">Omzet</label>
                                         <div class="input-group input-group-merge">
                                             <input
                                                 type="text"
@@ -103,7 +103,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Update Data</button>
+                                <button type="submit" class="btn btn-primary">Edit Data</button>
                             </form>
                         </div>
                     </div>

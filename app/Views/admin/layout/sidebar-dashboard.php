@@ -51,13 +51,13 @@
         <li class="menu-item">
             <a href="<?= BASE_URL ?>user/tambah_user" class="menu-link-inside d-flex justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-plus-circle px-2"></i>
-                <div data-i18n="User" style="font-size: 12px;">Tambah User</div>
+                <div data-i18n="User" style="font-size: 12px;">Tambah Pengguna</div>
             </a>
         </li>
         <li class="menu-item">
             <a href="<?= BASE_URL ?>user" class="menu-link-inside d-flex justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-list-ol px-2"></i>
-                <div data-i18n="User" style="font-size: 12px;">List User</div>
+                <div data-i18n="User" style="font-size: 12px;">List Pengguna</div>
             </a>
         </li>
         <li class="menu-item">
@@ -70,6 +70,18 @@
             <a href="<?= BASE_URL ?>sales" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-list-ol px-2"></i>
                 <div data-i18n="Sales" style="font-size: 12px;">List Sales</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="<?= BASE_URL ?>cabang/tambah_cabang" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
+                <i class="menu-icon fs-5 tf-icons bx bx-plus-circle px-2"></i>
+                <div data-i18n="cabang" style="font-size: 12px;">Tambah Cabang</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="<?= BASE_URL ?>cabang" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
+                <i class="menu-icon fs-5 tf-icons bx bx-list-ol px-2"></i>
+                <div data-i18n="cabang" style="font-size: 12px;">List Cabang</div>
             </a>
         </li>
         <li class="menu-item">
@@ -255,7 +267,7 @@
                             <div class="dropdown-divider"></div>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="auth/logout">
+                            <a class="dropdown-item" href="<?=BASE_URL?>auth/logout">
                             <i class="bx bx-power-off me-2"></i>
                             <span class="align-middle">Log Out</span>
                             </a>

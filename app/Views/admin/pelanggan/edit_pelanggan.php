@@ -28,87 +28,99 @@
                         <div class="card-body">
                             <form action="<?= BASE_URL ?>pelanggan/ubah_pelanggan" method="POST">
                                 <input type="hidden" name="idpelanggan" value="<?=$pelanggan->id?>">
-                                <div class="mb-3">
-                                    <label class="form-label" for="username">Nama Toko</label>
-                                    <div class="input-group input-group-merge">
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            id="pelanggan"
-                                            placeholder="Toko Suka Maju"
-                                            name="pelanggan"
-                                            value="<?=$pelanggan->namapelanggan?>"
-                                        />
+                                <div class="row row-cols-3">
+
+                                    <div class="mb-3">
+                                        <label class="form-label" for="pelanggan">Nama Toko</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="pelanggan"
+                                                placeholder="Nama toko"
+                                                name="pelanggan"
+                                                value="<?= $pelanggan->namapelanggan?>"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="pemilik">Pemilik</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="pemilik"
+                                                placeholder="Pemilik"
+                                                name="pemilik"
+                                                value="<?=$pelanggan->pemilik?>"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="alamat">Alamat</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="alamat"
+                                                placeholder="Alamat"
+                                                name="alamat"
+                                                value="<?=$pelanggan->alamat?>"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <div class="d-flex justify-content-between">
+                                            <label class="form-label" for="kota">Kota</label>
+                                        </div>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="text"
+                                                id="kota"
+                                                class="form-control"
+                                                name="kota"
+                                                placeholder="Kota"
+                                                value="<?=$pelanggan->kota?>"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="telp">telp</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="telp"
+                                                placeholder="Telphone"
+                                                name="telp"
+                                                value="<?=$pelanggan->telp?>"
+                                                maxlength="13"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="harga">Jenis Harga</label>
+                                        <select name="harga" class="form-select" id="harga">
+                                            <option value="Harga 1" <?= ($pelanggan->harga == "Harga 1") ? "selected": ""?>>Harga 1</option>
+                                            <option value="Harga 2" <?= ($pelanggan->harga == "Harga 2") ? "selected": ""?>>Harga 2</option>
+                                            <option value="Harga 3" <?= ($pelanggan->harga == "Harga 3") ? "selected": ""?>>Harga 3</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="plafon">Plafon</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="number"
+                                                class="form-control"
+                                                id="plafon"
+                                                placeholder="Plafon"
+                                                name="plafon"
+                                                value="<?=$pelanggan->plafon?>"
+                                            />
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label class="form-label" for="username">Pemilik</label>
-                                    <div class="input-group input-group-merge">
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            id="pemilik"
-                                            placeholder="John_Doe"
-                                            name="pemilik"
-                                            value="<?=$pelanggan->pemilik?>"
-                                        />
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label" for="nama">Alamat</label>
-                                    <div class="input-group input-group-merge">
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            id="alamat"
-                                            placeholder="Jl. HOS Cokroaminoto...."
-                                            name="alamat"
-                                            value="<?=$pelanggan->alamat?>"
-                                        />
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <div class="d-flex justify-content-between">
-                                        <label class="form-label" for="password">Kota</label>
-                                    </div>
-                                    <div class="input-group input-group-merge">
-                                        <input
-                                            type="text"
-                                            id="kota"
-                                            class="form-control"
-                                            name="kota"
-                                            placeholder="Badung"
-                                            value="<?=$pelanggan->kota?>"
-                                        />
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label" for="nama">telp</label>
-                                    <div class="input-group input-group-merge">
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            id="telp"
-                                            placeholder="08225455222"
-                                            name="telp"
-                                            value="<?=$pelanggan->telp?>"
-                                        />
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label" for="nama">Plafon</label>
-                                    <div class="input-group input-group-merge">
-                                        <input
-                                            type="number"
-                                            class="form-control"
-                                            id="plafon"
-                                            placeholder="0123 456 789"
-                                            name="plafon"
-                                            value="<?=$pelanggan->plafon?>"
-                                        />
-                                    </div>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Save Data</button>
+                                <button type="submit" class="btn btn-primary">Edit Data</button>
                             </form>
                         </div>
                     </div>
