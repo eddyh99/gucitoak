@@ -236,16 +236,83 @@ class Sales extends BaseController
     
     public function assign_sales()
     {
+        // CALL API SALES
+        $urlSales = URLAPI . "/v1/sales/getall_sales";
+		$responseSales = gucitoakAPI($urlSales);
+        $resultSales = $responseSales->message;
+
+        // CALL API BARANG
+        $urlBarang = URLAPI . "/v1/barang/getall_barang";
+		$responseBarang = gucitoakAPI($urlBarang);
+        $resultBarang = $responseBarang->message;
+
         $mdata = [
             'title'     => 'Assign Sales - ' . NAMETITLE,
             'content'   => 'admin/sales/assignsales',
             'extra'     => 'admin/sales/js/_js_assignsales',
             'menuactive_master'   => 'active open',
-            'assignsales_active'   => 'active'
+            'assignsales_active'   => 'active',
+            'sales'     => $resultSales,
+            'barang'    => $resultBarang
         ];
 
         return view('admin/layout/wrapper', $mdata);
     }
+
+    public function assignsales_proccess()
+    {
+
+        
+
+
+        // Validation Rules
+        $rules = $this->validate([
+            'sales'     => [
+                'label'     => 'Nama Sales',
+                'rules'     => 'required'
+            ],
+            'barang.*'   => [
+                'label'     => 'Barang',
+                'rules'     => 'required'
+            ]
+        ]);
+     
+        // Checking Validation
+        if (!$rules){
+            session()->setFlashdata('failed', $this->validation->listErrors());
+            return redirect()->to(BASE_URL . "sales/assign_sales")->withInput();
+        }
+
+        $barang = $this->request->getVar('barang');
+        $sales  = $this->request->getVar('sales');
+        $data = [];
+        foreach($barang as $key => $value){
+
+            $temp['id_sales'] = $sales;
+            $temp['id_barang']  = $value;
+
+            array_push($data, $temp);
+        }
+
+
+        // CALL API
+        $url = URLAPI . "/v1/sales/add_produk";
+        $response = gucitoakAPI($url, $data);
+        $result = $response->message;
+
+        // Check response API
+        if($response->code == 200){
+            session()->setFlashdata('success', $result);
+            return redirect()->to(BASE_URL . "sales");
+        }else{
+            session()->setFlashdata('error', $result);
+            return redirect()->to(BASE_URL . "sales");
+        }
+        echo '<pre>'.print_r($data,true).'</pre>';
+        die;
+
+    }
+
 
 
 }

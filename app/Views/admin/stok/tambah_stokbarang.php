@@ -27,70 +27,71 @@
                         </div>
                         <div class="card-body">
                             <form action="<?= BASE_URL ?>suplier/tambah_proccess" method="POST">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="mb-3">
-                                            <label class="form-label" for="barcode">Barcode</label>
-                                       
-                                            <div class="input-group input-group-merge">
-                                                <input
-                                                    type="text"
-                                                    class="form-control"
-                                                    id="barcode"
-                                                    placeholder="17234843627384"
-                                                    name="barcode"
-                                                />
-                                            </div>
+                                <div class="row row-cols-2">
+                                    <!-- <div class="mb-3">
+                                        <label class="form-label" for="cabang">Cabang</label>
+                                        <select class="barangselect2" id="cabang" name="cabang" >
+                                            <?php foreach($cabang as $dt){?>
+                                                <option value="<?= $dt->id?>"><?= $dt->namacabang?></option>
+                                            <?php }?>
+                                        </select>
+                                    </div> -->
+
+                                    <div class="mb-3">
+                                        <label class="form-label" for="barcode">Barcode</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="barcode"
+                                                placeholder="Barcode"
+                                                name="barcode"
+                                                autocomplete="off"
+                                                value="1234567891234"
+                                            />
                                         </div>
-                                        
-                                        <div class="mb-3">
-                                            <label class="form-label" for="barang">Barang</label>
-                                            <select class="barangselect2" id="barang" name="barcode" >
-                                                <option value=""></option>
-                                                <option value="1">Permen</option>
-                                                <option value="1">Sabun</option>
-                                                <option value="1">Cucian</option>
-                                            </select>
-                                        </div>
-                                       
                                     </div>
-                                    <div class="col-6">
-                                        <div class="mb-3">
-                                            <label class="form-label" for="expired">Expired Date</label>
-                                       
-                                            <div class="input-group input-group-merge">
-                                                <input
-                                                    type="text"
-                                                    class="form-control"
-                                                    id="expired"
-                                                    placeholder="12-11-24"
-                                                    name="expired"
-                                                />
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label" for="barang">Barang</label>
+                                        <select class="barangselect2" id="barang" name="barang" >
+                                            <option value="" readonly>--Pilih Barang--</option>
+                                            <?php foreach($barang as $dt){?>
+                                                <option value="<?= $dt->id?>"><?= $dt->namabarang?></option>
+                                            <?php }?>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 mb-4 order-1">
+                                    <div class="card border-expat w-100">
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-center justify-content-between my-3">
+                                                <h5 class="card-title fw-semibold">Preview Stok Barang</h5>
+                                                <button type="button" id="clearallstok" class="btn btn-danger d-flex align-items-center"> 
+                                                    <i class='bx bx-trash me-1'></i> 
+                                                    <span>
+                                                        Bersihkan Stok
+                                                    </span>
+                                                </button>
                                             </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label" for="stok">Stok</label>
-                                            <div class="input-group input-group-merge">
-                                                <input
-                                                    type="text"
-                                                    class="form-control"
-                                                    id="stok"
-                                                    placeholder="0"
-                                                    name="stok"
-                                                />
-                                            </div>
-                                            <!-- <div class="input-group input-group-merge">
-                                                <input
-                                                    type="number"
-                                                    class="form-control"
-                                                    id="harga1"
-                                                    placeholder="100000"
-                                                    name="harga1"
-                                                />
-                                            </div> -->
+                                            <table id="preview_stok" class="table table-striped" style="width:100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Barcode</th>
+                                                        <th>Expired Date</th>
+                                                        <th>Barang</th>
+                                                        <th>Stok</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
+
                                 <button type="submit" class="btn btn-primary">Simpan Stok</button>
                             </form>
                         </div>
@@ -116,4 +117,41 @@
     </div>
     <!-- Content wrapper -->
 
+</div>
+
+
+<!-- Modal Stok -->
+<div class="modal fade show" id="stokModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="stokModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="POST" action="#">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="stokModalLabel">Tambah Stok</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label class="form-label" for="expdate">Expired Date</label>
+                    <input type="hidden" id="hiddenexpdate" >
+                    <h4 class="preview-expdate"></h4>
+                    <div class="mt-3">
+                        <label class="form-label" for="stok">Stok</label>
+                        <div class="input-group input-group-merge">
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="stok"
+                                placeholder="Stok"
+                                name="stok"
+                                autocomplete="off"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="batalstok" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" id="simpanpreviewstok" class="btn btn-primary">Simpan Preview</button>
+                </div>
+            </form>                                   
+        </div>
+    </div>
 </div>
