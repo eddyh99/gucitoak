@@ -5,8 +5,12 @@
 
 
 <script>
-      
-    $(document).ready(function(){	
+
+    $(document).ready(function(){
+        setTimeout(() => {
+                $("#failedtoast").toast('show')
+                $("#successtoast").toast('show')
+        }, 0)	
         $('.barangselect2').select2({
             placeholder: "Pilih Barang",
             allowClear: true,

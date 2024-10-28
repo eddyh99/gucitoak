@@ -258,6 +258,16 @@ body:has(.menu-item.persediaan:hover) .sub-menu.persediaan,
   display: block;
 }
 
+body:has(.menu-item.pembelian:hover) .sub-menu.pembelian,
+.sub-menu.pembelian:hover{
+  display: block;
+}
+
+body:has(.menu-item.penjualan:hover) .sub-menu.penjualan,
+.sub-menu.penjualan:hover{
+  display: block;
+}
+
 .dt-buttons {
   margin-top: 1rem !important;
 }

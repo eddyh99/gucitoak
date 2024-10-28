@@ -1,7 +1,7 @@
 <?php if(!empty(session('failed'))): ?>
     <div id="failedtoast" class="bs-toast toast toast-placement-ex m-3 fade bg-danger top-0 end-0" role="alert" aria-live="assertive" aria-atomic="true" data-delay="1000">
         <div class="toast-header">
-            <i class="bx bx-bell me-2"></i>
+            <i class="bx bx-x me-2"></i>
             <div class="me-auto fw-semibold">Error</div>
             <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
@@ -26,26 +26,25 @@
                             <h5 class="mb-1">Assign Sales</h5>
                         </div>
                         <div class="card-body">
-                            <form action="<?= BASE_URL ?>suplier/tambah_proccess" method="POST">
+                            <form action="<?= BASE_URL ?>sales/assignsales_proccess" method="POST">
                                 <div class="row">
                                     <div class="col-6">
                                         <div class="mb-3">
                                             <label class="form-label" for="sales">Sales</label>
-                                            <select class="salesselect2" id="sales" name="barcode" >
-                                                <option value=""></option>
-                                                <option value="1">Samsul</option>
-                                                <option value="1">Dion</option>
+                                            <select class="salesselect2" id="sales" name="sales" >
+                                                <?php foreach($sales as $dt){?>
+                                                    <option value="<?= $dt->id?>"><?= $dt->namasales; ?></option>
+                                                <?php }?>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="mb-3">
                                             <label class="form-label" for="barang">Barang</label>
-                                            <select class="barangselect2 form-control" multiple="multiple" id="barang[]" name="barcode" >
-                                                <option value=""></option>
-                                                <option value="1">Permen</option>
-                                                <option value="1">Sabun</option>
-                                                <option value="1">Cucian</option>
+                                            <select class="barangselect2 form-control" multiple="multiple" id="barang" name="barang[]" >
+                                                <?php foreach($barang as $br){?>
+                                                    <option value="<?= $br->id?>"><?= $br->namabarang?></option>
+                                                <?php }?>
                                             </select>
                                         </div>
                                     </div>

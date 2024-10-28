@@ -43,6 +43,22 @@
                 <div data-i18n="Account Settings" class="text-center">Persediaan Barang</div>
             </a>
         </li>
+
+        <li class="menu-item pembelian <?= @$menuactive_pembelian ?>">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <!-- <i class="menu-icon tf-icons bx bx-package"></i> -->
+                <i class='menu-icon tf-icons bx bx-basket'></i>
+                <div data-i18n="Pembelian" class="text-center">Pembelian</div>
+            </a>
+        </li>
+
+        <li class="menu-item penjualan <?= @$menuactive_penjualan ?>">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <!-- <i class="menu-icon tf-icons bx bx-package"></i> -->
+                <i class='menu-icon tf-icons bx bx-purchase-tag-alt'></i>
+                <div data-i18n="penjualan" class="text-center">Penjualan</div>
+            </a>
+        </li>
     </ul>
 </aside>
 
@@ -167,7 +183,7 @@
 <div class="sub-menu persediaan">
     <ul class="ul-sub-menu">
         <li class="menu-item">
-            <a href="<?= BASE_URL ?>stok" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
+            <a href="<?= BASE_URL ?>stok/tambah_stokbarang" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-plus-circle px-2"></i>
                 <div data-i18n="User" style="font-size: 12px;">Tambah Stok</div>
             </a>
@@ -194,6 +210,28 @@
             <a href="<?= BASE_URL ?>pelanggan" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-list-ol px-2"></i>
                 <div data-i18n="Mutasi Stok" style="font-size: 12px;">Mutasi Stok</div>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="sub-menu pembelian">
+    <ul class="ul-sub-menu">
+        <li class="menu-item">
+            <a href="<?= BASE_URL ?>" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
+                <i class="menu-icon fs-5 tf-icons bx bx-basket px-2"></i>
+                <div data-i18n="Pembelian Barang" style="font-size: 12px;">Pembelian Barang</div>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="sub-menu penjualan">
+    <ul class="ul-sub-menu">
+        <li class="menu-item">
+            <a href="<?= BASE_URL ?>" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
+                <i class="menu-icon fs-5 tf-icons bx bx-purchase-tag-alt px-2"></i>
+                <div data-i18n="Penjualan" style="font-size: 12px;">Penjualan Barang</div>
             </a>
         </li>
     </ul>
