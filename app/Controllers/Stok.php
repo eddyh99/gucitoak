@@ -20,9 +20,9 @@ class Stok extends BaseController
 
     public function list_all_stokbarang()
     {
-        $url = URLAPI . "/v1/barang/getall_barang";
+        $url = URLAPI . "/v1/barang/getstok";
 		$response = gucitoakAPI($url);
-        $result = $response->result->message;
+        $result = $response->message;
         echo json_encode($result);
     }
 
@@ -84,5 +84,22 @@ class Stok extends BaseController
         $this->session->remove("stokbarang");
     }
 
+    public function savestok(){
+        $urlBarang = URLAPI . "/v1/barang/add_stok";
+		$responseBarang = gucitoakAPI($urlBarang,json_encode($_SESSION["stokbarang"]));
+        $resultBarang = $responseBarang->message;
+        unset($_SESSION['stokbarang']);
+        return redirect()->to(BASE_URL . "stok")->withInput();
+        
+    }
+    
+    public function list_barcode($id){
+        $id=base64_decode($id);
+        $url = URLAPI . "/v1/barang/detailstok?id=".$id;
+		$response = gucitoakAPI($url);
+        $result = $response->message;
+        echo json_encode($result);
+        
+    }
 
 }

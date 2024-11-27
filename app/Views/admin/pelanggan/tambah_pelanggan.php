@@ -123,6 +123,19 @@
                                             />
                                         </div>
                                     </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="plafon">Max Invoice</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="text"
+                                                class="form-control price-input"
+                                                id="maxnota"
+                                                placeholder="Max Invoice"
+                                                name="maxnota"
+                                                value="<?= set_value('maxnota') ?>"
+                                            />
+                                        </div>
+                                    </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Simpan Data</button>
                             </form>

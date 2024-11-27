@@ -45,9 +45,7 @@
                                 <thead>
                                     <tr>
                                         <th>Nama Sales</th>
-                                        <th>Alamat</th>
-                                        <th>Kota</th>
-                                        <th>No. Telp</th>
+                                        <th>Nama Barang</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>

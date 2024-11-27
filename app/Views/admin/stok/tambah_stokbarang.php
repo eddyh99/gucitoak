@@ -26,7 +26,6 @@
                             <h5 class="mb-1">Tambah Stok Barang</h5>
                         </div>
                         <div class="card-body">
-                            <form action="<?= BASE_URL ?>suplier/tambah_proccess" method="POST">
                                 <div class="row row-cols-2">
                                     <!-- <div class="mb-3">
                                         <label class="form-label" for="cabang">Cabang</label>
@@ -36,6 +35,15 @@
                                             <?php }?>
                                         </select>
                                     </div> -->
+                                    <div class="mb-3">
+                                        <label class="form-label" for="barang">Barang</label>
+                                        <select class="barangselect2" id="barang" name="barang" >
+                                            <option value="" readonly>--Pilih Barang--</option>
+                                            <?php foreach($barang as $dt){?>
+                                                <option value="<?= $dt->id?>"><?= $dt->namabarang?></option>
+                                            <?php }?>
+                                        </select>
+                                    </div>
 
                                     <div class="mb-3">
                                         <label class="form-label" for="barcode">Barcode</label>
@@ -47,20 +55,10 @@
                                                 placeholder="Barcode"
                                                 name="barcode"
                                                 autocomplete="off"
-                                                value="1234567891234"
                                             />
                                         </div>
                                     </div>
                                     
-                                    <div class="mb-3">
-                                        <label class="form-label" for="barang">Barang</label>
-                                        <select class="barangselect2" id="barang" name="barang" >
-                                            <option value="" readonly>--Pilih Barang--</option>
-                                            <?php foreach($barang as $dt){?>
-                                                <option value="<?= $dt->id?>"><?= $dt->namabarang?></option>
-                                            <?php }?>
-                                        </select>
-                                    </div>
                                 </div>
 
                                 <div class="col-lg-12 mb-4 order-1">
@@ -92,8 +90,7 @@
                                     </div>
                                 </div>
 
-                                <button type="submit" class="btn btn-primary">Simpan Stok</button>
-                            </form>
+                                <button type="button" id="submit" class="btn btn-primary">Simpan Stok</button>
                         </div>
                     </div>
                 </div>
@@ -124,7 +121,6 @@
 <div class="modal fade show" id="stokModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="stokModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form method="POST" action="#">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="stokModalLabel">Tambah Stok</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -151,7 +147,6 @@
                     <button type="button" id="batalstok" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                     <button type="submit" id="simpanpreviewstok" class="btn btn-primary">Simpan Preview</button>
                 </div>
-            </form>                                   
         </div>
     </div>
 </div>

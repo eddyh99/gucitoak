@@ -43,21 +43,21 @@
 			{ data: 'namapelanggan' },
 			{ data: 'pemilik' },
 			{ data: 'alamat' },
-			{ data: 'kota' },
 			{ data: 'telp' },
 			{ data: 'harga' },
-                  { 
-                   data: "plafon", 
-                   "mRender": function(data, type, full, meta) {
-                        if (type === 'display') {
-                            return parseFloat(data).toLocaleString('en-US', {
-                                minimumFractionDigits: 0,
-                                maximumFractionDigits: 0
-                            });
-                        }
-                        return data;
-                    } 
-                  },
+              { 
+               data: "plafon", 
+               "mRender": function(data, type, full, meta) {
+                    if (type === 'display') {
+                        return parseFloat(data).toLocaleString('en-US', {
+                            minimumFractionDigits: 0,
+                            maximumFractionDigits: 0
+                        });
+                    }
+                    return data;
+                } 
+              },
+			{ data: 'maxnota' },
 			{ 
                    data: null, "mRender": function(data, type, full, meta) {
                               var edit = `<a href="<?= BASE_URL ?>pelanggan/edit_pelanggan/${encodeURI(btoa(full.id))}">

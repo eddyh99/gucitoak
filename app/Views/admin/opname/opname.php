@@ -26,7 +26,7 @@
                             <h5 class="mb-1">Stok Opname</h5>
                         </div>
                         <div class="card-body">
-                            <form action="<?= BASE_URL ?>suplier/tambah_proccess" method="POST">
+                            <form id="frmopname" action="<?= BASE_URL ?>opname/simpanopname" method="POST">
                                 <div class="row row-cols-3">
                                     <div class="mb-3">
                                         <label class="form-label" for="barcode">Barcode</label>
@@ -43,12 +43,9 @@
                                     
                                     <div class="mb-3">
                                         <label class="form-label" for="barang">Barang</label>
-                                        <select class="barangselect2" id="barang" name="barcode" >
-                                            <option value=""></option>
-                                            <option value="1">Permen</option>
-                                            <option value="1">Sabun</option>
-                                            <option value="1">Cucian</option>
-                                        </select>
+                                        <div class="input-group input-group-merge">
+                                            <input type="text" name="barang" id="barang" class="form-control" disabled>
+                                        </div>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label" for="expired">Expired Date</label>
@@ -59,6 +56,7 @@
                                                 id="expired"
                                                 placeholder="12-11-24"
                                                 name="expired"
+                                                disabled
                                             />
                                         </div>
                                     </div>
@@ -71,6 +69,7 @@
                                                 id="stok"
                                                 placeholder="0"
                                                 name="stok"
+                                                disabled
                                             />
                                         </div>
                                     </div>
@@ -80,20 +79,20 @@
                                             <input
                                                 type="number"
                                                 class="form-control"
-                                                id="stok"
+                                                id="riil"
                                                 placeholder="0"
-                                                name="stok"
+                                                name="riil"
                                             />
                                         </div>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label" for="stok">Keterangan</label>
                                         <div class="input-group input-group-merge">
-                                            <textarea class="form-control" name="keterangan" id="keterangan"></textarea>
+                                            <textarea class="form-control" name="keterangan" id="keterangan" required></textarea>
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Simpan Stok</button>
+                                <button type="button" id="btnopname" class="btn btn-primary">Simpan Opname</button>
                             </form>
                         </div>
                     </div>

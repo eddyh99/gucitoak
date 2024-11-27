@@ -86,3 +86,35 @@
     <!-- Content wrapper -->
 
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="detailharga" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Detail Harga</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Tanggal</th>
+              <th>Harga 1</th>
+              <th>Harga 2</th>
+              <th>Harga 3</th>
+              <th>Discount Fixed</th>
+              <th>Discount Percent</th>
+            </tr>
+          </thead>
+          <tbody id="modalDataBody">
+            <!-- Data will be inserted here -->
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -50,10 +50,10 @@
                                 <thead>
                                     <tr>
                                         <th>Nama Sales</th>
-                                        <th>Alamat</th>
-                                        <th>Kota</th>
                                         <th>No. Telp</th>
                                         <th>Omzet</th>
+                                        <th>Gaji Pokok</th>
+                                        <th>Komisi</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>

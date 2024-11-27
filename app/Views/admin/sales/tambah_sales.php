@@ -102,6 +102,34 @@
                                             />
                                         </div>
                                     </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="omzet">Gaji Pokok</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="text"
+                                                class="form-control price-input"
+                                                id="gapok"
+                                                placeholder="Gaji Pokok"
+                                                name="gapok"
+                                                value="<?= set_value('gapok') ?>"
+                                                required
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="omzet">Komisi (%)</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="text"
+                                                class="form-control price-input"
+                                                id="komisi"
+                                                placeholder="Komisi"
+                                                name="komisi"
+                                                value="<?= set_value('komisi') ?>"
+                                                required
+                                            />
+                                        </div>
+                                    </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Simpan Data</button>
                             </form>

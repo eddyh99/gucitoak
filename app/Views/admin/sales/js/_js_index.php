@@ -41,21 +41,12 @@
 		},
             "columns": [
 			{ data: 'namasales' },
-			{ data: 'alamat' },
-			{ data: 'kota' },
 			{ data: 'telp' },
-                  { 
-                   data: "omzet", 
-                   "mRender": function(data, type, full, meta) {
-                        if (type === 'display') {
-                            return parseFloat(data).toLocaleString('en-US', {
-                                minimumFractionDigits: 0,
-                                maximumFractionDigits: 0
-                            });
-                        }
-                        return data;
-                    } 
-                  },
+			{ data: 'omzet',render: $.fn.dataTable.render.number(",", ".", 0, ""), className: 'text-end',},
+			{ data: 'gajipokok',render: $.fn.dataTable.render.number(",", ".", 0, ""), className: 'text-end',},
+			{ data: 'komisi',render: function(data, type, row) {
+                return (data * 100).toFixed(0) + '%';
+            }},
 			{ 
                    data: null, "mRender": function(data, type, full, meta) {
                               var edit = `<a href="<?= BASE_URL ?>sales/edit_sales/${encodeURI(btoa(full.id))}">

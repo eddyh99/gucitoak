@@ -87,6 +87,7 @@ class Pelanggan extends BaseController
             'telp'          => trim(htmlspecialchars($this->request->getVar('telp'))),
             'harga'         => trim(htmlspecialchars($this->request->getVar('harga'))),
             'plafon'        => trim(filter_var($this->request->getVar('plafon'), FILTER_SANITIZE_NUMBER_INT)),
+            'maxnota'       => trim(filter_var($this->request->getVar('maxnota'), FILTER_SANITIZE_NUMBER_INT)),
         ];
 
 
@@ -170,6 +171,7 @@ class Pelanggan extends BaseController
             'telp'          => trim(htmlspecialchars($this->request->getVar('telp'))),
             'harga'         => trim(htmlspecialchars($this->request->getVar('harga'))),
             'plafon'        => trim(filter_var($this->request->getVar('plafon'), FILTER_SANITIZE_NUMBER_INT)),
+            'maxnota'       => trim(filter_var($this->request->getVar('maxnota'), FILTER_SANITIZE_NUMBER_INT)),
         ];
     
 

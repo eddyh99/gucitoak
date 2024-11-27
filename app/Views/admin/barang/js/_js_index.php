@@ -116,13 +116,16 @@
                   },
 			{ 
                         data: null, "mRender": function(data, type, full, meta) {
+                              var detail = `<a href="#" onclick='detailharga("`+encodeURI(btoa(full.id))+`")'>
+                                                <i class="bx bx-detail bx-md fs-5 text-primary"></i>
+                                          </a>`;
                               var edit = `<a href="<?= BASE_URL ?>barang/edit_barang/${encodeURI(btoa(full.id))}">
                                                 <i class="bx bx-edit bx-md fs-5 text-black"></i>
                                           </a>`;
                               var del = `<a href="<?= BASE_URL ?>barang/hapus_barang/${encodeURI(btoa(full.id))}" class="del-data">
                                                 <i class="bx bx-trash bx-md fs-5 text-danger"></i>
                                           </a>`;
-                              return `${edit} ${del}`;
+                              return `${detail} ${edit} ${del}`;
                         } 
                   },
 		],
@@ -148,4 +151,30 @@
 			}
 		})
 	});
+	
+	function detailharga(idbarang){
+	    $.get("<?=BASE_URL?>barang/list_harga/" + idbarang, function(data, status) {
+            let mdata = JSON.parse(data);
+            let html = '';
+        
+            mdata.forEach(item => {
+                html += `
+                    <tr>
+                        <td>${item.tanggal}</td>
+                        <td>${Number(item.harga1).toLocaleString('id-ID')}</td>
+                        <td>${Number(item.harga2).toLocaleString('id-ID')}</td>
+                        <td>${Number(item.harga3).toLocaleString('id-ID')}</td>
+                        <td>${item.disc_fxd}</td>
+                        <td>${(item.disc_pct * 100).toFixed(2)}%</td>
+                    </tr>
+                `;
+            });
+        
+            // Insert rows into the table body
+            $('#modalDataBody').html(html);
+            $("#detailharga").modal('show');
+        });
+
+
+	}
 </script>

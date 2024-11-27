@@ -26,17 +26,6 @@
         <!-- Content -->
         <div class="container-xxl flex-grow-1 container-p-y">
             <div class="row">
-                <div class="col-lg-12 order-0">
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-12 mb-2">
-                            <div class="card">
-                                <div class="card-body">
-                                    <a href="<?= BASE_URL?>stok/tambah_stokbarang" class="btn btn-primary">Tambah Stok</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="col-lg-12 mb-4 order-1">
                     <div class="card border-expat w-100">
                         <div class="card-body">
@@ -44,14 +33,11 @@
                             <table id="table_list" class="table table-striped" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>Barcode</th>
                                         <th>Barang</th>
                                         <th>Kategori</th>
-                                        <th>Stok</th>
-                                        <!-- <th>Harga 2</th>
-                                        <th>Disc (%)</th>
-                                        <th>Disc (fxd)</th>
-                                        <th>Action</th> -->
+                                        <th>Stok System</th>
+                                        <th>Stok Riil</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -81,3 +67,35 @@
     <!-- Content wrapper -->
 
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="detailbarcode" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Detail Barcode</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Barcode</th>
+              <th>Exp. Date</th>
+              <th>System</th>
+              <th>Riil</th>
+              <th>Keterangan</th>
+            </tr>
+          </thead>
+          <tbody id="modalDataBody">
+            <!-- Data will be inserted here -->
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+

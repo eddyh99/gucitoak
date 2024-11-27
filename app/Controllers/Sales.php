@@ -87,6 +87,8 @@ class Sales extends BaseController
             'kota'          => trim(htmlspecialchars($this->request->getVar('kota'))),
             'telp'          => trim(htmlspecialchars($this->request->getVar('telp'))),
             'omzet'         => trim(filter_var($this->request->getVar('omzet'), FILTER_SANITIZE_NUMBER_INT)),
+            'gajipokok'     => trim(filter_var($this->request->getVar('gapok'), FILTER_SANITIZE_NUMBER_INT)),
+            'komisi'        => trim(filter_var($this->request->getVar('komisi'), FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION)),
         ];
 
 
@@ -179,6 +181,8 @@ class Sales extends BaseController
             'kota'          => trim(htmlspecialchars($this->request->getVar('kota'))),
             'telp'          => trim(htmlspecialchars($this->request->getVar('telp'))),
             'omzet'         => trim(filter_var($this->request->getVar('omzet'), FILTER_SANITIZE_NUMBER_INT)),
+            'gajipokok'     => trim(filter_var($this->request->getVar('gapok'), FILTER_SANITIZE_NUMBER_INT)),
+            'komisi'        => trim(filter_var($this->request->getVar('komisi'), FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION)),
         ];
         
 
@@ -258,6 +262,15 @@ class Sales extends BaseController
 
         return view('admin/layout/wrapper', $mdata);
     }
+    
+    public function list_all_salesbarang(){
+        $url = URLAPI . "/v1/sales/getall_salesbarang";
+		$response = gucitoakAPI($url);
+        $result = $response->message;
+        echo json_encode($result);
+        die;
+
+    }
 
     public function assignsales_proccess()
     {
@@ -294,23 +307,19 @@ class Sales extends BaseController
             array_push($data, $temp);
         }
 
-
         // CALL API
         $url = URLAPI . "/v1/sales/add_produk";
-        $response = gucitoakAPI($url, $data);
+        $response = gucitoakAPI($url, json_encode($data));
         $result = $response->message;
 
         // Check response API
         if($response->code == 200){
             session()->setFlashdata('success', $result);
-            return redirect()->to(BASE_URL . "sales");
+            return redirect()->to(BASE_URL . "sales/list_assign_sales");
         }else{
             session()->setFlashdata('error', $result);
-            return redirect()->to(BASE_URL . "sales");
+            return redirect()->to(BASE_URL . "sales/assign_sales");
         }
-        echo '<pre>'.print_r($data,true).'</pre>';
-        die;
-
     }
 
 

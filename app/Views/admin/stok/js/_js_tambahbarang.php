@@ -31,31 +31,43 @@
 		},
         "columns": [
 			{ data: 'barcode' },
-			{ data: 'barcode' },
-			{ data: 'barcode' },
-			{ data: 'barcode' },
+			{ data: 'expdate' },
+			{ data: 'barang' },
+			{ data: 'stok' },
 			{ data: 'barcode' },
 		],
       });
 
-    // On Change pilih barang menampilkan modal
-    $("#barang").on("change", function() {
-        // console.log( this.value );
-        $("#stokModal").modal("show");
-        const barcode = $("#barcode").val();
-
-        // Assign expdate last 4 number dari barcode
-        $("#hiddenexpdate").val(barcode.slice(-4));
-        $(".preview-expdate").text(barcode.slice(-4));
-        console.log(barcode.slice(-4) + "EXPDATE BARANG ONCHANGE");
-        
-    });
 
     // On Keydown scan barcode menampilkan modal
-    $("#barcode").on("keydown", function() {
-        // console.log( this.value );
-        $("#stokModal").modal("show");
+    $("#barcode").on("keypress", function(e) {
+        if (e.which === 13) { // Check if Enter key is pressed
+            if ($("#barang").val()==""){
+                alert("Silahkan pilih barang terlebih dahulu");
+                return;
+            }
+            if ($.trim($(this).val()) != "") {
+                const barcode = $(this).val();
+    
+                // Extract the last 6 digits for the date
+                const lastSix = barcode.slice(-6);
+                const day = lastSix.slice(0, 2);
+                const month = lastSix.slice(2, 4);
+                const year = lastSix.slice(4, 6);
+    
+                // Format as d/m/y
+                const formattedDate = `${day}/${month}/${year}`;
+    
+                // Display or use the formatted date
+                $("#hiddenexpdate").val(formattedDate);
+                $(".preview-expdate").text(formattedDate);
+                $("#stokModal").modal("show");
+            }
+        }
     });
+
+
+
 
     // On Click pilih batal tambah stok set semua null input
     $("#batalstok").on("click", function() {
@@ -73,7 +85,8 @@
         // Initial Variable
         const barcode = $("#barcode").val();
         const hiddenexpdate = $("#hiddenexpdate").val();
-        const barang = $("#barang").val();
+        const kodebrg = $("#barang").val();
+        const barang =$("#barang").select2('data')[0].text;
         const validationstok = $("#stok");
         validationstok.prop('required',true);
         const stok = $("#stok").val();
@@ -84,11 +97,14 @@
             e.preventDefault();
             
             let mdata = {
+                "kodebrg": kodebrg,
                 "barcode": barcode, 
                 "expdate": hiddenexpdate,
-                "barang": barang,
-                "stok": stok
+                "barang" : barang,
+                "stok"   : stok
             }
+            
+             console.log(mdata);
 
             $.ajax({
                 url: `<?= BASE_URL ?>stok/save_stok_session`,
@@ -98,6 +114,8 @@
                     console.log(response);
                     table.ajax.reload();
                     $("#stokModal").modal("toggle");
+                    $("#barcode").val(null);
+                    $("#stok").val(null);
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     console.log(textStatus);
@@ -123,5 +141,9 @@
                 console.log(textStatus);
             }
         });
+    })
+    
+    $("#submit").on("click", function(){
+        window.location="<?= BASE_URL ?>stok/savestok";
     })
 </script>

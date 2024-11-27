@@ -6,64 +6,47 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 
-<style>
-    .low-stock {
-        background-color: #FFB6C1 !important; /* Red background for low stock */
-    }
-
-    .low-stock td {
-        color: white !important; /* White text color for all cells in low stock rows */
-    }
-</style>
-
-
 
 <script>
-    $(function () { 
-        setTimeout(() => {
-            $("#failedtoast").toast('show')
-            $("#successtoast").toast('show')
-        }, 0);
-    });     
-  
-    $('#table_list').DataTable({
-        "scrollX": true,
-        "dom": 'Bfrtip',
-        "buttons": [
-            'excel', 'pdf',
-        ],
-        "ajax": {
-            "url": "<?= BASE_URL ?>stok/list_all_stokbarang",
-            "type": "POST",
-            "dataSrc": function (data) {
-                console.log(data);
-                return data;							
-            }
-        },
-        "columns": [
-            { data: 'nama_barang' },
-            { data: 'kategori' },
-            { data: 'stok' },
-            { 
+      $(function () { 
+            setTimeout(() => {
+                  $("#failedtoast").toast('show')
+                  $("#successtoast").toast('show')
+            }, 0)
+      });     
+      
+      $('#table_list').DataTable({
+            "scrollX": true,
+		"ajax": {
+			"url": "<?= BASE_URL ?>opname/listopname",
+			"type": "POST",
+			"dataSrc":function (data){
+				console.log(data);
+				return data;							
+			}
+		},
+            "columns": [
+			{ data: 'nama_barang' },
+			{ data: 'kategori' },
+			{ data: 'stok' },
+			{ data: null, "mRender": function(data, type, full, meta) {
+                    return parseInt(data.stok)+parseInt(data.riil)			    
+			    }
+			},
+			{ 
                 data: null,
                 render: function (data, type, row) {
-                    var detail = `<a href="#" onclick='detailharga("`+encodeURI(btoa(data.kodebrg))+`")'>
+                    var detail = `<a href="#" onclick='detailbarcode("`+encodeURI(btoa(data.kodebrg))+`")'>
                                                 <i class="bx bx-detail bx-md fs-5 text-primary"></i>
                                           </a>`;
                     return `${detail}`;
                 }
             },
-        ],
-        "rowCallback": function(row, data, index) {
-            // Check if stok is less than or equal to min
-            if (data.stok <= data.min) {
-                $(row).addClass('low-stock');
-            }
-        }
-    });
-    
-    function detailharga(idbarang) {
-        $.get("<?=BASE_URL?>stok/list_barcode/" + idbarang, function(data, status) {
+		],
+      });
+      
+    function detailbarcode(idbarang) {
+        $.get("<?=BASE_URL?>opname/list_barcode/" + idbarang, function(data, status) {
             let mdata = JSON.parse(data);
             let html = '';
         
@@ -77,7 +60,9 @@
                     <tr>
                         <td>${item.barcode}</td>
                         <td>${formattedDate}</td>
-                        <td>${item.jumlah}</td>
+                        <td>${item.system_stok}</td>
+                        <td>${item.riil}</td>
+                        <td>${item.keterangan}</td>
                     </tr>
                 `;
             });
@@ -87,5 +72,5 @@
             $("#detailbarcode").modal('show');
         });
     };
-
+      
 </script>

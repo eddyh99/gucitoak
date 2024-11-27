@@ -232,6 +232,14 @@ class Barang extends BaseController
             return redirect()->to(BASE_URL . "barang");
         }
     }
+    
+    public function list_harga($id){
+        $id=base64_decode($id);
+        $url = URLAPI . "/v1/barang/list_harga?id=".$id;
+		$response = gucitoakAPI($url);
+        $result = $response->message;
+        echo json_encode($result);
 
+    }
 
 }
