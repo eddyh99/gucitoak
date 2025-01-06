@@ -1,0 +1,51 @@
+INFO - 2024-12-01 01:06:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-01 01:06:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-01 01:06:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-01 01:06:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-01 03:45:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-01 03:45:53 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "admin/penjualan/index.php"
+[Method: GET, Route: penjualan]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/penjualan/index.php')
+ 2 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('admin/penjualan/index', [], true)
+ 3 APPPATH/Views/admin/layout/wrapper.php(5): view('admin/penjualan/index')
+ 4 SYSTEMPATH/View/View.php(234): include('/home/trxspider/selling/gucitoak.softwarebali.com/app/Views/admin/layout/wrapper.php')
+ 5 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('admin/layout/wrapper', [], true)
+ 7 APPPATH/Controllers/Penjualan.php(17): view('admin/layout/wrapper', [...])
+ 8 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Penjualan->index()
+ 9 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+10 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-12-01 03:46:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-01 03:46:38 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "admin/penjualan/js/_js_index.php"
+[Method: GET, Route: penjualan]
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 41.
+ 1 SYSTEMPATH/View/View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/penjualan/js/_js_index.php')
+ 2 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('admin/penjualan/js/_js_index', [], true)
+ 3 APPPATH/Views/admin/layout/footer.php(38): view('admin/penjualan/js/_js_index')
+ 4 APPPATH/Views/admin/layout/wrapper.php(7): require_once('/home/trxspider/selling/gucitoak.softwarebali.com/app/Views/admin/layout/footer.php')
+ 5 SYSTEMPATH/View/View.php(234): include('/home/trxspider/selling/gucitoak.softwarebali.com/app/Views/admin/layout/wrapper.php')
+ 6 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 7 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('admin/layout/wrapper', [], true)
+ 8 APPPATH/Controllers/Penjualan.php(17): view('admin/layout/wrapper', [...])
+ 9 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Penjualan->index()
+10 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Penjualan))
+11 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-12-01 03:47:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-01 04:20:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-01 04:20:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-01 04:20:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-01 04:21:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-01 04:21:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-01 04:21:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-01 04:50:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-01 04:50:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-01 04:50:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-01 04:50:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-12-01 04:51:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

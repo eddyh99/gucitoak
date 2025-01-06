@@ -1,0 +1,11 @@
+INFO - 2024-12-27 17:05:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-12-27 17:05:54 --> ErrorException: Undefined property: stdClass::$message
+[Method: GET, Route: retur/tambah_returpel]
+in APPPATH/Controllers/Retur.php on line 37.
+ 1 APPPATH/Controllers/Retur.php(37): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$message', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Retur.php', 37)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Retur->tambah_returpel()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Retur))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

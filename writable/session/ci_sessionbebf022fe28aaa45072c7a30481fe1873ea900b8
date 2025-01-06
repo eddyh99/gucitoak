@@ -1,0 +1,9 @@
+__ci_last_regenerate|i:1726230380;_ci_previous_url|s:45:"http://localhost/index.php/sales/tambah_sales";logged_user|a:2:{s:8:"username";s:5:"admin";s:8:"password";s:40:"f865b53623b121fd34ee5426c792e5c33af8c227";}failed|s:238:"<!-- DEBUG-VIEW START 1 SYSTEMPATH/Validation/Views/list.php -->
+	<div class="errors" role="alert">
+		<ul>
+					<li>The Kota field is required.</li>
+				</ul>
+	</div>
+
+<!-- DEBUG-VIEW ENDED 1 SYSTEMPATH/Validation/Views/list.php -->
+";__ci_vars|a:3:{s:6:"failed";s:3:"old";s:13:"_ci_old_input";s:3:"old";s:21:"_ci_validation_errors";s:3:"old";}_ci_old_input|a:2:{s:3:"get";a:0:{}s:4:"post";a:5:{s:5:"sales";s:12:"Agus Santoso";s:6:"alamat";s:14:"Jl Balizoo 10A";s:4:"kota";s:0:"";s:4:"telp";s:11:"08225545111";s:5:"omzet";s:7:"1000000";}}_ci_validation_errors|a:1:{s:4:"kota";s:27:"The Kota field is required.";}

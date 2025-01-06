@@ -1,0 +1,1 @@
+__ci_last_regenerate|i:1729255518;_ci_previous_url|s:27:"http://localhost/index.php/";failed|O:8:"stdClass":2:{s:4:"code";s:3:"400";s:7:"message";s:18:"Username not found";}__ci_vars|a:2:{s:6:"failed";s:3:"old";s:13:"_ci_old_input";s:3:"old";}_ci_old_input|a:2:{s:3:"get";a:0:{}s:4:"post";a:2:{s:8:"username";s:5:"Admin";s:8:"password";s:8:"admin123";}}

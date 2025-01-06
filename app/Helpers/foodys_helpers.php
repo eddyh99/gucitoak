@@ -1,7 +1,7 @@
 <?php
 function foodysAPI($url, $postData = NULL)
 {
-    $token = @sha1($_SESSION["logged_user"]["username"].$_SESSION["logged_user"]["passwd"]);
+    $token = @sha1($_SESSION["logged_user"]["username"].$_SESSION["logged_user"]["password"]);
 
     $ch     = curl_init($url);
     $headers    = array(

@@ -1,0 +1,11 @@
+__ci_last_regenerate|i:1735108560;failed|s:346:"<!-- DEBUG-VIEW START 1 SYSTEMPATH/Validation/Views/list.php -->
+	<div class="errors" role="alert">
+		<ul>
+					<li>The Nama Sales field is required.</li>
+					<li>The Nama Pelanggan field is required.</li>
+					<li>The Pembayaran field is required.</li>
+				</ul>
+	</div>
+
+<!-- DEBUG-VIEW ENDED 1 SYSTEMPATH/Validation/Views/list.php -->
+";__ci_vars|a:3:{s:6:"failed";s:3:"old";s:13:"_ci_old_input";s:3:"old";s:21:"_ci_validation_errors";s:3:"old";}_ci_old_input|a:2:{s:3:"get";a:0:{}s:4:"post";a:0:{}}_ci_validation_errors|a:3:{s:5:"sales";s:33:"The Nama Sales field is required.";s:9:"pelanggan";s:37:"The Nama Pelanggan field is required.";s:10:"pembayaran";s:33:"The Pembayaran field is required.";}

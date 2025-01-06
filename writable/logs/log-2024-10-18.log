@@ -1,0 +1,114 @@
+INFO - 2024-10-18 10:48:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-18 10:49:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-10-18 10:49:06 --> ErrorException: Undefined property: stdClass::$code
+[Method: POST, Route: auth/signin_proccess]
+in APPPATH/Controllers/Auth.php on line 60.
+ 1 APPPATH/Controllers/Auth.php(60): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$code', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Auth.php', 60)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Auth->signin_proccess()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-10-18 10:50:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-18 10:50:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-18 10:50:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-18 10:51:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-18 10:51:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-18 10:51:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-18 12:13:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-18 12:14:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-18 12:14:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-10-18 12:14:08 --> Error: Object of class stdClass could not be converted to string
+[Method: GET, Route: /]
+in APPPATH/Views/auth/index.php on line 9.
+ 1 SYSTEMPATH/View/View.php(234): include()
+ 2 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('auth/index', [], true)
+ 4 APPPATH/Views/auth/layout/wrapper.php(4): view('auth/index')
+ 5 SYSTEMPATH/View/View.php(234): include('/home/trxspider/selling/gucitoak.softwarebali.com/app/Views/auth/layout/wrapper.php')
+ 6 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 7 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('auth/layout/wrapper', [], true)
+ 8 APPPATH/Controllers/Auth.php(22): view('auth/layout/wrapper', [...])
+ 9 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Auth->index()
+10 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+11 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-10-18 12:33:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-18 12:33:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-18 12:33:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-18 12:33:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-18 12:34:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-18 12:34:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-18 12:34:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-18 12:34:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-10-18 12:41:17 --> Error: Object of class stdClass could not be converted to string
+[Method: GET, Route: /]
+in APPPATH/Views/auth/index.php on line 9.
+ 1 SYSTEMPATH/View/View.php(234): include()
+ 2 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('auth/index', [], true)
+ 4 APPPATH/Views/auth/layout/wrapper.php(4): view('auth/index')
+ 5 SYSTEMPATH/View/View.php(234): include('/home/trxspider/selling/gucitoak.softwarebali.com/app/Views/auth/layout/wrapper.php')
+ 6 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 7 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('auth/layout/wrapper', [], true)
+ 8 APPPATH/Controllers/Auth.php(22): view('auth/layout/wrapper', [...])
+ 9 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Auth->index()
+10 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+11 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-10-18 12:41:34 --> Error: Object of class stdClass could not be converted to string
+[Method: GET, Route: /]
+in APPPATH/Views/auth/index.php on line 9.
+ 1 SYSTEMPATH/View/View.php(234): include()
+ 2 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('auth/index', [], true)
+ 4 APPPATH/Views/auth/layout/wrapper.php(4): view('auth/index')
+ 5 SYSTEMPATH/View/View.php(234): include('/home/trxspider/selling/gucitoak.softwarebali.com/app/Views/auth/layout/wrapper.php')
+ 6 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 7 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('auth/layout/wrapper', [], true)
+ 8 APPPATH/Controllers/Auth.php(22): view('auth/layout/wrapper', [...])
+ 9 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Auth->index()
+10 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+11 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-10-18 12:42:51 --> Error: Object of class stdClass could not be converted to string
+[Method: GET, Route: /]
+in APPPATH/Views/auth/index.php on line 9.
+ 1 SYSTEMPATH/View/View.php(234): include()
+ 2 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('auth/index', [], true)
+ 4 APPPATH/Views/auth/layout/wrapper.php(4): view('auth/index')
+ 5 SYSTEMPATH/View/View.php(234): include('/home/trxspider/selling/gucitoak.softwarebali.com/app/Views/auth/layout/wrapper.php')
+ 6 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 7 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('auth/layout/wrapper', [], true)
+ 8 APPPATH/Controllers/Auth.php(22): view('auth/layout/wrapper', [...])
+ 9 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Auth->index()
+10 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+11 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-10-18 12:45:26 --> Error: Object of class stdClass could not be converted to string
+[Method: GET, Route: /]
+in APPPATH/Views/auth/index.php on line 9.
+ 1 SYSTEMPATH/View/View.php(234): include()
+ 2 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('auth/index', [], true)
+ 4 APPPATH/Views/auth/layout/wrapper.php(4): view('auth/index')
+ 5 SYSTEMPATH/View/View.php(234): include('/home/trxspider/selling/gucitoak.softwarebali.com/app/Views/auth/layout/wrapper.php')
+ 6 SYSTEMPATH/View/View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 7 SYSTEMPATH/Common.php(1171): CodeIgniter\View\View->render('auth/layout/wrapper', [], true)
+ 8 APPPATH/Controllers/Auth.php(22): view('auth/layout/wrapper', [...])
+ 9 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Auth->index()
+10 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+11 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

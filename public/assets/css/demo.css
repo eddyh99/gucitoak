@@ -4,7 +4,7 @@
 ******************************************************************************/
 
 .menu .app-brand.demo {
-  height: 100px;
+  height: 60px;
   margin: 12px 0px;
 }
 
@@ -134,3 +134,141 @@
   transition: all .2s ease-in-out;
   z-index: -1;
 }
+
+
+.layout-navbar .dropdown-shortcuts-list {
+  max-height: 30rem !important;
+  overflow-y: scroll;
+}
+
+.layout-navbar .dropdown-shortcuts-item {
+  text-align: center !important;
+  padding: 1.5rem !important;
+}
+
+.layout-navbar .dropdown-shortcuts-item .dropdown-shortcuts-icon {
+  height: 3.125rem;
+  width: 3.125rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #edeef0;
+  color: #384551
+}
+
+.layout-navbar .dropdown-shortcuts-item a, 
+.layout-navbar .dropdown-shortcuts-item a:hover {
+  display: block;
+  margin-bottom: 0;
+  color: #384551 !important;
+  font-weight: 500;
+}
+
+.stretched-link::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  content: "";
+}
+
+.menu-icon {
+  font-size: 2.5rem ;
+}
+
+.menu-vertical, .menu-vertical .menu-block, .menu-vertical .menu-inner > .menu-item, .menu-vertical .menu-inner > .menu-header {
+  width: 11.25rem;
+}
+
+@media (min-width: 1200px) {
+  .layout-menu-fixed:not(.layout-menu-collapsed) .layout-page, .layout-menu-fixed-offcanvas:not(.layout-menu-collapsed) .layout-page {
+      padding-left: 10.25rem !important;
+  }
+}
+
+.menu-link {
+  display: flex ;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.menu-vertical .menu-icon {
+  width: auto !important;
+}
+
+.menu-toggle::after {
+  display: none !important;
+}
+
+.menu-vertical .menu-item .menu-toggle {
+  padding-right: 0.625rem;
+}
+
+.menu-item.open > .menu-sub {
+  display: flex;
+}
+
+.menu-item.open:hover > .menu-sub {
+  display: flex;
+}
+
+.bg-menu-theme .menu-sub > .menu-item > .menu-link:before {
+  display: none;
+}
+
+.menu-link-inside, .menu-link-inside i {
+  color: #697a8d;
+}
+
+.sub-menu {
+  background-color: #ffffff;
+  position: fixed;
+  left: 11rem;
+  top: 0;
+  z-index: 9999999;
+  display: none;
+  height: 100vh;
+  padding-top: 1rem;
+  box-shadow: -3px 3px 3px #0000000c;
+  overflow-y: auto;
+}
+
+.sub-menu .ul-sub-menu {
+  padding-left: 0rem;
+}
+
+body:has(.menu-item.master:hover) .sub-menu.master,
+.sub-menu.master:hover{
+  display: block;
+}
+
+
+body:has(.menu-item.setup:hover) .sub-menu.setup,
+.sub-menu.setup:hover{
+  display: block;
+}
+
+body:has(.menu-item.persediaan:hover) .sub-menu.persediaan,
+.sub-menu.persediaan:hover{
+  display: block;
+}
+
+body:has(.menu-item.pembelian:hover) .sub-menu.pembelian,
+.sub-menu.pembelian:hover{
+  display: block;
+}
+
+body:has(.menu-item.penjualan:hover) .sub-menu.penjualan,
+.sub-menu.penjualan:hover{
+  display: block;
+}
+
+.dt-buttons {
+  margin-top: 1rem !important;
+}
+

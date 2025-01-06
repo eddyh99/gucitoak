@@ -4,8 +4,15 @@ namespace App\Controllers;
 
 class Auth extends BaseController
 {
+    
     public function index()
     {
+        $session = session();
+        if($session->has('logged_user')){
+            return redirect()->to(BASE_URL . "dashboard");
+            exit();
+        }
+
         $mdata = [
             'title'     => 'Sign in - ' . NAMETITLE,
             'content'   => 'auth/index',
@@ -22,41 +29,61 @@ class Auth extends BaseController
         $rules = $this->validate([
             'username'     => [
                 'label'     => 'Username or Email',
-                'rules'     => 'trim|required'
+                'rules'     => 'required'
             ],
             'password'     => [
                 'label'     => 'Password',
-                'rules'     => 'trim|required'
+                'rules'     => 'required'
             ],
         ]);
 
         // Checking Validation
         if(!$rules){
             session()->setFlashdata('failed', $this->validation->listErrors());
-            return redirect()->to(BASE_URL )->withInput();
+            return redirect()->to(BASE_URL)->withInput();
         }
         
-        // Initial Data
+        // Initial Data 
+        // FILTER HTML SPECIAL CHARS
+        // FILTER TRIM CHARS
+        // ENCRPT SHA1 PASSWORD
         $mdata = [
-            'username'  => htmlspecialchars($this->request->getVar('username')),
+            'username'  => trim(htmlspecialchars($this->request->getVar('username'))),
             'password'  => sha1(htmlspecialchars($this->request->getVar('password'))),
         ];
         
-        // @todo::Mengubah endpoint beserta field nya
+        // Call API
         $url = URLAPI . "/auth/signin";
-		$response = foodysAPI($url, json_encode($mdata));
-        $result = $response->result->messages;
+		$response = gucitoakAPI($url, json_encode($mdata));
 
-        if (@$response->status != 200) {
-            session()->setFlashdata('failed', $result->error);
+        // Check Response if error
+        if ($response->code != 200) {
+            session()->setFlashdata('failed', $response->message);
             return redirect()->to(BASE_URL)->withInput();
+            exit();
 		}
 
+        // Reduce call response 
+        $result = $response->message;
+
+        // Assign role to mdata array
+        $mdata['role']  = $result->role;
+
+        // Set SESSION logged_user
         $this->session->set('logged_user', $mdata);
 
-        // @todo::Meng redirect sukses login
+        // If Success set session and redirect
         session()->setFlashdata('success', "Selamat datang <b>".$result->username."</b>");
         return redirect()->to(BASE_URL . "dashboard");
+        exit();
+    }
+    
+    
+    public function logout(){
+        // unset($_SESSION['item']);
+        session()->destroy();
+        return redirect()->to(BASE_URL)->withInput();
+        exit;
     }
 
 }

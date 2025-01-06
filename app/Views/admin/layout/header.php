@@ -26,18 +26,15 @@
         <!-- Core CSS -->
         <link rel="stylesheet" href="<?= BASE_URL ?>assets/vendor/css/core.css" class="template-customizer-core-css" />
         <link rel="stylesheet" href="<?= BASE_URL ?>assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
-        <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/demo.css" />
+        <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/styles.css?v=1" />
 
         <!-- Vendors CSS -->
         <link rel="stylesheet" href="<?= BASE_URL ?>assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+        <!-- <link rel="stylesheet" href="<?= BASE_URL ?>assets/vendor/libs/select2/select2.css" /> -->
 
         <!-- Datatables CSS -->
         <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" />
-        <!-- <link rel="stylesheet" href="<?= BASE_URL ?>assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css" />
-        <link rel="stylesheet" href="<?= BASE_URL ?>assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css" />
-        <link rel="stylesheet" href="<?= BASE_URL ?>assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css" /> -->
-
-        <!-- Page CSS -->
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
         <!-- Helpers -->
         <script src="<?= BASE_URL ?>assets/vendor/js/helpers.js"></script>
 
