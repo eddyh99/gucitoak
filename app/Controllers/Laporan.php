@@ -95,6 +95,47 @@ class Laporan extends BaseController
         echo json_encode($response,true);
         
     }
+
+    public function retursup() {
+        $mdata = [
+            'title'     => 'Mutasi Stok - ' . NAMETITLE,
+            'content'   => 'admin/laporan/retursup',
+            'extra'     => 'admin/laporan/js/_js_retursup',
+            'menuactive_laporan'   => 'active open',
+            'user_active'   => 'active'
+        ];
+
+        return view('admin/layout/wrapper', $mdata);
+    }
+
+    public function get_retursup(){
+        $bulan  = $this->request->getVar('bulan');
+        $tahun  = $this->request->getVar('tahun');
+        $url = URLAPI . "/v1/laporan/retursup?bulan=".$bulan."&tahun=".$tahun;
+        $response = gucitoakAPI($url)->message;
+        echo json_encode($response,true);
+        
+    }
     
+    public function returpel() {
+        $mdata = [
+            'title'     => 'Mutasi Stok - ' . NAMETITLE,
+            'content'   => 'admin/laporan/returpel',
+            'extra'     => 'admin/laporan/js/_js_returpel',
+            'menuactive_laporan'   => 'active open',
+            'user_active'   => 'active'
+        ];
+
+        return view('admin/layout/wrapper', $mdata);
+    }
+
+    public function get_returpel(){
+        $bulan  = $this->request->getVar('bulan');
+        $tahun  = $this->request->getVar('tahun');
+        $url = URLAPI . "/v1/laporan/returpel?bulan=".$bulan."&tahun=".$tahun;
+        $response = gucitoakAPI($url)->message;
+        echo json_encode($response,true);
+        
+    }
 
 }
