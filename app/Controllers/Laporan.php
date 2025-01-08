@@ -97,12 +97,17 @@ class Laporan extends BaseController
     }
 
     public function retursup() {
+        $url = URLAPI . "/v1/suplier/getall_suplier";
+        $response = gucitoakAPI($url);
+        $suplier = $response->message;
+
         $mdata = [
             'title'     => 'Mutasi Stok - ' . NAMETITLE,
             'content'   => 'admin/laporan/retursup',
             'extra'     => 'admin/laporan/js/_js_retursup',
             'menuactive_laporan'   => 'active open',
-            'user_active'   => 'active'
+            'user_active'   => 'active',
+            'suplier' => $suplier
         ];
 
         return view('admin/layout/wrapper', $mdata);
@@ -111,19 +116,26 @@ class Laporan extends BaseController
     public function get_retursup(){
         $bulan  = $this->request->getVar('bulan');
         $tahun  = $this->request->getVar('tahun');
-        $url = URLAPI . "/v1/laporan/retursup?bulan=".$bulan."&tahun=".$tahun;
+        $suplier = $this->request->getVar('suplier');
+
+        $url = URLAPI . "/v1/laporan/retursup?bulan=".$bulan."&tahun=".$tahun.(!empty($suplier) ? "&suplier=" . $suplier : "");
         $response = gucitoakAPI($url)->message;
         echo json_encode($response,true);
         
     }
     
     public function returpel() {
+        $url = URLAPI . "/v1/pelanggan/getall_pelanggan";
+        $response = gucitoakAPI($url);
+        $pelanggan = $response->message;
+
         $mdata = [
             'title'     => 'Mutasi Stok - ' . NAMETITLE,
             'content'   => 'admin/laporan/returpel',
             'extra'     => 'admin/laporan/js/_js_returpel',
             'menuactive_laporan'   => 'active open',
-            'user_active'   => 'active'
+            'user_active'   => 'active',
+            'pelanggan' => $pelanggan
         ];
 
         return view('admin/layout/wrapper', $mdata);
@@ -132,7 +144,9 @@ class Laporan extends BaseController
     public function get_returpel(){
         $bulan  = $this->request->getVar('bulan');
         $tahun  = $this->request->getVar('tahun');
-        $url = URLAPI . "/v1/laporan/returpel?bulan=".$bulan."&tahun=".$tahun;
+        $pelanggan = $this->request->getVar('pelanggan');
+
+        $url = URLAPI . "/v1/laporan/returpel?bulan=".$bulan."&tahun=".$tahun.(!empty($pelanggan) ? "&pelanggan=" . $pelanggan : "");
         $response = gucitoakAPI($url)->message;
         echo json_encode($response,true);
         

@@ -53,6 +53,14 @@ if(!empty(session('failed'))): ?>
                 				<div class="col-sm-1">
                 				    <input type="text" name="tahun" id="tahun" class="form-control" value="<?=date("Y")?>">
                 				</div>
+                                <div class="col-3">
+                                    <select name="pelanggan" id="pelanggan" class="form-select form-select">
+                                        <option value="" selected>All</option>
+                                        <?php foreach ($pelanggan as $pel) : ?>
+                                            <option value="<?= $pel->id ?>"><?= $pel->namapelanggan ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
                                 <div class="col-2">
                                     <button class="btn btn-primary" id="lihat">Lihat</button>
                                 </div>

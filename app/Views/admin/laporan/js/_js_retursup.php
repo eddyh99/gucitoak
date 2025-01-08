@@ -47,6 +47,7 @@ var table=$('#table_list').DataTable({
 		"data": function(d) {
             d.bulan = $('#bulan').val();
             d.tahun = $('#tahun').val();
+            d.suplier = $('#suplier').val();
         },
 		"dataSrc":function (data){
 			console.log(data);
