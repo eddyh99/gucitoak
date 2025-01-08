@@ -36,11 +36,12 @@ if(!empty(session('failed'))): ?>
                             <table id="table_list" class="table table-striped" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>Barang</th>
+                                        <th>Nama Barang</th>
                                         <th>Kategori</th>
-                                        <th>Min</th>
-                                        <th>Stok</th>
-                                        <th>Harga Jual</th>
+                                        <th>Stok Min</th>
+                                        <th>Harga 1</th>
+                                        <th>Harga 2</th>
+                                        <th>Harga 3</th>
                                         <th>Harga Beli</th>
                                     </tr>
                                 </thead>
@@ -70,35 +71,4 @@ if(!empty(session('failed'))): ?>
     </div>
     <!-- Content wrapper -->
 
-</div>
-
-
-<!-- Modal -->
-<div class="modal fade" id="detailbarang" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Detail Penjualan</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>Nama Barang</th>
-              <th>Jumlah</th>
-              <th>Harga</th>
-              <th>Total</th>
-            </tr>
-          </thead>
-          <tbody id="modalDataBody">
-            <!-- Data will be inserted here -->
-          </tbody>
-        </table>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
 </div>

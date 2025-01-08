@@ -5,50 +5,72 @@
 
 
 <script>
-$(function () { 
-    setTimeout(() => {
-          $("#failedtoast").toast('show')
-          $("#successtoast").toast('show')
-    }, 0)
-});    
+      $(function () { 
+            setTimeout(() => {
+                  $("#failedtoast").toast('show')
+                  $("#successtoast").toast('show')
+            }, 0)
+      });      
 
-var table=$('#table_list').DataTable({
-        "scrollX": true,
-        "dom": 'lBfrtip',
-        "buttons": [
-              {
-                    extend: 'pdf',
-                    exportOptions: {
-                          columns: "th:not(:last-child)" //remove last column in pdf
-                    }
-              }
-              , 
-              'excel'
-        ],
-        "lengthMenu": [
-              [ 10, 25, 50, -1 ],
-              [ '10 rows', '25 rows', '50 rows', 'Show all' ]
-        ],
-	"ajax": {
-		"url": "<?= BASE_URL ?>laporan/get_barang",
-		"type": "POST",
-		"dataSrc":function (data){
-			console.log(data);
-			return data;							
-		}
-	},
-        "columns": [
-		{ data: 'nama_barang' },
-        { data: 'kategori' },
-        { data: 'min' },
-        { data: 'stok' },
-        { data: 'harga_jual' },
-        { data: 'harga_beli' },
-	],
-  });
-  
-  $("#lihat").on("click",function(){
-     table.ajax.reload(); 
-  });
-  
+
+      $('#table_list').DataTable({
+            "scrollX": true,
+            "dom": 'lBfrtip',
+            "buttons": [],
+            "lengthMenu": [
+                  [ 10, 25, 50, -1 ],
+                  [ '10 rows', '25 rows', '50 rows', 'Show all' ]
+            ],
+		"ajax": {
+			"url": "<?= BASE_URL ?>laporan/get_barang",
+			"type": "POST",
+			"dataSrc":function (data){
+				console.log(data);
+				return data;							
+			}
+		},
+            "columns": [
+			{ data: 'namabarang' },
+			{ data: 'namakategori' },
+			{ data: 'stokmin' },
+                  { 
+                   data: "harga1", 
+                   "mRender": function(data, type, full, meta) {
+                        if (type === 'display') {
+                            return parseFloat(data).toLocaleString('en-US', {
+                                minimumFractionDigits: 0,
+                                maximumFractionDigits: 0
+                            });
+                        }
+                        return data;
+                    } 
+                  },
+                  { 
+                   data: "harga2", 
+                   "mRender": function(data, type, full, meta) {
+                        if (type === 'display') {
+                            return parseFloat(data).toLocaleString('en-US', {
+                                minimumFractionDigits: 0,
+                                maximumFractionDigits: 0
+                            });
+                        }
+                        return data;
+                    } 
+                  },
+			{ 
+                   data: "harga3", 
+                   "mRender": function(data, type, full, meta) {
+                        if (type === 'display') {
+                            return parseFloat(data).toLocaleString('en-US', {
+                                minimumFractionDigits: 0,
+                                maximumFractionDigits: 0
+                            });
+                        }
+                        return data;
+                    } 
+                  },
+                  { data: 'harga_beli' },
+		],
+      });
+
 </script>
