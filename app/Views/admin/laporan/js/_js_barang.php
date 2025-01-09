@@ -30,9 +30,11 @@
 			}
 		},
             "columns": [
-			{ data: 'namabarang' },
-			{ data: 'namakategori' },
-			{ data: 'stokmin' },
+			{ data: 'nama_barang' },
+			{ data: 'kategori' },
+			{ data: 'min' },
+			{ data: 'stok' },
+			{ data: 'avg_penjualan' },
                   { 
                    data: "harga1", 
                    "mRender": function(data, type, full, meta) {
@@ -69,7 +71,7 @@
                         return data;
                     } 
                   },
-                  { data: 'harga_beli' },
+                  { data: 'harga_terbaru' },
 		],
       });
 

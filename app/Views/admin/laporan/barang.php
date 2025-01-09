@@ -32,13 +32,15 @@ if(!empty(session('failed'))): ?>
                 <div class="col-lg-12 mb-4 order-1">
                     <div class="card w-100">
                         <div class="card-body">
-                            <h5 class="card-title fw-semibold mb-4 mt-3">Laporan Barang</h5>
+                            <h5 class="card-title fw-semibold mb-4 mt-3">Laporan Stok Min Barang</h5>
                             <table id="table_list" class="table table-striped" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>Nama Barang</th>
                                         <th>Kategori</th>
                                         <th>Stok Min</th>
+                                        <th>Stok</th>
+                                        <th>Avg Jual</th>
                                         <th>Harga 1</th>
                                         <th>Harga 2</th>
                                         <th>Harga 3</th>
