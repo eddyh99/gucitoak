@@ -6,217 +6,86 @@
 
 
 <script>
-    // $("#suplier").select2({
-    //     placeholder: "--- PILIH NOTA ---"
-    // });
-    
+    $("#search").on("click", function(e) {
+        const nonota = $("#nonota").val();
 
-    $("#pembayaran").on("change",function(){
-        if ($(this).val()=="tempo"){
-            $("#tempo").show();
-        }else{
-            $("#tempo").hide();
-        }
-    });
-
-    var table = $('#preview_stok').DataTable({
-        "scrollX": true,
-        "lengthMenu": [
-                [ 10, 25, 50, -1 ],
-                [ '10 rows', '25 rows', '50 rows', 'Show all' ]
-        ],
-		"ajax": {
-			"url": "<?= BASE_URL ?>pembelian/get_list_stokbarang",
-			"type": "POST",
-			"dataSrc":function (data){
-				console.log(data);
-				return data;							
-			}
-		},
-		"drawCallback": function () {
-            var api = this.api();
-    
-            // Use the sum() plugin to calculate the sum of the 'total' column
-            var totalSum = api.column(5, { page: 'current' }).data().sum();
-    
-            // Update the footer with the total sum
-            $(api.table().footer()).find('td.total').html(totalSum.toLocaleString("ID"));
-        },
-        "columns": [
-			{ data: 'barcode' },
-			{ data: 'expdate' },
-			{ data: 'barang' },
-			{ data: 'jml' },
-			{ data: 'harga',render: $.fn.dataTable.render.number( '.', ',','', '' ) },
-			{ data: 'total',render: $.fn.dataTable.render.number( '.', ',','', '' ) },
-			{ 
-                data: null, 
-                render: function(data, type, row) {
-                    return `<button class="btn btn-danger btn-sm delete-row" data-barcode="${row.barcode}">Delete</button>`;
-                }
-            }
-		],
-      });
-
-    let stok=0;
-    $("#barcode").on("keypress", function(e){
-        if (e.which === 13) { // Check if Enter key is pressed
-            let barcodeValue = $(this).val(); // Store the barcode value here
-            
-            $.ajax({
-                url: "<?= BASE_URL ?>opname/detailbarcode/" + barcodeValue,
-                type: "POST",
-                success: function (response) {
-                    try {
-                        let mdata = JSON.parse(response);
-                        console.log("Parsed mdata:", mdata);
-                        
-                        // Check if mdata is defined and has the expected properties
-                        if (mdata && mdata.nama_barang && mdata.stok) {
-                            let barcode = barcodeValue;
-                            stok=mdata.stok;
-                            console.log("Stok:", mdata.stok);
-                            
-                            // Extract the last 6 digits for the date
-                            const lastSix = barcode.slice(-6);
-                            const day = lastSix.slice(0, 2);
-                            const month = lastSix.slice(2, 4);
-                            const year = lastSix.slice(4, 6);
-            
-                            // Format as d/m/y
-                            const formattedDate = `${day}/${month}/${year}`;
-                            
-                            // You can now use mdata values as needed
-                            $("#barang").val(mdata.nama_barang);
-                            $("#expired").val(formattedDate);
-                            $("#stokModal").modal("show");
-                        } else {
-                            console.log("Unexpected response structure:", mdata);
-                        }
-                    } catch (error) {
-                        console.log("Error parsing JSON:", error);
-                    }
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    console.log("AJAX Error:", textStatus);
-                }
-            });
-        }
-    });
-
-
-
-
-    // On Click pilih batal tambah stok set semua null input
-    $("#batalstok").on("click", function() {
-        // Set semua null
-        $("#barang").val(null); 
-        $("#barcode").val(null);
-        $("#expired").val(null);
-        $("#stok").val(null);
-        $("#harga").val(null);
-        $(".preview-expdate").text(null)
-    });
-
-
-    // On Click pilih simpam preview stok
-    $("#simpanpreviewstok").on("click", function(e) {
-        // Initial Variable
-        const barcode = $("#barcode").val();
-        const expired = $("#expired").val();
-        const namabrg = $("#barang").val();
-        const validationstok = $("#stok");
-        validationstok.prop('required',true);
-        const jml = $("#stok").val();
-        const harga = $("#harga").val();
-        
-        
-        // Check jika stok kosong akan tidak refresh page
-        if (stok !== "" && barang !== "" && barcode !== "") {
-            e.preventDefault();
-
-            let mdata = {
-                "barcode": barcode, 
-                "barang": namabrg,
-                "expdate": expired,
-                "jml"    : jml,
-                "harga": harga,
-                "total": parseInt(harga*jml),
-            }
-            
-             console.log(mdata);
-
-            $.ajax({
-                url: `<?= BASE_URL ?>pembelian/save_stok_session`,
-                type: "POST",
-                data: {data: mdata},
-                success: function (response) {
-                    console.log(response);
-                    table.ajax.reload();
-                    $("#stokModal").modal("hide");
-                    $("#harga").val(null); 
-                    $("#barang").val(null); 
-                    $("#barcode").val(null);
-                    $("#expired").val(null);
-                    $("#stok").val(null);
-                    stok=0;
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    console.log(textStatus);
-                }
-            });
-            
-        } else {
-            e.preventDefault();
-            alert("Data tidak boleh kosong")
-        }
-
-    });
-
-    // Event listener for delete button
-    $('#preview_stok').on('click', '.delete-row', function () {
-        var barcode = $(this).data('barcode');
-        
-        // Confirmation dialog
-        if (confirm('Apakah akan membatalkan barang ini?')) {
-            // Perform AJAX call to delete item
-            $.ajax({
-                url: "<?= BASE_URL ?>pembelian/delete_stok_session",
-                type: "POST",
-                data: { barcode: barcode },
-                success: function(response) {
-                    var result = JSON.parse(response);
-                    if (result.success) {
-                        alert('Item deleted successfully!');
-                        table.ajax.reload(); // Reload the table data
-                    } else {
-                        alert('Failed to delete item: ' + result.message);
-                    }
-                },
-                error: function(xhr, status, error) {
-                    alert('An error occurred: ' + error);
-                }
-            });
-        }
-    });
-
-
-    $("#clearallstok").on("click", function(){
         $.ajax({
-            url: `<?= BASE_URL ?>pembelian/clear_stok_session`,
-            type: "POST",
-            success: function (response) {
-                table.ajax.reload();
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                console.log(textStatus);
+            url: "<?= BASE_URL ?>pembayaran/cekNota_pelanggan/" + nonota,
+            type: "GET",
+            success: function(response) {
+                try {
+                    let mdata = JSON.parse(response);
+                    const tanggal = mdata.tanggal.split(" ")[0];
+                    console.log(mdata);
+
+                    $("#tgl").val(tanggal);
+                    $("#pelanggan").val(mdata.namapelanggan);
+                    $("#metode").val(mdata.method);
+                    $("#cicil").prop("disabled", mdata.isLunas == 1);
+                    $("#retur").prop("disabled", mdata.isLunas == 1);
+
+                    if (mdata.isLunas == 1) {
+                        $("#list-cicilan").addClass('d-none')
+                        $(function() {
+                            setTimeout(() => {
+                                $("#successtoast").toast('show')
+                            }, 0)
+                        });
+                        $("#submit").prop("disabled", true);
+                    } else {
+                        table.ajax.reload();
+                        $("#submit").prop("disabled", false);
+                        $("#list-cicilan").removeClass('d-none')
+
+                    }
+
+                } catch (error) {
+                    console.log("Error parsing JSON:", error);
+                }
             }
         });
-    });
-    
-    $("#submit").on('click', function(){
-        $("#frmjual").submit();
     })
-    
 
+
+    var table = $('#table_list').DataTable({
+        "scrollX": false,
+        "dom": 'lBfrtip',
+        "buttons": [],
+        "lengthMenu": [
+            [10, 25, 50, -1],
+            ['10 rows', '25 rows', '50 rows', 'Show all']
+        ],
+        "ajax": {
+            "url": "<?= BASE_URL ?>pembayaran/getCicilan_pelanggan/",
+            "type": "GET",
+            "data": function(d) {
+                d.nota = $("#nonota").val();
+            },
+            "dataSrc": function(data) {
+                console.log(data);
+                return data ?? [];
+            }
+        },
+        "columns": [{
+                data: 'nonota'
+            },
+            {
+                data: 'tanggal'
+            },
+            {
+                data: 'amount'
+            }
+        ],
+        "footerCallback": function(row, data, start, end, display) {
+            var api = this.api();
+            var totalAmount = api.column(2).data().reduce(function(a, b) {
+                return a + (parseFloat(b) || 0);
+            }, 0);
+            $(api.column(2).footer()).html(totalAmount || '');
+        }
+    });
+
+    $("#submit").on('click', function() {
+        $("#frmCicilan").submit();
+    })
 </script>

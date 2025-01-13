@@ -41,4 +41,43 @@ class Pembayaran extends BaseController
 
         return view('admin/layout/wrapper', $mdata);
     }
+
+    public function cekNota_pelanggan($nota) {
+        $url = URLAPI . "/v1/pembayaran/cekNota_pelanggan/?nota=".$nota;
+        $response = gucitoakAPI($url)->message;
+        echo json_encode($response);
+    }
+
+    public function getCicilan_pelanggan() {
+        $nota  = $this->request->getVar('nota');
+        $url = URLAPI . "/v1/pembayaran/getCicilan_pelanggan/?nota=".$nota;
+        $response = gucitoakAPI($url)->message;
+        echo json_encode($response);
+    }
+
+    public function inputCicilan_pelanggan() {
+        // validasi agar cicilan > nota_penjualan
+        // 
+        
+        $cicilan = trim($this->request->getVar('amount'));
+        $r_jual = trim($this->request->getVar('retur')); 
+        $amount = ($cicilan ?? 0) + ($r_jual ?? 0);
+
+        $mdata = [
+            'nonota'    => trim($this->request->getVar('nonota')),
+            'amount'    => (int) $amount,
+        ];
+
+        $url = URLAPI . "/v1/pembayaran/inputCicilan_pelanggan";
+        $response = gucitoakAPI($url, json_encode($mdata));
+        $result = $response->message;
+
+        if ($response->code == 200 || $response->code == 201) {
+            session()->setFlashdata('success', $result);
+            return redirect()->to(BASE_URL . "pembayaran/pelanggan");
+        }else{
+            session()->setFlashdata('failed', $result);
+            return redirect()->to(BASE_URL . "pembayaran/pelanggan/tambah")->withInput();
+        }
+    }
 }
