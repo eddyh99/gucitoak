@@ -6,6 +6,12 @@
 
 
 <script>
+    $(function() {
+        setTimeout(() => {
+            $("#failedtoast").toast('show')
+        }, 0)
+    });
+
     $("#search").on("click", function(e) {
         const nonota = $("#nonota").val();
 
@@ -21,6 +27,8 @@
                     $("#tgl").val(tanggal);
                     $("#pelanggan").val(mdata.namapelanggan);
                     $("#metode").val(mdata.method);
+                    $("#notajual").val(mdata.notajual);
+                    $("#t_cicilan").val(mdata.totalcicilan);
                     $("#cicil").prop("disabled", mdata.isLunas == 1);
                     $("#retur").prop("disabled", mdata.isLunas == 1);
 

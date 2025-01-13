@@ -41,7 +41,7 @@
                                 <div class="mb-3">
                                     <label class="form-label" for="barang">No Nota</label>
                                     <div class="input-group input-group-merge">
-                                        <input type="text" id="nonota" name="nonota" placeholder="Masukkan Nota" class="form-control" required>
+                                        <input type="text" id="nonota" name="nonota" placeholder="Masukkan Nota" class="form-control" value="<?= old('nonota') ?>" required>
                                         <button type="button" id="search" class="btn btn-primary">Cari</button>
                                     </div>
                                 </div>
@@ -54,39 +54,41 @@
                                 <div class="mb-3">
                                     <label class="form-label" for="barang">Pelanggan</label>
                                     <div class="input-group input-group-merge">
-                                        <input id="pelanggan" type="text" name="pelanggan" class="form-control" value="" readonly>
+                                        <input id="pelanggan" type="text" name="pelanggan" class="form-control" value="<?= old('pelanggan') ?>" readonly>
                                     </div>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="expired">Pembayaran</label>
                                     <div class="input-group input-group-merge">
-                                        <input id="metode" type="text" name="metode" class="form-control" readonly>
+                                        <input id="metode" type="text" name="metode" class="form-control" value="<?= old('metode') ?>" readonly>
                                     </div>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="barang">Amount</label>
                                     <div class="input-group input-group-merge">
-                                        <input type="number" name="amount" id="cicil" placeholder="Masukkan Nominal" class="form-control" disabled required>
+                                        <input type="number" name="amount" id="cicil" placeholder="Masukkan Nominal" class="form-control" value="<?= old('amount', 0) ?>"  disabled required>
                                     </div>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="barang">Retur</label>
                                     <div class="input-group input-group-merge">
-                                        <input type="number" name="retur" id="retur" placeholder="Masukkan Nominal" class="form-control" disabled required>
+                                        <input type="number" name="retur" id="retur" placeholder="Masukkan Nominal" class="form-control" value="<?= old('retur', 0) ?>" disabled required>
                                     </div>
                                 </div>
-                                <!-- <div class="mb-3" id="tempo">
-                                            <label class="form-label" for="expired">Lama</label>
-                                            <div class="input-group input-group-merge">
-                                                <input
-                                                    type="number"
-                                                    class="form-control"
-                                                    id="lama"
-                                                    placeholder="30"
-                                                    name="lama"
-                                                />
-                                            </div>
-                                        </div> -->
+                                <div hidden>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="barang">Nota Jual</label>
+                                        <div class="input-group input-group-merge">
+                                            <input type="number" name="notajual" id="notajual" placeholder="Masukkan Nominal" class="form-control" value="<?= old('notajual') ?>" readonly required>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="barang">Total Cicilan</label>
+                                        <div class="input-group input-group-merge">
+                                            <input type="number" name="t_cicilan" id="t_cicilan" placeholder="Masukkan Nominal" class="form-control" value="<?= old('t_cicilan') ?>" readonly required>
+                                        </div>
+                                    </div>
+                                </div>
 
                             </div>
                         </form>

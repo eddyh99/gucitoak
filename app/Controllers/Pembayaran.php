@@ -56,12 +56,17 @@ class Pembayaran extends BaseController
     }
 
     public function inputCicilan_pelanggan() {
-        // validasi agar cicilan > nota_penjualan
-        // 
-        
+        $totalCicilan = trim($this->request->getVar('t_cicilan'));
+        $notaJual = trim($this->request->getVar('notajual'));
         $cicilan = trim($this->request->getVar('amount'));
         $r_jual = trim($this->request->getVar('retur')); 
-        $amount = ($cicilan ?? 0) + ($r_jual ?? 0);
+        $amount = ($cicilan + $r_jual);
+        
+        // validasi agar cicilan > nota_penjualan
+        if(($amount +$totalCicilan) > $notaJual) {
+            session()->setFlashdata('failed', 'Gagal! cicilan melebihi nota jual.');
+            return redirect()->to(BASE_URL . "pembayaran/pelanggan/tambah")->withInput();
+        }
 
         $mdata = [
             'nonota'    => trim($this->request->getVar('nonota')),
