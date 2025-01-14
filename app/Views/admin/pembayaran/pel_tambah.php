@@ -70,9 +70,9 @@
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label" for="barang">Retur</label>
+                                    <label class="form-label" for="barang">Keterangan</label>
                                     <div class="input-group input-group-merge">
-                                        <input type="number" name="retur" id="retur" placeholder="Masukkan Nominal" class="form-control" value="<?= old('retur', 0) ?>" disabled required>
+                                        <input type="text" name="keterangan" id="keterangan" class="form-control" value="<?= old('keterangan') ?>" disabled required>
                                     </div>
                                 </div>
                                 <div hidden>
@@ -108,6 +108,7 @@
                                             <th>Nonota</th>
                                             <th>Tanggal Pembayaran</th>
                                             <th>Nominal</th>
+                                            <th>Keterangan</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -116,6 +117,7 @@
                                         <tr>
                                             <td colspan="2" style="text-align: right;">Total:</td>
                                             <td class="total"></td>
+                                            <td></td>
                                         </tr>
                                     </tfoot>
                                 </table>

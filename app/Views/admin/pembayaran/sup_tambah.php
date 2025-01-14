@@ -36,7 +36,7 @@
                         <h5 class="mb-1">Pembayaran</h5>
                     </div>
                     <div class="card-body">
-                        <form id="frmCicilan" action="<?= BASE_URL ?>pembayaran/inputCicilan_pelanggan" method="POST">
+                        <form id="frmCicilan" action="<?= BASE_URL ?>pembayaran/inputCicilan_suplier" method="POST">
                             <div class="row row-cols-2">
                                 <div class="mb-3">
                                     <label class="form-label" for="barang">No Nota</label>
@@ -76,6 +76,12 @@
                                     </div>
                                 </div>
                                 <div hidden>
+                                <div class="mb-3">
+                                        <label class="form-label" for="barang">ID</label>
+                                        <div class="input-group input-group-merge">
+                                            <input type="number" name="id" id="id" class="form-control" value="<?= old('id') ?>" readonly required>
+                                        </div>
+                                    </div>
                                     <div class="mb-3">
                                         <label class="form-label" for="barang">Nota Jual</label>
                                         <div class="input-group input-group-merge">

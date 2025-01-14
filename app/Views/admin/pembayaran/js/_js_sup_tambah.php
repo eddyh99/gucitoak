@@ -24,6 +24,7 @@
                     const tanggal = mdata.tanggal.split(" ")[0];
                     console.log(mdata);
 
+                    $("#id").val(mdata.id);
                     $("#tgl").val(tanggal);
                     $("#suplier").val(mdata.namasuplier);
                     $("#metode").val(mdata.method);
@@ -39,10 +40,10 @@
                                 $("#successtoast").toast('show')
                             }, 0)
                         });
-                        // $("#submit").prop("disabled", true);
+                        $("#submit").prop("disabled", true);
                     } else {
                         table.ajax.reload();
-                        // $("#submit").prop("disabled", false);
+                        $("#submit").prop("disabled", false);
                         $("#list-cicilan").removeClass('d-none')
 
                     }

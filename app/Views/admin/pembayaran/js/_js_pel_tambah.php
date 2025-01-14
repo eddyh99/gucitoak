@@ -30,7 +30,7 @@
                     $("#notajual").val(mdata.notajual);
                     $("#t_cicilan").val(mdata.totalcicilan);
                     $("#cicil").prop("disabled", mdata.isLunas == 1);
-                    $("#retur").prop("disabled", mdata.isLunas == 1);
+                    $("#keterangan").prop("disabled", mdata.isLunas == 1);
 
                     if (mdata.isLunas == 1) {
                         $("#list-cicilan").addClass('d-none')
@@ -82,6 +82,9 @@
             },
             {
                 data: 'amount'
+            },
+            {
+                data: 'keterangan'
             }
         ],
         "footerCallback": function(row, data, start, end, display) {

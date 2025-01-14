@@ -59,18 +59,17 @@ class Pembayaran extends BaseController
         $totalCicilan = trim($this->request->getVar('t_cicilan'));
         $notaJual = trim($this->request->getVar('notajual'));
         $cicilan = trim($this->request->getVar('amount'));
-        $r_jual = trim($this->request->getVar('retur')); 
-        $amount = ($cicilan + $r_jual);
         
         // validasi agar cicilan > nota_penjualan
-        if(($amount +$totalCicilan) > $notaJual) {
+        if(($cicilan +$totalCicilan) > $notaJual) {
             session()->setFlashdata('failed', 'Gagal! cicilan melebihi nota jual.');
             return redirect()->to(BASE_URL . "pembayaran/pelanggan/tambah")->withInput();
         }
 
         $mdata = [
             'nonota'    => trim($this->request->getVar('nonota')),
-            'amount'    => (int) $amount,
+            'amount'    => $cicilan,
+            'keterangan' => trim($this->request->getVar('keterangan'))
         ];
 
         $url = URLAPI . "/v1/pembayaran/inputCicilan_pelanggan";
@@ -133,5 +132,35 @@ class Pembayaran extends BaseController
         $url = URLAPI . "/v1/pembayaran/getCicilan_suplier/?nota=".$nota;
         $response = gucitoakAPI($url)->message;
         echo json_encode($response);
+    }
+
+    public function inputCicilan_suplier() {
+        $totalCicilan = trim($this->request->getVar('t_cicilan'));
+        $notabeli = trim($this->request->getVar('notabeli'));
+        $cicilan = trim($this->request->getVar('amount'));
+        
+        // validasi agar cicilan > nota_penjualan
+        if(($totalCicilan +$cicilan) > $notabeli) {
+            session()->setFlashdata('failed', 'Gagal! cicilan melebihi nota jual.');
+            return redirect()->to(BASE_URL . "pembayaran/suplier/tambah")->withInput();
+        }
+        
+        $mdata = [
+            'id_nota'    => trim($this->request->getVar('id')),
+            'amount'    => $cicilan,
+            'keterangan' => trim($this->request->getVar('keterangan'))
+        ];
+
+        $url = URLAPI . "/v1/pembayaran/inputCicilan_suplier";
+        $response = gucitoakAPI($url, json_encode($mdata));
+        $result = $response->message;
+
+        if ($response->code == 200 || $response->code == 201) {
+            session()->setFlashdata('success', $result);
+            return redirect()->to(BASE_URL . "pembayaran/suplier");
+        }else{
+            session()->setFlashdata('failed', $result);
+            return redirect()->to(BASE_URL . "pembayaran/suplier/tambah")->withInput();
+        }
     }
 }
