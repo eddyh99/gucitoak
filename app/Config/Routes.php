@@ -7,3 +7,4 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Auth::index');
 $routes->get('/pembayaran/pelanggan/tambah', 'Pembayaran::pelanggan_tambah');
+$routes->get('/pembayaran/suplier/tambah', 'Pembayaran::suplier_tambah');

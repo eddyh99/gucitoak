@@ -85,4 +85,53 @@ class Pembayaran extends BaseController
             return redirect()->to(BASE_URL . "pembayaran/pelanggan/tambah")->withInput();
         }
     }
+
+    public function suplier()
+    {
+        $mdata = [
+            'title'     => 'List Pembayaran - ' . NAMETITLE,
+            'content'   => 'admin/pembayaran/suplier',
+            'extra'     => 'admin/pembayaran/js/_js_suplier',
+            'menuactive_transaksi'   => 'active open',
+            'user_active'   => 'active'
+        ];
+
+        return view('admin/layout/wrapper', $mdata);
+    }
+
+    public function get_pembayaran_sup() {
+        $tgl    = explode("-",$this->request->getVar('tanggal'));
+        $awal   = date_format(date_create($tgl[0]),"Y-m-d");
+        $akhir  = date_format(date_create($tgl[1]),"Y-m-d");
+        $url = URLAPI . "/v1/pembayaran/suplier?awal=".$awal."&akhir=".$akhir;
+        $response = gucitoakAPI($url)->message;
+        echo json_encode($response,true);
+    }
+
+    public function suplier_tambah()
+    {
+        $mdata = [
+            'title'     => 'List Pembayaran - ' . NAMETITLE,
+            'content'   => 'admin/pembayaran/sup_tambah',
+            'extra'     => 'admin/pembayaran/js/_js_sup_tambah',
+            'menuactive_transaksi'   => 'active open',
+            'user_active'   => 'active'
+        ];
+
+        return view('admin/layout/wrapper', $mdata);
+    }
+
+    public function cekNota_suplier() {
+        $nota = $this->request->getVar('nota');
+        $url = URLAPI . "/v1/pembayaran/cekNota_suplier/?nota=".$nota;
+        $response = gucitoakAPI($url)->message;
+        echo json_encode($response);
+    }
+
+    public function getCicilan_suplier() {
+        $nota  = $this->request->getVar('nota');
+        $url = URLAPI . "/v1/pembayaran/getCicilan_suplier/?nota=".$nota;
+        $response = gucitoakAPI($url)->message;
+        echo json_encode($response);
+    }
 }
