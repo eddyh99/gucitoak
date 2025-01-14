@@ -183,6 +183,19 @@
                 <div data-i18n="Penjualan" style="font-size: 12px;">Retur Pelanggan</div>
             </a>
         </li>
+        <hr>
+        <li class="menu-item">
+            <a href="<?= BASE_URL ?>pembayaran/pelanggan" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
+                <i class="menu-icon fs-5 tf-icons bx bx-basket px-2"></i>
+                <div data-i18n="Penjualan" style="font-size: 12px;">Pembayaran Pelanggan</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="<?= BASE_URL ?>pembayaran/suplier" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
+                <i class="menu-icon fs-5 tf-icons bx bx-basket px-2"></i>
+                <div data-i18n="Penjualan" style="font-size: 12px;">Pembayaran Suplier</div>
+            </a>
+        </li>
     </ul>
 </div>
 
