@@ -132,6 +132,26 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-6 mb-4 order-1">
+                    <div class="card border-expat w-100">
+                        <div class="card-body">
+                            <h5 class="card-title fw-semibold mb-4">Pembayaran Suplier</h5>
+                            <table id="pembayaran_suplier" class="table table-striped" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Nama</th>
+                                        <th>Tanggal</th>
+                                        <th>Tempo</th>
+                                        <th>Sisa Cicilan</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- / Content -->
