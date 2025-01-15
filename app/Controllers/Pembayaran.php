@@ -22,8 +22,8 @@ class Pembayaran extends BaseController
 
     public function get_pembayaran_pel() {
         $tgl    = explode("-",$this->request->getVar('tanggal'));
-        $awal   = date_format(date_create($tgl[0]),"Y-m-d");
-        $akhir  = date_format(date_create($tgl[1]),"Y-m-d");
+        $awal  = !empty($tgl[0]) ? date_format(date_create($tgl[0]), "Y-m-d") : '';
+        $akhir = !empty($tgl[1]) ? date_format(date_create($tgl[1]), "Y-m-d") : '';
         $url = URLAPI . "/v1/pembayaran/pelanggan?awal=".$awal."&akhir=".$akhir;
         $response = gucitoakAPI($url)->message;
         echo json_encode($response,true);
@@ -50,7 +50,7 @@ class Pembayaran extends BaseController
 
     public function getCicilan_pelanggan() {
         $nota  = $this->request->getVar('nota');
-        $url = URLAPI . "/v1/pembayaran/getCicilan_pelanggan/?nota=".$nota;
+        $url = URLAPI . "/v1/pembayaran/getCicilan_pelanggan/?nota=".base64_decode($nota);
         $response = gucitoakAPI($url)->message;
         echo json_encode($response);
     }

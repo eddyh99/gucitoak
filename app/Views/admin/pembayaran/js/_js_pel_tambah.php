@@ -67,7 +67,7 @@
             "url": "<?= BASE_URL ?>pembayaran/getCicilan_pelanggan/",
             "type": "GET",
             "data": function(d) {
-                d.nota = $("#nonota").val();
+                d.nota = encodeURI(btoa($("#nonota").val()));
             },
             "dataSrc": function(data) {
                 console.log(data);
