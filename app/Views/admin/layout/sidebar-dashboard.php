@@ -48,7 +48,7 @@
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <!-- <i class="menu-icon tf-icons bx bx-package"></i> -->
                 <i class='menu-icon tf-icons bx bx-purchase-tag-alt'></i>
-                <div data-i18n="penjualan" class="text-center">Laporan</div>
+                <div data-i18n="laporan" class="text-center">Laporan</div>
             </a>
         </li>
     </ul>
@@ -115,6 +115,12 @@
             <a href="<?= BASE_URL ?>sales/list_assign_sales" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-list-ol px-2"></i>
                 <div data-i18n="Assign Sales" style="font-size: 12px;">Daftar Barang Sales</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="<?= BASE_URL ?>hakakses" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
+                <i class="menu-icon fs-5 tf-icons bx bx-list-ol px-2"></i>
+                <div data-i18n="Assign Sales" style="font-size: 12px;">Hak Akses</div>
             </a>
         </li>
     </ul>
