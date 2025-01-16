@@ -30,13 +30,13 @@ class Hakakses extends BaseController
         return view('admin/layout/wrapper', $mdata);
     }
 
+    // belum bisa update akses
     public function give_akses() {
-        $menu = array_filter($this->request->getVar(['setup', 'persediaan', 'transaksi', 'laporan']));
-        $submenu = array_merge(...array_values($menu));
+        $akses = array_filter($this->request->getVar(['setup', 'persediaan', 'transaksi', 'laporan']));
 
         $mdata = [
             'pengguna_id'    => $this->request->getVar('user'),
-            'akses' => implode(', ', $submenu)
+            'akses' => $akses
         ];
 
         $url = URLAPI . "/v1/pengguna/hak_akses";

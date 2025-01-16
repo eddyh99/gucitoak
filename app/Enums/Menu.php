@@ -27,7 +27,7 @@ CONST PEMBAYARAN_SUPLIER = 'pembayaran_suplier';
 CONST STOK_MIN_BARANG = 'stok_min_barang';
 CONST MUTASI_STOK = 'mutasi_stok';
 CONST PENJUALAN_SUMMARY = 'penjualan_summary';
-CONST PEMBELIAN_SUMMARY = 'pembelian_summaru';
+CONST PEMBELIAN_SUMMARY = 'pembelian_summary';
 CONST LAP_RETUR_SUPLIER = 'laporan_retur_suplier';
 CONST LAP_RETUR_PELANGGAN = 'laporan_retur_pelanggan';
 

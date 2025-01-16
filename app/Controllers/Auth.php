@@ -55,7 +55,6 @@ class Auth extends BaseController
         // Call API
         $url = URLAPI . "/auth/signin";
 		$response = gucitoakAPI($url, json_encode($mdata));
-
         // Check Response if error
         if ($response->code != 200) {
             session()->setFlashdata('failed', $response->message);
@@ -65,9 +64,10 @@ class Auth extends BaseController
 
         // Reduce call response 
         $result = $response->message;
-
+        
         // Assign role to mdata array
         $mdata['role']  = $result->role;
+        $mdata['akses'] = json_decode($result->akses);
 
         // Set SESSION logged_user
         $this->session->set('logged_user', $mdata);

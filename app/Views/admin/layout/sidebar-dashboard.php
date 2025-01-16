@@ -23,19 +23,24 @@
         <!-- <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Setup</span>
         </li> -->
-        <li class="menu-item setup <?= @$menuactive_setup ?>">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-cog"></i>
-                <div data-i18n="Account Settings" class="text-center">Setup Data</div>
-            </a>
-        </li>
+        <?php if  ($isAdmin || isset($akses->setup)): ?>
+            <li class="menu-item setup <?= @$menuactive_setup ?>">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-cog"></i>
+                    <div data-i18n="Account Settings" class="text-center">Setup Data</div>
+                </a>
+            </li>
+        <?php endif?>
+        <?php if  ($isAdmin || isset($akses->persediaan)): ?>
         <li class="menu-item persediaan <?= @$menuactive_persediaan ?>">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-package"></i>
                 <div data-i18n="Account Settings" class="text-center">Persediaan Barang</div>
             </a>
         </li>
-
+        <?php endif?>
+        
+        <?php if  ($isAdmin || isset($akses->transaksi)): ?>
         <li class="menu-item transaksi <?= @$menuactive_transaksi ?>">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <!-- <i class="menu-icon tf-icons bx bx-package"></i> -->
@@ -43,7 +48,9 @@
                 <div data-i18n="Pembelian" class="text-center">Transaksi</div>
             </a>
         </li>
+        <?php endif?>
 
+        <?php if  ($isAdmin || isset($akses->laporan)): ?>
         <li class="menu-item laporan <?= @$menuactive_laporan ?>">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <!-- <i class="menu-icon tf-icons bx bx-package"></i> -->
@@ -51,35 +58,45 @@
                 <div data-i18n="laporan" class="text-center">Laporan</div>
             </a>
         </li>
+        <?php endif?>
     </ul>
 </aside>
 
+<?php if  ($isAdmin || isset($akses->setup)): ?>
 <div class="sub-menu setup">
     <ul class="ul-sub-menu">
+        <?php if ($isAdmin || $hasPermission('daftar_pengguna', 'setup')): ?>
         <li class="menu-item">
             <a href="<?= BASE_URL ?>user" class="menu-link-inside d-flex justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-list-ol px-2"></i>
                 <div data-i18n="User" style="font-size: 12px;">Daftar Pengguna</div>
             </a>
         </li>
+        <?php endif?>
+        <?php if ($isAdmin || $hasPermission('daftar_sales', 'setup')): ?>
         <li class="menu-item">
-            <a href="<?= BASE_URL ?>sales" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
+            <a href="<?= BASE_URL ?>sales" class="menu-link-inside d-flex justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-list-ol px-2"></i>
                 <div data-i18n="Sales" style="font-size: 12px;">Daftar Sales</div>
             </a>
         </li>
+        <?php endif?>
+        <?php if ($isAdmin || $hasPermission('daftar_suplier', 'setup')): ?>
         <li class="menu-item">
             <a href="<?= BASE_URL ?>suplier" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
             <i class="menu-icon fs-5 tf-icons bx bx-list-ol px-2"></i>
                 <div data-i18n="Supplier" style="font-size: 12px;">Daftar Supplier</div>
             </a>
         </li>
+        <?php endif?>
+        <?php if ($isAdmin || $hasPermission('daftar_pelanggan', 'setup')): ?>
         <li class="menu-item">
             <a href="<?= BASE_URL ?>pelanggan" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-list-ol px-2"></i>
                 <div data-i18n="Pelanggan" style="font-size: 12px;">Daftar Pelanggan</div>
             </a>
         </li>
+        <?php endif?>
         <hr>
         <!--<li class="menu-item">-->
         <!--    <a href="<?= BASE_URL ?>cabang/tambah_cabang" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">-->
@@ -93,158 +110,225 @@
         <!--        <div data-i18n="cabang" style="font-size: 12px;">List Cabang</div>-->
         <!--    </a>-->
         <!--</li>-->
+        <?php if ($isAdmin || $hasPermission('daftar_kategori', 'setup')): ?>
         <li class="menu-item">
             <a href="<?= BASE_URL ?>kategori" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-list-ol px-2"></i>
                 <div data-i18n="Kategori" style="font-size: 12px;">Daftar Kategori</div>
             </a>
         </li>
+        <?php endif?>
+        <?php if ($isAdmin || $hasPermission('daftar_satuan', 'setup')): ?>
         <li class="menu-item">
             <a href="<?= BASE_URL ?>satuan" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
             <i class="menu-icon fs-5 tf-icons bx bx-list-ol px-2"></i>
                 <div data-i18n="Satuan" style="font-size: 12px;">Daftar Satuan</div>
             </a>
         </li>
+        <?php endif?>
+        <?php if ($isAdmin || $hasPermission('daftar_barang', 'setup')): ?>
         <li class="menu-item">
             <a href="<?= BASE_URL ?>barang" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-list-ol px-2"></i>
                 <div data-i18n="Barang" style="font-size: 12px;">Daftar Barang</div>
             </a>
         </li>
+        <?php endif?>
+        <?php if ($isAdmin || $hasPermission('daftar_barang', 'setup')): ?>
         <li class="menu-item">
             <a href="<?= BASE_URL ?>sales/list_assign_sales" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-list-ol px-2"></i>
                 <div data-i18n="Assign Sales" style="font-size: 12px;">Daftar Barang Sales</div>
             </a>
         </li>
+        <?php endif?>
+        <?php if ($isAdmin): ?>
         <li class="menu-item">
             <a href="<?= BASE_URL ?>hakakses" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-list-ol px-2"></i>
                 <div data-i18n="Assign Sales" style="font-size: 12px;">Hak Akses</div>
             </a>
         </li>
+        <?php endif?>
     </ul>
 </div>
+<?php endif?>
 
+<?php if  ($isAdmin || isset($akses->persediaan)): ?>
 <div class="sub-menu persediaan">
     <ul class="ul-sub-menu">
+        <?php if ($isAdmin || $hasPermission('input_stok', 'persediaan')): ?>
         <li class="menu-item">
             <a href="<?= BASE_URL ?>stok/tambah_stokbarang" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-plus-circle px-2"></i>
                 <div data-i18n="User" style="font-size: 12px;">Input Stok Awal</div>
             </a>
         </li>
+        <?php endif?>
+
+        <?php if ($isAdmin || $hasPermission('penyesuaian_stok', 'persediaan')): ?>
         <li class="menu-item ">
             <a href="<?= BASE_URL ?>opname" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-box px-2"></i>
                 <div data-i18n="Stok Opname" style="font-size: 12px;">Penyesuaian Stok</div>
             </a>
         </li>
+        <?php endif?>
         <hr>
+
+        <?php if ($isAdmin || $hasPermission('stok_barang', 'persediaan')): ?>
         <li class="menu-item">
             <a href="<?= BASE_URL ?>stok" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-list-ol px-2"></i>
                 <div data-i18n="User" style="font-size: 12px;">Stok Barang</div>
             </a>
         </li>
+        <?php endif?>
+
+        <?php if ($isAdmin || $hasPermission('konfirmasi_opname', 'persediaan')): ?>
         <li class="menu-item <?= @$stokopnamekonfirm_active ?>">
             <a href="<?= BASE_URL ?>opname/konfirm" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-check-shield px-2"></i>
                 <div data-i18n="Konfirm Opname" style="font-size: 12px;">Konfirm Opname</div>
             </a>
         </li>
+        <?php endif?>
+
+        <?php if ($isAdmin || $hasPermission('penghapusan_stok', 'persediaan')): ?>
         <li class="menu-item <?= @$hapusstok_active ?>">
             <a href="<?= BASE_URL ?>opname/hapusstok" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-list-ol px-2"></i>
                 <div data-i18n="Penghapusan Stok" style="font-size: 12px;">Penghapusan Stok</div>
             </a>
         </li>
+        <?php endif?>
     </ul>
 </div>
+<?php endif?>
 
+<?php if  ($isAdmin || isset($akses->transaksi)): ?>
 <div class="sub-menu transaksi">
     <ul class="ul-sub-menu">
-        <li class="menu-item">
+    
+    <?php if ($isAdmin || $hasPermission('pembelian', 'transaksi')): ?>
+    <li class="menu-item">
             <a href="<?= BASE_URL ?>pembelian" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-basket px-2"></i>
                 <div data-i18n="Pembelian Barang" style="font-size: 12px;">Pembelian</div>
             </a>
         </li>
+        <?php endif?>
+        
+        <?php if ($isAdmin || $hasPermission('retur_suplier', 'transaksi')): ?>
         <li class="menu-item">
             <a href="<?= BASE_URL ?>retur/suplier" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-basket px-2"></i>
                 <div data-i18n="Retur Supplier" style="font-size: 12px;">Retur Supplier</div>
             </a>
         </li>
+        <?php endif?>
         <hr>
+        
+        <?php if ($isAdmin || $hasPermission('penjualan', 'transaksi')): ?>
         <li class="menu-item">
             <a href="<?= BASE_URL ?>penjualan" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-basket px-2"></i>
                 <div data-i18n="Penjualan" style="font-size: 12px;">Penjualan</div>
             </a>
         </li>
+        <?php endif?>
+        
+        <?php if ($isAdmin || $hasPermission('retur_pelanggan', 'transaksi')): ?>
         <li class="menu-item">
             <a href="<?= BASE_URL ?>retur/pelanggan" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-basket px-2"></i>
                 <div data-i18n="Penjualan" style="font-size: 12px;">Retur Pelanggan</div>
             </a>
         </li>
+        <?php endif?>
         <hr>
+        
+        <?php if ($isAdmin || $hasPermission('pembayaran_pelanggan', 'transaksi')): ?>
         <li class="menu-item">
             <a href="<?= BASE_URL ?>pembayaran/pelanggan" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-basket px-2"></i>
                 <div data-i18n="Penjualan" style="font-size: 12px;">Pembayaran Pelanggan</div>
             </a>
         </li>
+        <?php endif?>
+        
+        <?php if ($isAdmin || $hasPermission('pembayaran_suplier', 'transaksi')): ?>
         <li class="menu-item">
             <a href="<?= BASE_URL ?>pembayaran/suplier" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-basket px-2"></i>
                 <div data-i18n="Penjualan" style="font-size: 12px;">Pembayaran Suplier</div>
             </a>
         </li>
+        <?php endif?>
     </ul>
 </div>
+<?php endif?>
 
+<?php if  ($isAdmin || isset($akses->laporan)): ?>
 <div class="sub-menu laporan">
     <ul class="ul-sub-menu">
-        <li class="menu-item">
+        
+    <?php if ($isAdmin || $hasPermission('stok_min_barang', 'laporan')): ?>
+    <li class="menu-item">
             <a href="<?= BASE_URL ?>laporan/barang" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-purchase-tag-alt px-2"></i>
                 <div data-i18n="Laporan" style="font-size: 12px;">Stok Min Barang</div>
             </a>
         </li>
+        <?php endif?>
+        
+        <?php if ($isAdmin || $hasPermission('mutasi_stok', 'laporan')): ?>
         <li class="menu-item">
             <a href="<?= BASE_URL ?>laporan/mutasistok" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-purchase-tag-alt px-2"></i>
                 <div data-i18n="Laporan" style="font-size: 12px;">Mutasi Stok</div>
             </a>
         </li>
+        <?php endif?>
+        
+        <?php if ($isAdmin || $hasPermission('penjualan_summary', 'laporan')): ?>
         <li class="menu-item">
             <a href="<?= BASE_URL ?>laporan/penjualan" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-purchase-tag-alt px-2"></i>
                 <div data-i18n="Laporan" style="font-size: 12px;">Penjualan Summary</div>
             </a>
         </li>
+        <?php endif?>
+        
+        <?php if ($isAdmin || $hasPermission('pembelian_summary', 'laporan')): ?>
         <li class="menu-item">
             <a href="<?= BASE_URL ?>laporan/pembelian" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-purchase-tag-alt px-2"></i>
                 <div data-i18n="Laporan" style="font-size: 12px;">Pembelian Summary</div>
             </a>
         </li>
+        <?php endif?>
+        
+        <?php if ($isAdmin || $hasPermission('laporan_retur_suplier', 'laporan')): ?>
         <li class="menu-item">
             <a href="<?= BASE_URL ?>laporan/retursup" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-purchase-tag-alt px-2"></i>
                 <div data-i18n="Laporan" style="font-size: 12px;">Retur Suplier</div>
             </a>
         </li>
+        <?php endif?>
+        
+        <?php if ($isAdmin || $hasPermission('laporan_retur_suplier', 'laporan')): ?>
         <li class="menu-item">
             <a href="<?= BASE_URL ?>laporan/returpel" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-purchase-tag-alt px-2"></i>
                 <div data-i18n="Laporan" style="font-size: 12px;">Retur Pelanggan</div>
             </a>
         </li>
+        <?php endif?>
     </ul>
 </div>
+<?php endif?>
 
 <div class="layout-page">
     <!-- Navbar -->
