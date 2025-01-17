@@ -9,7 +9,7 @@ class Hakakses extends BaseController
 {
     public function index()
     {
-        $url = URLAPI . "/v1/pengguna/getall_pengguna";
+        $url = URLAPI . "/v1/pengguna/getAkses_pengguna";
 		$users = gucitoakAPI($url)->message;
         $submenu_setup = Menu::subMenu_setup();
         $submenu_persediaan = Menu::subMenu_persediaan();

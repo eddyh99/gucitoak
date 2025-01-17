@@ -4,11 +4,11 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 <script>
-        $(document).ready(function(){
+    $(document).ready(function() {
         $('.userselect2').select2({
             placeholder: "Pilih Pengguna",
             allowClear: true,
-            theme: "bootstrap", 
+            theme: "bootstrap",
             width: "100%"
         });
 
@@ -28,5 +28,29 @@
             placeholder: "Pilih Sub Menu",
             allowClear: true
         });
+        handleChange();
+
     });
+
+    function handleChange() {
+        const userId = $("#user").val();
+        const data = $('#user').data('user');
+        const selectedUser = data.find(user => user.id == userId)
+        if (selectedUser.role == 'admin') {
+            // Pilih semua opsi di dropdown
+            $('#laporan, #persediaan, #transaksi, #setup').each(function() {
+                $(this).val($(this).find('option').map(function() {
+                    return $(this).val();
+                }).get()).trigger('change');
+            });
+
+        } else {
+            const akses = JSON.parse(selectedUser.akses);
+            // aech menus
+            $('#setup').val(akses['setup']).trigger('change');
+            $('#persediaan').val(akses['persediaan']).trigger('change');
+            $('#transaksi').val(akses['transaksi']).trigger('change');
+            $('#laporan').val(akses['laporan']).trigger('change');
+        }
+    }
 </script>
