@@ -27,7 +27,7 @@
                                 <div class="col-12">
                                     <div class="mb-3">
                                         <label class="form-label" for="sales">Nama Pengguna</label>
-                                        <select class="userselect2" id="user" name="user" data-user=<?= json_encode($users) ?> onchange="handleChange()">
+                                        <select class="userselect2" id="user" name="user" data-user=<?= base64_encode(json_encode($users)) ?> onchange="handleChange()">
                                             <?php foreach($users as $user){?>
                                                 <option value="<?= $user->id ?>"><?= $user->username?></option>
                                             <?php }?>
