@@ -5,6 +5,17 @@
 <script src="//cdn.datatables.net/plug-ins/2.1.8/api/sum().js"></script>
 
 <script>
+    function alertSwal(message) {
+        Swal.fire({
+            title: "Peringatan!",
+            text: message,
+            icon: "error",
+            showConfirmButton: false,
+            customClass: {
+                popup: 'btn-primary'
+            }
+        });
+    }
     $("#sales").select2({
         placeholder: "--- PILIH SALES ---"
     });
@@ -30,12 +41,12 @@
         const totalNotaValue = parseInt(selectedOption.data('totalnotavalue'));
 
         if (countNota >= maxNota && plafon==0) {
-            alert('Pelanggan harus membayar nota sebelumnya karena melebihi jumlah max nota.');
+            alertSwal('Pelanggan harus membayar nota sebelumnya karena melebihi jumlah max nota.');
             $(this).val(null).trigger('change');
         }
 
         if (totalNotaValue >= plafon && maxNota==0) {
-            alert('Pelanggan harus membayar nota sebelumnya karena total nota melebihi plafon.');
+            alertSwal('Pelanggan harus membayar nota sebelumnya karena total nota melebihi plafon.');
             $(this).val(null).trigger('change');
         }
     });
@@ -84,7 +95,7 @@
         if (e.which === 13) { // Check if Enter key is pressed
             let barcodeValue = $(this).val(); // Store the barcode value here
             if ($("#pelanggan").val().trim() == "") {
-                alert("Silahkan pilih pelanggan terlebih dahulu");
+                alertSwal('Silahkan pilih pelanggan terlebih dahulu');
                 return;
             }
             
@@ -172,12 +183,12 @@
         if (stok !== "" && barang !== "" && barcode !== "") {
             e.preventDefault();
             if (jml>parseInt(stok)){
-                alert("Harap periksa jumlah, karena stok tersisa : "+stok);
+                alertSwal("Harap periksa jumlah, karena stok tersisa : "+stok);
                 return;
             }
             
             if (jml<6){
-                alert("Minimum pembelian 6");
+                alertSwal('Minimum pembelian 6');
                 return;
             }
             
@@ -214,7 +225,7 @@
             
         } else {
             e.preventDefault();
-            alert("Data tidak boleh kosong")
+            alertSwal('Data tidak boleh kosong');
         }
 
     });
@@ -233,14 +244,14 @@
                 success: function(response) {
                     var result = JSON.parse(response);
                     if (result.success) {
-                        alert('Item deleted successfully!');
+                        alertSwal('Item deleted successfully!');
                         table.ajax.reload(); // Reload the table data
                     } else {
-                        alert('Failed to delete item: ' + result.message);
+                        alertSwal('Failed to delete item: ' + result.message);
                     }
                 },
                 error: function(xhr, status, error) {
-                    alert('An error occurred: ' + error);
+                    alertSwal('An error occurred: ' + error);
                 }
             });
         }
