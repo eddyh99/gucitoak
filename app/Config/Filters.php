@@ -134,6 +134,9 @@ class Filters extends BaseFilters
                 'suplier/*',
                 'user',
                 'user/*',
+                'laporan/*',
+                'pembayaran/*',
+                'hakakses',
             ]
         ]
     ];
