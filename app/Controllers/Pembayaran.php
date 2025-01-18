@@ -43,14 +43,14 @@ class Pembayaran extends BaseController
     }
 
     public function cekNota_pelanggan($nota) {
-        $url = URLAPI . "/v1/pembayaran/cekNota_pelanggan/?nota=".$nota;
+        $url = URLAPI . "/v1/pembayaran/cekNota_pelanggan?nota=".$nota;
         $response = gucitoakAPI($url)->message;
         echo json_encode($response);
     }
 
     public function getCicilan_pelanggan() {
         $nota  = $this->request->getVar('nota');
-        $url = URLAPI . "/v1/pembayaran/getCicilan_pelanggan/?nota=".base64_decode($nota);
+        $url = URLAPI . "/v1/pembayaran/getCicilan_pelanggan?nota=".base64_decode($nota);
         $response = gucitoakAPI($url)->message;
         echo json_encode($response);
     }
@@ -122,14 +122,14 @@ class Pembayaran extends BaseController
 
     public function cekNota_suplier() {
         $nota = $this->request->getVar('nota');
-        $url = URLAPI . "/v1/pembayaran/cekNota_suplier/?nota=".$nota;
+        $url = URLAPI . "/v1/pembayaran/cekNota_suplier?nota=".$nota;
         $response = gucitoakAPI($url)->message;
         echo json_encode($response);
     }
 
     public function getCicilan_suplier() {
         $nota  = $this->request->getVar('nota');
-        $url = URLAPI . "/v1/pembayaran/getCicilan_suplier/?nota=".base64_decode($nota);
+        $url = URLAPI . "/v1/pembayaran/getCicilan_suplier?nota=".base64_decode($nota);
         $response = gucitoakAPI($url)->message;
         echo json_encode($response);
     }
