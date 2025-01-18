@@ -175,4 +175,22 @@ class Laporan extends BaseController
         echo json_encode($response,true);
     }
 
+    public function outlet_idle() {
+        $mdata = [
+            'title'     => 'Mutasi Stok - ' . NAMETITLE,
+            'content'   => 'admin/laporan/outletidle',
+            'extra'     => 'admin/laporan/js/_js_outlet_idle',
+            'menuactive_laporan'   => 'active open',
+            'user_active'   => 'active',
+        ];
+
+        return view('admin/layout/wrapper', $mdata);
+    }
+
+    public function get_outletIdle(){
+        $url = URLAPI . "/v1/laporan/outlet_idle";
+        $response = gucitoakAPI($url)->message;
+        echo json_encode($response,true);
+    }
+
 }
