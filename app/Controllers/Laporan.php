@@ -152,4 +152,27 @@ class Laporan extends BaseController
         
     }
 
+    public function omzet_outlet() {
+        $url = URLAPI . "/v1/pelanggan/getall_pelanggan";
+        $response = gucitoakAPI($url);
+        $pelanggan = $response->message;
+
+        $mdata = [
+            'title'     => 'Mutasi Stok - ' . NAMETITLE,
+            'content'   => 'admin/laporan/omzetpel',
+            'extra'     => 'admin/laporan/js/_js_omzetpel',
+            'menuactive_laporan'   => 'active open',
+            'user_active'   => 'active',
+            'pelanggan' => $pelanggan
+        ];
+
+        return view('admin/layout/wrapper', $mdata);
+    }
+
+    public function get_omzetpel($id){
+        $url = URLAPI . "/v1/laporan/omzet_pelanggan?id=$id";
+        $response = gucitoakAPI($url)->message;
+        echo json_encode($response,true);
+    }
+
 }
