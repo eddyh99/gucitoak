@@ -193,4 +193,28 @@ class Laporan extends BaseController
         echo json_encode($response,true);
     }
 
+    public function penjualan_outlet() {
+        $url = URLAPI . "/v1/pelanggan/getall_pelanggan";
+        $response = gucitoakAPI($url);
+        $pelanggan = $response->message;
+
+        $mdata = [
+            'title'     => 'Mutasi Stok - ' . NAMETITLE,
+            'content'   => 'admin/laporan/penjualanoutlet',
+            'extra'     => 'admin/laporan/js/_js_penjualan_outlet',
+            'menuactive_laporan'   => 'active open',
+            'user_active'   => 'active',
+            'pelanggan' => $pelanggan
+        ];
+
+        return view('admin/layout/wrapper', $mdata);
+    }
+
+    public function get_penjualan_outlet(){
+        $id  = $this->request->getVar('id');
+        $url = URLAPI . "/v1/laporan/penjualan_outlet?id=$id";
+        $response = gucitoakAPI($url)->message;
+        echo json_encode($response,true);
+    }
+
 }

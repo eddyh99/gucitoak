@@ -339,6 +339,12 @@
                 <div data-i18n="Laporan" style="font-size: 12px;">Outlet Idle</div>
             </a>
         </li>
+        <li class="menu-item">
+            <a href="<?= BASE_URL ?>laporan/penjualan_outlet" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
+                <i class="menu-icon fs-5 tf-icons bx bx-purchase-tag-alt px-2"></i>
+                <div data-i18n="Laporan" style="font-size: 12px;">Penjualan Outlet</div>
+            </a>
+        </li>
     </ul>
 </div>
 <?php endif?>
