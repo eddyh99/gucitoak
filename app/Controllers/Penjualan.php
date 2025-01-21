@@ -163,5 +163,11 @@ class Penjualan extends BaseController
         echo json_encode($response,true);
     }
 
+    public function set_statusBarang($nonota){
+        $url = URLAPI . "/v1/penjualan/set_statusBarang?nonota=".base64_decode($nonota);
+        $response = gucitoakAPI($url)->message;
+        echo json_encode($response,true);
+    }
+
 
 }
