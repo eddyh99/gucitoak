@@ -2,10 +2,15 @@
 
 namespace App\Controllers;
 
+use App\Enums\Menu;
+
 class Suplier extends BaseController
 {
     public function index()
     {
+        if (!hasPermission(Menu::DAFTAR_SUPLIER, 'setup')) {
+            return view('errors/html/error_403');
+        }
         $mdata = [
             'title'     => 'List suplier - ' . NAMETITLE,
             'content'   => 'admin/suplier/index',

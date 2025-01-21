@@ -3,12 +3,16 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Enums\Menu;
 use CodeIgniter\HTTP\ResponseInterface;
 
 class Pembayaran extends BaseController
 {
     public function pelanggan()
     {
+        if (!hasPermission(Menu::PEMBAYARAN_PELANGGAN, 'transaksi')) {
+            return view('errors/html/error_403');
+        }
         $mdata = [
             'title'     => 'List Pembayaran - ' . NAMETITLE,
             'content'   => 'admin/pembayaran/pelanggan',
@@ -87,6 +91,9 @@ class Pembayaran extends BaseController
 
     public function suplier()
     {
+        if (!hasPermission(Menu::PEMBAYARAN_SUPLIER, 'transaksi')) {
+            return view('errors/html/error_403');
+        }
         $mdata = [
             'title'     => 'List Pembayaran - ' . NAMETITLE,
             'content'   => 'admin/pembayaran/suplier',

@@ -2,10 +2,15 @@
 
 namespace App\Controllers;
 
+use App\Enums\Menu;
+
 class Penjualan extends BaseController
 {
     public function index()
     {
+        if (!hasPermission(Menu::PENJUALAN, 'transaksi')) {
+            return view('errors/html/error_403');
+        }
         $mdata = [
             'title'     => 'List Penjualan - ' . NAMETITLE,
             'content'   => 'admin/penjualan/index',

@@ -2,10 +2,15 @@
 
 namespace App\Controllers;
 
+use App\Enums\Menu;
+
 class Barang extends BaseController
 {
     public function index()
     {
+        if (!hasPermission(Menu::DAFTAR_BARANG, 'setup')) {
+            return view('errors/html/error_403');
+        }
         $mdata = [
             'title'     => 'List barang - ' . NAMETITLE,
             'content'   => 'admin/barang/index',

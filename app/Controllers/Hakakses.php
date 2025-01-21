@@ -9,6 +9,10 @@ class Hakakses extends BaseController
 {
     public function index()
     {
+        if (!hasPermission(Menu::HAK_AKSES, 'setup')) {
+            return view('errors/html/error_403');
+        }
+
         $url = URLAPI . "/v1/pengguna/getAkses_pengguna";
 		$users = gucitoakAPI($url)->message;
         $submenu_setup = Menu::subMenu_setup();

@@ -2,10 +2,15 @@
 
 namespace App\Controllers;
 
+use App\Enums\Menu;
+
 class Satuan extends BaseController
 {
     public function index()
     {
+        if (!hasPermission(Menu::DAFTAR_SATUAN, 'setup')) {
+            return view('errors/html/error_403');
+        }
         $mdata = [
             'title'     => 'List Satuan - ' . NAMETITLE,
             'content'   => 'admin/satuan/index',
