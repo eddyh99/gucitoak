@@ -249,4 +249,31 @@ class Laporan extends BaseController
         echo json_encode($response,true);
     }
 
+    public function katalog() {
+        // if (!hasPermission(Menu::PENJUALAN_OUTLET, 'laporan')) {
+        //     return view('errors/html/error_403');
+        // }
+
+        $url = URLAPI . "/v1/kategori/getall_kategori";
+        $response = gucitoakAPI($url);
+        $kategori = $response->message;
+
+        $mdata = [
+            'title'     => 'Mutasi Stok - ' . NAMETITLE,
+            'content'   => 'admin/laporan/katalog',
+            'extra'     => 'admin/laporan/js/_js_katalog',
+            'menuactive_laporan'   => 'active open',
+            'user_active'   => 'active',
+            'kategori' => $kategori
+        ];
+
+        return view('admin/layout/wrapper', $mdata);
+    }
+
+    public function get_katalog(){
+        $id  = $this->request->getVar('id');
+        $url = URLAPI . "/v1/laporan/get_katalog?id=$id";
+        $response = gucitoakAPI($url)->message;
+        echo json_encode($response,true);
+    }
 }
