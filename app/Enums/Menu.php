@@ -30,6 +30,9 @@ CONST PENJUALAN_SUMMARY = 'penjualan_summary';
 CONST PEMBELIAN_SUMMARY = 'pembelian_summary';
 CONST LAP_RETUR_SUPLIER = 'laporan_retur_suplier';
 CONST LAP_RETUR_PELANGGAN = 'laporan_retur_pelanggan';
+CONST OMZET_OUTLET = 'omzet_outlet';
+CONST OUTLET_IDLE = 'outlet_idle';
+CONST PENJUALAN_OUTLET = 'penjualan_outlet';
 
     public static function subMenu_setup()
         {
@@ -77,7 +80,10 @@ CONST LAP_RETUR_PELANGGAN = 'laporan_retur_pelanggan';
                 self::PENJUALAN_SUMMARY,
                 self::PEMBELIAN_SUMMARY,
                 self::LAP_RETUR_PELANGGAN,
-                self::LAP_RETUR_SUPLIER
+                self::LAP_RETUR_SUPLIER,
+                self::OMZET_OUTLET,
+                self::OUTLET_IDLE,
+                self::PENJUALAN_OUTLET
             ];
         }
 }

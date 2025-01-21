@@ -173,6 +173,10 @@ class Laporan extends BaseController
     }
 
     public function omzet_outlet() {
+        if (!hasPermission(Menu::OMZET_OUTLET, 'laporan')) {
+            return view('errors/html/error_403');
+        }
+
         $url = URLAPI . "/v1/pelanggan/getall_pelanggan";
         $response = gucitoakAPI($url);
         $pelanggan = $response->message;
@@ -196,6 +200,10 @@ class Laporan extends BaseController
     }
 
     public function outlet_idle() {
+        if (!hasPermission(Menu::OUTLET_IDLE, 'laporan')) {
+            return view('errors/html/error_403');
+        }
+
         $mdata = [
             'title'     => 'Mutasi Stok - ' . NAMETITLE,
             'content'   => 'admin/laporan/outletidle',
@@ -214,6 +222,10 @@ class Laporan extends BaseController
     }
 
     public function penjualan_outlet() {
+        if (!hasPermission(Menu::PENJUALAN_OUTLET, 'laporan')) {
+            return view('errors/html/error_403');
+        }
+
         $url = URLAPI . "/v1/pelanggan/getall_pelanggan";
         $response = gucitoakAPI($url);
         $pelanggan = $response->message;
