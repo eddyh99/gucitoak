@@ -29,6 +29,7 @@
                             <form action="<?= BASE_URL ?>barang/tambah_proccess" method="POST" enctype="multipart/form-data">
                             <div class="mb-3">
                                         <label class="form-label" for="discount_fxd">Foto Barang</label>
+                                        <img class="img-preview img-fluid col-sm-5 d-block">
                                         <div class="input-group input-group-merge">
                                             <input
                                                 type="file"
@@ -37,6 +38,7 @@
                                                 placeholder="Foto Barang"
                                                 name="foto"
                                                 accept=".jpg,.png,jpeg,.webp"
+                                                onchange="previewImage()"
                                             />
                                         </div>
                                     </div>
