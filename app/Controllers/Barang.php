@@ -60,6 +60,10 @@ class Barang extends BaseController
 
         // Validation Rules
         $rules = $this->validate([
+            'foto' => [
+                'label' => 'Foto barang',
+                'rules' => 'permit_empty|is_image[foto]|mime_in[foto,image/jpg,image/jpeg,image/png,image/webp]'
+            ],
             'namabarang'     => [
                 'label'     => 'Nama barang',
                 'rules'     => 'required'
@@ -87,12 +91,20 @@ class Barang extends BaseController
             session()->setFlashdata('failed', $this->validation->listErrors());
             return redirect()->to(BASE_URL . "barang/tambah_barang")->withInput();
         }
-        
+
+        //get foto file
+        $fileFoto = $this->request->getFile('foto');
+        if ($fileFoto && $fileFoto->isValid()) {
+            $namafoto = time() . '_' . $fileFoto->getName();
+            $fileFoto->move('assets/img/produk', $namafoto);
+        }
+
         // Initial Data
         // FILTER HTML Special Char
         // FILTER Trim Char
         // FILTER SANITIZE INTEGER
         $mdata = [
+            'foto'          => $namafoto ?? null, 
             'namabarang'    => trim(htmlspecialchars($this->request->getVar('namabarang'))),
             'idkategori'    => htmlspecialchars($this->request->getVar('kategori')),
             'idsatuan'      => htmlspecialchars($this->request->getVar('satuan')),
@@ -103,6 +115,8 @@ class Barang extends BaseController
             'disc_pct'      => htmlspecialchars($this->request->getVar('discount_pct')),
             'disc_fxd'      => filter_var($this->request->getVar('discount_fxd'), FILTER_SANITIZE_NUMBER_INT),
         ];
+
+        // dd($mdata);
 
         // CALL API
         $url = URLAPI . "/v1/barang/add_barang";
@@ -152,9 +166,12 @@ class Barang extends BaseController
 
     public function ubah_barang()
     {
-
         // Validation Rules
         $rules = $this->validate([
+            'foto' => [
+                'label' => 'Foto barang',
+                'rules' => 'permit_empty|is_image[foto]|mime_in[foto,image/jpg,image/jpeg,image/png,image/webp]'
+            ],
             'namabarang'     => [
                 'label'     => 'Nama barang',
                 'rules'     => 'required'
@@ -179,11 +196,19 @@ class Barang extends BaseController
 
 
         $idbarang = $this->request->getVar('idbarang');
-
+        $foto_lama = $this->request->getVar('foto_lama');
+        // dd($namafoto);
         // Checking Validation
         if (!$rules){
             session()->setFlashdata('failed', $this->validation->listErrors());
             return redirect()->to(BASE_URL . "barang/edit_barang/".base64_encode($idbarang))->withInput();
+        }
+        
+
+        $fileFoto = $this->request->getFile('foto');
+        if($fileFoto && $fileFoto->isValid()) {
+            $namafoto = $foto_lama ?? time() . '_' . $fileFoto->getName();
+            $fileFoto->move('assets/img/produk', $namafoto, true);
         }
         
         // Initial Data
@@ -191,6 +216,7 @@ class Barang extends BaseController
         // FILTER Trim Char
         // FILTER SANITIZE INTEGER
         $mdata = [
+            'foto'          => $namafoto ?? null,
             'namabarang'    => trim(htmlspecialchars($this->request->getVar('namabarang'))),
             'idkategori'    => htmlspecialchars($this->request->getVar('kategori')),
             'idsatuan'      => htmlspecialchars($this->request->getVar('satuan')),

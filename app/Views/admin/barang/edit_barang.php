@@ -26,8 +26,27 @@
                             <h5 class="mb-1">Edit Barang</h5>
                         </div>
                         <div class="card-body">
-                            <form action="<?= BASE_URL ?>barang/ubah_barang" method="POST">
+                            <form action="<?= BASE_URL ?>barang/ubah_barang" method="POST" enctype="multipart/form-data">
                                 <input type="hidden" name="idbarang" value="<?= $barang->id ?>">
+                                
+                                    <div class="mb-3">
+                                        <label class="form-label" for="foto">Foto Barang</label>
+                                        <?php if ($barang->foto): ?>
+                                        <img class="img-fluid d-block" src="<?= BASE_URL . 'assets/img/produk/' . $barang->foto ?>" alt="Foto Barang">
+                                        <input type="hidden" name="foto_lama" value="<?= $barang->foto ?>">
+                                        <?php endif; ?>
+                                        <small class="text-danger d-block mb-1">*Kosongi jika tidak ingin mengubah</small>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="file"
+                                                class="form-control"
+                                                id="foto"
+                                                placeholder="Foto Barang"
+                                                name="foto"
+                                                accept=".jpg,.png,jpeg,.webp"
+                                            />
+                                        </div>
+                                    </div>
                                 <div class="row row-cols-3">
                                     <div class="mb-3">
                                         <label class="form-label" for="namabarang">Nama Barang</label>
