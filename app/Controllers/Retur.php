@@ -2,10 +2,15 @@
 
 namespace App\Controllers;
 
+use App\Enums\Menu;
+
 class Retur extends BaseController
 {
     public function pelanggan()
     {
+        if (!hasPermission(Menu::RETUR_PELANGGAN, 'transaksi')) {
+            return view('errors/html/error_403');
+        }
         $mdata = [
             'title'     => 'Retur Pelanggan - ' . NAMETITLE,
             'content'   => 'admin/retur/pelanggan',
@@ -19,6 +24,9 @@ class Retur extends BaseController
 
     public function suplier()
     {
+        if (!hasPermission(Menu::RETUR_SUPLIER, 'transaksi')) {
+            return view('errors/html/error_403');
+        }
         $mdata = [
             'title'     => 'Retur Suplier - ' . NAMETITLE,
             'content'   => 'admin/retur/suplier',

@@ -112,9 +112,78 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-6 mb-4 order-1">
+                    <div class="card border-expat w-100">
+                        <div class="card-body">
+                            <h5 class="card-title fw-semibold mb-4">Pembayaran Pelanggan</h5>
+                            <table id="pembayaran_pelanggan" class="table table-striped" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Nama</th>
+                                        <th>Tanggal</th>
+                                        <th>Tempo</th>
+                                        <th>Sisa Cicilan</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4 order-1">
+                    <div class="card border-expat w-100">
+                        <div class="card-body">
+                            <h5 class="card-title fw-semibold mb-4">Pembayaran Suplier</h5>
+                            <table id="pembayaran_suplier" class="table table-striped" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Nama</th>
+                                        <th>Tanggal</th>
+                                        <th>Tempo</th>
+                                        <th>Sisa Cicilan</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- / Content -->
+
+<!-- Modal -->
+<div class="modal fade" id="detailcicilan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Detail Cicilan</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Nominal</th>
+              <th>Tanggal</th>
+              <th>Keterangan</th>
+            </tr>
+          </thead>
+          <tbody id="modalDataBody">
+            <!-- Data will be inserted here -->
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
         
         <!-- Footer -->
         <footer class="content-footer footer bg-footer-theme">

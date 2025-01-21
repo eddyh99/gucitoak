@@ -1,10 +1,14 @@
 <?php
 
 namespace App\Controllers;
+use App\Enums\Menu;
 
 class Laporan extends BaseController
 {
     public function barang() {
+        if (!hasPermission(Menu::STOK_MIN_BARANG, 'laporan')) {
+            return view('errors/html/error_403');
+        }
         $mdata = [
             'title'     => 'Laporan Barang - ' . NAMETITLE,
             'content'   => 'admin/laporan/barang',
@@ -26,6 +30,9 @@ class Laporan extends BaseController
 
     public function mutasistok()
     {
+        if (!hasPermission(Menu::MUTASI_STOK, 'laporan')) {
+            return view('errors/html/error_403');
+        }
         $mdata = [
             'title'     => 'Mutasi Stok - ' . NAMETITLE,
             'content'   => 'admin/laporan/mutasistok',
@@ -48,6 +55,10 @@ class Laporan extends BaseController
     }
 
     public function penjualan() {
+        if (!hasPermission(Menu::PENJUALAN_SUMMARY, 'laporan')) {
+            return view('errors/html/error_403');
+        }
+
         $mdata = [
             'title'     => 'Mutasi Stok - ' . NAMETITLE,
             'content'   => 'admin/laporan/penjualan',
@@ -69,6 +80,9 @@ class Laporan extends BaseController
     }
 
     public function pembelian() {
+        if (!hasPermission(Menu::PEMBELIAN_SUMMARY, 'laporan')) {
+            return view('errors/html/error_403');
+        }
         $url = URLAPI . "/v1/barang/getall_barang";
 		$response = gucitoakAPI($url);
         $barang = $response->message;
@@ -97,6 +111,9 @@ class Laporan extends BaseController
     }
 
     public function retursup() {
+        if (!hasPermission(Menu::LAP_RETUR_SUPLIER, 'laporan')) {
+            return view('errors/html/error_403');
+        }
         $url = URLAPI . "/v1/suplier/getall_suplier";
         $response = gucitoakAPI($url);
         $suplier = $response->message;
@@ -125,6 +142,9 @@ class Laporan extends BaseController
     }
     
     public function returpel() {
+        if (!hasPermission(Menu::LAP_RETUR_PELANGGAN, 'laporan')) {
+            return view('errors/html/error_403');
+        }
         $url = URLAPI . "/v1/pelanggan/getall_pelanggan";
         $response = gucitoakAPI($url);
         $pelanggan = $response->message;
@@ -150,6 +170,83 @@ class Laporan extends BaseController
         $response = gucitoakAPI($url)->message;
         echo json_encode($response,true);
         
+    }
+
+    public function omzet_outlet() {
+        if (!hasPermission(Menu::OMZET_OUTLET, 'laporan')) {
+            return view('errors/html/error_403');
+        }
+
+        $url = URLAPI . "/v1/pelanggan/getall_pelanggan";
+        $response = gucitoakAPI($url);
+        $pelanggan = $response->message;
+
+        $mdata = [
+            'title'     => 'Mutasi Stok - ' . NAMETITLE,
+            'content'   => 'admin/laporan/omzetpel',
+            'extra'     => 'admin/laporan/js/_js_omzetpel',
+            'menuactive_laporan'   => 'active open',
+            'user_active'   => 'active',
+            'pelanggan' => $pelanggan
+        ];
+
+        return view('admin/layout/wrapper', $mdata);
+    }
+
+    public function get_omzetpel($id){
+        $url = URLAPI . "/v1/laporan/omzet_pelanggan?id=$id";
+        $response = gucitoakAPI($url)->message;
+        echo json_encode($response,true);
+    }
+
+    public function outlet_idle() {
+        if (!hasPermission(Menu::OUTLET_IDLE, 'laporan')) {
+            return view('errors/html/error_403');
+        }
+
+        $mdata = [
+            'title'     => 'Mutasi Stok - ' . NAMETITLE,
+            'content'   => 'admin/laporan/outletidle',
+            'extra'     => 'admin/laporan/js/_js_outlet_idle',
+            'menuactive_laporan'   => 'active open',
+            'user_active'   => 'active',
+        ];
+
+        return view('admin/layout/wrapper', $mdata);
+    }
+
+    public function get_outletIdle(){
+        $url = URLAPI . "/v1/laporan/outlet_idle";
+        $response = gucitoakAPI($url)->message;
+        echo json_encode($response,true);
+    }
+
+    public function penjualan_outlet() {
+        if (!hasPermission(Menu::PENJUALAN_OUTLET, 'laporan')) {
+            return view('errors/html/error_403');
+        }
+
+        $url = URLAPI . "/v1/pelanggan/getall_pelanggan";
+        $response = gucitoakAPI($url);
+        $pelanggan = $response->message;
+
+        $mdata = [
+            'title'     => 'Mutasi Stok - ' . NAMETITLE,
+            'content'   => 'admin/laporan/penjualanoutlet',
+            'extra'     => 'admin/laporan/js/_js_penjualan_outlet',
+            'menuactive_laporan'   => 'active open',
+            'user_active'   => 'active',
+            'pelanggan' => $pelanggan
+        ];
+
+        return view('admin/layout/wrapper', $mdata);
+    }
+
+    public function get_penjualan_outlet(){
+        $id  = $this->request->getVar('id');
+        $url = URLAPI . "/v1/laporan/penjualan_outlet?id=$id";
+        $response = gucitoakAPI($url)->message;
+        echo json_encode($response,true);
     }
 
 }

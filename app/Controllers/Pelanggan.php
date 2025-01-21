@@ -2,10 +2,15 @@
 
 namespace App\Controllers;
 
+use App\Enums\Menu;
+
 class Pelanggan extends BaseController
 {
     public function index()
     {
+        if (!hasPermission(Menu::DAFTAR_PELANGGAN, 'setup')) {
+            return view('errors/html/error_403');
+        }
         $mdata = [
             'title'     => 'List pelanggan - ' . NAMETITLE,
             'content'   => 'admin/pelanggan/index',

@@ -68,7 +68,7 @@
             "url": "<?= BASE_URL ?>pembayaran/getCicilan_suplier/",
             "type": "GET",
             "data": function(d) {
-                d.nota = $("#nonota").val();
+                d.nota = encodeURI(btoa($("#nonota").val()));
             },
             "dataSrc": function(data) {
                 console.log(data);

@@ -2,10 +2,15 @@
 
 namespace App\Controllers;
 
+use App\Enums\Menu;
+
 class Opname extends BaseController
 {
     public function index()
     {
+        if (!hasPermission(Menu::PENYESUAIAN_STOK, 'persediaan')) {
+            return view('errors/html/error_403');
+        }
         $mdata = [
             'title'     => 'Stok Opname - ' . NAMETITLE,
             'content'   => 'admin/opname/opname',
@@ -19,6 +24,9 @@ class Opname extends BaseController
 
     public function konfirm()
     {
+        if (!hasPermission(Menu::CONFIRM_OPNAME, 'persediaan')) {
+            return view('errors/html/error_403');
+        }
         $mdata = [
             'title'     => 'Stok Opname - ' . NAMETITLE,
             'content'   => 'admin/opname/konfirm_opname',
@@ -110,6 +118,9 @@ class Opname extends BaseController
 
     public function hapusstok()
     {
+        if (!hasPermission(Menu::HAPUS_STOK, 'persediaan')) {
+            return view('errors/html/error_403');
+        }
         $mdata = [
             'title'     => 'Penghapusan Stok - ' . NAMETITLE,
             'content'   => 'admin/opname/hapus_stok',

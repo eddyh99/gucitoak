@@ -59,12 +59,22 @@ var table=$('#table_list').DataTable({
 		{ data: 'namasales' },
 		{ data: 'amount',render:$.fn.dataTable.render.number( '.', ',', 0, '' )},
 		{ data: 'method' },
+        {
+            data: 'is_terima',
+            render: function(data, type, row) {
+                return data == 1 ? 'sudah diterima' : '-';
+            }
+        },
 		{ data: null,
 		    render: function (data, type, row) {
                     var detail = `<a href="#" onclick='detailbarang("`+encodeURI(btoa(data.nonota))+`")'>
                                                 <i class="bx bx-detail bx-md fs-5 text-primary"></i>
                                           </a>`;
-                    return `${detail}`;
+                    // Tombol Edit
+                    var terima = data.is_terima != 1 ? `<a href="#" onclick='terimaBarang("` + encodeURI(btoa(data.nonota)) + `")'>
+                                                      <i class="bx bx-check bx-md fs-3 text-success"></i>
+                                                    </a>` : '';
+                    return `${detail} ${terima}`;
                 }
 		},
 	],
@@ -107,5 +117,17 @@ var table=$('#table_list').DataTable({
             $("#detailbarang").modal('show');
         });
     };
+
+    function terimaBarang(idb) {
+        console.log(idb);
+        $.get("<?= BASE_URL ?>penjualan/set_statusBarang/" + idb, function(data, status) {
+        // Memeriksa status respons
+        if (data) {
+            $("#barangsuccess").toast('show');
+            table.ajax.reload();
+        } else {
+            console.log('Gagal memperbarui status barang');
+        }})
+    }
 
 </script>

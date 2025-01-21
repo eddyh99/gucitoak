@@ -3,12 +3,16 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Enums\Menu;
 use CodeIgniter\HTTP\ResponseInterface;
 
 class Pembayaran extends BaseController
 {
     public function pelanggan()
     {
+        if (!hasPermission(Menu::PEMBAYARAN_PELANGGAN, 'transaksi')) {
+            return view('errors/html/error_403');
+        }
         $mdata = [
             'title'     => 'List Pembayaran - ' . NAMETITLE,
             'content'   => 'admin/pembayaran/pelanggan',
@@ -22,8 +26,8 @@ class Pembayaran extends BaseController
 
     public function get_pembayaran_pel() {
         $tgl    = explode("-",$this->request->getVar('tanggal'));
-        $awal   = date_format(date_create($tgl[0]),"Y-m-d");
-        $akhir  = date_format(date_create($tgl[1]),"Y-m-d");
+        $awal  = !empty($tgl[0]) ? date_format(date_create($tgl[0]), "Y-m-d") : '';
+        $akhir = !empty($tgl[1]) ? date_format(date_create($tgl[1]), "Y-m-d") : '';
         $url = URLAPI . "/v1/pembayaran/pelanggan?awal=".$awal."&akhir=".$akhir;
         $response = gucitoakAPI($url)->message;
         echo json_encode($response,true);
@@ -43,14 +47,14 @@ class Pembayaran extends BaseController
     }
 
     public function cekNota_pelanggan($nota) {
-        $url = URLAPI . "/v1/pembayaran/cekNota_pelanggan/?nota=".$nota;
+        $url = URLAPI . "/v1/pembayaran/cekNota_pelanggan?nota=".$nota;
         $response = gucitoakAPI($url)->message;
         echo json_encode($response);
     }
 
     public function getCicilan_pelanggan() {
         $nota  = $this->request->getVar('nota');
-        $url = URLAPI . "/v1/pembayaran/getCicilan_pelanggan/?nota=".$nota;
+        $url = URLAPI . "/v1/pembayaran/getCicilan_pelanggan?nota=".base64_decode($nota);
         $response = gucitoakAPI($url)->message;
         echo json_encode($response);
     }
@@ -87,6 +91,9 @@ class Pembayaran extends BaseController
 
     public function suplier()
     {
+        if (!hasPermission(Menu::PEMBAYARAN_SUPLIER, 'transaksi')) {
+            return view('errors/html/error_403');
+        }
         $mdata = [
             'title'     => 'List Pembayaran - ' . NAMETITLE,
             'content'   => 'admin/pembayaran/suplier',
@@ -100,8 +107,8 @@ class Pembayaran extends BaseController
 
     public function get_pembayaran_sup() {
         $tgl    = explode("-",$this->request->getVar('tanggal'));
-        $awal   = date_format(date_create($tgl[0]),"Y-m-d");
-        $akhir  = date_format(date_create($tgl[1]),"Y-m-d");
+        $awal  = !empty($tgl[0]) ? date_format(date_create($tgl[0]), "Y-m-d") : '';
+        $akhir = !empty($tgl[1]) ? date_format(date_create($tgl[1]), "Y-m-d") : '';
         $url = URLAPI . "/v1/pembayaran/suplier?awal=".$awal."&akhir=".$akhir;
         $response = gucitoakAPI($url)->message;
         echo json_encode($response,true);
@@ -122,14 +129,14 @@ class Pembayaran extends BaseController
 
     public function cekNota_suplier() {
         $nota = $this->request->getVar('nota');
-        $url = URLAPI . "/v1/pembayaran/cekNota_suplier/?nota=".$nota;
+        $url = URLAPI . "/v1/pembayaran/cekNota_suplier?nota=".$nota;
         $response = gucitoakAPI($url)->message;
         echo json_encode($response);
     }
 
     public function getCicilan_suplier() {
         $nota  = $this->request->getVar('nota');
-        $url = URLAPI . "/v1/pembayaran/getCicilan_suplier/?nota=".$nota;
+        $url = URLAPI . "/v1/pembayaran/getCicilan_suplier?nota=".base64_decode($nota);
         $response = gucitoakAPI($url)->message;
         echo json_encode($response);
     }

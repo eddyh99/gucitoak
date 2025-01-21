@@ -2,10 +2,16 @@
 
 namespace App\Controllers;
 
+use App\Enums\Menu;
+
 class Pembelian extends BaseController
 {
     public function index()
     {
+        if (!hasPermission(Menu::PEMBELIAN, 'transaksi')) {
+            return view('errors/html/error_403');
+        }
+
         $mdata = [
             'title'     => 'List Pembelian - ' . NAMETITLE,
             'content'   => 'admin/pembelian/index',

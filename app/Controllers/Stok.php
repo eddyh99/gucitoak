@@ -2,11 +2,16 @@
 
 namespace App\Controllers;
 
+use App\Enums\Menu;
+
 class Stok extends BaseController
 {
 
     public function index()
     {
+        if (!hasPermission(Menu::STOK_BARANG, 'persediaan')) {
+            return view('errors/html/error_403');
+        }
         $mdata = [
             'title'     => 'Stok barang - ' . NAMETITLE,
             'content'   => 'admin/stok/barang',
@@ -28,6 +33,9 @@ class Stok extends BaseController
 
     public function tambah_stokbarang()
     {
+        if (!hasPermission(Menu::INPUT_STOK, 'persediaan')) {
+            return view('errors/html/error_403');
+        }
         
         // CALL API BARANG
         $urlBarang = URLAPI . "/v1/barang/getall_barang";

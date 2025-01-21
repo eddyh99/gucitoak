@@ -2,10 +2,15 @@
 
 namespace App\Controllers;
 
+use App\Enums\Menu;
+
 class Sales extends BaseController
 {
     public function index()
     {
+        if (!hasPermission(Menu::DAFTAR_SALES, 'setup')) {
+            return view('errors/html/error_403');
+        }
         $mdata = [
             'title'     => 'List sales - ' . NAMETITLE,
             'content'   => 'admin/sales/index',
@@ -227,6 +232,9 @@ class Sales extends BaseController
     
     public function list_assign_sales()
     {
+        if (!hasPermission(Menu::DAFTAR_BARANG_SALES, 'setup')) {
+            return view('errors/html/error_403');
+        }
         $mdata = [
             'title'     => 'Assign Sales - ' . NAMETITLE,
             'content'   => 'admin/sales/list_assignsales',

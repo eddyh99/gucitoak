@@ -2,10 +2,15 @@
 
 namespace App\Controllers;
 
+use App\Enums\Menu;
+
 class Penjualan extends BaseController
 {
     public function index()
     {
+        if (!hasPermission(Menu::PENJUALAN, 'transaksi')) {
+            return view('errors/html/error_403');
+        }
         $mdata = [
             'title'     => 'List Penjualan - ' . NAMETITLE,
             'content'   => 'admin/penjualan/index',
@@ -154,6 +159,12 @@ class Penjualan extends BaseController
     
     public function list_barang($nonota){
         $url = URLAPI . "/v1/penjualan/get_barangjual?nonota=".base64_decode($nonota);
+        $response = gucitoakAPI($url)->message;
+        echo json_encode($response,true);
+    }
+
+    public function set_statusBarang($nonota){
+        $url = URLAPI . "/v1/penjualan/set_statusBarang?nonota=".base64_decode($nonota);
         $response = gucitoakAPI($url)->message;
         echo json_encode($response,true);
     }
