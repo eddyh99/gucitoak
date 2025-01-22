@@ -169,5 +169,13 @@ class Opname extends BaseController
         $response = gucitoakAPI($url)->message;
         echo json_encode($response);
     }
+
+    public function setStatus_opname() {
+        $id = base64_decode($this->request->getVar('id'));
+        $status = $this->request->getVar('status');
+        $url = URLAPI . "/v1/barang/setStatus_opname?id=$id&status=$status";
+        $response = gucitoakAPI($url)->message;
+        echo json_encode($response);
+    }
     
 }

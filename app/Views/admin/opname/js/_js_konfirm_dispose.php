@@ -46,19 +46,19 @@
 
     function setStatus(id, status) {
 
-    $.ajax({
-        url: "<?= BASE_URL ?>opname/setStatus_disposal",
-        method: 'POST',
-        data: {
-        id: id,
-        status: status
-        },
-        success: function(response) {
-            table.ajax.reload(); 
-        },
-        error: function(xhr, status, error) {
-            console.error('Error updating status:', error);
-        }
+        $.ajax({
+            url: "<?= BASE_URL ?>opname/setStatus_disposal",
+            method: 'POST',
+            data: {
+            id: id,
+            status: status
+            },
+            success: function(response) {
+                table.ajax.reload(); 
+            },
+            error: function(xhr, status, error) {
+                console.error('Error updating status:', error);
+            }
     });
 }
 </script>
