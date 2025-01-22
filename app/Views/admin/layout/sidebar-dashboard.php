@@ -196,6 +196,13 @@
         </li>
         <?php endif?>
 
+        <li class="menu-item <?= @$stokopnamekonfirm_active ?>">
+            <a href="<?= BASE_URL ?>dispose/konfirm" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
+                <i class="menu-icon fs-5 tf-icons bx bx-check-shield px-2"></i>
+                <div data-i18n="Konfirm Opname" style="font-size: 12px;">Konfirm Dispose</div>
+            </a>
+        </li>
+
         <?php if ($isAdmin || $hasPermission('penghapusan_stok', 'persediaan')): ?>
         <li class="menu-item <?= @$hapusstok_active ?>">
             <a href="<?= BASE_URL ?>opname/hapusstok" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">

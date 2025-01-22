@@ -142,5 +142,32 @@ class Opname extends BaseController
         
     }
 
+    public function konfirm_dispose() {
+        $mdata = [
+            'title'     => 'Stok Opname - ' . NAMETITLE,
+            'content'   => 'admin/opname/konfirm_dispose',
+            'extra'     => 'admin/opname/js/_js_konfirm_dispose',
+            'menuactive_persediaan'   => 'active open',
+            'stokbarang_active'   => 'active'
+        ];
+
+        return view('admin/layout/wrapper', $mdata);
+    }
+
+    public function get_disposal(){
+        $url = URLAPI . "/v1/barang/get_disposal";
+		$response = gucitoakAPI($url);
+        $result = $response->message;
+        echo json_encode($result);
+
+    }
+
+    public function setStatus_disposal() {
+        $id = base64_decode($this->request->getVar('id'));
+        $status = $this->request->getVar('status');
+        $url = URLAPI . "/v1/barang/setStatus_disposal?id=$id&status=$status";
+        $response = gucitoakAPI($url)->message;
+        echo json_encode($response);
+    }
     
 }
