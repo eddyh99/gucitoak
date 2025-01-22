@@ -85,11 +85,11 @@ INSERT INTO `barang` VALUES
 (3,'Snack Pilihan Kami',1,1,10,'yes',0,'2024-10-16 04:38:08','2024-10-16 07:20:06',NULL),
 (4,'Snack Pilihan Kami',1,1,10,'yes',0,'2024-10-16 05:40:04','2024-10-16 07:22:38',NULL),
 (5,'Teh Gelas',1,1,10,'no',0,'2024-10-16 05:54:48',NULL,NULL),
-(6,'Teh Botol',1,1,10,'no',0,'2024-10-16 06:00:34',NULL,NULL),
+(6,'Teh Botol',2,1,10,'no',0,'2024-10-16 06:00:34','2025-01-21 15:41:18',NULL),
 (7,'Teh Kaca',1,1,10,'yes',0,'2024-10-16 06:12:37','2024-10-16 07:23:18',NULL),
-(8,'Udang Rambutan',1,1,10,'no',0,'2024-10-16 06:13:17',NULL,NULL),
-(9,'Kepiting Uenak',2,1,500,'no',0,'2024-10-16 06:51:42',NULL,NULL),
-(10,'Buku Tulis',34,4,100,'no',0,'2024-10-17 04:30:02','2025-01-21 11:02:54','');
+(8,'Udang Rambutan',2,1,10,'no',0,'2024-10-16 06:13:17','2025-01-21 15:44:10',''),
+(9,'Kepiting Uenak',2,1,500,'no',0,'2024-10-16 06:51:42','2025-01-21 15:41:24',NULL),
+(10,'Buku Tulis',34,4,100,'no',0,'2024-10-17 04:30:02','2025-01-21 16:36:10','');
 /*!40000 ALTER TABLE `barang` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -240,6 +240,7 @@ CREATE TABLE `disposal_detail` (
   `barcode` varchar(30) NOT NULL,
   `jumlah` int(11) NOT NULL,
   `alasan` tinytext DEFAULT NULL,
+  `approved` tinyint(4) DEFAULT 0 CHECK (`approved` in (0,1,2)),
   PRIMARY KEY (`id`),
   KEY `disposal_detail_ibfk_2` (`barcode`),
   CONSTRAINT `disposal_detail_ibfk_2` FOREIGN KEY (`barcode`) REFERENCES `barang_detail` (`barcode`)
@@ -253,7 +254,7 @@ CREATE TABLE `disposal_detail` (
 LOCK TABLES `disposal_detail` WRITE;
 /*!40000 ALTER TABLE `disposal_detail` DISABLE KEYS */;
 INSERT INTO `disposal_detail` VALUES
-(2,'2024-11-28','139875032890250525',5,'Rusak');
+(2,'2024-11-28','139875032890250525',5,'Rusak',1);
 /*!40000 ALTER TABLE `disposal_detail` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -276,7 +277,7 @@ CREATE TABLE `harga` (
   PRIMARY KEY (`id`),
   KEY `id_barang` (`id_barang`),
   CONSTRAINT `harga_ibfk_1` FOREIGN KEY (`id_barang`) REFERENCES `barang` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=90 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -306,7 +307,17 @@ INSERT INTO `harga` VALUES
 (52,10,'2025-01-21 11:00:49',31000,30000,0,0,1.5000),
 (54,10,'2025-01-21 11:02:19',31000,30000,0,0,1.5000),
 (55,10,'2025-01-21 11:02:38',31000,30000,0,0,1.5000),
-(56,10,'2025-01-21 11:02:54',31000,30000,0,0,1.5000);
+(56,10,'2025-01-21 11:02:54',31000,30000,0,0,1.5000),
+(80,10,'2025-01-21 15:24:31',31000,30000,0,0,1.5000),
+(81,10,'2025-01-21 15:24:54',31000,30000,0,0,1.5000),
+(82,6,'2025-01-21 15:41:18',10000,12000,12500,1000,2.0000),
+(83,9,'2025-01-21 15:41:24',20000,19800,0,0,0.5000),
+(84,10,'2025-01-21 15:41:47',31000,30000,0,0,1.5000),
+(85,10,'2025-01-21 15:42:36',31000,30000,0,0,1.5000),
+(86,8,'2025-01-21 15:43:01',10000,12000,12500,1000,0.0100),
+(87,8,'2025-01-21 15:43:22',10000,12000,12500,1000,0.0100),
+(88,8,'2025-01-21 15:44:10',10000,12000,12500,1000,0.0100),
+(89,10,'2025-01-21 16:36:10',31000,30000,0,0,1.5000);
 /*!40000 ALTER TABLE `harga` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -926,4 +937,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*M!100616 SET NOTE_VERBOSITY=@OLD_NOTE_VERBOSITY */;
 
--- Dump completed on 2025-01-21 22:19:48
+-- Dump completed on 2025-01-22 13:56:56
