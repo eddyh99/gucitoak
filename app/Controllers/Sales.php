@@ -330,6 +330,14 @@ class Sales extends BaseController
         }
     }
 
+    public function get_sales_report(){
+        $id = $this->request->getVar('id');
+        $url = URLAPI . "/v1/sales/getreport_sales?id=$id";
+		$response = gucitoakAPI($url);
+        $result = $response->message;
+        echo json_encode($result);
+    }
+
 
 
 }
