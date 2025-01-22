@@ -244,7 +244,8 @@ class Laporan extends BaseController
 
     public function get_penjualan_outlet(){
         $id  = $this->request->getVar('id');
-        $url = URLAPI . "/v1/laporan/penjualan_outlet?id=$id";
+        $tahun  = $this->request->getVar('tahun');
+        $url = URLAPI . "/v1/laporan/penjualan_outlet?id=".$id."&tahun=".$tahun;
         $response = gucitoakAPI($url)->message;
         echo json_encode($response,true);
     }

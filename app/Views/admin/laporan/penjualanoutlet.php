@@ -15,11 +15,14 @@
                                         <?php endforeach; ?>
                 				    </select>
                 				</div>
+                        <div class="col-sm-1">
+                				    <input type="text" name="tahun" id="tahun" class="form-control" value="<?=date("Y")?>">
+                				</div>
                                 <div class="col-2">
                                     <button class="btn btn-primary" id="lihat">Lihat</button>
                                 </div>
                             </div>
-                            <h5 class="card-title fw-semibold mb-4 mt-3">Penjualan Barang <?= date('Y') ?></h5>
+                            <h5 class="card-title fw-semibold mb-4 mt-3">Penjualan Barang</h5>
                             <div id="chart"></div>
                             <table id="table_list" class="table table-striped" style="width:100%">
                                 <thead>
