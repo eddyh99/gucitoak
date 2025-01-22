@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
+use DateTime;
 
 class Penggajian extends BaseController
 {
@@ -82,4 +83,13 @@ class Penggajian extends BaseController
             return redirect()->to(BASE_URL . "penggajian/tambah")->withInput();
         }
     }
+
+    public function get_listGaji()
+    {
+        $bulan = (new DateTime("{$this->request->getVar('tahun')}-{$this->request->getVar('bulan')}"));
+        $url = URLAPI . "/v1/penggajian/listGaji_bulanan?bulan=" . $bulan->format('Y-m');
+        $response = gucitoakAPI($url)->message;
+        echo json_encode($response, true);
+    }
+
 }

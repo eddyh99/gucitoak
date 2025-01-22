@@ -259,6 +259,40 @@ INSERT INTO `disposal_detail` VALUES
 UNLOCK TABLES;
 
 --
+-- Table structure for table `gaji`
+--
+
+DROP TABLE IF EXISTS `gaji`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `gaji` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `sales_id` int(11) NOT NULL,
+  `bulan` char(7) NOT NULL,
+  `gajipokok` int(11) NOT NULL,
+  `uangharian` int(11) DEFAULT 0,
+  `insentif` int(11) DEFAULT 0,
+  `komisi` int(11) NOT NULL,
+  `detailnota` text DEFAULT NULL,
+  `status` enum('dibayar','belum') NOT NULL DEFAULT 'belum',
+  PRIMARY KEY (`id`),
+  KEY `fk_sales` (`sales_id`),
+  CONSTRAINT `fk_sales` FOREIGN KEY (`sales_id`) REFERENCES `sales` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `gaji`
+--
+
+LOCK TABLES `gaji` WRITE;
+/*!40000 ALTER TABLE `gaji` DISABLE KEYS */;
+INSERT INTO `gaji` VALUES
+(9,4,'2025-01',1500000,1000,999,0,'000002, 000003','belum');
+/*!40000 ALTER TABLE `gaji` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `harga`
 --
 
@@ -937,4 +971,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*M!100616 SET NOTE_VERBOSITY=@OLD_NOTE_VERBOSITY */;
 
--- Dump completed on 2025-01-22 13:56:56
+-- Dump completed on 2025-01-23  0:15:08
