@@ -78,6 +78,11 @@ class Sales extends BaseController
                 'label'     => 'Omzet',
                 'rules'     => 'required'
             ],
+            'confirm_password'     => [
+                'label'     => 'Konfirmasi Password',
+                'rules'     => 'matches[password]'
+            ]
+            
         ]);
 
         // Checking Validation
@@ -86,6 +91,7 @@ class Sales extends BaseController
             return redirect()->to(BASE_URL . "sales/tambah_sales")->withInput();
         }
         $namasales = $this->request->getVar('sales');
+        $password = $this->request->getVar('password');
 
         //get avatar file
         $fileAvatar = $this->request->getFile('avatar');
@@ -99,7 +105,7 @@ class Sales extends BaseController
         // FILTER TRIM DATA
         // FILTER SANITIZE NUMBER INTEGER
         $mdata = [
-            'avatar'          => $namaAvatar ?? null, 
+            'avatar'        => $namaAvatar ?? null, 
             'namasales'     => trim(htmlspecialchars($namasales)),
             'alamat'        => trim(htmlspecialchars($this->request->getVar('alamat'))),
             'kota'          => trim(htmlspecialchars($this->request->getVar('kota'))),
@@ -107,6 +113,8 @@ class Sales extends BaseController
             'omzet'         => trim(filter_var($this->request->getVar('omzet'), FILTER_SANITIZE_NUMBER_INT)),
             'gajipokok'     => trim(filter_var($this->request->getVar('gapok'), FILTER_SANITIZE_NUMBER_INT)),
             'komisi'        => trim(filter_var($this->request->getVar('komisi'), FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION)),
+            'username'      => trim(htmlspecialchars($this->request->getVar('username'))),
+            'password'      => ((!empty($password)) ? sha1(trim(htmlspecialchars($password))) : null)
         ];
 
 
@@ -183,11 +191,16 @@ class Sales extends BaseController
                 'label'     => 'Omzet',
                 'rules'     => 'required'
             ],
+            'confirm_password'     => [
+                'label'     => 'Konfirmasi Password',
+                'rules'     => 'matches[password]'
+            ]
         ]);
 
         $idsales = $this->request->getVar('idsales');
         $namasales = $this->request->getVar('sales');
         $avatar_lama = $this->request->getVar('avatar_lama');
+        $newpass = $this->request->getVar('password');
 
         // Checking Validation
         if (!$rules){
@@ -214,6 +227,8 @@ class Sales extends BaseController
             'omzet'         => trim(filter_var($this->request->getVar('omzet'), FILTER_SANITIZE_NUMBER_INT)),
             'gajipokok'     => trim(filter_var($this->request->getVar('gapok'), FILTER_SANITIZE_NUMBER_INT)),
             'komisi'        => trim(filter_var($this->request->getVar('komisi'), FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION)),
+            'username'      => trim(htmlspecialchars($this->request->getVar('username'))),
+            'password'      => ((!empty($newpass)) ? sha1(trim(htmlspecialchars($newpass))) : null)
         ];
         
 

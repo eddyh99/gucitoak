@@ -151,6 +151,50 @@
                                         </div>
                                     </div>
                                 </div>
+                                <hr>
+                                <div class="row row-cols-3">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="username">Username</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="username"
+                                                placeholder="Username atau Email"
+                                                name="username"
+                                                value="<?= $sales->username ?>"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 form-password-toggle">
+                                            <label class="form-label" for="password">Password</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="password"
+                                                id="password"
+                                                class="form-control"
+                                                name="password"
+                                                placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                                                aria-describedby="password"
+                                            />
+                                            <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 form-password-toggle">
+                                            <label class="form-label" for="password">Konfirmasi Password</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="password"
+                                                id="password"
+                                                class="form-control"
+                                                name="confirm_password"
+                                                placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                                                aria-describedby="password"
+                                            />
+                                            <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
                                 <button type="submit" class="btn btn-primary">Edit Data</button>
                             </form>
                         </div>
