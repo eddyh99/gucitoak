@@ -45,7 +45,7 @@
             });
 
         } else {
-            const akses = JSON.parse(selectedUser.akses);
+            const akses = JSON.parse(selectedUser.akses) || {};
             // aech menus
             $('#setup').val(akses['setup']).trigger('change');
             $('#persediaan').val(akses['persediaan']).trigger('change');

@@ -33,6 +33,7 @@ CONST LAP_RETUR_PELANGGAN = 'laporan_retur_pelanggan';
 CONST OMZET_OUTLET = 'omzet_outlet';
 CONST OUTLET_IDLE = 'outlet_idle';
 CONST PENJUALAN_OUTLET = 'penjualan_outlet';
+CONST PENGGAJIAN_SALES = 'penggajian_sales';
 
     public static function subMenu_setup()
         {
@@ -84,6 +85,13 @@ CONST PENJUALAN_OUTLET = 'penjualan_outlet';
                 self::OMZET_OUTLET,
                 self::OUTLET_IDLE,
                 self::PENJUALAN_OUTLET
+            ];
+        }
+
+        public static function subMenu_penggajian()
+        {
+            return [
+                self::PENGGAJIAN_SALES
             ];
         }
 }

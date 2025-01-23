@@ -61,12 +61,15 @@
             </a>
         </li>
         <?php endif?>
+
+        <?php if  ($isAdmin || isset($akses->penggajian)): ?>
         <li class="menu-item <?= @$menuactive_penggajian ?>">
             <a href="<?= BASE_URL ?>penggajian" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-money "></i>
                 <div data-i18n="Analytics" class="text-center">Penggajian</div>
             </a>
         </li>
+        <?php endif?>
     </ul>
 </aside>
 

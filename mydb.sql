@@ -566,13 +566,13 @@ CREATE TABLE `pengguna` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(10) NOT NULL,
   `passwd` varchar(50) NOT NULL,
-  `role` enum('admin','kasir') NOT NULL DEFAULT 'admin',
+  `role` enum('admin','kasir','sales') NOT NULL DEFAULT 'admin',
   `status` enum('active','disabled') NOT NULL DEFAULT 'active',
   `created_at` datetime NOT NULL,
   `update_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -587,7 +587,8 @@ INSERT INTO `pengguna` VALUES
 (5,'ari','d58a1a35e01b9a894fae8677c08062ec90f07c91','admin','disabled','2024-10-17 02:39:55','2024-10-17 02:49:26'),
 (7,'adi','40bd001563085fc35165329ea1ff5c5ecbdbbeef','admin','disabled','2024-10-17 02:51:31','2024-10-17 02:52:04'),
 (8,'admin1','f865b53623b121fd34ee5426c792e5c33af8c227','admin','disabled','2024-10-17 03:03:26','2024-10-17 03:03:34'),
-(9,'agus','f865b53623b121fd34ee5426c792e5c33af8c227','kasir','active','2025-01-16 13:38:34',NULL);
+(9,'agus','f865b53623b121fd34ee5426c792e5c33af8c227','kasir','active','2025-01-16 13:38:34',NULL),
+(10,'supersales','f865b53623b121fd34ee5426c792e5c33af8c227','sales','active','2025-01-23 07:36:37',NULL);
 /*!40000 ALTER TABLE `pengguna` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -949,7 +950,7 @@ CREATE TABLE `user_role` (
   UNIQUE KEY `pengguna_id_2` (`pengguna_id`),
   KEY `pengguna_id` (`pengguna_id`),
   CONSTRAINT `user_role_ibfk_1` FOREIGN KEY (`pengguna_id`) REFERENCES `pengguna` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -972,4 +973,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*M!100616 SET NOTE_VERBOSITY=@OLD_NOTE_VERBOSITY */;
 
--- Dump completed on 2025-01-23 14:04:46
+-- Dump completed on 2025-01-23 15:00:25
