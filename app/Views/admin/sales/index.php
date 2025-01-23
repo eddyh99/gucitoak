@@ -50,6 +50,7 @@
                                 <thead>
                                     <tr>
                                         <th>Nama Sales</th>
+                                        <th>Foto</th>
                                         <th>No. Telp</th>
                                         <th>Omzet</th>
                                         <th>Gaji Pokok</th>

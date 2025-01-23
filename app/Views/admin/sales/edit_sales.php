@@ -26,10 +26,30 @@
                             <h5 class="mb-1">Edit Sales</h5>
                         </div>
                         <div class="card-body">
-                            <form action="<?= BASE_URL ?>sales/ubah_sales" method="POST">
+                            <form action="<?= BASE_URL ?>sales/ubah_sales" method="POST" enctype="multipart/form-data">
                                 <input type="hidden" name="idsales" value="<?=$sales->id?>">
+                                <?php if ($sales->avatar): ?>
+                                    <img class="img-preview img-fluid col-sm-5 d-block mb-3 mx-auto" src="<?= BASE_URL . 'assets/img/avatars/' . $sales->avatar ?>">
+                                    <input type="hidden" name="avatar_lama" value="<?= $sales->avatar ?>">
+                                <?php else: ?>
+                                    <img class="img-preview img-fluid col-sm-5 d-block mx-auto">
+                                <?php endif; ?>
                                 <div class="row row-cols-3">
-
+                                <div class="mb-3">
+                                        <label class="form-label" for="avatar">Foto sales</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                            type="file"
+                                            class="form-control"
+                                            id="avatar"
+                                            placeholder="Foto Barang"
+                                            name="avatar"
+                                            accept=".jpg,.png,jpeg,.webp"
+                                            onchange="previewImage()"
+                                            />
+                                        </div>
+                                        <small class="text-danger d-block mt-1">*Kosongi jika tidak ingin mengubah</small>
+                                    </div>
                                     <div class="mb-3">
                                         <label class="form-label" for="sales">Nama Sales</label>
                                         <div class="input-group input-group-merge">

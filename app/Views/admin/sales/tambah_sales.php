@@ -26,8 +26,23 @@
                             <h5 class="mb-1">Tambah Sales</h5>
                         </div>
                         <div class="card-body">
-                            <form action="<?= BASE_URL ?>sales/tambah_proccess" method="POST">
+                            <form action="<?= BASE_URL ?>sales/tambah_proccess" method="POST" enctype="multipart/form-data">
+                                <img class="img-preview img-fluid col-sm-5 d-block mx-auto">
                                 <div class="row row-cols-3">
+                                <div class="mb-3">
+                                        <label class="form-label" for="avatar">Foto sales</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="file"
+                                                class="form-control"
+                                                id="avatar"
+                                                placeholder="Foto Barang"
+                                                name="avatar"
+                                                accept=".jpg,.png,jpeg,.webp"
+                                                onchange="previewImage()"
+                                            />
+                                        </div>
+                                    </div>
 
                                     <div class="mb-3">
                                         <label class="form-label" for="sales">Nama Sales</label>

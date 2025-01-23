@@ -54,6 +54,10 @@ class Sales extends BaseController
 
         // Validation Rules
         $rules = $this->validate([
+            'avatar' => [
+                'label' => 'Foto sales',
+                'rules' => 'permit_empty|is_image[avatar]|mime_in[avatar,image/jpg,image/jpeg,image/png,image/webp]'
+            ],
             'sales'     => [
                 'label'     => 'Nama Sales',
                 'rules'     => 'required'
@@ -81,13 +85,22 @@ class Sales extends BaseController
             session()->setFlashdata('failed', $this->validation->listErrors());
             return redirect()->to(BASE_URL . "sales/tambah_sales")->withInput();
         }
+        $namasales = $this->request->getVar('sales');
+
+        //get avatar file
+        $fileAvatar = $this->request->getFile('avatar');
+        if ($fileAvatar && $fileAvatar->isValid()) {
+            $namaAvatar = $namasales . '_' . $fileAvatar->getName();
+            $fileAvatar->move('assets/img/avatars', $namaAvatar);
+        }
         
         // Initial Data
         // FILTER HTML SPECIAL CHARS
         // FILTER TRIM DATA
         // FILTER SANITIZE NUMBER INTEGER
         $mdata = [
-            'namasales'     => trim(htmlspecialchars($this->request->getVar('sales'))),
+            'avatar'          => $namaAvatar ?? null, 
+            'namasales'     => trim(htmlspecialchars($namasales)),
             'alamat'        => trim(htmlspecialchars($this->request->getVar('alamat'))),
             'kota'          => trim(htmlspecialchars($this->request->getVar('kota'))),
             'telp'          => trim(htmlspecialchars($this->request->getVar('telp'))),
@@ -146,6 +159,10 @@ class Sales extends BaseController
 
         // Validation Rules
         $rules = $this->validate([
+            'avatar' => [
+                'label' => 'Foto sales',
+                'rules' => 'permit_empty|is_image[avatar]|mime_in[avatar,image/jpg,image/jpeg,image/png,image/webp]'
+            ],
             'sales'     => [
                 'label'     => 'Nama Sales',
                 'rules'     => 'required'
@@ -169,6 +186,8 @@ class Sales extends BaseController
         ]);
 
         $idsales = $this->request->getVar('idsales');
+        $namasales = $this->request->getVar('sales');
+        $avatar_lama = $this->request->getVar('avatar_lama');
 
         // Checking Validation
         if (!$rules){
@@ -176,12 +195,19 @@ class Sales extends BaseController
             return redirect()->to(BASE_URL . "sales/edit_sales/".base64_encode($idsales))->withInput();
         }
         
+        $fileAvatar = $this->request->getFile('avatar');
+        if($fileAvatar && $fileAvatar->isValid()) {
+            $namaAvatar = $avatar_lama ?? $namasales . '_' . $fileAvatar->getName();
+            $fileAvatar->move('assets/img/avatars', $namaAvatar, true);
+        }
+
         // Initial Data
         // FILTER HTML SPECIAL CHARS
         // FILTER TRIM DATA
         // FILTER SANITIZE NUMBER INTEGER
         $mdata = [
-            'namasales'     => trim(htmlspecialchars($this->request->getVar('sales'))),
+            'avatar'          => $namaAvatar ?? null, 
+            'namasales'     => trim(htmlspecialchars($namasales)),
             'alamat'        => trim(htmlspecialchars($this->request->getVar('alamat'))),
             'kota'          => trim(htmlspecialchars($this->request->getVar('kota'))),
             'telp'          => trim(htmlspecialchars($this->request->getVar('telp'))),
