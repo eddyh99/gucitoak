@@ -86,4 +86,21 @@ class Auth extends BaseController
         exit;
     }
 
+    public function sales()
+    {
+        $session = session();
+        if($session->has('logged_user')){
+            return redirect()->to(BASE_URL . "dashboard");
+            exit();
+        }
+
+        $mdata = [
+            'title'     => 'Sign in - ' . NAMETITLE,
+            'content'   => 'auth/sales/index',
+            'extra'     => 'auth/js/_js_index',
+        ];
+
+        return view('auth/layout/wrapper', $mdata);
+    }
+
 }
