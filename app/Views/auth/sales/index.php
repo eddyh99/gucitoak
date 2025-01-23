@@ -28,7 +28,7 @@
                     <!-- <h4 class="mb-4 text-center">Login as Sales <i class="ms-2 bx bxs-spa"></i></h4> -->
                     <h4 class="mb-2">Welcome to Guci Toak! 👋</h4>
                     <p class="mb-4">Please sign-in to your account and start the Point of Sales Web Application</p>
-                    <form id="formAuthentication" class="mb-3" action="#" method="POST">
+                    <form id="formAuthentication" class="mb-3" action="<?= BASE_URL ?>auth/signinSales_proccess" method="POST">
                         <div class="mb-3">
                             <label for="email" class="form-label">Username or Email</label>
                             <input
