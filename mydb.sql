@@ -588,7 +588,7 @@ INSERT INTO `pengguna` VALUES
 (7,'adi','40bd001563085fc35165329ea1ff5c5ecbdbbeef','admin','disabled','2024-10-17 02:51:31','2024-10-17 02:52:04'),
 (8,'admin1','f865b53623b121fd34ee5426c792e5c33af8c227','admin','disabled','2024-10-17 03:03:26','2024-10-17 03:03:34'),
 (9,'agus','f865b53623b121fd34ee5426c792e5c33af8c227','kasir','active','2025-01-16 13:38:34',NULL),
-(10,'supersales','f865b53623b121fd34ee5426c792e5c33af8c227','sales','active','2025-01-23 07:36:37',NULL);
+(10,'supersales','f865b53623b121fd34ee5426c792e5c33af8c227','sales','active','2025-01-23 07:36:37','2025-01-23 15:03:37');
 /*!40000 ALTER TABLE `pengguna` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -833,8 +833,10 @@ CREATE TABLE `sales` (
   `created_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
   `avatar` varchar(255) DEFAULT NULL,
+  `username` varchar(10) DEFAULT NULL,
+  `password` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -844,25 +846,25 @@ CREATE TABLE `sales` (
 LOCK TABLES `sales` WRITE;
 /*!40000 ALTER TABLE `sales` DISABLE KEYS */;
 INSERT INTO `sales` VALUES
-(1,'Agus Budiman','Balis','Balis','082282887855',500000,0.0000,0,'yes','2024-09-13 11:59:05','2024-10-12 13:58:01',NULL),
-(2,'Agus Santoso','Jl HOS cokroaminoto 10','Badung Selatan','082555220',100000000,2.0000,0,'no','2024-09-13 12:26:21','2024-09-13 12:35:36',NULL),
-(3,'Wayan Sales Marketing','Mengwi 01','Denpasar','0999',1000000,2.0000,0,'no','2024-10-07 12:48:58','2024-10-12 07:06:42',NULL),
-(4,'Agus Budiman','Bali','Bali','082282887855',100000000,0.0100,1500000,'no','2024-10-07 14:50:12','2025-01-23 06:58:04',''),
-(5,'ardi','Mengwi','Badung','0811111111111',100000,0.0000,0,'no','2024-10-12 05:26:29',NULL,NULL),
-(6,'ardi','Mengwi','Badung','0811111111111',100000,0.0000,0,'yes','2024-10-12 05:45:05','2024-10-12 06:39:06',NULL),
-(7,'Nama Ari','Jln Gatsu Timur Gang Cemara no 5','Badung','123333',1234,0.0000,0,'yes','2024-10-12 05:45:42','2024-10-12 06:53:44',NULL),
-(8,'Nama Ari','Jln Gatsu Timur Gang Cemara no 5','Badung','123333',1234,0.0000,0,'yes','2024-10-12 05:46:11','2024-10-12 06:53:35',NULL),
-(9,'Nama Ari','Jln Gatsu Timur Gang Cemara no 5','Badung','123333',1234,0.0000,0,'yes','2024-10-12 05:46:38','2024-10-12 06:45:18',NULL),
-(10,'Kadek','jln sari kuning','Tabanan','123333',123333,0.0000,0,'no','2024-10-12 05:50:19',NULL,NULL),
-(11,'Herman','Jln Raya Baturiti','Tabanan','0888888888888',500000,0.0000,0,'no','2024-10-12 06:18:12',NULL,NULL),
-(12,'Kurniawan','jln mawar','Denpasar','0812341231231',0,0.0000,0,'no','2024-10-12 07:08:36',NULL,NULL),
-(13,'Sidik','Jln Gatsu Barat Gang Jelantik','Denpasar','08765432132323',0,0.0000,0,'no','2024-10-12 07:21:03','2024-10-12 14:00:49',NULL),
-(14,'test 2','alamat 2','kota 2','2',2,0.0000,0,'yes','2024-10-12 07:21:23','2024-10-12 13:58:45',NULL),
-(15,'test 2','alamat 2','kota 2','2',2,0.0000,0,'yes','2024-10-12 07:21:24','2024-10-12 13:58:32',NULL),
-(16,'test 3','test 3','kota 3','3',3,0.0000,0,'yes','2024-10-12 07:21:45','2024-10-12 13:56:39',NULL),
-(17,'test 4','alamat 4','kota 4','4',4,0.0000,0,'yes','2024-10-12 07:22:02','2024-10-12 13:57:36',NULL),
-(18,'Agus Budiman','Bali','Bali','082282887855',0,0.0000,0,'no','2024-10-12 13:51:16',NULL,NULL),
-(19,'Badai','jln Antasura','Denpasar','0921222222222',2000000,0.0000,0,'no','2024-10-12 13:54:27',NULL,NULL);
+(1,'Agus Budiman','Balis','Balis','082282887855',500000,0.0000,0,'yes','2024-09-13 11:59:05','2024-10-12 13:58:01',NULL,NULL,NULL),
+(2,'Agus Santoso','Jl HOS cokroaminoto 10','Badung Selatan','082555220',100000000,2.0000,0,'no','2024-09-13 12:26:21','2024-09-13 12:35:36',NULL,NULL,NULL),
+(3,'Wayan Sales Marketing','Mengwi 01','Denpasar','0999',1000000,2.0000,0,'no','2024-10-07 12:48:58','2024-10-12 07:06:42',NULL,NULL,NULL),
+(4,'Agus Budiman','Bali','Bali','082282887855',100000000,0.0100,1500000,'no','2024-10-07 14:50:12','2025-01-23 15:24:56','','agus','f865b53623b121fd34ee5426c792e5c33af8c227'),
+(5,'ardi','Mengwi','Badung','0811111111111',100000,0.0000,0,'no','2024-10-12 05:26:29',NULL,NULL,NULL,NULL),
+(6,'ardi','Mengwi','Badung','0811111111111',100000,0.0000,0,'yes','2024-10-12 05:45:05','2024-10-12 06:39:06',NULL,NULL,NULL),
+(7,'Nama Ari','Jln Gatsu Timur Gang Cemara no 5','Badung','123333',1234,0.0000,0,'yes','2024-10-12 05:45:42','2024-10-12 06:53:44',NULL,NULL,NULL),
+(8,'Nama Ari','Jln Gatsu Timur Gang Cemara no 5','Badung','123333',1234,0.0000,0,'yes','2024-10-12 05:46:11','2024-10-12 06:53:35',NULL,NULL,NULL),
+(9,'Nama Ari','Jln Gatsu Timur Gang Cemara no 5','Badung','123333',1234,0.0000,0,'yes','2024-10-12 05:46:38','2024-10-12 06:45:18',NULL,NULL,NULL),
+(10,'Kadek','jln sari kuning','Tabanan','123333',123333,0.0000,0,'no','2024-10-12 05:50:19',NULL,NULL,NULL,NULL),
+(11,'Herman','Jln Raya Baturiti','Tabanan','0888888888888',500000,0.0000,0,'no','2024-10-12 06:18:12',NULL,NULL,NULL,NULL),
+(12,'Kurniawan','jln mawar','Denpasar','0812341231231',0,0.0000,0,'no','2024-10-12 07:08:36',NULL,NULL,NULL,NULL),
+(13,'Sidik','Jln Gatsu Barat Gang Jelantik','Denpasar','08765432132323',0,0.0000,0,'no','2024-10-12 07:21:03','2024-10-12 14:00:49',NULL,NULL,NULL),
+(14,'test 2','alamat 2','kota 2','2',2,0.0000,0,'yes','2024-10-12 07:21:23','2024-10-12 13:58:45',NULL,NULL,NULL),
+(15,'test 2','alamat 2','kota 2','2',2,0.0000,0,'yes','2024-10-12 07:21:24','2024-10-12 13:58:32',NULL,NULL,NULL),
+(16,'test 3','test 3','kota 3','3',3,0.0000,0,'yes','2024-10-12 07:21:45','2024-10-12 13:56:39',NULL,NULL,NULL),
+(17,'test 4','alamat 4','kota 4','4',4,0.0000,0,'yes','2024-10-12 07:22:02','2024-10-12 13:57:36',NULL,NULL,NULL),
+(18,'Agus Budiman','Bali','Bali','082282887855',0,0.0000,0,'no','2024-10-12 13:51:16',NULL,NULL,NULL,NULL),
+(19,'Badai','jln Antasura','Denpasar','0921222222222',2000000,0.0000,0,'no','2024-10-12 13:54:27',NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `sales` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -950,7 +952,7 @@ CREATE TABLE `user_role` (
   UNIQUE KEY `pengguna_id_2` (`pengguna_id`),
   KEY `pengguna_id` (`pengguna_id`),
   CONSTRAINT `user_role_ibfk_1` FOREIGN KEY (`pengguna_id`) REFERENCES `pengguna` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -960,7 +962,8 @@ CREATE TABLE `user_role` (
 LOCK TABLES `user_role` WRITE;
 /*!40000 ALTER TABLE `user_role` DISABLE KEYS */;
 INSERT INTO `user_role` VALUES
-(22,9,'{\"setup\":[\"daftar_pengguna\",\"daftar_sales\"],\"laporan\":[\"mutasi_stok\",\"outlet_idle\"]}');
+(22,9,'{\"setup\":[\"daftar_pengguna\",\"daftar_sales\"],\"laporan\":[\"mutasi_stok\",\"outlet_idle\"]}'),
+(30,10,'{\"persediaan\":[\"stok_barang\"]}');
 /*!40000 ALTER TABLE `user_role` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -973,4 +976,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*M!100616 SET NOTE_VERBOSITY=@OLD_NOTE_VERBOSITY */;
 
--- Dump completed on 2025-01-23 15:00:25
+-- Dump completed on 2025-01-23 22:44:40
