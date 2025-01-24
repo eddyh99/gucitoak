@@ -152,7 +152,7 @@ class Auth extends BaseController
             'username' => $result->username,
             'password' => $result->passwd,
             'role'     => $result->role,
-            'id_sales' => $result->id,
+            'id_sales' => $result->id_sales,
             'akses'     => json_decode($result->akses)
         ];
 

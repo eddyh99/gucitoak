@@ -92,4 +92,24 @@ class Penggajian extends BaseController
         echo json_encode($response, true);
     }
 
+    public function slipgaji() {
+        $mdata = [
+            'title'     => 'Slip Gaji - ' . NAMETITLE,
+            'content'   => 'sales/slipgaji/index',
+            'extra'     => 'sales/slipgaji/js/_js_index',
+            'menuactive_slipgaji'   => 'active open',
+            'user_active'   => 'active'
+        ];
+
+        return view('admin/layout/wrapper', $mdata);
+    }
+
+    public function getGaji_sales()
+    {
+        $tahun = $this->request->getVar('tahun');
+        $id = session()->get('logged_user')['id_sales'] ?? null;
+        $url = URLAPI . "/v1/penggajian/getGaji_sales?id=" .$id. "&tahun=" .$tahun;
+        $response = gucitoakAPI($url)->message;
+        echo json_encode($response, true);
+    }
 }

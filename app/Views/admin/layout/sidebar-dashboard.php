@@ -70,6 +70,15 @@
             </a>
         </li>
         <?php endif?>
+
+        <?php if  (!$isAdmin): ?>
+        <li class="menu-item <?= @$menuactive_slipgaji ?>">
+            <a href="<?= BASE_URL ?>slipgaji" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-money "></i>
+                <div data-i18n="Analytics" class="text-center">Slip Gaji</div>
+            </a>
+        </li>
+        <?php endif?>
     </ul>
 </aside>
 
