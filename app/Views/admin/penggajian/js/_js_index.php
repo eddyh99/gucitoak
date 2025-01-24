@@ -59,11 +59,53 @@
             },
             {
                 data: 'status'
-            }
+            },
+            { data: null,
+		    render: function (data, type, row) {
+                    var detail = `<a href="#" onclick='detailInvoice("`+encodeURI(btoa(data.detailnota))+`")'>
+                                                <i class="bx bx-detail bx-md fs-5 text-primary"></i>
+                                          </a>`;
+                    return `${detail}`;
+                }
+		    },
         ],
     });
 
     $("#lihat").on("click", function() {
         table.ajax.reload();
     });
+
+    function detailInvoice(nonota) {
+        console.log(nonota);
+        bulan = $('#tahun').val() + '-' + $('#bulan').val();
+        $.get("<?=BASE_URL?>penggajian/get_penjualan_byNota/" + nonota , function(data, status) {
+            let mdata = JSON.parse(data);
+            let html = '';
+            console.log(mdata);
+        
+             mdata.forEach(item => {
+                // Ensure harga is a valid number before formatting
+                let nominal = parseInt(item.nominal);
+                let komisi = parseFloat(item.komisi);
+    
+                // Format harga and total to IDR format
+                let nominalFormatted = nominal.toLocaleString("id-ID");
+                let komisiFormatted = komisi.toLocaleString("id-ID");
+    
+                // Construct the HTML for each row
+                html += `
+                    <tr>
+                        <td>${item.nonota}</td>
+                        <td>${item.tanggal}</td>
+                        <td>${nominalFormatted}</td>
+                        <td>${komisiFormatted}</td>
+                    </tr>
+                `;
+            });
+        
+            // Insert rows into the table body
+            $('#modalDataBody').html(html);
+            $("#detailInvoice").modal('show');
+        });
+    }
 </script>

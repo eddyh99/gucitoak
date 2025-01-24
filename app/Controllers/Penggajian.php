@@ -112,4 +112,10 @@ class Penggajian extends BaseController
         $response = gucitoakAPI($url)->message;
         echo json_encode($response, true);
     }
+
+    public function get_penjualan_byNota($nonota) {
+        $url = URLAPI . "/v1/laporan/penjualan_byNota?nonota=".base64_decode($nonota);
+        $response = gucitoakAPI($url)->message;
+        echo json_encode($response, true);
+    }
 }

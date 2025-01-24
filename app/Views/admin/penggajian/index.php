@@ -82,6 +82,7 @@ if(!empty(session('failed'))): ?>
                                         <th>Komisi</th>
                                         <th>Total</th>
                                         <th>Status</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -110,5 +111,35 @@ if(!empty(session('failed'))): ?>
     </div>
     <!-- Content wrapper -->
 
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="detailInvoice" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Daftar Invoice</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Nota</th>
+              <th>Tanggal</th>
+              <th>Nominal</th>
+              <th>Komisi</th>
+            </tr>
+          </thead>
+          <tbody id="modalDataBody">
+            <!-- Data will be inserted here -->
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
 
