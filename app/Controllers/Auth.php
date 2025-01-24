@@ -146,9 +146,15 @@ class Auth extends BaseController
         // Reduce call response 
         $result = $response->message;
         
-        // Assign role to mdata array
-        $mdata['role']  = $result->role;
-        $mdata['akses'] = json_decode($result->akses);
+        // array for session
+        unset($mdata);
+        $mdata = [
+            'username' => $result->username,
+            'password' => $result->passwd,
+            'role'     => $result->role,
+            'id_sales' => $result->id,
+            'akses'     => json_decode($result->akses)
+        ];
 
         // Set SESSION logged_user
         $this->session->set('logged_user', $mdata);

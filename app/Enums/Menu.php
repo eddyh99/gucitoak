@@ -17,6 +17,7 @@ CONST INPUT_STOK = 'input_stok';
 CONST PENYESUAIAN_STOK = 'penyesuaian_stok';
 CONST STOK_BARANG = 'stok_barang';
 CONST CONFIRM_OPNAME = 'konfirmasi_opname';
+CONST CONFIRM_DISPOSE = 'konfirmasi_dispose';
 CONST HAPUS_STOK = 'penghapusan_stok';
 CONST PEMBELIAN = 'pembelian';
 CONST PENJUALAN =  'penjualan';
@@ -33,6 +34,7 @@ CONST LAP_RETUR_PELANGGAN = 'laporan_retur_pelanggan';
 CONST OMZET_OUTLET = 'omzet_outlet';
 CONST OUTLET_IDLE = 'outlet_idle';
 CONST PENJUALAN_OUTLET = 'penjualan_outlet';
+CONST KATALOG = 'katalog';
 CONST PENGGAJIAN_SALES = 'penggajian_sales';
 
     public static function subMenu_setup()
@@ -57,6 +59,7 @@ CONST PENGGAJIAN_SALES = 'penggajian_sales';
                 self::PENYESUAIAN_STOK,
                 self::STOK_BARANG,
                 self::CONFIRM_OPNAME,
+                self::CONFIRM_DISPOSE,
                 self::HAPUS_STOK,
             ];
         }
@@ -84,7 +87,8 @@ CONST PENGGAJIAN_SALES = 'penggajian_sales';
                 self::LAP_RETUR_SUPLIER,
                 self::OMZET_OUTLET,
                 self::OUTLET_IDLE,
-                self::PENJUALAN_OUTLET
+                self::PENJUALAN_OUTLET,
+                self::KATALOG
             ];
         }
 
