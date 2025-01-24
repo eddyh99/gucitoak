@@ -54,7 +54,7 @@
                     // kalkulasi total
                     var total = parseInt(row.gajipokok || 0) + parseInt(row.uangharian || 0) +
                                 parseFloat(row.insentif || 0) + parseInt(row.komisi || 0);
-                    return total.toFixed(2);
+                    return total.toLocaleString("id-ID");
                 }
             },
             {
