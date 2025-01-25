@@ -25,9 +25,10 @@
                         </a>
                     </div>
                     <!-- /Logo -->
+                    <!-- <h4 class="mb-4 text-center">Login as Sales <i class="ms-2 bx bxs-spa"></i></h4> -->
                     <h4 class="mb-2">Welcome to Guci Toak! 👋</h4>
                     <p class="mb-4">Please sign-in to your account and start the Point of Sales Web Application</p>
-                    <form id="formAuthentication" class="mb-3" action="<?= BASE_URL ?>auth/signin_proccess" method="POST">
+                    <form id="formAuthentication" class="mb-3" action="<?= BASE_URL ?>auth/signinSales_proccess" method="POST">
                         <div class="mb-3">
                             <label for="email" class="form-label">Username or Email</label>
                             <input
@@ -57,9 +58,10 @@
                                 <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                             </div>
                         </div>
+                        <!-- <a href="#">Admin</a> -->
                         <div class="my-5">
                             <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
-                            <a  href="<?= BASE_URL ?>auth/sales" class="d-block text-end mt-2"><u>Are you a Sales?</u></a>
+                            <a  href="<?= BASE_URL ?>" class="d-block text-end mt-2"><u>Not a Sales?</u></a>
                         </div>
                     </form>
                 </div>

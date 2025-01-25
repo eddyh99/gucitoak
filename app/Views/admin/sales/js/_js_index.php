@@ -41,6 +41,15 @@
 		},
             "columns": [
 			{ data: 'namasales' },
+                  {data: 'avatar',
+                        render: function(data, type, row) {
+                              const baseURL = "<?= BASE_URL ?>"
+                              // Tampilkan gambar produk
+                              return data ?
+                                    `<img src="${baseURL}assets/img/avatars/${encodeURIComponent(data)}" alt="Foto Sales" style="width: 50px; height: 50px;">` :
+                                    `<img src="${baseURL}assets/img/no-image.png" alt="Default" style="width: 50px; height: 50px;">`
+                        }
+                  },
 			{ data: 'telp' },
 			{ data: 'omzet',render: $.fn.dataTable.render.number(",", ".", 0, ""), className: 'text-end',},
 			{ data: 'gajipokok',render: $.fn.dataTable.render.number(",", ".", 0, ""), className: 'text-end',},
@@ -81,4 +90,12 @@
 			}
 		})
 	});
+
+      function previewImage() {
+            const img = document.querySelector('#avatar');
+            const imgPreview = document.querySelector('.img-preview');
+            const blob = URL.createObjectURL(img.files[0]);
+            imgPreview.classList.add("mb-3");
+            imgPreview.src = blob;
+        }
 </script>

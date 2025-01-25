@@ -26,10 +26,30 @@
                             <h5 class="mb-1">Edit Sales</h5>
                         </div>
                         <div class="card-body">
-                            <form action="<?= BASE_URL ?>sales/ubah_sales" method="POST">
+                            <form action="<?= BASE_URL ?>sales/ubah_sales" method="POST" enctype="multipart/form-data">
                                 <input type="hidden" name="idsales" value="<?=$sales->id?>">
+                                <?php if ($sales->avatar): ?>
+                                    <img class="img-preview img-fluid col-sm-5 d-block mb-3 mx-auto" src="<?= BASE_URL . 'assets/img/avatars/' . $sales->avatar ?>">
+                                    <input type="hidden" name="avatar_lama" value="<?= $sales->avatar ?>">
+                                <?php else: ?>
+                                    <img class="img-preview img-fluid col-sm-5 d-block mx-auto">
+                                <?php endif; ?>
                                 <div class="row row-cols-3">
-
+                                <div class="mb-3">
+                                        <label class="form-label" for="avatar">Foto sales</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                            type="file"
+                                            class="form-control"
+                                            id="avatar"
+                                            placeholder="Foto Barang"
+                                            name="avatar"
+                                            accept=".jpg,.png,jpeg,.webp"
+                                            onchange="previewImage()"
+                                            />
+                                        </div>
+                                        <small class="text-danger d-block mt-1">*Kosongi jika tidak ingin mengubah</small>
+                                    </div>
                                     <div class="mb-3">
                                         <label class="form-label" for="sales">Nama Sales</label>
                                         <div class="input-group input-group-merge">
@@ -128,6 +148,50 @@
                                                 value="<?=$sales->komisi*100?>"
                                                 required
                                             />
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row row-cols-3">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="username">Username</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="username"
+                                                placeholder="Username atau Email"
+                                                name="username"
+                                                value="<?= $sales->username ?>"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 form-password-toggle">
+                                            <label class="form-label" for="password">Password</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="password"
+                                                id="password"
+                                                class="form-control"
+                                                name="password"
+                                                placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                                                aria-describedby="password"
+                                            />
+                                            <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 form-password-toggle">
+                                            <label class="form-label" for="password">Konfirmasi Password</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="password"
+                                                id="password"
+                                                class="form-control"
+                                                name="confirm_password"
+                                                placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                                                aria-describedby="password"
+                                            />
+                                            <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                                         </div>
                                     </div>
                                 </div>

@@ -7,39 +7,28 @@
                     <div class="card w-100">
                         <div class="card-body">
                             <div class="row form-group">
-                				<label class="col-form-label col-sm-1">Pelanggan</label>
+                				<label class="col-form-label col-sm-1">Kategori</label>
                 				<div class="col-sm-2">
-                				    <select name="pelanggan" id="pelanggan" class="form-control">
-                                        <?php foreach ($pelanggan as $pel) : ?>
-                                            <option value="<?= $pel->id ?>"><?= $pel->namapelanggan ?></option>
+                				    <select name="kategori" id="kategori" class="form-control">
+                                        <?php foreach ($kategori as $k) : ?>
+                                            <option value="<?= $k->id ?>"><?= $k->namakategori ?></option>
                                         <?php endforeach; ?>
                 				    </select>
-                				</div>
-                        <div class="col-sm-1">
-                				    <input type="text" name="tahun" id="tahun" class="form-control" value="<?=date("Y")?>">
                 				</div>
                                 <div class="col-2">
                                     <button class="btn btn-primary" id="lihat">Lihat</button>
                                 </div>
                             </div>
-                            <h5 class="card-title fw-semibold mb-4 mt-3">Penjualan Barang</h5>
+                            <h5 class="card-title fw-semibold mb-4 mt-3">Daftar Barang</h5>
                             <div id="chart"></div>
                             <table id="table_list" class="table table-striped" style="width:100%">
                                 <thead>
                                     <tr>
+                                        <th>Foto Barang</th>
                                         <th>Nama Barang</th>
-                                        <th>Jan</th>
-                                        <th>Feb</th>
-                                        <th>Mar</th>
-                                        <th>Apr</th>
-                                        <th>Mei</th>
-                                        <th>Jun</th>
-                                        <th>Jul</th>
-                                        <th>Ags</th>
-                                        <th>Sep</th>
-                                        <th>Okt</th>
-                                        <th>Nov</th>
-                                        <th>Des</th>
+                                        <th>Barcode</th>
+                                        <th>Kategori</th>
+                                        <th>Harga 1</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -74,34 +63,3 @@
     <!-- Content wrapper -->
 
 </div>
-
-
-<!-- Modal -->
-<!-- <div class="modal fade" id="detailbarang" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Detail Penjualan</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>Nama Barang</th>
-              <th>Jumlah</th>
-              <th>Harga</th>
-              <th>Total</th>
-            </tr>
-          </thead>
-          <tbody id="modalDataBody">
-            Data will be inserted here
-          </tbody>
-        </table>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div> -->

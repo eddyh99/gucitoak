@@ -37,6 +37,7 @@
                                         <th>Kategori</th>
                                         <th>Stok System</th>
                                         <th>Stok Riil</th>
+                                        <th>Keterangan</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>

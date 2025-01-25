@@ -137,6 +137,7 @@ class Filters extends BaseFilters
                 'laporan/*',
                 'pembayaran/*',
                 'hakakses',
+                'dispose/*'
             ]
         ]
     ];

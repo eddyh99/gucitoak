@@ -62,6 +62,7 @@
                                         <select class="form-select" name="role" id="role" aria-label="Default select Role">
                                             <option value="admin">Admin</option>
                                             <option value="kasir">Kasir</option>
+                                            <option value="sales">Sales</option>
                                         </select>
                                     </div>
                                 </div>

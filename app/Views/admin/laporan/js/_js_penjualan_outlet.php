@@ -34,6 +34,7 @@ var table=$('#table_list').DataTable({
 		"type": "POST",
 		"data": function(d) {
             d.id = $('#pelanggan').val();
+            d.tahun = $('#tahun').val();
         },
 		"dataSrc":function (data){
 			console.log(data);
@@ -56,40 +57,6 @@ var table=$('#table_list').DataTable({
         { data: 'des'}
 	],
   });
-
-  function detailbarang(idb) {
-      console.log(idb);
-        $.get("<?=BASE_URL?>penjualan/list_barang/" + idb, function(data, status) {
-            let mdata = JSON.parse(data);
-            let html = '';
-            console.log(mdata);
-        
-             mdata.forEach(item => {
-                // Ensure harga is a valid number before formatting
-                let harga = parseFloat(item.harga);
-                let jumlah = parseInt(item.jumlah);
-                let total = jumlah * harga;
-    
-                // Format harga and total to IDR format
-                let hargaFormatted = harga.toLocaleString("id-ID");
-                let totalFormatted = total.toLocaleString("id-ID");
-    
-                // Construct the HTML for each row
-                html += `
-                    <tr>
-                        <td>${item.namabarang}</td>
-                        <td>${jumlah}</td>
-                        <td>${hargaFormatted}</td>
-                        <td>${totalFormatted}</td>
-                    </tr>
-                `;
-            });
-        
-            // Insert rows into the table body
-            $('#modalDataBody').html(html);
-            $("#detailbarang").modal('show');
-        });
-    };
   
   $("#lihat").on("click",function(){
      table.ajax.reload(); 

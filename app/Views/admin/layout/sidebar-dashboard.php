@@ -61,6 +61,24 @@
             </a>
         </li>
         <?php endif?>
+
+        <?php if  ($isAdmin || isset($akses->penggajian)): ?>
+        <li class="menu-item <?= @$menuactive_penggajian ?>">
+            <a href="<?= BASE_URL ?>penggajian" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-money "></i>
+                <div data-i18n="Analytics" class="text-center">Penggajian</div>
+            </a>
+        </li>
+        <?php endif?>
+
+        <?php if  (!$isAdmin): ?>
+        <li class="menu-item <?= @$menuactive_slipgaji ?>">
+            <a href="<?= BASE_URL ?>slipgaji" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-money "></i>
+                <div data-i18n="Analytics" class="text-center">Slip Gaji</div>
+            </a>
+        </li>
+        <?php endif?>
     </ul>
 </aside>
 
@@ -192,6 +210,15 @@
             <a href="<?= BASE_URL ?>opname/konfirm" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-check-shield px-2"></i>
                 <div data-i18n="Konfirm Opname" style="font-size: 12px;">Konfirm Opname</div>
+            </a>
+        </li>
+        <?php endif?>
+
+        <?php if ($isAdmin || $hasPermission(Menu::CONFIRM_DISPOSE, 'persediaan')): ?>
+        <li class="menu-item <?= @$stokopnamekonfirm_active ?>">
+            <a href="<?= BASE_URL ?>dispose/konfirm" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
+                <i class="menu-icon fs-5 tf-icons bx bx-check-shield px-2"></i>
+                <div data-i18n="Konfirm Opname" style="font-size: 12px;">Konfirm Dispose</div>
             </a>
         </li>
         <?php endif?>
@@ -352,6 +379,15 @@
             <a href="<?= BASE_URL ?>laporan/penjualan_outlet" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-purchase-tag-alt px-2"></i>
                 <div data-i18n="Laporan" style="font-size: 12px;">Penjualan Outlet</div>
+            </a>
+        </li>
+        <?php endif?>
+
+        <?php if ($isAdmin || $hasPermission(Menu::KATALOG, 'laporan')): ?>
+        <li class="menu-item">
+            <a href="<?= BASE_URL ?>laporan/katalog" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
+                <i class="menu-icon fs-5 tf-icons bx bx-purchase-tag-alt px-2"></i>
+                <div data-i18n="Laporan" style="font-size: 12px;">Katalog</div>
             </a>
         </li>
         <?php endif?>

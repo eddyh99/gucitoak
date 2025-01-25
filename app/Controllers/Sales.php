@@ -54,6 +54,10 @@ class Sales extends BaseController
 
         // Validation Rules
         $rules = $this->validate([
+            'avatar' => [
+                'label' => 'Foto sales',
+                'rules' => 'permit_empty|is_image[avatar]|mime_in[avatar,image/jpg,image/jpeg,image/png,image/webp]'
+            ],
             'sales'     => [
                 'label'     => 'Nama Sales',
                 'rules'     => 'required'
@@ -74,6 +78,11 @@ class Sales extends BaseController
                 'label'     => 'Omzet',
                 'rules'     => 'required'
             ],
+            'confirm_password'     => [
+                'label'     => 'Konfirmasi Password',
+                'rules'     => 'matches[password]'
+            ]
+            
         ]);
 
         // Checking Validation
@@ -81,19 +90,31 @@ class Sales extends BaseController
             session()->setFlashdata('failed', $this->validation->listErrors());
             return redirect()->to(BASE_URL . "sales/tambah_sales")->withInput();
         }
+        $namasales = $this->request->getVar('sales');
+        $password = $this->request->getVar('password');
+
+        //get avatar file
+        $fileAvatar = $this->request->getFile('avatar');
+        if ($fileAvatar && $fileAvatar->isValid()) {
+            $namaAvatar = $namasales . '_' . $fileAvatar->getName();
+            $fileAvatar->move('assets/img/avatars', $namaAvatar);
+        }
         
         // Initial Data
         // FILTER HTML SPECIAL CHARS
         // FILTER TRIM DATA
         // FILTER SANITIZE NUMBER INTEGER
         $mdata = [
-            'namasales'     => trim(htmlspecialchars($this->request->getVar('sales'))),
+            'avatar'        => $namaAvatar ?? null, 
+            'namasales'     => trim(htmlspecialchars($namasales)),
             'alamat'        => trim(htmlspecialchars($this->request->getVar('alamat'))),
             'kota'          => trim(htmlspecialchars($this->request->getVar('kota'))),
             'telp'          => trim(htmlspecialchars($this->request->getVar('telp'))),
             'omzet'         => trim(filter_var($this->request->getVar('omzet'), FILTER_SANITIZE_NUMBER_INT)),
             'gajipokok'     => trim(filter_var($this->request->getVar('gapok'), FILTER_SANITIZE_NUMBER_INT)),
             'komisi'        => trim(filter_var($this->request->getVar('komisi'), FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION)),
+            'username'      => trim(htmlspecialchars($this->request->getVar('username'))),
+            'password'      => ((!empty($password)) ? sha1(trim(htmlspecialchars($password))) : null)
         ];
 
 
@@ -146,6 +167,10 @@ class Sales extends BaseController
 
         // Validation Rules
         $rules = $this->validate([
+            'avatar' => [
+                'label' => 'Foto sales',
+                'rules' => 'permit_empty|is_image[avatar]|mime_in[avatar,image/jpg,image/jpeg,image/png,image/webp]'
+            ],
             'sales'     => [
                 'label'     => 'Nama Sales',
                 'rules'     => 'required'
@@ -166,9 +191,16 @@ class Sales extends BaseController
                 'label'     => 'Omzet',
                 'rules'     => 'required'
             ],
+            'confirm_password'     => [
+                'label'     => 'Konfirmasi Password',
+                'rules'     => 'matches[password]'
+            ]
         ]);
 
         $idsales = $this->request->getVar('idsales');
+        $namasales = $this->request->getVar('sales');
+        $avatar_lama = $this->request->getVar('avatar_lama');
+        $newpass = $this->request->getVar('password');
 
         // Checking Validation
         if (!$rules){
@@ -176,18 +208,27 @@ class Sales extends BaseController
             return redirect()->to(BASE_URL . "sales/edit_sales/".base64_encode($idsales))->withInput();
         }
         
+        $fileAvatar = $this->request->getFile('avatar');
+        if($fileAvatar && $fileAvatar->isValid()) {
+            $namaAvatar = $avatar_lama ?? $namasales . '_' . $fileAvatar->getName();
+            $fileAvatar->move('assets/img/avatars', $namaAvatar, true);
+        }
+
         // Initial Data
         // FILTER HTML SPECIAL CHARS
         // FILTER TRIM DATA
         // FILTER SANITIZE NUMBER INTEGER
         $mdata = [
-            'namasales'     => trim(htmlspecialchars($this->request->getVar('sales'))),
+            'avatar'          => $namaAvatar ?? null, 
+            'namasales'     => trim(htmlspecialchars($namasales)),
             'alamat'        => trim(htmlspecialchars($this->request->getVar('alamat'))),
             'kota'          => trim(htmlspecialchars($this->request->getVar('kota'))),
             'telp'          => trim(htmlspecialchars($this->request->getVar('telp'))),
             'omzet'         => trim(filter_var($this->request->getVar('omzet'), FILTER_SANITIZE_NUMBER_INT)),
             'gajipokok'     => trim(filter_var($this->request->getVar('gapok'), FILTER_SANITIZE_NUMBER_INT)),
             'komisi'        => trim(filter_var($this->request->getVar('komisi'), FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION)),
+            'username'      => trim(htmlspecialchars($this->request->getVar('username'))),
+            'password'      => ((!empty($newpass)) ? sha1(trim(htmlspecialchars($newpass))) : null)
         ];
         
 
@@ -328,6 +369,14 @@ class Sales extends BaseController
             session()->setFlashdata('error', $result);
             return redirect()->to(BASE_URL . "sales/assign_sales");
         }
+    }
+
+    public function get_sales_report(){
+        $id = $this->request->getVar('id');
+        $url = URLAPI . "/v1/sales/getreport_sales?id=$id";
+		$response = gucitoakAPI($url);
+        $result = $response->message;
+        echo json_encode($result);
     }
 
 

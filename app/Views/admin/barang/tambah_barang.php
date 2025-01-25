@@ -26,7 +26,22 @@
                             <h5 class="mb-1">Tambah Barang</h5>
                         </div>
                         <div class="card-body">
-                            <form action="<?= BASE_URL ?>barang/tambah_proccess" method="POST">
+                            <form action="<?= BASE_URL ?>barang/tambah_proccess" method="POST" enctype="multipart/form-data">
+                            <div class="mb-3">
+                                        <label class="form-label" for="discount_fxd">Foto Barang</label>
+                                        <img class="img-preview img-fluid col-sm-5 d-block">
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="file"
+                                                class="form-control"
+                                                id="foto"
+                                                placeholder="Foto Barang"
+                                                name="foto"
+                                                accept=".jpg,.png,jpeg,.webp"
+                                                onchange="previewImage()"
+                                            />
+                                        </div>
+                                    </div>
                                 <div class="row row-cols-3">
                                     <div class="mb-3">
                                         <label class="form-label" for="namabarang">Nama Barang</label>

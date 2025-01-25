@@ -1,5 +1,6 @@
-<?php if(!empty(session('failed'))): ?>
-    <div id="failedtoast" class="bs-toast toast toast-placement-ex m-3 fade bg-danger top-  0 end-0" role="alert" aria-live="assertive" aria-atomic="true" data-delay="1000">
+<?php
+if(!empty(session('failed'))): ?>
+    <div id="failedtoast" class="bs-toast toast toast-placement-ex m-3 fade bg-danger top-0 end-0" role="alert" aria-live="assertive" aria-atomic="true" data-delay="1000">
         <div class="toast-header">
             <i class="bx bx-x me-2"></i>
             <div class="me-auto fw-semibold">Error</div>
@@ -11,7 +12,8 @@
     </div>
 <?php endif;?>
 
-<?php if(!empty(session('success'))): ?>
+
+<?php if(!empty($_SESSION['success'])): ?>
     <div id="successtoast" class="bs-toast toast toast-placement-ex m-3 fade bg-success top-0 end-0" role="alert" aria-live="assertive" aria-atomic="true" data-delay="1000">
         <div class="toast-header">
             <i class="bx bx-bell me-2"></i>
@@ -23,39 +25,35 @@
         </div>
     </div>
 <?php endif;?>
- 
  <!-- Content wrapper -->
     <div class="content-wrapper">
         <!-- Content -->
         <div class="container-xxl flex-grow-1 container-p-y">
             <div class="row">
-                <div class="col-lg-12 order-0">
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-12 mb-2">
-                            <div class="card">
-                                <div class="card-body">
-                                    <a href="<?= BASE_URL?>sales/tambah_sales" class="btn btn-primary">
-                                        Tambah Sales
-                                    </a>
+                <div class="col-lg-12 mb-4 order-1">
+                    <div class="card w-100">
+                        <div class="card-body">
+                        <div class="row form-group">
+                				<label class="col-form-label col-sm-1">Tahun</label>
+
+                				<div class="col-sm-1">
+                				    <input type="text" name="tahun" id="tahun" class="form-control" value="<?=date("Y")?>">
+                				</div>
+                                <div class="col-2">
+                                    <button class="btn btn-primary" id="lihat">Lihat</button>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12 mb-4 order-1">
-                    <div class="card border-expat w-100">
-                        <div class="card-body">
-                            <h5 class="card-title fw-semibold mb-4">List Sales</h5>
+                            <h5 class="card-title fw-semibold mb-4 mt-3">Gaji Saya</h5>
                             <table id="table_list" class="table table-striped" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>Nama Sales</th>
-                                        <th>Foto</th>
-                                        <th>No. Telp</th>
-                                        <th>Omzet</th>
+                                        <th>Bulan</th>
                                         <th>Gaji Pokok</th>
+                                        <th>Uang Harian</th>
+                                        <th>Insentif</th>
                                         <th>Komisi</th>
-                                        <th>Action</th>
+                                        <th>Total</th>
+                                        <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -85,3 +83,4 @@
     <!-- Content wrapper -->
 
 </div>
+
