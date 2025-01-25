@@ -8,6 +8,13 @@ use DateTime;
 
 class Penggajian extends BaseController
 {
+    private $isSales;
+
+    public function __construct()
+    {
+        $this->isSales = session()->get('logged_user')['role'] == 'sales';
+    }
+
     public function index()
     {
         $mdata = [
@@ -93,6 +100,7 @@ class Penggajian extends BaseController
     }
 
     public function slipgaji() {
+        if(!$this->isSales) return view('errors/html/error_403');
         $mdata = [
             'title'     => 'Slip Gaji - ' . NAMETITLE,
             'content'   => 'sales/slipgaji/index',
