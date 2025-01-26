@@ -193,8 +193,32 @@ class Laporan extends BaseController
         return view('admin/layout/wrapper', $mdata);
     }
 
+    public function omzet_sales() {
+
+        $url = URLAPI . "/v1/sales/getall_sales";
+		$sales = gucitoakAPI($url)->message;
+
+        $mdata = [
+            'title'     => 'Mutasi Stok - ' . NAMETITLE,
+            'content'   => 'sales/laporan/omzet',
+            'extra'     => 'sales/laporan/js/_js_omzetsales',
+            'menuactive_laporan'   => 'active open',
+            'user_active'   => 'active',
+            'sales' => $sales
+        ];
+
+        return view('admin/layout/wrapper', $mdata);
+    }
+
     public function get_omzetpel($id){
         $url = URLAPI . "/v1/laporan/omzet_pelanggan?id=$id";
+        $response = gucitoakAPI($url)->message;
+        echo json_encode($response,true);
+    }
+
+    public function get_omzetsales(){
+        $id = session()->get('logged_user')['id_sales'] ?? null;
+        $url = URLAPI . "/v1/laporan/omzet_sales?id=$id";
         $response = gucitoakAPI($url)->message;
         echo json_encode($response,true);
     }
