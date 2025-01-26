@@ -33,4 +33,11 @@ class Dashboard extends BaseController
         echo json_encode($result);
     }
 
+    public function get_penjualan_sales() {
+        $id = session()->get('logged_user')['id_sales'] ?? null;
+        $url = URLAPI . "/v1/penjualan/penjualan_sales_bulan_sekarang?id=".$id;
+        $response = gucitoakAPI($url)->message;
+        echo json_encode($response, true);
+    }
+
 }

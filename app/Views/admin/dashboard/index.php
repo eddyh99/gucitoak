@@ -158,7 +158,35 @@ $role = session()->get('logged_user')['role'];
                             </div>
                         </div>
                     </div>
-                <?php endif ?>
+                    <?php endif ?>
+
+                    <?php if ($role == 'sales') : ?>
+                    <div class="col-lg-6 mb-4 order-1">
+                        <div class="card border-expat w-100">
+                            <div class="card-body">
+                                <h5 class="card-title fw-semibold mb-4">Penjualan Bulan Ini</h5>
+                                <table id="omzet_sales" class="table table-striped" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Nonota</th>
+                                            <th>Tanggal</th>
+                                            <th>Komisi</th>
+                                            <th>Nominal</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                    <tfoot class="fw-bold">
+                                        <tr>
+                                            <td colspan="3" style="text-align: right;">Total Omzet:</td>
+                                            <td class="total"></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <?php endif ?>
             </div>
         </div>
         <!-- / Content -->

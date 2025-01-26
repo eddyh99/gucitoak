@@ -110,6 +110,32 @@
         ],
     });
 
+    $('#omzet_sales').DataTable({
+        "scrollX": false,
+        "dom": 'Bfrtip',
+        "ajax": {
+            "url": "<?= BASE_URL ?>dashboard/get_penjualan_sales",
+            "type": "POST",
+            "dataSrc": function (data) {
+                console.log(data);
+                return data;							
+            }
+        },
+        "columns": [
+            { data: 'nonota'},
+            { data: 'tanggal'},
+            { data: 'komisi'},
+            { data: 'nominal'},
+        ],
+        "footerCallback": function(row, data, start, end, display) {
+            var api = this.api();
+            var totalOmzet = api.column(3).data().reduce(function(a, b) {
+                return a + (parseFloat(b) || 0);
+            }, 0);
+            $(api.column(3).footer()).html(totalOmzet.toLocaleString("id-ID") || '');
+        }
+    });
+
     function detailCicilan_pelanggan(idb) {
       console.log(idb);
         $.get("<?= BASE_URL ?>pembayaran/getCicilan_pelanggan/?nota=" + idb, function(data, status) {
