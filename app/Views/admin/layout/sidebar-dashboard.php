@@ -94,7 +94,7 @@
 <?php if  ($isAdmin || isset($akses->setup)): ?>
 <div class="sub-menu setup">
     <ul class="ul-sub-menu">
-        <?php if ($isAdmin || $hasPermission('daftar_pengguna', 'setup')): ?>
+        <?php if ($isAdmin || $hasPermission(Menu::DAFTAR_PENGGUNA, 'setup')): ?>
         <li class="menu-item">
             <a href="<?= BASE_URL ?>user" class="menu-link-inside d-flex justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-list-ol px-2"></i>
@@ -102,7 +102,7 @@
             </a>
         </li>
         <?php endif?>
-        <?php if ($isAdmin || $hasPermission('daftar_sales', 'setup')): ?>
+        <?php if ($isAdmin || $hasPermission(Menu::DAFTAR_SALES, 'setup')): ?>
         <li class="menu-item">
             <a href="<?= BASE_URL ?>sales" class="menu-link-inside d-flex justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-list-ol px-2"></i>
@@ -110,7 +110,7 @@
             </a>
         </li>
         <?php endif?>
-        <?php if ($isAdmin || $hasPermission('daftar_suplier', 'setup')): ?>
+        <?php if ($isAdmin || $hasPermission(Menu::DAFTAR_SUPLIER, 'setup')): ?>
         <li class="menu-item">
             <a href="<?= BASE_URL ?>suplier" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
             <i class="menu-icon fs-5 tf-icons bx bx-list-ol px-2"></i>
@@ -118,7 +118,7 @@
             </a>
         </li>
         <?php endif?>
-        <?php if ($isAdmin || $hasPermission('daftar_pelanggan', 'setup')): ?>
+        <?php if ($isAdmin || $hasPermission(Menu::DAFTAR_PELANGGAN, 'setup')): ?>
         <li class="menu-item">
             <a href="<?= BASE_URL ?>pelanggan" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-list-ol px-2"></i>
@@ -139,7 +139,7 @@
         <!--        <div data-i18n="cabang" style="font-size: 12px;">List Cabang</div>-->
         <!--    </a>-->
         <!--</li>-->
-        <?php if ($isAdmin || $hasPermission('daftar_kategori', 'setup')): ?>
+        <?php if ($isAdmin || $hasPermission(Menu::DAFTAR_KATEGORI, 'setup')): ?>
         <li class="menu-item">
             <a href="<?= BASE_URL ?>kategori" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-list-ol px-2"></i>
@@ -147,7 +147,7 @@
             </a>
         </li>
         <?php endif?>
-        <?php if ($isAdmin || $hasPermission('daftar_satuan', 'setup')): ?>
+        <?php if ($isAdmin || $hasPermission(Menu::DAFTAR_SATUAN, 'setup')): ?>
         <li class="menu-item">
             <a href="<?= BASE_URL ?>satuan" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
             <i class="menu-icon fs-5 tf-icons bx bx-list-ol px-2"></i>
@@ -155,7 +155,7 @@
             </a>
         </li>
         <?php endif?>
-        <?php if ($isAdmin || $hasPermission('daftar_barang', 'setup')): ?>
+        <?php if ($isAdmin || $hasPermission(Menu::DAFTAR_BARANG, 'setup')): ?>
         <li class="menu-item">
             <a href="<?= BASE_URL ?>barang" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-list-ol px-2"></i>
@@ -163,7 +163,7 @@
             </a>
         </li>
         <?php endif?>
-        <?php if ($isAdmin || $hasPermission('daftar_barang', 'setup')): ?>
+        <?php if ($isAdmin || $hasPermission(Menu::DAFTAR_BARANG_SALES, 'setup')): ?>
         <li class="menu-item">
             <a href="<?= BASE_URL ?>sales/list_assign_sales" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-list-ol px-2"></i>
@@ -186,7 +186,7 @@
 <?php if  ($isAdmin || isset($akses->persediaan)): ?>
 <div class="sub-menu persediaan">
     <ul class="ul-sub-menu">
-        <?php if ($isAdmin || $hasPermission('input_stok', 'persediaan')): ?>
+        <?php if ($isAdmin || $hasPermission(Menu::INPUT_STOK, 'persediaan')): ?>
         <li class="menu-item">
             <a href="<?= BASE_URL ?>stok/tambah_stokbarang" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-plus-circle px-2"></i>
@@ -195,7 +195,7 @@
         </li>
         <?php endif?>
 
-        <?php if ($isAdmin || $hasPermission('penyesuaian_stok', 'persediaan')): ?>
+        <?php if ($isAdmin || $hasPermission(Menu::PENYESUAIAN_STOK, 'persediaan')): ?>
         <li class="menu-item ">
             <a href="<?= BASE_URL ?>opname" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-box px-2"></i>
@@ -205,7 +205,7 @@
         <?php endif?>
         <hr>
 
-        <?php if ($isAdmin || $hasPermission('stok_barang', 'persediaan')): ?>
+        <?php if ($isAdmin || $hasPermission(Menu::STOK_BARANG, 'persediaan')): ?>
         <li class="menu-item">
             <a href="<?= BASE_URL ?>stok" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-list-ol px-2"></i>
@@ -214,7 +214,7 @@
         </li>
         <?php endif?>
 
-        <?php if ($isAdmin || $hasPermission('konfirmasi_opname', 'persediaan')): ?>
+        <?php if ($isAdmin || $hasPermission(Menu::CONFIRM_OPNAME, 'persediaan')): ?>
         <li class="menu-item <?= @$stokopnamekonfirm_active ?>">
             <a href="<?= BASE_URL ?>opname/konfirm" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-check-shield px-2"></i>
@@ -232,7 +232,7 @@
         </li>
         <?php endif?>
 
-        <?php if ($isAdmin || $hasPermission('penghapusan_stok', 'persediaan')): ?>
+        <?php if ($isAdmin || $hasPermission(Menu::HAPUS_STOK, 'persediaan')): ?>
         <li class="menu-item <?= @$hapusstok_active ?>">
             <a href="<?= BASE_URL ?>opname/hapusstok" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-list-ol px-2"></i>
@@ -248,7 +248,7 @@
 <div class="sub-menu transaksi">
     <ul class="ul-sub-menu">
     
-    <?php if ($isAdmin || $hasPermission('pembelian', 'transaksi')): ?>
+    <?php if ($isAdmin || $hasPermission(Menu::PEMBELIAN, 'transaksi')): ?>
     <li class="menu-item">
             <a href="<?= BASE_URL ?>pembelian" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-basket px-2"></i>
@@ -257,7 +257,7 @@
         </li>
         <?php endif?>
         
-        <?php if ($isAdmin || $hasPermission('retur_suplier', 'transaksi')): ?>
+        <?php if ($isAdmin || $hasPermission(Menu::RETUR_SUPLIER, 'transaksi')): ?>
         <li class="menu-item">
             <a href="<?= BASE_URL ?>retur/suplier" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-basket px-2"></i>
@@ -267,7 +267,7 @@
         <?php endif?>
         <hr>
         
-        <?php if ($isAdmin || $hasPermission('penjualan', 'transaksi')): ?>
+        <?php if ($isAdmin || $hasPermission(Menu::PENJUALAN, 'transaksi')): ?>
         <li class="menu-item">
             <a href="<?= BASE_URL ?>penjualan" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-basket px-2"></i>
@@ -276,7 +276,7 @@
         </li>
         <?php endif?>
         
-        <?php if ($isAdmin || $hasPermission('retur_pelanggan', 'transaksi')): ?>
+        <?php if ($isAdmin || $hasPermission(Menu::RETUR_PELANGGAN, 'transaksi')): ?>
         <li class="menu-item">
             <a href="<?= BASE_URL ?>retur/pelanggan" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-basket px-2"></i>
@@ -286,7 +286,7 @@
         <?php endif?>
         <hr>
         
-        <?php if ($isAdmin || $hasPermission('pembayaran_pelanggan', 'transaksi')): ?>
+        <?php if ($isAdmin || $hasPermission(Menu::PEMBAYARAN_PELANGGAN, 'transaksi')): ?>
         <li class="menu-item">
             <a href="<?= BASE_URL ?>pembayaran/pelanggan" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-basket px-2"></i>
@@ -295,7 +295,7 @@
         </li>
         <?php endif?>
         
-        <?php if ($isAdmin || $hasPermission('pembayaran_suplier', 'transaksi')): ?>
+        <?php if ($isAdmin || $hasPermission(Menu::PEMBAYARAN_SUPLIER, 'transaksi')): ?>
         <li class="menu-item">
             <a href="<?= BASE_URL ?>pembayaran/suplier" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-basket px-2"></i>
@@ -311,7 +311,7 @@
 <div class="sub-menu laporan">
     <ul class="ul-sub-menu">
         
-    <?php if ($isAdmin || $hasPermission('stok_min_barang', 'laporan')): ?>
+    <?php if ($isAdmin || $hasPermission(Menu::STOK_MIN_BARANG, 'laporan')): ?>
     <li class="menu-item">
             <a href="<?= BASE_URL ?>laporan/barang" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-purchase-tag-alt px-2"></i>
@@ -320,7 +320,7 @@
         </li>
         <?php endif?>
         
-        <?php if ($isAdmin || $hasPermission('mutasi_stok', 'laporan')): ?>
+        <?php if ($isAdmin || $hasPermission(Menu::MUTASI_STOK, 'laporan')): ?>
         <li class="menu-item">
             <a href="<?= BASE_URL ?>laporan/mutasistok" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-purchase-tag-alt px-2"></i>
@@ -329,7 +329,7 @@
         </li>
         <?php endif?>
         
-        <?php if ($isAdmin || $hasPermission('penjualan_summary', 'laporan')): ?>
+        <?php if ($isAdmin || $hasPermission(Menu::PENJUALAN_SUMMARY, 'laporan')): ?>
         <li class="menu-item">
             <a href="<?= BASE_URL ?>laporan/penjualan" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-purchase-tag-alt px-2"></i>
@@ -338,7 +338,7 @@
         </li>
         <?php endif?>
         
-        <?php if ($isAdmin || $hasPermission('pembelian_summary', 'laporan')): ?>
+        <?php if ($isAdmin || $hasPermission(Menu::PEMBELIAN_SUMMARY, 'laporan')): ?>
         <li class="menu-item">
             <a href="<?= BASE_URL ?>laporan/pembelian" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-purchase-tag-alt px-2"></i>
@@ -347,7 +347,7 @@
         </li>
         <?php endif?>
         
-        <?php if ($isAdmin || $hasPermission('laporan_retur_suplier', 'laporan')): ?>
+        <?php if ($isAdmin || $hasPermission(Menu::LAP_RETUR_SUPLIER, 'laporan')): ?>
         <li class="menu-item">
             <a href="<?= BASE_URL ?>laporan/retursup" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-purchase-tag-alt px-2"></i>
@@ -356,7 +356,7 @@
         </li>
         <?php endif?>
         
-        <?php if ($isAdmin || $hasPermission('laporan_retur_suplier', 'laporan')): ?>
+        <?php if ($isAdmin || $hasPermission(Menu::LAP_RETUR_PELANGGAN, 'laporan')): ?>
         <li class="menu-item">
             <a href="<?= BASE_URL ?>laporan/returpel" class="menu-link-inside d-flex  justify-content-start align-items-center px-4 py-2">
                 <i class="menu-icon fs-5 tf-icons bx bx-purchase-tag-alt px-2"></i>
