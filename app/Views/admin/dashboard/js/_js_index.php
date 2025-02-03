@@ -58,8 +58,6 @@
         },
         "columns": [
             { data: 'namapelanggan' },
-            { data: 'tanggal' },
-            { data: 'tempo' },
             { data: null,
             render: function (data, type, row) {
                 var sisaCicilan = row.notajual - row.cicilan;
@@ -92,8 +90,6 @@
         },
         "columns": [
             { data: 'namasuplier' },
-            { data: 'tanggal' },
-            { data: 'tempo' },
             { data: null,
             render: function (data, type, row) {
                 var sisaCicilan = row.notabeli - row.cicilan;

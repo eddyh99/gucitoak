@@ -8,94 +8,112 @@
 
 
 <script>
-$(function () { 
-    setTimeout(() => {
-          $("#failedtoast").toast('show')
-          $("#successtoast").toast('show')
-    }, 0)
-});  
+    $(function() {
+        setTimeout(() => {
+            $("#failedtoast").toast('show')
+            $("#successtoast").toast('show')
+        }, 0)
+    });
 
-$('#tgl').daterangepicker({
-    endDate: moment(),
-    ranges: {
-       'Today': [moment(), moment()],
-       'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-       'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-       'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-       'This Month': [moment().startOf('month'), moment().endOf('month')],
-       'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-    }
-});
+    $('#tgl').daterangepicker({
+        endDate: moment(),
+        ranges: {
+            'Today': [moment(), moment()],
+            'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+            'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+            'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+            'This Month': [moment().startOf('month'), moment().endOf('month')],
+            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        }
+    });
 
-var table=$('#table_list').DataTable({
+    var table = $('#table_list').DataTable({
         "scrollX": false,
         "dom": 'lBfrtip',
-        "buttons": [
-              {
-                    extend: 'pdf',
-                    exportOptions: {
-                          columns: "th:not(:last-child)" //remove last column in pdf
-                    }
-              }
-              , 
-              'excel'
+        "buttons": [{
+                extend: 'pdf',
+                exportOptions: {
+                    columns: "th:not(:last-child)" //remove last column in pdf
+                }
+            },
+            'excel'
         ],
         "lengthMenu": [
-              [ 10, 25, 50, -1 ],
-              [ '10 rows', '25 rows', '50 rows', 'Show all' ]
+            [10, 25, 50, -1],
+            ['10 rows', '25 rows', '50 rows', 'Show all']
         ],
-	"ajax": {
-		"url": "<?= BASE_URL ?>laporan/get_pembelian",
-		"type": "POST",
-		"data": function(d) {
-            d.tanggal = $('#tgl').val();
-            d.barang = $('#barang').val();
+        "ajax": {
+            "url": "<?= BASE_URL ?>laporan/get_pembelian",
+            "type": "POST",
+            "data": function(d) {
+                d.tanggal = $('#tgl').val();
+                d.barang = $('#barang').val();
+            },
+            "dataSrc": function(data) {
+                console.log(data);
+                return data;
+            }
         },
-		"dataSrc":function (data){
-			console.log(data);
-			return data;							
-		}
-	},
-        "columns": [
-		{ data: 'namasuplier' },
-		{ data: 'nonota' },
-		{ data: 'tanggal' },
-		{ data: 'amount' },
-            { data: null,
-		    render: function (data, type, row) {
-                    var detail = `<a href="#" onclick='detailbarang("`+encodeURI(btoa(data.id))+`")'>
+        "columns": [{
+                data: 'namasuplier'
+            },
+            {
+                data: 'nonota'
+            },
+            {
+                data: 'tanggal'
+            },
+            {
+                data: 'amount',
+                "mRender": function(data, type, full, meta) {
+                    if (type === 'display') {
+                        return parseFloat(data).toLocaleString('en-US', {
+                            minimumFractionDigits: 0,
+                            maximumFractionDigits: 0
+                        });
+                    }
+                    return data;
+                }
+            },
+            {
+                data: null,
+                render: function(data, type, row) {
+                    var detail = `<a href="#" onclick='detailbarang("` + encodeURI(btoa(data.id)) + `")'>
                                                 <i class="bx bx-detail bx-md fs-5 text-primary"></i>
                                           </a>`;
                     return `${detail}`;
                 }
-		},
-	],
-    "footerCallback": function(row, data, start, end, display) {
-        var api = this.api();
-        var totalAmount = api.column(3).data().reduce(function(a, b) {
-            return a + (parseFloat(b) || 0);
-        }, 0);
-        $(api.column(3).footer()).html(totalAmount || '');
-    }
-  });
+            },
+        ],
+        "footerCallback": function(row, data, start, end, display) {
+            var api = this.api();
+            var totalAmount = api.column(3).data().reduce(function(a, b) {
+                return a + (parseFloat(b) || 0);
+            }, 0);
+            $(api.column(3).footer()).html(totalAmount.toLocaleString('en-US', {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            }) || '');
+        }
+    });
 
-  function detailbarang(idb) {
-      console.log(idb);
-        $.get("<?=BASE_URL?>pembelian/list_barang/" + idb, function(data, status) {
+    function detailbarang(idb) {
+        console.log(idb);
+        $.get("<?= BASE_URL ?>pembelian/list_barang/" + idb, function(data, status) {
             let mdata = JSON.parse(data);
             let html = '';
             console.log(mdata);
-        
-             mdata.forEach(item => {
+
+            mdata.forEach(item => {
                 // Ensure harga is a valid number before formatting
                 let harga = parseFloat(item.harga);
                 let jumlah = parseInt(item.jumlah);
                 let total = jumlah * harga;
-    
+
                 // Format harga and total to IDR format
                 let hargaFormatted = harga.toLocaleString("id-ID");
                 let totalFormatted = total.toLocaleString("id-ID");
-    
+
                 // Construct the HTML for each row
                 html += `
                     <tr>
@@ -106,15 +124,14 @@ var table=$('#table_list').DataTable({
                     </tr>
                 `;
             });
-        
+
             // Insert rows into the table body
             $('#modalDataBody').html(html);
             $("#detailbarang").modal('show');
         });
     };
-  
-  $("#lihat").on("click",function(){
-     table.ajax.reload(); 
-  });
-  
+
+    $("#lihat").on("click", function() {
+        table.ajax.reload();
+    });
 </script>

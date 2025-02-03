@@ -50,7 +50,7 @@
                               var del = `<a href="<?= BASE_URL ?>user/hapus_user/${encodeURI(btoa(full.id))}/${encodeURI(btoa(full.username))}" class="del-data">
                                                 <i class="bx bx-trash bx-md fs-5 text-danger"></i>
                                           </a>`;
-                              return `${edit} ${del}`;
+                              return `${edit} ${data.username !== 'admin' ? del : ''}`;
                         } 
                   },
 		],

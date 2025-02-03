@@ -15,7 +15,11 @@
                 popup: 'btn-primary'
             }
         });
+        setTimeout(() => {
+            $(".swal2-container").css("z-index", "9999");
+        }, 100);
     }
+
     $("#sales").select2({
         placeholder: "--- PILIH SALES ---"
     });

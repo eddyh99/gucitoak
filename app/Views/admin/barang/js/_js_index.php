@@ -101,19 +101,6 @@
                         return data;
                     } 
                   },
-			{ data: 'disc_pct' },
-                  { 
-                   data: "disc_fxd", 
-                   "mRender": function(data, type, full, meta) {
-                        if (type === 'display') {
-                            return parseFloat(data).toLocaleString('en-US', {
-                                minimumFractionDigits: 0,
-                                maximumFractionDigits: 0
-                            });
-                        }
-                        return data;
-                    } 
-                  },
 			{ 
                         data: null, "mRender": function(data, type, full, meta) {
                               var detail = `<a href="#" onclick='detailharga("`+encodeURI(btoa(full.id))+`")'>
@@ -164,8 +151,6 @@
                         <td>${Number(item.harga1).toLocaleString('id-ID')}</td>
                         <td>${Number(item.harga2).toLocaleString('id-ID')}</td>
                         <td>${Number(item.harga3).toLocaleString('id-ID')}</td>
-                        <td>${item.disc_fxd}</td>
-                        <td>${(item.disc_pct * 100).toFixed(2)}%</td>
                     </tr>
                 `;
             });

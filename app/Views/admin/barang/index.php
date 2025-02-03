@@ -54,8 +54,6 @@
                                         <th>Harga 1</th>
                                         <th>Harga 2</th>
                                         <th>Harga 3</th>
-                                        <th>Disc (%)</th>
-                                        <th>Disc (fxd)</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -103,8 +101,6 @@
               <th>Harga 1</th>
               <th>Harga 2</th>
               <th>Harga 3</th>
-              <th>Discount Fixed</th>
-              <th>Discount Percent</th>
             </tr>
           </thead>
           <tbody id="modalDataBody">

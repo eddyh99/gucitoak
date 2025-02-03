@@ -435,8 +435,8 @@
                                 </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                <span class="fw-semibold d-block">Ari Pramana</span>
-                                <small class="text-muted">Admin</small>
+                                <span class="fw-semibold d-block"><?= $session['role'] == 'sales' ?  $session['namasales'] : $session['username'] ?></span>
+                                <small class="text-muted"><?= $session['role'] ?></small>
                                 </div>
                             </div>
                             </a>

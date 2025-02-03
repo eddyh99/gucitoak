@@ -27,7 +27,7 @@
                         </div>
                         <div class="card-body">
                             <form action="<?= BASE_URL ?>sales/tambah_proccess" method="POST" enctype="multipart/form-data">
-                                <img class="img-preview img-fluid col-sm-5 d-block mx-auto">
+                                <img class="img-preview d-block mx-auto" width="200">
                                 <div class="row row-cols-3">
                                 <div class="mb-3">
                                         <label class="form-label" for="avatar">Foto sales</label>
