@@ -748,9 +748,14 @@ html:not(.layout-menu-collapsed) .bg-menu-theme .menu-inner .menu-item .menu-lin
   color: #696cff;
 }
 .bg-menu-theme .menu-inner > .menu-item.active > .menu-link {
-  color: #696cff;
-  background-color: rgba(105, 108, 255, 0.16) !important;
+  color: white;
+  background-color: #696cff !important;
 }
+.bg-menu-theme .menu-inner > .menu-item:not(.active) > .menu-link {
+  color: #696cff;
+  background-color: rgba(105, 108, 255, 0.16);
+}
+
 .bg-menu-theme .menu-inner > .menu-item.active:before {
   background: #696cff;
 }

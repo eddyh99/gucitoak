@@ -15,8 +15,8 @@
 
     <ul class="menu-inner py-1">
         <!-- Dashboard -->
-        <li class="menu-item <?= @$active_dash?>">
-            <a href="<?= BASE_URL ?>dashboard" class="menu-link">
+        <li class="menu-item <?= @$active_dash?> mb-2">
+            <a href="<?= BASE_URL ?>dashboard" class="menu-link rounded-circle">
                 <i class="menu-icon tf-icons bx bx-home-circle "></i>
                 <div data-i18n="Analytics" class="text-center">Dashboard</div>
             </a>
@@ -26,16 +26,16 @@
             <span class="menu-header-text">Setup</span>
         </li> -->
         <?php if  ($isAdmin || isset($akses->setup)): ?>
-            <li class="menu-item setup <?= @$menuactive_setup ?>">
-                <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <li class="menu-item setup <?= @$menuactive_setup ?> mb-2">
+                <a href="javascript:void(0);" class="menu-link menu-toggle rounded-circle">
                     <i class="menu-icon tf-icons bx bx-cog"></i>
                     <div data-i18n="Account Settings" class="text-center">Setup Data</div>
                 </a>
             </li>
         <?php endif?>
         <?php if  ($isAdmin || isset($akses->persediaan)): ?>
-        <li class="menu-item persediaan <?= @$menuactive_persediaan ?>">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <li class="menu-item persediaan <?= @$menuactive_persediaan ?> mb-2">
+            <a href="javascript:void(0);" class="menu-link menu-toggle rounded-circle">
                 <i class="menu-icon tf-icons bx bx-package"></i>
                 <div data-i18n="Account Settings" class="text-center">Persediaan Barang</div>
             </a>
@@ -43,8 +43,8 @@
         <?php endif?>
         
         <?php if  ($isAdmin || isset($akses->transaksi)): ?>
-        <li class="menu-item transaksi <?= @$menuactive_transaksi ?>">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <li class="menu-item transaksi <?= @$menuactive_transaksi ?> mb-2">
+            <a href="javascript:void(0);" class="menu-link menu-toggle rounded-circle">
                 <!-- <i class="menu-icon tf-icons bx bx-package"></i> -->
                 <i class='menu-icon tf-icons bx bx-basket'></i>
                 <div data-i18n="Pembelian" class="text-center">Transaksi</div>
@@ -53,8 +53,8 @@
         <?php endif?>
 
         <?php if  ($isAdmin || isset($akses->laporan)): ?>
-        <li class="menu-item laporan <?= @$menuactive_laporan ?>">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
+        <li class="menu-item laporan <?= @$menuactive_laporan ?> mb-2">
+            <a href="javascript:void(0);" class="menu-link menu-toggle rounded-circle">
                 <!-- <i class="menu-icon tf-icons bx bx-package"></i> -->
                 <i class='menu-icon tf-icons bx bx-purchase-tag-alt'></i>
                 <div data-i18n="laporan" class="text-center">Laporan</div>
@@ -63,8 +63,8 @@
         <?php endif?>
 
         <?php if  ($isAdmin || isset($akses->penggajian)): ?>
-        <li class="menu-item <?= @$menuactive_penggajian ?>">
-            <a href="<?= BASE_URL ?>penggajian" class="menu-link">
+        <li class="menu-item <?= @$menuactive_penggajian ?> mb-2">
+            <a href="<?= BASE_URL ?>penggajian" class="menu-link rounded-circle">
                 <i class="menu-icon tf-icons bx bx-money "></i>
                 <div data-i18n="Analytics" class="text-center">Penggajian</div>
             </a>
@@ -72,8 +72,8 @@
         <?php endif?>
 
         <?php if  (!$isAdmin): ?>
-        <li class="menu-item <?= @$menuactive_laporan ?>">
-            <a href="<?= BASE_URL ?>laporan/omzet_sales" class="menu-link">
+        <li class="menu-item <?= @$menuactive_laporan ?> mb-2">
+            <a href="<?= BASE_URL ?>laporan/omzet_sales" class="menu-link rounded-circle">
                 <i class="menu-icon tf-icons bx bx-line-chart"></i>
                 <div data-i18n="Analytics" class="text-center">Laporan Omzet</div>
             </a>
@@ -81,8 +81,8 @@
         <?php endif?>
 
         <?php if  (!$isAdmin): ?>
-        <li class="menu-item <?= @$menuactive_slipgaji ?>">
-            <a href="<?= BASE_URL ?>slipgaji" class="menu-link">
+        <li class="menu-item <?= @$menuactive_slipgaji ?> mb-2">
+            <a href="<?= BASE_URL ?>slipgaji" class="menu-link rounded-circle">
                 <i class="menu-icon tf-icons bx bx-money "></i>
                 <div data-i18n="Analytics" class="text-center">Slip Gaji</div>
             </a>

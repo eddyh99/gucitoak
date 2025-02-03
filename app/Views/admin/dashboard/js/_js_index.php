@@ -16,10 +16,9 @@
       
      $('#table_list').DataTable({
         "scrollX": true,
+        "scrollY": '180px',
+        "scrollCollapse": true,
         "dom": 'Bfrtip',
-        "buttons": [
-            'excel', 'pdf',
-        ],
         "ajax": {
             "url": "<?= BASE_URL ?>dashboard/list_all_stokbarang",
             "type": "POST",
@@ -45,9 +44,8 @@
     $('#pembayaran_pelanggan').DataTable({
         "scrollX": true,
         "dom": 'Bfrtip',
-        "buttons": [
-            'excel', 'pdf',
-        ],
+        "scrollY": '180px',
+        "scrollCollapse": true,
         "ajax": {
             "url": "<?= BASE_URL ?>pembayaran/get_pembayaran_pel",
             "type": "POST",
@@ -77,9 +75,8 @@
     $('#pembayaran_suplier').DataTable({
         "scrollX": true,
         "dom": 'Bfrtip',
-        "buttons": [
-            'excel', 'pdf',
-        ],
+        "scrollY": '180px',
+        "scrollCollapse": true,
         "ajax": {
             "url": "<?= BASE_URL ?>pembayaran/get_pembayaran_sup",
             "type": "POST",
