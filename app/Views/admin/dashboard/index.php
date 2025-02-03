@@ -27,8 +27,10 @@ $role = session()->get('logged_user')['role'];
                 <?php if ($role == 'admin') : ?>
                     <div class="col-lg-6 mb-4 order-1">
                         <div class="card border-expat w-100">
-                            <div class="card-body">
-                                <h5 class="card-title fw-semibold mb-4">Stok Min Barang</h5>
+                        <div class="card-header bg-primary pb-2">
+                            <h5 class="card-title text-white">Stok Min Barang</h5>
+                        </div>
+                            <div class="card-body mt-2">
                                 <table id="table_list" class="table table-striped" style="width:100%">
                                     <thead>
                                         <tr>
@@ -46,8 +48,10 @@ $role = session()->get('logged_user')['role'];
                     </div>
                     <div class="col-lg-6 mb-4 order-1">
                         <div class="card border-expat w-100">
-                            <div class="card-body">
-                                <h5 class="card-title fw-semibold mb-4">Pembayaran Pelanggan</h5>
+                        <div class="card-header bg-primary pb-2">
+                            <h5 class="card-title text-white">Pembayaran Pelanggan</h5>
+                        </div>
+                            <div class="card-body mt-2">
                                 <table id="pembayaran_pelanggan" class="table table-striped" style="width:100%">
                                     <thead>
                                         <tr>
@@ -64,8 +68,10 @@ $role = session()->get('logged_user')['role'];
                     </div>
                     <div class="col-lg-6 mb-4 order-1">
                         <div class="card border-expat w-100">
-                            <div class="card-body">
-                                <h5 class="card-title fw-semibold mb-4">Pembayaran Suplier</h5>
+                        <div class="card-header bg-primary pb-2">
+                            <h5 class="card-title text-white">Pembayaran Suplier</h5>
+                        </div>
+                            <div class="card-body mt-2">
                                 <table id="pembayaran_suplier" class="table table-striped" style="width:100%">
                                     <thead>
                                         <tr>
@@ -85,8 +91,10 @@ $role = session()->get('logged_user')['role'];
                     <?php if ($role == 'sales') : ?>
                     <div class="col-lg-6 mb-4 order-1">
                         <div class="card border-expat w-100">
-                            <div class="card-body">
-                                <h5 class="card-title fw-semibold mb-4">Penjualan Bulan Ini</h5>
+                        <div class="card-header bg-primary pb-2">
+                            <h5 class="card-title text-white">Penjualan Bulan Ini</h5>
+                        </div>
+                            <div class="card-body mt-2">
                                 <table id="omzet_sales" class="table table-striped" style="width:100%">
                                     <thead>
                                         <tr>
