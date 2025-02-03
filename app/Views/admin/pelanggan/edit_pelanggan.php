@@ -99,6 +99,19 @@
                                         </div>
                                     </div>
                                     <div class="mb-3">
+                                        <label class="form-label" for="telp">Gmaps</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="gmaps"
+                                                placeholder="Link gmaps"
+                                                name="gmaps"
+                                                value="<?=$pelanggan->gmaps?>"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
                                         <label class="form-label" for="harga">Jenis Harga</label>
                                         <select name="harga" class="form-select" id="harga">
                                             <option value="Harga 1" <?= ($pelanggan->harga == "Harga 1") ? "selected": ""?>>Harga 1</option>

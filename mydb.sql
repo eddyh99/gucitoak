@@ -412,8 +412,9 @@ CREATE TABLE `pelanggan` (
   `is_delete` enum('yes','no') NOT NULL DEFAULT 'no',
   `created_at` datetime DEFAULT NULL,
   `update_at` datetime DEFAULT NULL,
+  `gmaps` text DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -423,9 +424,9 @@ CREATE TABLE `pelanggan` (
 LOCK TABLES `pelanggan` WRITE;
 /*!40000 ALTER TABLE `pelanggan` DISABLE KEYS */;
 INSERT INTO `pelanggan` VALUES
-(1,'Sari Roti','sari ayu','jl Semarang A!','Denpasar','0182302392',0,10,'Harga 2','no','2024-09-14 04:00:34','2024-10-31 02:21:27'),
-(2,'Toko Kelontong Madura','Muhammad','mengwi','Badung','0811111111111',300000,0,'Harga 1','no','2024-10-16 01:07:11',NULL),
-(3,'Toko Kelontong Makmur','Wayan makmur','Jln Gatsu Timur Gang Cemara no 5','Denpasar','0831232131231',500000,1,'Harga 3','yes','2024-10-16 01:14:05','2024-10-16 01:18:13');
+(1,'Sari Roti','sari ayu','jl Semarang A!','Denpasar','0182302392',0,10,'Harga 2','no','2024-09-14 04:00:34','2025-02-03 04:55:20','https://maps.app.goo.gl/3Pap1r9V9'),
+(2,'Toko Kelontong Madura','Muhammad','mengwi','Badung','0811111111111',300000,0,'Harga 1','no','2024-10-16 01:07:11',NULL,NULL),
+(3,'Toko Kelontong Makmur','Wayan makmur','Jln Gatsu Timur Gang Cemara no 5','Denpasar','0831232131231',500000,1,'Harga 3','yes','2024-10-16 01:14:05','2024-10-16 01:18:13',NULL);
 /*!40000 ALTER TABLE `pelanggan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -975,4 +976,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*M!100616 SET NOTE_VERBOSITY=@OLD_NOTE_VERBOSITY */;
 
--- Dump completed on 2025-02-03 10:20:47
+-- Dump completed on 2025-02-03 11:59:38

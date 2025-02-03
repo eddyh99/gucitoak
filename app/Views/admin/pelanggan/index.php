@@ -50,6 +50,7 @@
                                         <th>Nama Toko</th>
                                         <th>Pemilik</th>
                                         <th>Alamat</th>
+                                        <th>Gmaps</th>
                                         <th>No. Telp</th>
                                         <th>Harga</th>
                                         <th>Plafon</th>

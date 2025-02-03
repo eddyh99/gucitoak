@@ -43,6 +43,14 @@
 			{ data: 'namapelanggan' },
 			{ data: 'pemilik' },
 			{ data: 'alamat' },
+                  {data: null, 
+                  "mRender": function(data, type, full, meta) {
+                              var link = `<a href="${data.gmaps}" target="_blank">
+                                                <i class="bx bx-link-external bx-md fs-5 text-primary"></i>
+                                          </a>`;
+                              return data.gmaps ? link : '-';
+                  } 
+                  },
 			{ data: 'telp' },
 			{ data: 'harga' },
               { 
