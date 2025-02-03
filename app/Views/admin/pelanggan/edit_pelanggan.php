@@ -99,15 +99,30 @@
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label" for="telp">Gmaps</label>
+                                        <label class="form-label" for="telp">Latitude</label>
                                         <div class="input-group input-group-merge">
                                             <input
-                                                type="text"
+                                                type="number"
                                                 class="form-control"
-                                                id="gmaps"
-                                                placeholder="Link gmaps"
-                                                name="gmaps"
-                                                value="<?=$pelanggan->gmaps?>"
+                                                id="latitude"
+                                                placeholder="Koordinat"
+                                                name="latitude"
+                                                value="<?=$pelanggan->latitude?>"
+                                                step="any"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="telp">Longitude</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="number"
+                                                class="form-control"
+                                                id="longitude"
+                                                placeholder="Koordinat"
+                                                name="longitude"
+                                                value="<?=$pelanggan->longitude?>"
+                                                step="any"
                                             />
                                         </div>
                                     </div>

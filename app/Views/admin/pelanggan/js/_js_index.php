@@ -8,66 +8,80 @@
 
 
 <script>
-      $(function () { 
+      $(function() {
             setTimeout(() => {
                   $("#failedtoast").toast('show')
                   $("#successtoast").toast('show')
             }, 0)
-      });      
+      });
       $('#table_list').DataTable({
             "scrollX": true,
             "dom": 'lBfrtip',
-            "buttons": [
-                  {
+            "buttons": [{
                         extend: 'pdf',
                         exportOptions: {
                               columns: "th:not(:last-child)" //remove last column in pdf
                         }
-                  }
-                  , 
+                  },
                   'excel'
             ],
             "lengthMenu": [
-                  [ 10, 25, 50, -1 ],
-                  [ '10 rows', '25 rows', '50 rows', 'Show all' ]
+                  [10, 25, 50, -1],
+                  ['10 rows', '25 rows', '50 rows', 'Show all']
             ],
-		"ajax": {
-			"url": "<?= BASE_URL ?>pelanggan/list_all_pelanggan",
-			"type": "POST",
-			"dataSrc":function (data){
-				console.log(data);
-				return data;							
-			}
-		},
-            "columns": [
-			{ data: 'namapelanggan' },
-			{ data: 'pemilik' },
-			{ data: 'alamat' },
-                  {data: null, 
-                  "mRender": function(data, type, full, meta) {
-                              var link = `<a href="${data.gmaps}" target="_blank">
+            "ajax": {
+                  "url": "<?= BASE_URL ?>pelanggan/list_all_pelanggan",
+                  "type": "POST",
+                  "dataSrc": function(data) {
+                        console.log(data);
+                        return data;
+                  }
+            },
+            "columns": [{
+                        data: 'namapelanggan'
+                  },
+                  {
+                        data: 'pemilik'
+                  },
+                  {
+                        data: 'alamat'
+                  },
+                  {
+                        data: null,
+                        "mRender": function(data, type, full, meta) {
+                              let gmaps = '-';
+                              if (full.latitude && full.longitude) {
+                                    gmaps = `<a href="https://www.google.com/maps/place/${full.latitude},${full.longitude}" target="_blank">
                                                 <i class="bx bx-link-external bx-md fs-5 text-primary"></i>
                                           </a>`;
-                              return data.gmaps ? link : '-';
-                  } 
+                              }
+                              return gmaps;
+                        }
                   },
-			{ data: 'telp' },
-			{ data: 'harga' },
-              { 
-               data: "plafon", 
-               "mRender": function(data, type, full, meta) {
-                    if (type === 'display') {
-                        return parseFloat(data).toLocaleString('en-US', {
-                            minimumFractionDigits: 0,
-                            maximumFractionDigits: 0
-                        });
-                    }
-                    return data;
-                } 
-              },
-			{ data: 'maxnota' },
-			{ 
-                   data: null, "mRender": function(data, type, full, meta) {
+                  {
+                        data: 'telp'
+                  },
+                  {
+                        data: 'harga'
+                  },
+                  {
+                        data: "plafon",
+                        "mRender": function(data, type, full, meta) {
+                              if (type === 'display') {
+                                    return parseFloat(data).toLocaleString('en-US', {
+                                          minimumFractionDigits: 0,
+                                          maximumFractionDigits: 0
+                                    });
+                              }
+                              return data;
+                        }
+                  },
+                  {
+                        data: 'maxnota'
+                  },
+                  {
+                        data: null,
+                        "mRender": function(data, type, full, meta) {
                               var edit = `<a href="<?= BASE_URL ?>pelanggan/edit_pelanggan/${encodeURI(btoa(full.id))}">
                                                 <i class="bx bx-edit bx-md fs-5 text-black"></i>
                                           </a>`;
@@ -75,29 +89,29 @@
                                                 <i class="bx bx-trash bx-md fs-5 text-danger"></i>
                                           </a>`;
                               return `${edit} ${del}`;
-                        } 
+                        }
                   },
-		],
+            ],
       });
 
-      $(document).on("click", ".del-data", function(e){
-		e.preventDefault();
-		let url_href = $(this).attr('href');
-		Swal.fire({
-			text:"Apakah anda yakin menghapus data ini?",
-			type: "warning",
-			position: 'center',
-			showCancelButton: true,
-			confirmButtonText: "Hapus",
-			cancelButtonText: "Batal",
-			confirmButtonColor: '#FA896B',
-			closeOnConfirm: true,
-			showLoaderOnConfirm: true,
+      $(document).on("click", ".del-data", function(e) {
+            e.preventDefault();
+            let url_href = $(this).attr('href');
+            Swal.fire({
+                  text: "Apakah anda yakin menghapus data ini?",
+                  type: "warning",
+                  position: 'center',
+                  showCancelButton: true,
+                  confirmButtonText: "Hapus",
+                  cancelButtonText: "Batal",
+                  confirmButtonColor: '#FA896B',
+                  closeOnConfirm: true,
+                  showLoaderOnConfirm: true,
                   reverseButtons: true
-		}).then((result) => {
-			if (result.isConfirmed) {
-				document.location.href = url_href;
-			}
-		})
-	});
+            }).then((result) => {
+                  if (result.isConfirmed) {
+                        document.location.href = url_href;
+                  }
+            })
+      });
 </script>

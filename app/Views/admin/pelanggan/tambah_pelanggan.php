@@ -103,15 +103,30 @@
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label" for="plafon">Gmaps</label>
+                                        <label class="form-label" for="plafon">Latitude</label>
                                         <div class="input-group input-group-merge">
                                             <input
-                                                type="text"
+                                                type="number"
                                                 class="form-control"
-                                                id="gmaps"
-                                                placeholder="Link gmaps"
-                                                name="gmaps"
-                                                value="<?= set_value('gmaps') ?>"
+                                                id="latitude"
+                                                placeholder="Koordinat"
+                                                name="latitude"
+                                                value="<?= set_value('latitude') ?>"
+                                                step="any"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="plafon">Longitude</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="number"
+                                                class="form-control"
+                                                id="longitude"
+                                                placeholder="Koordinat"
+                                                name="longitude"
+                                                value="<?= set_value('longitude') ?>"
+                                                step="any"
                                             />
                                         </div>
                                     </div>
