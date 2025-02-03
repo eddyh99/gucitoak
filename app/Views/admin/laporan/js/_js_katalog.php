@@ -20,6 +20,32 @@
         "dom": 'lBfrtip',
         "buttons": [{
                 extend: 'pdf',
+                exportOptions: {
+                    // This will allow you to customize the export
+                    format: {
+                        body: function(data, row, column, node) {
+                            if (column === 0) {
+                                return data.match(/<img.*?src=["'](.*?)["']/)[1];
+                            }
+                            return data;
+                        }
+                    }
+                },
+                customize: function(doc) {
+                    let tableBody = doc.content[1].table.body;
+
+                    tableBody.forEach(function(row, index) {
+                        if (index > 0) {
+                            let img = row[0].text;
+                            if (img) {
+                                row[0] = {
+                                    image: img,
+                                    width: 80
+                                };
+                            }
+                        }
+                    });
+                }
             },
             'excel'
         ],
@@ -41,12 +67,7 @@
         "columns": [{
                 data: 'foto',
                 render: function(data, type, row) {
-                    const baseURL = "<?= BASE_URL ?>"
-                    console.log(`${baseURL}assets/img/produk/${data}`);
-                    // Tampilkan gambar produk
-                    return data ?
-                        `<img src="${baseURL}assets/img/produk/${encodeURIComponent(data)}" alt="Produk" style="width: 50px; height: 50px;">` :
-                        `<img src="${baseURL}assets/img/no-image.png" alt="Default" style="width: 50px; height: 50px;">`
+                    return `<img src="${data}" alt="Produk" style="width: 50px; height: 50px;">`
                 }
             },
             {

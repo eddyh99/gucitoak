@@ -295,10 +295,19 @@ class Laporan extends BaseController
         return view('admin/layout/wrapper', $mdata);
     }
 
-    public function get_katalog(){
-        $id  = $this->request->getVar('id');
+    public function get_katalog() {
+        $id = $this->request->getVar('id');
         $url = URLAPI . "/v1/laporan/get_katalog?id=$id";
         $response = gucitoakAPI($url)->message;
-        echo json_encode($response,true);
+        if($response) {
+            $imagePath = !empty($response[0]->foto) 
+                ? FCPATH . "assets/img/produk/" . $response[0]->foto 
+                : FCPATH . "assets/img/no-image.png";
+            $image_base64 = "data:image/jpeg;base64," . base64_encode(file_get_contents($imagePath));
+            $response[0]->foto = $image_base64;
+        }
+    
+        // Return the JSON response
+        return $this->response->setJSON($response);
     }
 }
