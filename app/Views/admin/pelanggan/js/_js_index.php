@@ -14,6 +14,62 @@
                   $("#successtoast").toast('show')
             }, 0)
       });
+      let cols = [{
+                  data: 'namapelanggan'
+            },
+            {
+                  data: 'pemilik'
+            },
+            {
+                  data: 'alamat'
+            },
+            {
+                  data: 'telp'
+            },
+            {
+                  data: null,
+                  "mRender": function(data, type, full, meta) {
+                        let gmaps = '-';
+                        if (full.latitude && full.longitude) {
+                              gmaps = `<a href="https://www.google.com/maps/place/${full.latitude},${full.longitude}" target="_blank">
+                                                <i class="bx bx-link-external bx-md fs-5 text-primary"></i>
+                                          </a>`;
+                        }
+                        return gmaps;
+                  }
+            }
+      ]
+
+      if (role == 'admin') {
+            cols.push({
+                  data: 'harga'
+            }, {
+                  data: "plafon",
+                  "mRender": function(data, type, full, meta) {
+                        if (type === 'display') {
+                              return parseFloat(data).toLocaleString('en-US', {
+                                    minimumFractionDigits: 0,
+                                    maximumFractionDigits: 0
+                              });
+                        }
+                        return data;
+                  }
+            }, {
+                  data: 'maxnota'
+            }, {
+                  data: null,
+                  "mRender": function(data, type, full, meta) {
+                        var edit = `<a href="<?= BASE_URL ?>pelanggan/edit_pelanggan/${encodeURI(btoa(full.id))}">
+                                                <i class="bx bx-edit bx-md fs-5 text-black"></i>
+                                          </a>`;
+                        var del = `<a href="<?= BASE_URL ?>pelanggan/hapus_pelanggan/${encodeURI(btoa(full.id))}" class="del-data">
+                                                <i class="bx bx-trash bx-md fs-5 text-danger"></i>
+                                          </a>`;
+                        return `${edit} ${del}`;
+                  }
+            })
+      }
+
       $('#table_list').DataTable({
             "scrollX": true,
             "dom": 'lBfrtip',
@@ -37,61 +93,7 @@
                         return data;
                   }
             },
-            "columns": [{
-                        data: 'namapelanggan'
-                  },
-                  {
-                        data: 'pemilik'
-                  },
-                  {
-                        data: 'alamat'
-                  },
-                  {
-                        data: null,
-                        "mRender": function(data, type, full, meta) {
-                              let gmaps = '-';
-                              if (full.latitude && full.longitude) {
-                                    gmaps = `<a href="https://www.google.com/maps/place/${full.latitude},${full.longitude}" target="_blank">
-                                                <i class="bx bx-link-external bx-md fs-5 text-primary"></i>
-                                          </a>`;
-                              }
-                              return gmaps;
-                        }
-                  },
-                  {
-                        data: 'telp'
-                  },
-                  {
-                        data: 'harga'
-                  },
-                  {
-                        data: "plafon",
-                        "mRender": function(data, type, full, meta) {
-                              if (type === 'display') {
-                                    return parseFloat(data).toLocaleString('en-US', {
-                                          minimumFractionDigits: 0,
-                                          maximumFractionDigits: 0
-                                    });
-                              }
-                              return data;
-                        }
-                  },
-                  {
-                        data: 'maxnota'
-                  },
-                  {
-                        data: null,
-                        "mRender": function(data, type, full, meta) {
-                              var edit = `<a href="<?= BASE_URL ?>pelanggan/edit_pelanggan/${encodeURI(btoa(full.id))}">
-                                                <i class="bx bx-edit bx-md fs-5 text-black"></i>
-                                          </a>`;
-                              var del = `<a href="<?= BASE_URL ?>pelanggan/hapus_pelanggan/${encodeURI(btoa(full.id))}" class="del-data">
-                                                <i class="bx bx-trash bx-md fs-5 text-danger"></i>
-                                          </a>`;
-                              return `${edit} ${del}`;
-                        }
-                  },
-            ],
+            "columns": cols
       });
 
       $(document).on("click", ".del-data", function(e) {

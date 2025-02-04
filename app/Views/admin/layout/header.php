@@ -45,7 +45,6 @@
         <?php 
         // Pengecekan role admin di sini
         $session = session()->get('logged_user');
-        $isAdmin = $session['role'] == 'admin';
         $akses = $session['akses'];
         $hasPermission = function($permission, $menu) use ($akses) {
             return isset($akses->$menu) && in_array($permission, $akses->$menu);
