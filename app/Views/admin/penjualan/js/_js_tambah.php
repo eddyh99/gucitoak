@@ -202,7 +202,8 @@
                 "expdate": expired,
                 "jml"    : jml,
                 "harga"  : harga,
-                "total"  : parseInt(jml*harga)
+                "total"  : parseInt(jml*harga),
+                "stok_barang" : stok
             }
             
              console.log(mdata);
@@ -213,14 +214,19 @@
                 data: {data: mdata},
                 success: function (response) {
                     console.log(response);
-                    table.ajax.reload();
-                    $("#stokModal").modal("hide");
-                    $("#harga").val(null); 
-                    $("#barang").val(null); 
-                    $("#barcode").val(null);
-                    $("#expired").val(null);
-                    $("#stok").val(null);
-                    stok=0;
+                    var result = JSON.parse(response);
+                    if (result.success) {
+                        table.ajax.reload();
+                        $("#stokModal").modal("hide");
+                        $("#harga").val(null); 
+                        $("#barang").val(null); 
+                        $("#barcode").val(null);
+                        $("#expired").val(null);
+                        $("#stok").val(null);
+                        stok=0;
+                    } else {
+                        alertSwal(result.message);
+                    }
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     console.log(textStatus);
