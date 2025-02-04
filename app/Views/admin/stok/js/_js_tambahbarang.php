@@ -5,12 +5,11 @@
 
 
 <script>
-      
-    $(document).ready(function(){	
+    $(document).ready(function() {
         $('.barangselect2').select2({
             placeholder: "Pilih Barang",
             allowClear: true,
-            theme: "bootstrap", 
+            theme: "bootstrap",
             width: "100%"
         });
     });
@@ -18,46 +17,61 @@
     var table = $('#preview_stok').DataTable({
         "scrollX": true,
         "lengthMenu": [
-                [ 10, 25, 50, -1 ],
-                [ '10 rows', '25 rows', '50 rows', 'Show all' ]
+            [10, 25, 50, -1],
+            ['10 rows', '25 rows', '50 rows', 'Show all']
         ],
-		"ajax": {
-			"url": "<?= BASE_URL ?>stok/get_list_stokbarang",
-			"type": "POST",
-			"dataSrc":function (data){
-				console.log(data);
-				return data;							
-			}
-		},
-        "columns": [
-			{ data: 'barcode' },
-			{ data: 'expdate' },
-			{ data: 'barang' },
-			{ data: 'stok' },
-			{ data: 'barcode' },
-		],
-      });
+        "ajax": {
+            "url": "<?= BASE_URL ?>stok/get_list_stokbarang",
+            "type": "POST",
+            "dataSrc": function(data) {
+                console.log(data);
+                return data;
+            }
+        },
+        "columns": [{
+                data: 'barcode'
+            },
+            {
+                data: 'expdate'
+            },
+            {
+                data: 'barang'
+            },
+            {
+                data: 'stok'
+            },
+            {
+                data: null,
+                render: function(data, type, full, meta) {
+                    const del = `<button onclick="delete_stok_barang('${full.kodebrg}', '${full.barcode}')" class="del-data btn">
+                                                <i class="bx bx-trash bx-md fs-5 text-danger"></i>
+                                          </button>`;
+                    return del
+                }
+            },
+        ],
+    });
 
 
     // On Keydown scan barcode menampilkan modal
     $("#barcode").on("keypress", function(e) {
         if (e.which === 13) { // Check if Enter key is pressed
-            if ($("#barang").val()==""){
+            if ($("#barang").val() == "") {
                 alert("Silahkan pilih barang terlebih dahulu");
                 return;
             }
             if ($.trim($(this).val()) != "") {
                 const barcode = $(this).val();
-    
+
                 // Extract the last 6 digits for the date
                 const lastSix = barcode.slice(-6);
                 const day = lastSix.slice(0, 2);
                 const month = lastSix.slice(2, 4);
                 const year = lastSix.slice(4, 6);
-    
+
                 // Format as d/m/y
                 const formattedDate = `${day}/${month}/${year}`;
-    
+
                 // Display or use the formatted date
                 $("#hiddenexpdate").val(formattedDate);
                 $(".preview-expdate").text(formattedDate);
@@ -72,7 +86,7 @@
     // On Click pilih batal tambah stok set semua null input
     $("#batalstok").on("click", function() {
         // Set semua null
-        $("#barang").val(null).trigger("change"); 
+        $("#barang").val(null).trigger("change");
         $("#barcode").val(null);
         $("#hiddenexpdate").val(null);
         $("#stok").val(null);
@@ -86,31 +100,33 @@
         const barcode = $("#barcode").val();
         const hiddenexpdate = $("#hiddenexpdate").val();
         const kodebrg = $("#barang").val();
-        const barang =$("#barang").select2('data')[0].text;
+        const barang = $("#barang").select2('data')[0].text;
         const validationstok = $("#stok");
-        validationstok.prop('required',true);
+        validationstok.prop('required', true);
         const stok = $("#stok").val();
 
-        
+
         // Check jika stok kosong akan tidak refresh page
         if (stok !== "" && hiddenexpdate !== "" && barang !== "" && barcode !== "") {
             e.preventDefault();
-            
+
             let mdata = {
                 "kodebrg": kodebrg,
-                "barcode": barcode, 
+                "barcode": barcode,
                 "expdate": hiddenexpdate,
-                "barang" : barang,
-                "stok"   : stok
+                "barang": barang,
+                "stok": stok
             }
-            
-             console.log(mdata);
+
+            console.log(mdata);
 
             $.ajax({
                 url: `<?= BASE_URL ?>stok/save_stok_session`,
                 type: "POST",
-                data: {data: mdata},
-                success: function (response) {
+                data: {
+                    data: mdata
+                },
+                success: function(response) {
                     console.log(response);
                     table.ajax.reload();
                     $("#stokModal").modal("toggle");
@@ -121,7 +137,7 @@
                     console.log(textStatus);
                 }
             });
-            
+
         } else {
             e.preventDefault();
             alert("Data tidak boleh kosong")
@@ -130,11 +146,11 @@
     });
 
 
-    $("#clearallstok").on("click", function(){
+    $("#clearallstok").on("click", function() {
         $.ajax({
             url: `<?= BASE_URL ?>stok/clear_stok_session`,
             type: "POST",
-            success: function (response) {
+            success: function(response) {
                 table.ajax.reload();
             },
             error: function(jqXHR, textStatus, errorThrown) {
@@ -142,8 +158,30 @@
             }
         });
     })
-    
-    $("#submit").on("click", function(){
-        window.location="<?= BASE_URL ?>stok/savestok";
+
+    function delete_stok_barang(kodebrg, barcode) {
+        const mdata = {
+            "kodebrg": kodebrg,
+            "barcode": barcode
+        }
+        console.log(mdata);
+        $.ajax({
+            url: `<?= BASE_URL ?>stok/clear_stok_session_item`,
+            type: "POST",
+            data: {
+                data: mdata
+            },
+            success: function(response) {
+                table.ajax.reload();
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log(textStatus);
+            }
+        });
+    }
+
+    $("#submit").on("click", function() {
+        window.location = "<?= BASE_URL ?>stok/savestok";
     })
+    console.log(<?= json_encode(session()->get('stokbarang')) ?>);
 </script>

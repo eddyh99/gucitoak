@@ -76,12 +76,26 @@ class Stok extends BaseController
     {
         $data = $this->request->getVar('data');
         $stokdata = @$_SESSION['stokbarang'];
-        
+        $barcode = $data['barcode'];
+
         // Cek jika Session kosong
-        if(empty($stokdata)){
+        if (empty($stokdata)) {
             $this->session->set("stokbarang", [$data]);
-        }else{
-            array_push($stokdata, $data);
+        } else {
+            // Cek apakah barcode sudah ada
+            $found = false;
+            foreach ($stokdata as &$item) {
+                if ($item['barcode'] === $data['barcode'] && $item['kodebrg'] === $data['kodebrg'] ) {
+                    $item['stok'] += $data['stok'];
+                    $found = true;
+                    break;
+                }
+            }
+
+            // jika tidak ada
+            if (!$found) {
+                $stokdata[] = $data;
+            }
             $this->session->set("stokbarang", $stokdata);
         }
         die;
@@ -90,6 +104,21 @@ class Stok extends BaseController
     public function clear_stok_session()
     {
         $this->session->remove("stokbarang");
+    }
+
+    public function clear_stok_session_item()
+    {
+        $data = $this->request->getVar('data');
+        $stokdata = @$_SESSION['stokbarang'];
+        $stokdata = array_filter($stokdata, function($item) use ($data) {
+            var_dump($data);
+            return !($item['barcode'] == $data['barcode'] && $item['kodebrg'] == $data['kodebrg']);
+        });
+    
+        // Reindex array
+        $stokdata = array_values($stokdata);
+        $this->session->set("stokbarang", $stokdata);
+        die;
     }
 
     public function savestok(){
