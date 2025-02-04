@@ -51,7 +51,7 @@ abstract class BaseController extends Controller
     {
         // Do Not Edit This Line
         parent::initController($request, $response, $logger);
-        $role = session()->get('logged_user')['role'];
+        $role = session()->get('logged_user')['role'] ?? null;
 
         // Preload any models, libraries, etc, here.
 
