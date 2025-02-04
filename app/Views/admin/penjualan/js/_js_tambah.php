@@ -88,7 +88,7 @@
 			{ 
                 data: null, 
                 render: function(data, type, row) {
-                    return `<button class="btn btn-danger btn-sm delete-row" data-barcode="${row.barcode}">Delete</button>`;
+                    return `<button type="button" class="btn btn-danger btn-sm delete-row" data-barcode="${row.barcode}">Delete</button>`;
                 }
             }
 		],
@@ -247,6 +247,7 @@
                 data: { barcode: barcode },
                 success: function(response) {
                     var result = JSON.parse(response);
+                    console.log(result.success);
                     if (result.success) {
                         alertSwal('Item deleted successfully!');
                         table.ajax.reload(); // Reload the table data
@@ -258,7 +259,8 @@
                     alertSwal('An error occurred: ' + error);
                 }
             });
-        }
+            
+        } else {$("#frmjual").submit()};
     });
 
 

@@ -90,6 +90,7 @@ class Penjualan extends BaseController
     
             // Update the session with the new array
             $this->session->set("barangjual", $stokdata);
+            echo json_encode(['success' => true]);
         } else {
             echo json_encode(['success' => false, 'message' => 'No data in session to delete.']);
         }
