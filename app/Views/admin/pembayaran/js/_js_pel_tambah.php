@@ -21,10 +21,9 @@
             success: function(response) {
                 try {
                     let mdata = JSON.parse(response);
-                    const tanggal = mdata.tanggal.split(" ")[0];
                     console.log(mdata);
 
-                    $("#tgl").val(tanggal);
+                    $("#tgl").val(mdata.tanggal);
                     $("#pelanggan").val(mdata.namapelanggan);
                     $("#metode").val(mdata.method);
                     $("#notajual").val(mdata.notajual);

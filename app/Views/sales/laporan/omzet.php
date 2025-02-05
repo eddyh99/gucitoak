@@ -1,4 +1,5 @@
-<?php if(!empty(session('failed'))): ?>
+<?php
+if(!empty(session('failed'))): ?>
     <div id="failedtoast" class="bs-toast toast toast-placement-ex m-3 fade bg-danger top-0 end-0" role="alert" aria-live="assertive" aria-atomic="true" data-delay="1000">
         <div class="toast-header">
             <i class="bx bx-x me-2"></i>
@@ -11,7 +12,7 @@
     </div>
 <?php endif;?>
 
-<?php if(!empty(session('success'))): ?>
+<?php if(!empty($_SESSION['success'])): ?>
     <div id="successtoast" class="bs-toast toast toast-placement-ex m-3 fade bg-success top-0 end-0" role="alert" aria-live="assertive" aria-atomic="true" data-delay="1000">
         <div class="toast-header">
             <i class="bx bx-bell me-2"></i>
@@ -23,48 +24,16 @@
         </div>
     </div>
 <?php endif;?>
- 
  <!-- Content wrapper -->
     <div class="content-wrapper">
         <!-- Content -->
         <div class="container-xxl flex-grow-1 container-p-y">
             <div class="row">
-            <?php if($isAdmin): ?>
-                <div class="col-lg-12 order-0">
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-12 mb-2">
-                            <div class="card">
-                                <div class="card-body">
-                                    <a href="<?= BASE_URL?>suplier/tambah_suplier" class="btn btn-primary">Tambah Suplier</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <?php endif ?>
                 <div class="col-lg-12 mb-4 order-1">
-                    <div class="card border-expat w-100">
+                    <div class="card w-100">
                         <div class="card-body">
-                            <h5 class="card-title fw-semibold mb-4">List Suplier</h5>
-                            <table id="table_list" class="table table-striped" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th>Nama Suplier</th>
-                                        <th>Nama Pemilik</th>
-                                        <th>Alamat</th>
-                                        <th>Kota</th>
-                                        <th>No. Telp</th>
-                                        <th>No. Rek</th>
-                                        <th>Nama Bank</th>
-                                        <th>An. Rek</th>
-                                        <?php if($isAdmin): ?>
-                                        <th>Action</th>
-                                        <?php endif ?>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
+                            <h5 class="card-title fw-semibold mb-4 mt-3">Grafik Omzet Penjualan</h5>
+                            <div id="chart"></div>
                         </div>
                     </div>
                 </div>

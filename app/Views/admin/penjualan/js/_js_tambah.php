@@ -15,7 +15,11 @@
                 popup: 'btn-primary'
             }
         });
+        setTimeout(() => {
+            $(".swal2-container").css("z-index", "9999");
+        }, 100);
     }
+
     $("#sales").select2({
         placeholder: "--- PILIH SALES ---"
     });
@@ -84,7 +88,7 @@
 			{ 
                 data: null, 
                 render: function(data, type, row) {
-                    return `<button class="btn btn-danger btn-sm delete-row" data-barcode="${row.barcode}">Delete</button>`;
+                    return `<button type="button" class="btn btn-danger btn-sm delete-row" data-barcode="${row.barcode}">Delete</button>`;
                 }
             }
 		],
@@ -198,7 +202,8 @@
                 "expdate": expired,
                 "jml"    : jml,
                 "harga"  : harga,
-                "total"  : parseInt(jml*harga)
+                "total"  : parseInt(jml*harga),
+                "stok_barang" : stok
             }
             
              console.log(mdata);
@@ -209,14 +214,19 @@
                 data: {data: mdata},
                 success: function (response) {
                     console.log(response);
-                    table.ajax.reload();
-                    $("#stokModal").modal("hide");
-                    $("#harga").val(null); 
-                    $("#barang").val(null); 
-                    $("#barcode").val(null);
-                    $("#expired").val(null);
-                    $("#stok").val(null);
-                    stok=0;
+                    var result = JSON.parse(response);
+                    if (result.success) {
+                        table.ajax.reload();
+                        $("#stokModal").modal("hide");
+                        $("#harga").val(null); 
+                        $("#barang").val(null); 
+                        $("#barcode").val(null);
+                        $("#expired").val(null);
+                        $("#stok").val(null);
+                        stok=0;
+                    } else {
+                        alertSwal(result.message);
+                    }
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     console.log(textStatus);
@@ -243,6 +253,7 @@
                 data: { barcode: barcode },
                 success: function(response) {
                     var result = JSON.parse(response);
+                    console.log(result.success);
                     if (result.success) {
                         alertSwal('Item deleted successfully!');
                         table.ajax.reload(); // Reload the table data
@@ -254,7 +265,8 @@
                     alertSwal('An error occurred: ' + error);
                 }
             });
-        }
+            
+        } else {$("#frmjual").submit()};
     });
 
 

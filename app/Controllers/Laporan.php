@@ -193,8 +193,32 @@ class Laporan extends BaseController
         return view('admin/layout/wrapper', $mdata);
     }
 
+    public function omzet_sales() {
+
+        $url = URLAPI . "/v1/sales/getall_sales";
+		$sales = gucitoakAPI($url)->message;
+
+        $mdata = [
+            'title'     => 'Mutasi Stok - ' . NAMETITLE,
+            'content'   => 'sales/laporan/omzet',
+            'extra'     => 'sales/laporan/js/_js_omzetsales',
+            'menuactive_laporan'   => 'active open',
+            'user_active'   => 'active',
+            'sales' => $sales
+        ];
+
+        return view('admin/layout/wrapper', $mdata);
+    }
+
     public function get_omzetpel($id){
         $url = URLAPI . "/v1/laporan/omzet_pelanggan?id=$id";
+        $response = gucitoakAPI($url)->message;
+        echo json_encode($response,true);
+    }
+
+    public function get_omzetsales(){
+        $id = session()->get('logged_user')['id_sales'] ?? null;
+        $url = URLAPI . "/v1/laporan/omzet_sales?id=$id";
         $response = gucitoakAPI($url)->message;
         echo json_encode($response,true);
     }
@@ -271,10 +295,23 @@ class Laporan extends BaseController
         return view('admin/layout/wrapper', $mdata);
     }
 
-    public function get_katalog(){
-        $id  = $this->request->getVar('id');
+    public function get_katalog() {
+        $id = $this->request->getVar('id');
         $url = URLAPI . "/v1/laporan/get_katalog?id=$id";
         $response = gucitoakAPI($url)->message;
-        echo json_encode($response,true);
+    
+        $convertBase64 = function($foto) {
+            $imagePath = FCPATH . "assets/img/" . ($foto ? "produk/".$foto: "no-image.png");
+            return "data:image/jpeg;base64," . base64_encode(file_get_contents($imagePath));
+        };
+    
+        if ($response) {
+            $response = array_map(function($res) use ($convertBase64) {
+                $res->foto = $convertBase64($res->foto);
+                return $res;
+            }, $response);
+        }
+    
+        return $this->response->setJSON($response);
     }
 }

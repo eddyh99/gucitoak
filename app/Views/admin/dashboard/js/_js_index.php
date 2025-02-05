@@ -16,10 +16,9 @@
       
      $('#table_list').DataTable({
         "scrollX": true,
+        "scrollY": '180px',
+        "scrollCollapse": true,
         "dom": 'Bfrtip',
-        "buttons": [
-            'excel', 'pdf',
-        ],
         "ajax": {
             "url": "<?= BASE_URL ?>dashboard/list_all_stokbarang",
             "type": "POST",
@@ -45,9 +44,8 @@
     $('#pembayaran_pelanggan').DataTable({
         "scrollX": true,
         "dom": 'Bfrtip',
-        "buttons": [
-            'excel', 'pdf',
-        ],
+        "scrollY": '180px',
+        "scrollCollapse": true,
         "ajax": {
             "url": "<?= BASE_URL ?>pembayaran/get_pembayaran_pel",
             "type": "POST",
@@ -58,8 +56,6 @@
         },
         "columns": [
             { data: 'namapelanggan' },
-            { data: 'tanggal' },
-            { data: 'tempo' },
             { data: null,
             render: function (data, type, row) {
                 var sisaCicilan = row.notajual - row.cicilan;
@@ -79,9 +75,8 @@
     $('#pembayaran_suplier').DataTable({
         "scrollX": true,
         "dom": 'Bfrtip',
-        "buttons": [
-            'excel', 'pdf',
-        ],
+        "scrollY": '180px',
+        "scrollCollapse": true,
         "ajax": {
             "url": "<?= BASE_URL ?>pembayaran/get_pembayaran_sup",
             "type": "POST",
@@ -92,8 +87,6 @@
         },
         "columns": [
             { data: 'namasuplier' },
-            { data: 'tanggal' },
-            { data: 'tempo' },
             { data: null,
             render: function (data, type, row) {
                 var sisaCicilan = row.notabeli - row.cicilan;
@@ -108,6 +101,32 @@
                 }
 		}
         ],
+    });
+
+    $('#omzet_sales').DataTable({
+        "scrollX": false,
+        "dom": 'Bfrtip',
+        "ajax": {
+            "url": "<?= BASE_URL ?>dashboard/get_penjualan_sales",
+            "type": "POST",
+            "dataSrc": function (data) {
+                console.log(data);
+                return data;							
+            }
+        },
+        "columns": [
+            { data: 'nonota'},
+            { data: 'tanggal'},
+            { data: 'komisi'},
+            { data: 'nominal'},
+        ],
+        "footerCallback": function(row, data, start, end, display) {
+            var api = this.api();
+            var totalOmzet = api.column(3).data().reduce(function(a, b) {
+                return a + (parseFloat(b) || 0);
+            }, 0);
+            $(api.column(3).footer()).html(totalOmzet.toLocaleString("id-ID") || '');
+        }
     });
 
     function detailCicilan_pelanggan(idb) {

@@ -8,88 +8,105 @@
 
 
 <script>
-      $(function () { 
+      $(function() {
             setTimeout(() => {
                   $("#failedtoast").toast('show')
                   $("#successtoast").toast('show')
             }, 0)
-      });      
+      });
 
+      let cols = [{
+                  data: 'namasales'
+            },
+            {
+                  data: 'avatar',
+                  render: function(data, type, row) {
+                        const baseURL = "<?= BASE_URL ?>"
+                        // Tampilkan gambar produk
+                        return data ?
+                              `<img src="${baseURL}assets/img/avatars/${encodeURIComponent(data)}" alt="Foto Sales" style="width: 50px; height: 50px;">` :
+                              `<img src="${baseURL}assets/img/no-image.png" alt="Default" style="width: 50px; height: 50px;">`
+                  }
+            },
+            {
+                  data: 'telp'
+            },
+            {
+                  data: 'omzet',
+                  render: $.fn.dataTable.render.number(",", ".", 0, ""),
+                  className: 'text-end',
+            },
+            {
+                  data: 'gajipokok',
+                  render: $.fn.dataTable.render.number(",", ".", 0, ""),
+                  className: 'text-end',
+            },
+            {
+                  data: 'komisi',
+                  render: function(data, type, row) {
+                        return (data * 100).toFixed(0) + '%';
+                  }
+            }
+      ]
+      if (role == 'admin') {
+            cols.push({
+                  data: null,
+                  "mRender": function(data, type, full, meta) {
+                        var edit = `<a href="<?= BASE_URL ?>sales/edit_sales/${encodeURI(btoa(full.id))}">
+                                                <i class="bx bx-edit bx-md fs-5 text-black"></i>
+                                          </a>`;
+                        var del = `<a href="<?= BASE_URL ?>sales/hapus_sales/${encodeURI(btoa(full.id))}" class="del-data">
+                                                <i class="bx bx-trash bx-md fs-5 text-danger"></i>
+                                          </a>`;
+                        return `${edit} ${del}`;
+                  }
+            }, )
+      }
       $('#table_list').DataTable({
             "scrollX": true,
             "dom": 'lBfrtip',
-            "buttons": [
-                  {
+            "buttons": [{
                         extend: 'pdf',
                         exportOptions: {
                               columns: "th:not(:last-child)" //remove last column in pdf
                         }
-                  }
-                  , 
+                  },
                   'excel'
             ],
             "lengthMenu": [
-                  [ 10, 25, 50, -1 ],
-                  [ '10 rows', '25 rows', '50 rows', 'Show all' ]
+                  [10, 25, 50, -1],
+                  ['10 rows', '25 rows', '50 rows', 'Show all']
             ],
-		"ajax": {
-			"url": "<?= BASE_URL ?>sales/list_all_sales",
-			"type": "POST",
-			"dataSrc":function (data){
-				return data;							
-			}
-		},
-            "columns": [
-			{ data: 'namasales' },
-                  {data: 'avatar',
-                        render: function(data, type, row) {
-                              const baseURL = "<?= BASE_URL ?>"
-                              // Tampilkan gambar produk
-                              return data ?
-                                    `<img src="${baseURL}assets/img/avatars/${encodeURIComponent(data)}" alt="Foto Sales" style="width: 50px; height: 50px;">` :
-                                    `<img src="${baseURL}assets/img/no-image.png" alt="Default" style="width: 50px; height: 50px;">`
-                        }
-                  },
-			{ data: 'telp' },
-			{ data: 'omzet',render: $.fn.dataTable.render.number(",", ".", 0, ""), className: 'text-end',},
-			{ data: 'gajipokok',render: $.fn.dataTable.render.number(",", ".", 0, ""), className: 'text-end',},
-			{ data: 'komisi',render: function(data, type, row) {
-                return (data * 100).toFixed(0) + '%';
-            }},
-			{ 
-                   data: null, "mRender": function(data, type, full, meta) {
-                              var edit = `<a href="<?= BASE_URL ?>sales/edit_sales/${encodeURI(btoa(full.id))}">
-                                                <i class="bx bx-edit bx-md fs-5 text-black"></i>
-                                          </a>`;
-                              var del = `<a href="<?= BASE_URL ?>sales/hapus_sales/${encodeURI(btoa(full.id))}" class="del-data">
-                                                <i class="bx bx-trash bx-md fs-5 text-danger"></i>
-                                          </a>`;
-                              return `${edit} ${del}`;
-                        } 
-                  },
-		],
+            "ajax": {
+                  "url": "<?= BASE_URL ?>sales/list_all_sales",
+                  "type": "POST",
+                  "dataSrc": function(data) {
+                        return data;
+                  }
+            },
+            "columns": cols
       });
 
-      $(document).on("click", ".del-data", function(e){
-		e.preventDefault();
-		let url_href = $(this).attr('href');
-		Swal.fire({
-			text:"Apakah anda yakin menghapus data ini?",
-			type: "warning",
-			position: 'center',
-			showCancelButton: true,
-			confirmButtonText: "Hapus",
-			cancelButtonText: "Batal",
-			confirmButtonColor: '#FA896B',
-			closeOnConfirm: true,
-			showLoaderOnConfirm: true,
+      $(document).on("click", ".del-data", function(e) {
+            e.preventDefault();
+            let url_href = $(this).attr('href');
+            Swal.fire({
+                  text: "Apakah anda yakin menghapus data ini?",
+                  type: "warning",
+                  position: 'center',
+                  showCancelButton: true,
+                  confirmButtonText: "Hapus",
+                  cancelButtonText: "Batal",
+                  confirmButtonColor: '#FA896B',
+                  closeOnConfirm: true,
+                  showLoaderOnConfirm: true,
                   reverseButtons: true
-		}).then((result) => {
-			if (result.isConfirmed) {
-				document.location.href = url_href;
-			}
-		})
-	});
+            }).then((result) => {
+                  if (result.isConfirmed) {
+                        document.location.href = url_href;
+                  }
+            })
+      });
 
       function previewImage() {
             const img = document.querySelector('#avatar');
@@ -97,5 +114,5 @@
             const blob = URL.createObjectURL(img.files[0]);
             imgPreview.classList.add("mb-3");
             imgPreview.src = blob;
-        }
+      }
 </script>

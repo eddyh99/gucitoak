@@ -149,6 +149,7 @@ class Auth extends BaseController
         // array for session
         unset($mdata);
         $mdata = [
+            'namasales' => $result->sales,
             'username' => $result->username,
             'password' => $result->passwd,
             'role'     => $result->role,

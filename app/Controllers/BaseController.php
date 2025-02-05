@@ -36,6 +36,7 @@ abstract class BaseController extends Controller
      * @var list<string>
      */
     protected $helpers = ["form", "guci_helpers", "permission_helpers"];
+    protected $isAdmin = false; 
 
     /**
      * Be sure to declare properties for any property fetch you initialized.
@@ -50,6 +51,7 @@ abstract class BaseController extends Controller
     {
         // Do Not Edit This Line
         parent::initController($request, $response, $logger);
+        $role = session()->get('logged_user')['role'] ?? null;
 
         // Preload any models, libraries, etc, here.
 
@@ -57,5 +59,7 @@ abstract class BaseController extends Controller
         $this->request = $request;
         $this->session = \Config\Services::session();
         $this->validation = \Config\Services::validation();
+        $this->isAdmin = $role == 'admin';
+        service('renderer')->setVar('isAdmin', $this->isAdmin);
     }
 }

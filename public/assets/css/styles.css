@@ -222,7 +222,11 @@
 }
 
 .menu-link-inside, .menu-link-inside i {
-  color: #697a8d;
+  color: #696cff;
+}
+
+.menu-link-inside:hover, .menu-link-inside i:hover {
+  color: #697a8d; /* Ganti dengan warna yang diinginkan */
 }
 
 .sub-menu {

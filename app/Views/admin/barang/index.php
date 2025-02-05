@@ -29,6 +29,7 @@
         <!-- Content -->
         <div class="container-xxl flex-grow-1 container-p-y">
             <div class="row">
+            <?php if($isAdmin): ?>
                 <div class="col-lg-12 order-0">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-12 mb-2">
@@ -40,6 +41,7 @@
                         </div>
                     </div>
                 </div>
+                <?php endif ?>
                 <div class="col-lg-12 mb-4 order-1">
                     <div class="card border-expat w-100">
                         <div class="card-body">
@@ -54,9 +56,9 @@
                                         <th>Harga 1</th>
                                         <th>Harga 2</th>
                                         <th>Harga 3</th>
-                                        <th>Disc (%)</th>
-                                        <th>Disc (fxd)</th>
+                                        <?php if($isAdmin): ?>
                                         <th>Action</th>
+                                        <?php endif ?>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -103,8 +105,6 @@
               <th>Harga 1</th>
               <th>Harga 2</th>
               <th>Harga 3</th>
-              <th>Discount Fixed</th>
-              <th>Discount Percent</th>
             </tr>
           </thead>
           <tbody id="modalDataBody">

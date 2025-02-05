@@ -64,6 +64,14 @@ class Pelanggan extends BaseController
                 'label'     => 'Kota',
                 'rules'     => 'required'
             ],
+            'latitude'     => [
+                'label'     => 'Latitude',
+                'rules'     => 'permit_empty|decimal'
+            ],
+            'logitude'     => [
+                'label'     => 'Longitude',
+                'rules'     => 'permit_empty|decimal'
+            ],
             'telp'     => [
                 'label'     => 'Telp',
                 'rules'     => 'required'
@@ -91,6 +99,8 @@ class Pelanggan extends BaseController
             'kota'          => trim(htmlspecialchars($this->request->getVar('kota'))),
             'telp'          => trim(htmlspecialchars($this->request->getVar('telp'))),
             'harga'         => trim(htmlspecialchars($this->request->getVar('harga'))),
+            'latitude'      => trim(htmlspecialchars($this->request->getVar('latitude'))),
+            'longitude'      => trim(htmlspecialchars($this->request->getVar('longitude'))),
             'plafon'        => trim(filter_var($this->request->getVar('plafon'), FILTER_SANITIZE_NUMBER_INT)),
             'maxnota'       => trim(filter_var($this->request->getVar('maxnota'), FILTER_SANITIZE_NUMBER_INT)),
         ];
@@ -175,6 +185,8 @@ class Pelanggan extends BaseController
             'kota'          => trim(htmlspecialchars($this->request->getVar('kota'))),
             'telp'          => trim(htmlspecialchars($this->request->getVar('telp'))),
             'harga'         => trim(htmlspecialchars($this->request->getVar('harga'))),
+            'latitude'      => trim(htmlspecialchars($this->request->getVar('latitude'))),
+            'longitude'      => trim(htmlspecialchars($this->request->getVar('longitude'))),
             'plafon'        => trim(filter_var($this->request->getVar('plafon'), FILTER_SANITIZE_NUMBER_INT)),
             'maxnota'       => trim(filter_var($this->request->getVar('maxnota'), FILTER_SANITIZE_NUMBER_INT)),
         ];

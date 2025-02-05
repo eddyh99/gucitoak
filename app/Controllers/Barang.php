@@ -110,8 +110,8 @@ class Barang extends BaseController
             'idsatuan'      => htmlspecialchars($this->request->getVar('satuan')),
             'stokmin'       => filter_var($this->request->getVar('stokmin'), FILTER_SANITIZE_NUMBER_INT),
             'harga1'        => filter_var($this->request->getVar('harga1'), FILTER_SANITIZE_NUMBER_INT),
-            'harga2'        => filter_var($this->request->getVar('harga2'), FILTER_SANITIZE_NUMBER_INT),
-            'harga3'        => filter_var($this->request->getVar('harga3'), FILTER_SANITIZE_NUMBER_INT),
+            'harga2'        => filter_var($this->request->getVar('harga2') ?: $this->request->getVar('harga1'), FILTER_SANITIZE_NUMBER_INT),
+            'harga3'        => filter_var($this->request->getVar('harga3') ?: $this->request->getVar('harga1'), FILTER_SANITIZE_NUMBER_INT),
             'disc_pct'      => htmlspecialchars($this->request->getVar('discount_pct')),
             'disc_fxd'      => filter_var($this->request->getVar('discount_fxd'), FILTER_SANITIZE_NUMBER_INT),
         ];
@@ -222,8 +222,8 @@ class Barang extends BaseController
             'idsatuan'      => htmlspecialchars($this->request->getVar('satuan')),
             'stokmin'       => filter_var($this->request->getVar('stokmin'), FILTER_SANITIZE_NUMBER_INT),
             'harga1'        => filter_var($this->request->getVar('harga1'), FILTER_SANITIZE_NUMBER_INT),
-            'harga2'        => filter_var($this->request->getVar('harga2'), FILTER_SANITIZE_NUMBER_INT),
-            'harga3'        => filter_var($this->request->getVar('harga3'), FILTER_SANITIZE_NUMBER_INT),
+            'harga2'        => filter_var($this->request->getVar('harga2') ?: $this->request->getVar('harga1'), FILTER_SANITIZE_NUMBER_INT),
+            'harga3'        => filter_var($this->request->getVar('harga3') ?: $this->request->getVar('harga1'), FILTER_SANITIZE_NUMBER_INT),
             'disc_pct'      => htmlspecialchars($this->request->getVar('discount_pct')),
             'disc_fxd'      => filter_var($this->request->getVar('discount_fxd'), FILTER_SANITIZE_NUMBER_INT),
         ];

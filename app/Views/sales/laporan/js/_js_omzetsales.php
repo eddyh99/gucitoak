@@ -15,9 +15,10 @@
         });
         chart.render();
 
-        function updateChart(idp) {
-            $.get(`<?= BASE_URL ?>laporan/get_omzetpel/${idp}`, function(data) {
+        function updateChart() {
+            $.get(`<?= BASE_URL ?>laporan/get_omzetsales`, function(data) {
                 const mdata = data ? JSON.parse(data) : {};
+                console.log(mdata);
                 chart.updateSeries([{
                     name: 'sales',
                     data: Object.values(mdata).map(Number)
@@ -41,7 +42,6 @@
             });
         }
 
-        updateChart($("#pelanggan").val());
-        $("#lihat").on("click", () => updateChart($("#pelanggan").val()));
+        updateChart();
     });
 </script>

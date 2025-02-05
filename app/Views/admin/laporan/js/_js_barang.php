@@ -80,7 +80,18 @@
                         return data;
                     } 
                   },
-                  { data: 'harga_terbaru' },
+                  { data: 'harga_terbaru',
+                  "mRender": function(data, type, full, meta) {
+                        if (type === 'display') {
+                              const price = parseFloat(data);
+                              return !isNaN(price) ? price.toLocaleString('en-US', {
+                                    minimumFractionDigits: 0,
+                                    maximumFractionDigits: 0
+                              }) : '';
+                        }
+                        return data;
+                    } 
+                   },
 		],
       });
 

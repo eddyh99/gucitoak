@@ -103,6 +103,34 @@
                                         </div>
                                     </div>
                                     <div class="mb-3">
+                                        <label class="form-label" for="plafon">Latitude</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="number"
+                                                class="form-control"
+                                                id="latitude"
+                                                placeholder="Koordinat"
+                                                name="latitude"
+                                                value="<?= set_value('latitude') ?>"
+                                                step="any"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="plafon">Longitude</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="number"
+                                                class="form-control"
+                                                id="longitude"
+                                                placeholder="Koordinat"
+                                                name="longitude"
+                                                value="<?= set_value('longitude') ?>"
+                                                step="any"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
                                         <label class="form-label" for="harga">Jenis Harga</label>
                                         <select name="harga" class="form-select" id="harga">
                                             <option value="Harga 1" selected>Harga 1</option>

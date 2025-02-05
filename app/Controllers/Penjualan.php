@@ -57,13 +57,27 @@ class Penjualan extends BaseController
     {
         $data = $this->request->getVar('data');
         $stokdata = @$_SESSION['barangjual'];
-        
+
+        $barang = substr($data['barcode'], 0, 12);
+        $jumlah = $data['jml'];
         // Cek jika Session kosong
         if(empty($stokdata)){
             $this->session->set("barangjual", [$data]);
+            echo json_encode(['success' => true]);
         }else{
-            array_push($stokdata, $data);
-            $this->session->set("barangjual", $stokdata);
+            foreach ($stokdata as &$item) {
+                if (substr($item['barcode'], 0, 12) == $barang) {
+                    $jumlah += $item['jml'];
+                }
+            }
+            // cek jumlah stok disession apakah lebih dari stok database
+            if($jumlah > $data['stok_barang']) {
+                echo json_encode(['success' => false, 'message' => 'Out of stock']);
+            } else {
+                array_push($stokdata, $data);
+                $this->session->set("barangjual", $stokdata);
+                echo json_encode(['success' => true, 'message' => $jumlah]);
+            }   
         }
         die;
     }
@@ -90,6 +104,7 @@ class Penjualan extends BaseController
     
             // Update the session with the new array
             $this->session->set("barangjual", $stokdata);
+            echo json_encode(['success' => true]);
         } else {
             echo json_encode(['success' => false, 'message' => 'No data in session to delete.']);
         }

@@ -1,12 +1,11 @@
 <style>
-#table_list .group {
-    background-color: #696cff !important;
-}
+    #table_list .group {
+        background-color: #696cff !important;
+    }
 
-#table_list .group td {
-    color: white !important;
-}
-
+    #table_list .group td {
+        color: white !important;
+    }
 </style>
 
 
@@ -17,12 +16,11 @@
 
 
 <script>
-
-    $(document).ready(function(){
+    $(document).ready(function() {
         setTimeout(() => {
-                $("#failedtoast").toast('show')
-                $("#successtoast").toast('show')
-        }, 0)	
+            $("#failedtoast").toast('show')
+            $("#successtoast").toast('show')
+        }, 0)
         $('.barangselect2').select2({
             placeholder: "Pilih Barang",
             allowClear: true,
@@ -31,12 +29,30 @@
         $('.salesselect2').select2({
             placeholder: "Pilih Sales",
             allowClear: true,
-            theme: "bootstrap", 
+            theme: "bootstrap",
             width: "100%"
         });
     });
-    
+
     var groupColumn = 0;
+    let cols = [{
+            "data": "namasales"
+        }, // Column 0
+        {
+            "data": "namabarang"
+        } // Column 1
+    ];
+    if (role == 'admin') {
+        cols.push({
+            "data": null,
+            "mRender": function(data, type, full, meta) {
+                var del = `<a href="<?= BASE_URL ?>barang/hapus_barang/${encodeURI(btoa(full.id))}" class="del-data">
+                                    <i class="bx bx-trash bx-md fs-5 text-danger"></i>
+                              </a>`;
+                return `${del}`;
+            }
+        }, )
+    }
     $("#table_list").DataTable({
         "ajax": {
             "url": "<?= BASE_URL ?>sales/list_all_salesbarang",
@@ -46,28 +62,25 @@
                 return data;
             }
         },
-        "columns": [
-            { "data": "namasales" }, // Column 0
-            { "data": "namabarang" },  // Column 1
-            { 
-              "data": null, "mRender": function(data, type, full, meta) {
-                  var del = `<a href="<?= BASE_URL ?>barang/hapus_barang/${encodeURI(btoa(full.id))}" class="del-data">
-                                    <i class="bx bx-trash bx-md fs-5 text-danger"></i>
-                              </a>`;
-                  return `${del}`;
-              } 
-          },
+        "columns": cols,
+        "columnDefs": [{
+                "visible": false,
+                "targets": groupColumn
+            } // Hide the grouping column
         ],
-        "columnDefs": [
-            { "visible": false, "targets": groupColumn } // Hide the grouping column
+        "order": [
+            [groupColumn, 'asc']
         ],
-        "order": [[groupColumn, 'asc']],
         "drawCallback": function(settings) {
             var api = this.api();
-            var rows = api.rows({ page: 'current' }).nodes();
+            var rows = api.rows({
+                page: 'current'
+            }).nodes();
             var last = null;
-    
-            api.column(groupColumn, { page: 'current' }).data().each(function(group, i) {
+
+            api.column(groupColumn, {
+                page: 'current'
+            }).data().each(function(group, i) {
                 if (last !== group) {
                     $(rows).eq(i).before(
                         '<tr class="group"><td colspan="2">Sales : ' + group + '</td></tr>'
@@ -77,5 +90,4 @@
             });
         }
     });
-
 </script>
