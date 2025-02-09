@@ -14,36 +14,70 @@
             $("#successtoast").toast('show')
         }, 0)
     });
+    const BASE_URL = "<?= BASE_URL ?>";
 
     var table = $('#table_list').DataTable({
         "scrollX": false,
         "dom": 'lBfrtip',
-        "buttons": [{
-                extend: 'pdf',
-                exportOptions: {
-                    // This will allow you to customize the export
-                    format: {
-                        body: function(data, row, column, node) {
-                            if (column === 0) {
-                                return data.match(/<img.*?src=["'](.*?)["']/)[1];
-                            }
-                            return data;
+        "buttons": [
+            {
+                extend: 'pdfHtml5',
+                text: 'Export PDF',
+                action: function (e, dt, button, config) {
+                    Swal.fire({
+                        title: 'Processing...',
+                        text: 'Please wait while the PDF is being generated.',
+                        allowOutsideClick: false,
+                        didOpen: () => {
+                            Swal.showLoading();
                         }
-                    }
-                },
-                customize: function(doc) {
-                    let tableBody = doc.content[1].table.body;
-
-                    tableBody.forEach(function(row, index) {
-                        if (index > 0) {
-                            let img = row[0].text;
-                            if (img) {
-                                row[0] = {
-                                    image: img,
-                                    width: 80
+                    });
+    
+                    convertImagesToBase64(dt).then((base64Data) => {
+                        config.customize = function (doc) {
+                            // Check if doc.content exists and contains the table
+                            if (doc.content && doc.content.length > 1 && doc.content[1].table) {
+                                doc.content[1].table.widths = Array(doc.content[1].table.body[0].length).fill('*');
+                                doc.content[1].layout = {
+                                    hLineWidth: function(i, node) {
+                                        return i === 0 || i === node.table.body.length ? 2 : 1; // Add horizontal lines
+                                    },
+                                    vLineWidth: function(i, node) {
+                                        return 0; // Remove vertical borders
+                                    },
+                                    hLineColor: function(i, node) {
+                                        return 'black'; // Ensure visible horizontal lines
+                                    },
+                                    vLineColor: function(i, node) {
+                                        return 'white'; // No visible vertical lines
+                                    },
+                                    fillColor: function(rowIndex, node, columnIndex) {
+                                        return rowIndex === 0 ? 'white' : null; // Ensure header is white, rest transparent
+                                    },
+                                    paddingLeft: function(i, node) { return 8; },
+                                    paddingRight: function(i, node) { return 8; },
+                                    paddingTop: function(i, node) { return 6; },
+                                    paddingBottom: function(i, node) { return 6; }
                                 };
+                                let tableBody = doc.content[1].table.body;
+    
+                                tableBody.forEach((row, index) => {
+                                    if (index > 0 && base64Data[index - 1]) { // Ensure valid Base64 data
+                                        row[0] = {
+                                            image: base64Data[index - 1],
+                                            width: 80
+                                        };
+                                    }
+                                });
                             }
-                        }
+                        };
+    
+                        // Now trigger the actual PDF export
+                        $.fn.dataTable.ext.buttons.pdfHtml5.action.call(this, e, dt, button, config);
+                        Swal.close();
+                    }).catch(error => {
+                        console.error("Error processing images:", error);
+                        Swal.close();
                     });
                 }
             },
@@ -54,36 +88,67 @@
             ['10 rows', '25 rows', '50 rows', 'Show all']
         ],
         "ajax": {
-            "url": "<?= BASE_URL ?>laporan/get_katalog",
+            "url": BASE_URL + "laporan/get_katalog",
             "type": "POST",
-            "data": function(d) {
+            "data": function (d) {
                 d.id = $('#kategori').val();
             },
-            "dataSrc": function(data) {
-                console.log(data);
+            "dataSrc": function (data) {
                 return data;
             }
         },
-        "columns": [{
+        "columns": [
+            {
                 data: 'foto',
-                render: function(data, type, row) {
-                    return `<img src="${data}" alt="Produk" style="width: 50px; height: 50px;">`
+                render: function (data, type, row) {
+                    return `<img src="${BASE_URL}${data}" alt="Produk" style="width: 50px; height: 50px;">`;
                 }
             },
-            {
-                data: 'namabarang'
-            },
-            {
-                data: 'barcode'
-            },
-            {
-                data: 'namakategori'
-            },
-            {
-                data: 'harga1'
-            }
+            { data: 'namabarang' },
+            { data: 'barcode' },
+            { data: 'namakategori' },
+            { data: 'harga1' }
         ],
     });
+    
+    /**
+     * Convert all image URLs in DataTables to Base64 before exporting PDF
+     */
+    function convertImagesToBase64(dt) {
+        return new Promise((resolve, reject) => {
+            let imagePromises = [];
+            let base64Images = [];
+            let data = dt.rows({ search: 'applied' }).data().toArray();
+    
+            data.forEach((row, index) => {
+                let imgSrc = BASE_URL + row.foto;
+                if (imgSrc) {
+                    let promise = new Promise((resolveImage, rejectImage) => {
+                        fetch(imgSrc)
+                            .then(response => response.blob())
+                            .then(blob => {
+                                const reader = new FileReader();
+                                reader.onloadend = () => {
+                                    base64Images[index] = reader.result; // Store Base64 string
+                                    resolveImage();
+                                };
+                                reader.onerror = () => rejectImage(reader.error);
+                                reader.readAsDataURL(blob);
+                            })
+                            .catch(error => rejectImage(error));
+                    });
+                    imagePromises.push(promise);
+                } else {
+                    base64Images[index] = null; // If no image, store null
+                }
+            });
+    
+            Promise.all(imagePromises)
+                .then(() => resolve(base64Images)) // Resolve with all Base64 images
+                .catch(error => reject(error));
+        });
+    }
+
 
     $("#lihat").on("click", function() {
         table.ajax.reload();

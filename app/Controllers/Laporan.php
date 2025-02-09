@@ -284,7 +284,7 @@ class Laporan extends BaseController
         $kategori = $response->message;
 
         $mdata = [
-            'title'     => 'Mutasi Stok - ' . NAMETITLE,
+            'title'     => 'Katalog - ' . NAMETITLE,
             'content'   => 'admin/laporan/katalog',
             'extra'     => 'admin/laporan/js/_js_katalog',
             'menuactive_laporan'   => 'active open',
@@ -300,18 +300,15 @@ class Laporan extends BaseController
         $url = URLAPI . "/v1/laporan/get_katalog?id=$id";
         $response = gucitoakAPI($url)->message;
     
-        $convertBase64 = function($foto) {
-            $imagePath = FCPATH . "assets/img/" . ($foto ? "produk/".$foto: "no-image.png");
-            return "data:image/jpeg;base64," . base64_encode(file_get_contents($imagePath));
-        };
-    
         if ($response) {
-            $response = array_map(function($res) use ($convertBase64) {
-                $res->foto = $convertBase64($res->foto);
+            // Add the image path to each item
+            $response = array_map(function($res) {
+                $res->foto = $res->foto ? "assets/img/produk/" . $res->foto : "assets/img/no-image.png";
                 return $res;
             }, $response);
         }
     
         return $this->response->setJSON($response);
     }
+    
 }

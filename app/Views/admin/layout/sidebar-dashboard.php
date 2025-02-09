@@ -3,7 +3,7 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
         <a href="<?= BASE_URL ?>" class="app-brand-link">
-           <img class="img-fluid" src="<?= BASE_URL ?>assets/img/logo.png" width="100" alt="logo guci toak">
+           <img class="img-fluid" src="<?= BASE_URL ?>assets/img/logo.png" alt="logo guci toak">
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -12,82 +12,93 @@
     </div>
 
     <div class="menu-inner-shadow"></div>
-
     <ul class="menu-inner py-1">
         <!-- Dashboard -->
-        <li class="menu-item <?= @$active_dash?> mb-2">
-            <a href="<?= BASE_URL ?>dashboard" class="menu-link rounded-circle">
-                <i class="menu-icon tf-icons bx bx-home-circle "></i>
-                <div data-i18n="Analytics" class="text-center">Dashboard</div>
-            </a>
-        </li>
-
-        <!-- <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Setup</span>
-        </li> -->
-        <?php if  ($isAdmin || isset($akses->setup)): ?>
-            <li class="menu-item setup <?= @$menuactive_setup ?> mb-2">
-                <a href="javascript:void(0);" class="menu-link menu-toggle rounded-circle">
-                    <i class="menu-icon tf-icons bx bx-cog"></i>
-                    <div data-i18n="Account Settings" class="text-center">Setup Data</div>
+        <li class="menu-item <?= @$active_dash ?> mb-2">
+            <div class="d-flex flex-column justify-content-center align-items-center">
+                <a href="<?= BASE_URL ?>dashboard" class="menu-link d-flex justify-content-center align-items-center rounded-circle bg-light text-decoration-none" style="width: 60px; height: 60px; border: 2px solid blue; display: flex; justify-content: center; align-items: center;">
+                    <i class="menu-icon tf-icons bx bx-home" style="width:32px !important"></i>
                 </a>
-            </li>
-        <?php endif?>
-        <?php if  ($isAdmin || isset($akses->persediaan)): ?>
+                <div class="text-center" style="font-size: 16px;">Dashboard</div>
+            </div>
+        </li>
+    
+        <?php if ($isAdmin || isset($akses->setup)): ?>
+        <li class="menu-item setup <?= @$menuactive_setup ?> mb-2">
+            <div class="d-flex flex-column justify-content-center align-items-center">
+                <a href="javascript:void(0);" class="menu-link d-flex justify-content-center align-items-center rounded-circle bg-light text-decoration-none" style="width: 60px; height: 60px; border: 2px solid blue; display: flex; justify-content: center; align-items: center;">
+                    <i class="menu-icon tf-icons bx bx-cog" style="width:32px !important"></i>
+                </a>
+                <div class="text-center" style="font-size: 16px;">Setup Data</div>
+            </div>
+        </li>
+        <?php endif ?>
+    
+        <?php if ($isAdmin || isset($akses->persediaan)): ?>
         <li class="menu-item persediaan <?= @$menuactive_persediaan ?> mb-2">
-            <a href="javascript:void(0);" class="menu-link menu-toggle rounded-circle">
-                <i class="menu-icon tf-icons bx bx-package"></i>
-                <div data-i18n="Account Settings" class="text-center">Persediaan Barang</div>
-            </a>
+            <div class="d-flex flex-column justify-content-center align-items-center">
+                <a href="javascript:void(0);" class="menu-link d-flex justify-content-center align-items-center rounded-circle bg-light text-decoration-none" style="width: 60px; height: 60px; border: 2px solid blue; display: flex; justify-content: center; align-items: center;">
+                    <i class="menu-icon tf-icons bx bx-package" style="width:32px !important"></i>
+                </a>
+                <div class="text-center" style="font-size: 16px;">Persediaan Barang</div>
+            </div>
         </li>
-        <?php endif?>
-        
-        <?php if  ($isAdmin || isset($akses->transaksi)): ?>
+        <?php endif ?>
+    
+        <?php if ($isAdmin || isset($akses->transaksi)): ?>
         <li class="menu-item transaksi <?= @$menuactive_transaksi ?> mb-2">
-            <a href="javascript:void(0);" class="menu-link menu-toggle rounded-circle">
-                <!-- <i class="menu-icon tf-icons bx bx-package"></i> -->
-                <i class='menu-icon tf-icons bx bx-basket'></i>
-                <div data-i18n="Pembelian" class="text-center">Transaksi</div>
-            </a>
+            <div class="d-flex flex-column justify-content-center align-items-center">
+                <a href="javascript:void(0);" class="menu-link d-flex justify-content-center align-items-center rounded-circle bg-light text-decoration-none" style="width: 60px; height: 60px; border: 2px solid blue; display: flex; justify-content: center; align-items: center;">
+                    <i class="menu-icon tf-icons bx bx-basket" style="width:32px !important"></i>
+                </a>
+                <div class="text-center" style="font-size: 16px;">Transaksi</div>
+            </div>
         </li>
-        <?php endif?>
-
-        <?php if  ($isAdmin || isset($akses->laporan)): ?>
+        <?php endif ?>
+    
+        <?php if ($isAdmin || isset($akses->laporan)): ?>
         <li class="menu-item laporan <?= @$menuactive_laporan ?> mb-2">
-            <a href="javascript:void(0);" class="menu-link menu-toggle rounded-circle">
-                <!-- <i class="menu-icon tf-icons bx bx-package"></i> -->
-                <i class='menu-icon tf-icons bx bx-purchase-tag-alt'></i>
-                <div data-i18n="laporan" class="text-center">Laporan</div>
-            </a>
+            <div class="d-flex flex-column justify-content-center align-items-center">
+                <a href="javascript:void(0);" class="menu-link d-flex justify-content-center align-items-center rounded-circle bg-light text-decoration-none" style="width: 60px; height: 60px; border: 2px solid blue; display: flex; justify-content: center; align-items: center;">
+                    <i class="menu-icon tf-icons bx bx-purchase-tag-alt" style="width:32px !important"></i>
+                </a>
+                <div class="text-center" style="font-size: 16px;">Laporan</div>
+            </div>
         </li>
-        <?php endif?>
-
-        <?php if  ($isAdmin || isset($akses->penggajian)): ?>
+        <?php endif ?>
+    
+        <?php if ($isAdmin || isset($akses->penggajian)): ?>
         <li class="menu-item <?= @$menuactive_penggajian ?> mb-2">
-            <a href="<?= BASE_URL ?>penggajian" class="menu-link rounded-circle">
-                <i class="menu-icon tf-icons bx bx-money "></i>
-                <div data-i18n="Analytics" class="text-center">Penggajian</div>
-            </a>
+            <div class="d-flex flex-column justify-content-center align-items-center">
+                <a href="<?= BASE_URL ?>penggajian" class="menu-link d-flex justify-content-center align-items-center rounded-circle bg-light text-decoration-none" style="width: 60px; height: 60px; border: 2px solid blue; display: flex; justify-content: center; align-items: center;">
+                    <i class="menu-icon tf-icons bx bx-money" style="width:32px !important"></i>
+                </a>
+                <div class="text-center" style="font-size: 16px;">Penggajian</div>
+            </div>
         </li>
-        <?php endif?>
-
-        <?php if  (!$isAdmin): ?>
+        <?php endif ?>
+    
+        <?php if (!$isAdmin): ?>
         <li class="menu-item <?= @$menuactive_laporan ?> mb-2">
-            <a href="<?= BASE_URL ?>laporan/omzet_sales" class="menu-link rounded-circle">
-                <i class="menu-icon tf-icons bx bx-line-chart"></i>
-                <div data-i18n="Analytics" class="text-center">Laporan Omzet</div>
-            </a>
+            <div class="d-flex flex-column justify-content-center align-items-center">
+                <a href="<?= BASE_URL ?>laporan/omzet_sales" class="menu-link d-flex justify-content-center align-items-center rounded-circle bg-light text-decoration-none" style="width: 60px; height: 60px; border: 2px solid blue; display: flex; justify-content: center; align-items: center;">
+                    <i class="menu-icon tf-icons bx bx-line-chart" style="width:32px !important"></i>
+                </a>
+                <div class="text-center" style="font-size: 16px;">Laporan Omzet</div>
+            </div>
         </li>
-        <?php endif?>
-
-        <?php if  (!$isAdmin): ?>
+        <?php endif ?>
+    
+        <?php if (!$isAdmin): ?>
         <li class="menu-item <?= @$menuactive_slipgaji ?> mb-2">
-            <a href="<?= BASE_URL ?>slipgaji" class="menu-link rounded-circle">
-                <i class="menu-icon tf-icons bx bx-money "></i>
-                <div data-i18n="Analytics" class="text-center">Slip Gaji</div>
-            </a>
+            <div class="d-flex flex-column justify-content-center align-items-center">
+                <a href="<?= BASE_URL ?>slipgaji" class="menu-link d-flex justify-content-center align-items-center rounded-circle bg-light text-decoration-none" style="width: 60px; height: 60px; border: 2px solid blue; display: flex; justify-content: center; align-items: center;">
+                    <i class="menu-icon tf-icons bx bx-money" style="width:32px !important"></i>
+                </a>
+                <div class="text-center" style="font-size: 16px;">Slip Gaji</div>
+            </div>
         </li>
-        <?php endif?>
+        <?php endif ?>
     </ul>
 </aside>
 
