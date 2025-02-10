@@ -1,0 +1,894 @@
+INFO - 2025-01-15 00:58:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 00:58:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 00:58:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 00:58:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 00:58:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 03:27:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 03:28:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 03:28:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 03:28:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 03:28:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 03:28:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 03:28:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 03:28:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 03:28:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 03:28:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 03:28:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 03:28:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 03:28:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 03:28:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 04:36:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 04:36:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 04:36:28 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_suplier]
+in APPPATH/Controllers/Pembayaran.php on line 133.
+ 1 APPPATH/Controllers/Pembayaran.php(133): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 133)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_suplier()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 04:36:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 04:36:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 04:36:37 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_suplier]
+in APPPATH/Controllers/Pembayaran.php on line 133.
+ 1 APPPATH/Controllers/Pembayaran.php(133): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 133)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_suplier()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 04:36:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 04:36:58 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_suplier]
+in APPPATH/Controllers/Pembayaran.php on line 133.
+ 1 APPPATH/Controllers/Pembayaran.php(133): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 133)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_suplier()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 04:37:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 04:37:13 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_suplier]
+in APPPATH/Controllers/Pembayaran.php on line 133.
+ 1 APPPATH/Controllers/Pembayaran.php(133): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 133)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_suplier()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 04:38:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 04:38:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 04:38:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 04:38:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 04:38:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 04:38:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 04:38:35 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_suplier]
+in APPPATH/Controllers/Pembayaran.php on line 133.
+ 1 APPPATH/Controllers/Pembayaran.php(133): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 133)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_suplier()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 04:38:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 04:38:48 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/cekNota_suplier]
+in APPPATH/Controllers/Pembayaran.php on line 126.
+ 1 APPPATH/Controllers/Pembayaran.php(126): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 126)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->cekNota_suplier()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 04:38:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 04:38:53 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/cekNota_suplier]
+in APPPATH/Controllers/Pembayaran.php on line 126.
+ 1 APPPATH/Controllers/Pembayaran.php(126): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 126)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->cekNota_suplier()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 04:38:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 04:38:55 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/cekNota_suplier]
+in APPPATH/Controllers/Pembayaran.php on line 126.
+ 1 APPPATH/Controllers/Pembayaran.php(126): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 126)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->cekNota_suplier()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 04:39:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 04:39:08 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/cekNota_suplier]
+in APPPATH/Controllers/Pembayaran.php on line 126.
+ 1 APPPATH/Controllers/Pembayaran.php(126): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 126)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->cekNota_suplier()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 04:39:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 04:39:17 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/cekNota_suplier]
+in APPPATH/Controllers/Pembayaran.php on line 126.
+ 1 APPPATH/Controllers/Pembayaran.php(126): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 126)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->cekNota_suplier()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 04:39:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 04:41:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 04:41:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 04:41:56 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_suplier]
+in APPPATH/Controllers/Pembayaran.php on line 133.
+ 1 APPPATH/Controllers/Pembayaran.php(133): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 133)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_suplier()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 04:42:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 04:42:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 04:42:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 04:42:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 04:42:33 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_pelanggan]
+in APPPATH/Controllers/Pembayaran.php on line 54.
+ 1 APPPATH/Controllers/Pembayaran.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 54)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_pelanggan()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 04:52:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 04:52:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 04:52:55 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_suplier]
+in APPPATH/Controllers/Pembayaran.php on line 133.
+ 1 APPPATH/Controllers/Pembayaran.php(133): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 133)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_suplier()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 04:52:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 04:52:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 04:52:59 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_suplier]
+in APPPATH/Controllers/Pembayaran.php on line 133.
+ 1 APPPATH/Controllers/Pembayaran.php(133): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 133)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_suplier()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 04:53:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 04:53:13 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/cekNota_suplier]
+in APPPATH/Controllers/Pembayaran.php on line 126.
+ 1 APPPATH/Controllers/Pembayaran.php(126): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 126)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->cekNota_suplier()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 04:53:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 04:53:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 04:53:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 04:53:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 04:53:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 04:53:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 04:53:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 04:53:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 04:53:56 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_pelanggan]
+in APPPATH/Controllers/Pembayaran.php on line 54.
+ 1 APPPATH/Controllers/Pembayaran.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 54)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_pelanggan()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 04:54:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 04:54:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 04:54:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 04:54:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 04:54:19 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_pelanggan]
+in APPPATH/Controllers/Pembayaran.php on line 54.
+ 1 APPPATH/Controllers/Pembayaran.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 54)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_pelanggan()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 04:54:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 04:54:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 04:54:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 04:54:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 04:54:25 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_suplier]
+in APPPATH/Controllers/Pembayaran.php on line 133.
+ 1 APPPATH/Controllers/Pembayaran.php(133): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 133)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_suplier()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 04:55:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 04:55:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 04:55:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 04:55:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 04:56:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 04:56:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 04:56:56 --> ErrorException: Undefined property: stdClass::$message
+[Method: POST, Route: pembayaran/get_pembayaran_pel]
+in APPPATH/Controllers/Pembayaran.php on line 28.
+ 1 APPPATH/Controllers/Pembayaran.php(28): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$message', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 28)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->get_pembayaran_pel()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 04:57:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 04:57:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 04:57:11 --> ErrorException: Undefined property: stdClass::$message
+[Method: POST, Route: pembayaran/get_pembayaran_pel]
+in APPPATH/Controllers/Pembayaran.php on line 28.
+ 1 APPPATH/Controllers/Pembayaran.php(28): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$message', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 28)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->get_pembayaran_pel()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 04:57:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 04:57:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 04:57:23 --> ErrorException: Undefined property: stdClass::$message
+[Method: POST, Route: pembayaran/get_pembayaran_pel]
+in APPPATH/Controllers/Pembayaran.php on line 28.
+ 1 APPPATH/Controllers/Pembayaran.php(28): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$message', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 28)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->get_pembayaran_pel()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 04:59:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 04:59:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 05:00:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 05:00:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 05:00:28 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_suplier]
+in APPPATH/Controllers/Pembayaran.php on line 133.
+ 1 APPPATH/Controllers/Pembayaran.php(133): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 133)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_suplier()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 05:00:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 05:00:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 05:00:50 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_suplier]
+in APPPATH/Controllers/Pembayaran.php on line 133.
+ 1 APPPATH/Controllers/Pembayaran.php(133): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 133)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_suplier()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 05:01:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 05:01:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 05:01:37 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_suplier]
+in APPPATH/Controllers/Pembayaran.php on line 133.
+ 1 APPPATH/Controllers/Pembayaran.php(133): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 133)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_suplier()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 05:01:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 05:01:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 05:01:55 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_suplier]
+in APPPATH/Controllers/Pembayaran.php on line 133.
+ 1 APPPATH/Controllers/Pembayaran.php(133): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 133)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_suplier()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 05:01:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 05:01:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 05:02:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 05:02:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 05:02:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 05:02:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 05:02:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 05:02:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 05:02:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 05:02:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 05:02:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 05:02:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 05:02:35 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_suplier]
+in APPPATH/Controllers/Pembayaran.php on line 133.
+ 1 APPPATH/Controllers/Pembayaran.php(133): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 133)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_suplier()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 05:02:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 05:02:39 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/cekNota_suplier]
+in APPPATH/Controllers/Pembayaran.php on line 126.
+ 1 APPPATH/Controllers/Pembayaran.php(126): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 126)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->cekNota_suplier()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 05:02:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 05:02:40 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/cekNota_suplier]
+in APPPATH/Controllers/Pembayaran.php on line 126.
+ 1 APPPATH/Controllers/Pembayaran.php(126): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 126)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->cekNota_suplier()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 05:02:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 05:02:41 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/cekNota_suplier]
+in APPPATH/Controllers/Pembayaran.php on line 126.
+ 1 APPPATH/Controllers/Pembayaran.php(126): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 126)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->cekNota_suplier()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 05:02:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 05:02:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 05:02:43 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_suplier]
+in APPPATH/Controllers/Pembayaran.php on line 133.
+ 1 APPPATH/Controllers/Pembayaran.php(133): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 133)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_suplier()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 05:02:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 05:02:47 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/cekNota_suplier]
+in APPPATH/Controllers/Pembayaran.php on line 126.
+ 1 APPPATH/Controllers/Pembayaran.php(126): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 126)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->cekNota_suplier()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 05:02:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 05:02:48 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/cekNota_suplier]
+in APPPATH/Controllers/Pembayaran.php on line 126.
+ 1 APPPATH/Controllers/Pembayaran.php(126): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 126)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->cekNota_suplier()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 05:19:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 05:19:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 05:19:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 05:19:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 07:38:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 07:38:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 07:38:22 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_pelanggan]
+in APPPATH/Controllers/Pembayaran.php on line 54.
+ 1 APPPATH/Controllers/Pembayaran.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 54)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_pelanggan()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 07:56:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 07:57:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 07:57:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 07:57:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 07:57:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 07:57:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 07:57:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 07:57:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 07:57:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 07:57:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 07:57:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 07:58:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 07:58:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 07:58:00 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_pelanggan]
+in APPPATH/Controllers/Pembayaran.php on line 54.
+ 1 APPPATH/Controllers/Pembayaran.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 54)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_pelanggan()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 07:58:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 07:58:18 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/cekNota_pelanggan/000001]
+in APPPATH/Controllers/Pembayaran.php on line 47.
+ 1 APPPATH/Controllers/Pembayaran.php(47): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 47)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->cekNota_pelanggan('000001')
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 07:58:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 07:58:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 07:58:36 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_pelanggan]
+in APPPATH/Controllers/Pembayaran.php on line 54.
+ 1 APPPATH/Controllers/Pembayaran.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 54)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_pelanggan()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 07:58:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 07:58:56 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_pelanggan]
+in APPPATH/Controllers/Pembayaran.php on line 54.
+ 1 APPPATH/Controllers/Pembayaran.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 54)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_pelanggan()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 07:59:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 07:59:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 07:59:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 07:59:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 07:59:21 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_pelanggan]
+in APPPATH/Controllers/Pembayaran.php on line 54.
+ 1 APPPATH/Controllers/Pembayaran.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 54)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_pelanggan()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 08:09:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 08:09:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 08:09:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 08:09:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 08:09:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 08:11:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 08:11:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 08:11:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 08:11:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 08:11:06 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_pelanggan]
+in APPPATH/Controllers/Pembayaran.php on line 54.
+ 1 APPPATH/Controllers/Pembayaran.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 54)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_pelanggan()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 08:11:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 08:11:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 08:11:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 08:11:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 08:11:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 08:11:42 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_pelanggan]
+in APPPATH/Controllers/Pembayaran.php on line 54.
+ 1 APPPATH/Controllers/Pembayaran.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 54)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_pelanggan()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 08:11:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 08:11:46 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/cekNota_pelanggan/000001]
+in APPPATH/Controllers/Pembayaran.php on line 47.
+ 1 APPPATH/Controllers/Pembayaran.php(47): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 47)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->cekNota_pelanggan('000001')
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 08:11:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 08:11:57 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/cekNota_pelanggan/000001]
+in APPPATH/Controllers/Pembayaran.php on line 47.
+ 1 APPPATH/Controllers/Pembayaran.php(47): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 47)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->cekNota_pelanggan('000001')
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 08:12:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 08:12:38 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_pelanggan]
+in APPPATH/Controllers/Pembayaran.php on line 54.
+ 1 APPPATH/Controllers/Pembayaran.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 54)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_pelanggan()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 08:12:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 08:12:41 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_pelanggan]
+in APPPATH/Controllers/Pembayaran.php on line 54.
+ 1 APPPATH/Controllers/Pembayaran.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 54)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_pelanggan()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 08:13:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 08:13:33 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_pelanggan]
+in APPPATH/Controllers/Pembayaran.php on line 54.
+ 1 APPPATH/Controllers/Pembayaran.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 54)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_pelanggan()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 08:14:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 08:14:48 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_pelanggan]
+in APPPATH/Controllers/Pembayaran.php on line 54.
+ 1 APPPATH/Controllers/Pembayaran.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 54)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_pelanggan()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 08:15:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 08:15:38 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_pelanggan]
+in APPPATH/Controllers/Pembayaran.php on line 54.
+ 1 APPPATH/Controllers/Pembayaran.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 54)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_pelanggan()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 08:16:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 08:16:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 08:16:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 08:16:09 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_pelanggan]
+in APPPATH/Controllers/Pembayaran.php on line 54.
+ 1 APPPATH/Controllers/Pembayaran.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 54)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_pelanggan()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 08:16:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 08:16:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 08:16:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 08:16:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 08:16:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 08:16:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 08:16:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 08:16:31 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_pelanggan]
+in APPPATH/Controllers/Pembayaran.php on line 54.
+ 1 APPPATH/Controllers/Pembayaran.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 54)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_pelanggan()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 08:17:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 08:17:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 08:17:24 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_pelanggan]
+in APPPATH/Controllers/Pembayaran.php on line 54.
+ 1 APPPATH/Controllers/Pembayaran.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 54)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_pelanggan()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 08:17:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 08:17:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 08:22:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 08:22:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 08:22:51 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_pelanggan]
+in APPPATH/Controllers/Pembayaran.php on line 54.
+ 1 APPPATH/Controllers/Pembayaran.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 54)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_pelanggan()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 08:22:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 08:22:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 08:22:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 08:22:57 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_pelanggan]
+in APPPATH/Controllers/Pembayaran.php on line 54.
+ 1 APPPATH/Controllers/Pembayaran.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 54)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_pelanggan()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 08:23:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 08:23:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 08:23:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 08:23:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 08:23:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 08:23:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 08:23:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 08:23:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 08:23:43 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_suplier]
+in APPPATH/Controllers/Pembayaran.php on line 133.
+ 1 APPPATH/Controllers/Pembayaran.php(133): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 133)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_suplier()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 08:23:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 08:23:55 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/cekNota_suplier]
+in APPPATH/Controllers/Pembayaran.php on line 126.
+ 1 APPPATH/Controllers/Pembayaran.php(126): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 126)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->cekNota_suplier()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 08:28:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 08:28:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 08:37:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 08:37:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 11:47:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 11:47:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 11:47:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 11:47:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 11:47:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 11:47:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 11:47:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 11:47:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 11:47:33 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_pelanggan]
+in APPPATH/Controllers/Pembayaran.php on line 54.
+ 1 APPPATH/Controllers/Pembayaran.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 54)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_pelanggan()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 11:47:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 11:47:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 12:26:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 16:15:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 16:15:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 16:15:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 16:15:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 16:15:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 16:15:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 16:15:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 16:15:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 16:15:17 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_pelanggan]
+in APPPATH/Controllers/Pembayaran.php on line 54.
+ 1 APPPATH/Controllers/Pembayaran.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 54)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_pelanggan()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 16:15:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 16:15:38 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_pelanggan]
+in APPPATH/Controllers/Pembayaran.php on line 54.
+ 1 APPPATH/Controllers/Pembayaran.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 54)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_pelanggan()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 16:17:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 16:17:51 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_pelanggan]
+in APPPATH/Controllers/Pembayaran.php on line 54.
+ 1 APPPATH/Controllers/Pembayaran.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 54)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_pelanggan()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 16:18:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 16:18:32 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_pelanggan/000001]
+in APPPATH/Controllers/Pembayaran.php on line 54.
+ 1 APPPATH/Controllers/Pembayaran.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 54)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_pelanggan('000001')
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 16:18:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 16:18:39 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_pelanggan]
+in APPPATH/Controllers/Pembayaran.php on line 54.
+ 1 APPPATH/Controllers/Pembayaran.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 54)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_pelanggan()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 16:19:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 16:19:39 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/cekNota_pelanggan/000002]
+in APPPATH/Controllers/Pembayaran.php on line 47.
+ 1 APPPATH/Controllers/Pembayaran.php(47): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 47)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->cekNota_pelanggan('000002')
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 16:19:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 16:19:40 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/cekNota_pelanggan/000002]
+in APPPATH/Controllers/Pembayaran.php on line 47.
+ 1 APPPATH/Controllers/Pembayaran.php(47): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 47)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->cekNota_pelanggan('000002')
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 16:19:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 16:19:55 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/cekNota_pelanggan/000002]
+in APPPATH/Controllers/Pembayaran.php on line 47.
+ 1 APPPATH/Controllers/Pembayaran.php(47): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 47)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->cekNota_pelanggan('000002')
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 16:20:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 16:20:08 --> ArgumentCountError: Too few arguments to function App\Controllers\Pembayaran::cekNota_pelanggan(), 0 passed in /home/trxspider/selling/gucitoak.softwarebali.com/system/CodeIgniter.php on line 933 and exactly 1 expected
+[Method: GET, Route: pembayaran/cekNota_pelanggan]
+in APPPATH/Controllers/Pembayaran.php on line 45.
+ 1 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->cekNota_pelanggan()
+ 2 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 3 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 16:21:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 16:21:51 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_pelanggan]
+in APPPATH/Controllers/Pembayaran.php on line 54.
+ 1 APPPATH/Controllers/Pembayaran.php(54): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 54)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_pelanggan()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 17:45:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-01-15 17:45:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 17:45:10 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/getCicilan_suplier]
+in APPPATH/Controllers/Pembayaran.php on line 133.
+ 1 APPPATH/Controllers/Pembayaran.php(133): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 133)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->getCicilan_suplier()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 17:45:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 17:45:31 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/cekNota_suplier]
+in APPPATH/Controllers/Pembayaran.php on line 126.
+ 1 APPPATH/Controllers/Pembayaran.php(126): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 126)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->cekNota_suplier()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-01-15 17:45:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-01-15 17:45:45 --> ErrorException: Attempt to read property "message" on null
+[Method: GET, Route: pembayaran/cekNota_suplier]
+in APPPATH/Controllers/Pembayaran.php on line 126.
+ 1 APPPATH/Controllers/Pembayaran.php(126): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "message" on null', '/home/trxspider/selling/gucitoak.softwarebali.com/app/Controllers/Pembayaran.php', 126)
+ 2 SYSTEMPATH/CodeIgniter.php(933): App\Controllers\Pembayaran->cekNota_suplier()
+ 3 SYSTEMPATH/CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Pembayaran))
+ 4 SYSTEMPATH/CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH/Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH/Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH/index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

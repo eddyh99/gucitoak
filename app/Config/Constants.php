@@ -105,5 +105,5 @@ $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https://'.
 defined('BASE_URL') || define('BASE_URL',$protocol);
 
 
-define('NAMETITLE', 'Guci Toak');
-define("URLAPI",'https://api-gucitoak.softwarebali.com');
+define('NAMETITLE', 'Guci Luwak');
+define("URLAPI",'https://api.guciluwak.com');
