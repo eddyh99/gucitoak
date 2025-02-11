@@ -188,22 +188,31 @@ class Penjualan extends BaseController
 
     public function cetakPDF()
     {
+        $date = date('Y-m-d');
         // Load view yang ingin dicetak sebagai PDF
         $html = view('admin/penjualan/cetak');
 
         // Konfigurasi Dompdf
         $options = new Options();
-        $options->set('defaultFont', 'Arial');
+        $options->set('defaultFont', 'NotaFonts');
 
         // Buat instance Dompdf
         $dompdf = new Dompdf($options);
         $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'portrait'); // Bisa landscape juga
+        $dompdf->setPaper('A4', 'landscape'); // HAPUS ini
         $dompdf->render();
 
         // Kirim output PDF ke browser untuk di-download
-        $dompdf->stream("document.pdf", ["Attachment" => false]); // Ubah ke true jika ingin auto-download
+        $dompdf->stream("invoice-$date.pdf", ["Attachment" => true]); // Ubah ke true jika ingin auto-download
     }
+
+    // for testing
+    // public function cetak()
+    // {
+    //     // Load view yang ingin dicetak sebagai PDF
+    //     $html = view('admin/penjualan/cetak');
+    //     return $html;
+    // }
 
 
 }
