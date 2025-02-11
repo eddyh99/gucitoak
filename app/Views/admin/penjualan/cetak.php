@@ -67,18 +67,18 @@
     <table style="width: 100%; margin-bottom: 10px;">
         <tr>
             <td style="width: 50%; vertical-align: top;">
-                <p>No Faktur: RJ33250128013</p>
-                <p>Tanggal: 28/01/2025</p>
+                <p>No Faktur: <?= $mdata[0]->nonota ?? '-' ?></p>
+                <p>Tanggal: <?= $mdata[0]->tanggal ?? '-' ?></p>
                 <p>Pengirim: GUCI LUWAK</p>
                 <p>Alamat: Perum GSM Kaja, Jln. Cempaka Kaja No 99, Gianyar</p>
                 <p>Telp: 085648247182, 0361-4794548</p>
-                <p>Tgl Kirim: 28/01/2025</p>
+                <p>Tgl Kirim: <?= date('d-m-Y') ?></p>
             </td>
             <td style="width: 50%; vertical-align: top;">
-                <p>Nama: PIZZA PANTIES (BU AGNES)</p>
-                <p>Alamat: JLN COKROAMINOTO, DENPASAR</p>
-                <p>No. Telp: -</p>
-                <p>Tgl Tempo: 27/02/2025</p>
+                <p>Nama: <?= $mdata[0]->namapelanggan ?? '-' ?></p>
+                <p>Alamat: <?= $mdata[0]->alamat ?? '-' ?></p>
+                <p>No. Telp: <?= $mdata[0]->telp ?? '-' ?></p>
+                <p>Tgl Tempo: <?= $mdata[0]->tempo ?? '-' ?></p>
             </td>
         </tr>
     </table>
@@ -98,17 +98,27 @@
             </tr>
         </thead>
         <tbody>
+            <?php 
+            $t_jumlah = 0;
+            foreach($mdata as $barang): 
+                $harga = $barang->harga ?? 0; 
+                $diskon1 = $barang->diskon1 ?? 0;
+                $diskon2 = $barang->diskon2 ?? 0;
+                $jumlah = $harga - $diskon1 - $diskon2;
+                $t_jumlah += $jumlah;
+            ?>
             <tr>
                 <td>1</td>
-                <td>16613142</td>
-                <td>R. MUSH JAMUR KANCING SLICE 900</td>
-                <td>60</td>
-                <td>PCS</td>
-                <td>38.500</td>
-                <td>0</td>
-                <td>0</td>
-                <td>2.310.000</td>
+                <td><?= $barang->kd_barang ?? '-' ?></td>
+                <td><?= $barang->namabarang ?? '-' ?></td>
+                <td><?= $barang->jumlah ?? '-' ?></td>
+                <td><?= $barang->namasatuan ?? '-' ?></td>
+                <td><?= $harga ?></td>
+                <td><?= $diskon1 ?></td>
+                <td><?= $diskon2 ?></td>
+                <td><?= $jumlah ?></td>
             </tr>
+            <?php endforeach ?>
         </tbody>
     </table>
 
@@ -123,19 +133,19 @@
                 <table style="width: 100%; border-collapse: collapse;">
                     <tr>
                         <td style="text-align: right;">Subtotal:</td>
-                        <td style="text-align: right;">2.310.000</td>
+                        <td style="text-align: right;"><?= $t_jumlah ?? '-' ?></td>
                     </tr>
                     <tr>
                         <td style="text-align: right;">Diskon:</td>
-                        <td style="text-align: right;">0</td>
+                        <td style="text-align: right;"><?= $mdata[0]->diskon ?? '-' ?></td>
                     </tr>
                     <tr>
                         <td style="text-align: right;">PPN:</td>
-                        <td style="text-align: right;">0</td>
+                        <td style="text-align: right;"><?= $mdata[0]->ppn ?? '-' ?></td>
                     </tr>
                     <tr>
                         <td style="text-align: right;"><strong>Total:</strong></td>
-                        <td style="text-align: right;"><strong>2.310.000</strong></td>
+                        <td style="text-align: right;"><strong><?= $t_jumlah ?? 0 ?></strong></td>
                     </tr>
                 </table>
             </td>

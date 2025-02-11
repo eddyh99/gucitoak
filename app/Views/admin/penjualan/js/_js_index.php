@@ -67,7 +67,7 @@ var table=$('#table_list').DataTable({
         },
         { data: null,
 		    render: function (data, type, row) {
-                    var print = `<a href="<?= BASE_URL ?>penjualan/cetakPDF" target="_self">
+                    var print = `<a href="<?= BASE_URL ?>penjualan/cetakPDF/`+encodeURI(btoa(data.nonota))+`" target="_self">
                                                 <i class="bx bx-printer bx-md fs-5 text-danger"></i>
                                           </a>`;
                     return print;

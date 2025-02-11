@@ -177,7 +177,7 @@ class Penjualan extends BaseController
     public function list_barang($nonota){
         $url = URLAPI . "/v1/penjualan/get_barangjual?nonota=".base64_decode($nonota);
         $response = gucitoakAPI($url)->message;
-        echo json_encode($response,true);
+        return json_encode($response,true);
     }
 
     public function set_statusBarang($nonota){
@@ -186,11 +186,12 @@ class Penjualan extends BaseController
         echo json_encode($response,true);
     }
 
-    public function cetakPDF()
+    public function cetakPDF($nonota)
     {
         $date = date('Y-m-d');
         // Load view yang ingin dicetak sebagai PDF
-        $html = view('admin/penjualan/cetak');
+        $mdata = $this->list_barang($nonota);
+        $html = view('admin/penjualan/cetak', ['mdata' => json_decode($mdata)]);
 
         // Konfigurasi Dompdf
         $options = new Options();
@@ -203,14 +204,15 @@ class Penjualan extends BaseController
         $dompdf->render();
 
         // Kirim output PDF ke browser untuk di-download
-        $dompdf->stream("invoice-$date.pdf", ["Attachment" => true]); // Ubah ke true jika ingin auto-download
+        $dompdf->stream("invoice-$date.pdf", ["Attachment" => true]);
     }
 
     // for testing
     // public function cetak()
     // {
     //     // Load view yang ingin dicetak sebagai PDF
-    //     $html = view('admin/penjualan/cetak');
+    //     $mdata = $this->list_barang('MDAwMDAy');
+    //     $html = view('admin/penjualan/cetak', ['mdata' => json_decode($mdata)]);
     //     return $html;
     // }
 
