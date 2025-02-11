@@ -22,12 +22,17 @@
             font-size: 12px;
             width: 21cm;
             height: 14cm;
+            line-height: 1;
+        }
+
+        p {
+            margin: 0 0; /* Mengurangi margin antar paragraf */
         }
 
         table {
             width: 98%;
             border-collapse: collapse;
-            margin-top: 10px;
+            margin-top: 5px;
         }
 
         th,
@@ -69,8 +74,18 @@
             <td style="width: 50%; vertical-align: top;">
                 <p>No Faktur: <?= $mdata[0]->nonota ?? '-' ?></p>
                 <p>Tanggal: <?= $mdata[0]->tanggal ?? '-' ?></p>
-                <p>Pengirim: GUCI LUWAK</p>
+                <table style="width: 100%; border-collapse: collapse;">
+        <tr>
+            <td style="width: 60px; vertical-align: top;">
+                <img src="<?= $logo ?>" alt="logo" width="50">
+            </td>
+            <td style="vertical-align: top;">
+                <p><strong>GUCI LUWAK</strong></p>
                 <p>Alamat: Perum GSM Kaja, Jln. Cempaka Kaja No 99, Gianyar</p>
+                <p>Telp: 085648247182, 0361-4794548</p>
+            </td>
+        </tr>
+    </table>
                 <p>Telp: 085648247182, 0361-4794548</p>
                 <p>Tgl Kirim: <?= date('d-m-Y') ?></p>
             </td>

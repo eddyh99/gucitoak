@@ -188,15 +188,18 @@ class Penjualan extends BaseController
 
     public function cetakPDF($nonota)
     {
+        $logo = FCPATH . 'assets/img/logo-no-text.png';
+        $data = file_get_contents($logo);
+        $base64 = 'data:image/png' . ';base64,' . base64_encode($data);
         $date = date('Y-m-d');
         // Load view yang ingin dicetak sebagai PDF
         $mdata = $this->list_barang($nonota);
-        $html = view('admin/penjualan/cetak', ['mdata' => json_decode($mdata)]);
+        $html = view('admin/penjualan/cetak', ['mdata' => json_decode($mdata), 'logo' => $base64]);
 
         // Konfigurasi Dompdf
         $options = new Options();
         $options->set('defaultFont', 'NotaFonts');
-
+        
         // Buat instance Dompdf
         $dompdf = new Dompdf($options);
         $dompdf->loadHtml($html);
