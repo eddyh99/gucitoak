@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use App\Enums\Menu;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 class Penjualan extends BaseController
 {
@@ -182,6 +184,25 @@ class Penjualan extends BaseController
         $url = URLAPI . "/v1/penjualan/set_statusBarang?nonota=".base64_decode($nonota);
         $response = gucitoakAPI($url)->message;
         echo json_encode($response,true);
+    }
+
+    public function cetakPDF()
+    {
+        // Load view yang ingin dicetak sebagai PDF
+        $html = view('admin/penjualan/cetak');
+
+        // Konfigurasi Dompdf
+        $options = new Options();
+        $options->set('defaultFont', 'Arial');
+
+        // Buat instance Dompdf
+        $dompdf = new Dompdf($options);
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait'); // Bisa landscape juga
+        $dompdf->render();
+
+        // Kirim output PDF ke browser untuk di-download
+        $dompdf->stream("document.pdf", ["Attachment" => false]); // Ubah ke true jika ingin auto-download
     }
 
 

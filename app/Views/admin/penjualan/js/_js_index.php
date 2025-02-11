@@ -65,6 +65,14 @@ var table=$('#table_list').DataTable({
                 return data == 1 ? 'sudah diterima' : '-';
             }
         },
+        { data: null,
+		    render: function (data, type, row) {
+                    var print = `<a href="<?= BASE_URL ?>penjualan/cetakPDF" target="_self">
+                                                <i class="bx bx-printer bx-md fs-5 text-danger"></i>
+                                          </a>`;
+                    return print;
+                }
+		},
 		{ data: null,
 		    render: function (data, type, row) {
                     var detail = `<a href="#" onclick='detailbarang("`+encodeURI(btoa(data.nonota))+`")'>
