@@ -214,7 +214,12 @@ class Penjualan extends BaseController
             mkdir($folderPath, 0777, true);
         }
         file_put_contents($folderPath . $fileName, $dompdf->output());
-        
+
+        // Eksekusi print
+        // exec("print /D:\\\\NamaPrinter " . escapeshellarg($folderPath)); //windows
+        // exec("lp " . escapeshellarg($folderPath)); //linux
+        // unlink($folderPath); //hapus file pdf
+
         // Return response
         return json_encode([
             "status" => "success",
