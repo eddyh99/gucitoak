@@ -155,7 +155,8 @@ class Penjualan extends BaseController
         unset($_SESSION['barangjual']);
         // Check response API
         if ($response->code == 200 || $response->code == 201) {
-            session()->setFlashdata('success', $result);
+            $this->cetakPDF(base64_encode($result->nonota));
+            session()->setFlashdata('success', $result->success);
             return redirect()->to(BASE_URL . "penjualan");
         }else{
             session()->setFlashdata('failed', $result);
@@ -191,7 +192,7 @@ class Penjualan extends BaseController
         $logo = FCPATH . 'assets/img/logo-no-text.png';
         $data = file_get_contents($logo);
         $base64 = 'data:image/png' . ';base64,' . base64_encode($data);
-        $date = date('Y-m-d');
+        $date = date('Y-m-d-His');
         // Load view yang ingin dicetak sebagai PDF
         $mdata = $this->list_barang($nonota);
         $html = view('admin/penjualan/cetak', ['mdata' => json_decode($mdata), 'logo' => $base64]);
@@ -206,8 +207,21 @@ class Penjualan extends BaseController
         $dompdf->setPaper('A4', 'landscape'); // HAPUS ini
         $dompdf->render();
 
-        // Kirim output PDF ke browser untuk di-download
-        $dompdf->stream("invoice-$date.pdf", ["Attachment" => true]);
+        $folderPath = 'assets/pdf/';
+        $fileName = "invoice-$date.pdf";
+        // Pastikan folder tersedia
+        if (!is_dir($folderPath)) {
+            mkdir($folderPath, 0777, true);
+        }
+        file_put_contents($folderPath . $fileName, $dompdf->output());
+        
+        // Return response
+        return json_encode([
+            "status" => "success",
+            "path" => "assets/pdf/$fileName"
+        ]);
+
+        // $dompdf->stream("invoice-$date.pdf", ["Attachment" => false]);
     }
 
     // for testing

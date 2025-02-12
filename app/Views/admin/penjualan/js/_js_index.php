@@ -67,7 +67,7 @@ var table=$('#table_list').DataTable({
         },
         { data: null,
 		    render: function (data, type, row) {
-                    var print = `<a href="<?= BASE_URL ?>penjualan/cetakPDF/`+encodeURI(btoa(data.nonota))+`" target="_self">
+                var print = `<a href="#" onclick='generatePDF("`+encodeURI(btoa(data.nonota))+`")'>
                                                 <i class="bx bx-printer bx-md fs-5 text-danger"></i>
                                           </a>`;
                     return print;
@@ -137,5 +137,27 @@ var table=$('#table_list').DataTable({
             console.log('Gagal memperbarui status barang');
         }})
     }
+
+    function generatePDF(nonota) {
+        console.log(nonota);
+        
+        $.ajax({
+            url: "<?= BASE_URL ?>penjualan/cetakPDF/" + nonota,
+            type: "GET",
+            success: function (response) {
+                const mdata = JSON.parse(response)
+                if (mdata.status === "success") {
+                    alert("Berhasil print PDF!");
+                    // window.open("<?= BASE_URL ?>" + mdata.path, '_blank');
+                } else {
+                    alert("Gagal print PDF!");
+                }
+            },
+            error: function () {
+                alert("Terjadi kesalahan saat menyimpan PDF.");
+            }
+        });
+}
+
 
 </script>
