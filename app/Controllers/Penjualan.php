@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use App\Enums\Menu;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 class Penjualan extends BaseController
 {
@@ -153,7 +155,8 @@ class Penjualan extends BaseController
         unset($_SESSION['barangjual']);
         // Check response API
         if ($response->code == 200 || $response->code == 201) {
-            session()->setFlashdata('success', $result);
+            $this->cetakPDF(base64_encode($result->nonota));
+            session()->setFlashdata('success', $result->success);
             return redirect()->to(BASE_URL . "penjualan");
         }else{
             session()->setFlashdata('failed', $result);
@@ -175,7 +178,7 @@ class Penjualan extends BaseController
     public function list_barang($nonota){
         $url = URLAPI . "/v1/penjualan/get_barangjual?nonota=".base64_decode($nonota);
         $response = gucitoakAPI($url)->message;
-        echo json_encode($response,true);
+        return json_encode($response,true);
     }
 
     public function set_statusBarang($nonota){
@@ -183,6 +186,57 @@ class Penjualan extends BaseController
         $response = gucitoakAPI($url)->message;
         echo json_encode($response,true);
     }
+
+    public function cetakPDF($nonota)
+    {
+        $logo = FCPATH . 'assets/img/logo-no-text.png';
+        $data = file_get_contents($logo);
+        $base64 = 'data:image/png' . ';base64,' . base64_encode($data);
+        $date = date('Y-m-d-His');
+        // Load view yang ingin dicetak sebagai PDF
+        $mdata = $this->list_barang($nonota);
+        $html = view('admin/penjualan/cetak', ['mdata' => json_decode($mdata), 'logo' => $base64]);
+
+        // Konfigurasi Dompdf
+        $options = new Options();
+        $options->set('defaultFont', 'NotaFonts');
+        
+        // Buat instance Dompdf
+        $dompdf = new Dompdf($options);
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'landscape'); // HAPUS ini
+        $dompdf->render();
+
+        $folderPath = 'assets/pdf/';
+        $fileName = "invoice-$date.pdf";
+        // Pastikan folder tersedia
+        if (!is_dir($folderPath)) {
+            mkdir($folderPath, 0777, true);
+        }
+        file_put_contents($folderPath . $fileName, $dompdf->output());
+
+        // Eksekusi print
+        // exec("print /D:\\\\NamaPrinter " . escapeshellarg($folderPath)); //windows
+        // exec("lp " . escapeshellarg($folderPath)); //linux
+        // unlink($folderPath); //hapus file pdf
+
+        // Return response
+        return json_encode([
+            "status" => "success",
+            "path" => "assets/pdf/$fileName"
+        ]);
+
+        // $dompdf->stream("invoice-$date.pdf", ["Attachment" => false]);
+    }
+
+    // for testing
+    // public function cetak()
+    // {
+    //     // Load view yang ingin dicetak sebagai PDF
+    //     $mdata = $this->list_barang('MDAwMDAy');
+    //     $html = view('admin/penjualan/cetak', ['mdata' => json_decode($mdata)]);
+    //     return $html;
+    // }
 
 
 }
