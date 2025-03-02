@@ -217,8 +217,9 @@ class Penjualan extends BaseController
 
         // Eksekusi print
         // exec("print /D:\\\\NamaPrinter " . escapeshellarg($folderPath)); //windows
+        exec("lp '$folderPath . $fileName' > /dev/null 2>&1 &");
         // exec("lp " . escapeshellarg($folderPath)); //linux
-        // unlink($folderPath); //hapus file pdf
+        unlink($folderPath . $fileName); //hapus file pdf
 
         // Return response
         return json_encode([
