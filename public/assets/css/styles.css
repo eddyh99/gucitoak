@@ -192,8 +192,9 @@
 
 .menu-link {
   display: flex ;
-  flex-direction: column !important;
-  justify-content: center !important;
+  flex-wrap: nowrap !important;
+  /* flex-direction: column !important; */
+  justify-content: left !important;
   align-items: center !important;
 }
 
