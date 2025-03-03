@@ -369,23 +369,21 @@ use App\Enums\Menu; ?>
         <?php endif ?>
 
         <?php if (!$isAdmin): ?>
-            <li class="menu-item <?= @$menuactive_laporan ?> mb-2">
-                <div class="d-flex flex-column justify-content-center align-items-center">
-                    <a href="<?= BASE_URL ?>laporan/omzet_sales" class="menu-link d-flex justify-content-center align-items-center rounded-circle bg-light text-decoration-none" style="width: 60px; height: 60px; border: 2px solid blue; display: flex; justify-content: center; align-items: center;">
-                        <i class="menu-icon tf-icons bx bx-line-chart" style="width:32px !important"></i>
+            <li class="menu-item active">
+                <div>
+                    <a href="<?= BASE_URL ?>laporan/omzet_sales" class="menu-link">
+                        <i class="bx bx-line-chart me-2"> Laporan Omzet</i>
                     </a>
-                    <div class="text-center" style="font-size: 16px;">Laporan Omzet</div>
                 </div>
             </li>
         <?php endif ?>
 
         <?php if (!$isAdmin): ?>
-            <li class="menu-item <?= @$menuactive_slipgaji ?> mb-2">
-                <div class="d-flex flex-column justify-content-center align-items-center">
-                    <a href="<?= BASE_URL ?>slipgaji" class="menu-link d-flex justify-content-center align-items-center rounded-circle bg-light text-decoration-none" style="width: 60px; height: 60px; border: 2px solid blue; display: flex; justify-content: center; align-items: center;">
-                        <i class="menu-icon tf-icons bx bx-money" style="width:32px !important"></i>
+            <li class="menu-item active">
+                <div>
+                    <a href="<?= BASE_URL ?>laporan/slipgaji" class="menu-link">
+                        <i class="bx bx-money me-2"> Slip Gaji</i>
                     </a>
-                    <div class="text-center" style="font-size: 16px;">Slip Gaji</div>
                 </div>
             </li>
         <?php endif ?>
