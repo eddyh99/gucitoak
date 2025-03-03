@@ -19,7 +19,8 @@ use App\Enums\Menu; ?>
         <li class="menu-item active">
             <div>
                 <a href="<?= BASE_URL ?>dashboard" class="menu-link">
-                    <i class="bx bx-home me-2"> Dashboard</i>
+                    <i class="bx bx-home me-2"></i>
+                    <span>Dashboard</span>
                 </a>
             </div>
         </li>
@@ -28,8 +29,9 @@ use App\Enums\Menu; ?>
         <?php if ($isAdmin || isset($akses->setup)): ?>
             <li class="menu-item active">
                 <div>
-                    <a href="<?= BASE_URL ?>dashboard" class="menu-link" data-bs-toggle="collapse" data-bs-target="#submenuSetup" aria-expanded="false">
-                        <i class="bx bx-cog me-2"> Setup Data</i>
+                    <a href="javascript:void(0);" class="menu-link" data-bs-toggle="collapse" data-bs-target="#submenuSetup" aria-expanded="false">
+                        <i class="bx bx-cog me-2"></i>
+                        <span>Setup Data</span>
                     </a>
                 </div>
             </li>
@@ -116,8 +118,9 @@ use App\Enums\Menu; ?>
         <?php if ($isAdmin || isset($akses->persediaan)): ?>
             <li class="menu-item active">
                 <div>
-                    <a href="<?= BASE_URL ?>dashboard" class="menu-link" data-bs-toggle="collapse" data-bs-target="#submenuPersediaan" aria-expanded="false">
-                        <i class="bx bx-package me-2"> Persediaan Barang</i>
+                    <a href="javascript:void(0);" class="menu-link" data-bs-toggle="collapse" data-bs-target="#submenuPersediaan" aria-expanded="false">
+                        <i class="bx bx-package me-2"></i>
+                        <span>Persediaan</span>
                     </a>
                 </div>
             </li>
@@ -186,7 +189,8 @@ use App\Enums\Menu; ?>
             <li class="menu-item active">
                 <div>
                     <a href="javascript:void(0);" class="menu-link" data-bs-toggle="collapse" data-bs-target="#submenuTransaksi" aria-expanded="false">
-                        <i class="bx bx-basket me-2"> Transaksi</i>
+                        <i class="bx bx-basket me-2"></i>
+                        <span>Transaksi</span>
                     </a>
                 </div>
             </li>
@@ -256,7 +260,8 @@ use App\Enums\Menu; ?>
             <li class="menu-item active">
                 <div>
                     <a href="javascript:void(0);" class="menu-link" data-bs-toggle="collapse" data-bs-target="#submenuLaporan" aria-expanded="false">
-                        <i class="bx bx-purchase-tag-alt me-2"> Laporan</i>
+                        <i class="bx bx-purchase-tag-alt me-2"></i>
+                        <span>Laporan</span>
                     </a>
                 </div>
             </li>
@@ -362,7 +367,8 @@ use App\Enums\Menu; ?>
             <li class="menu-item active">
                 <div>
                     <a href="<?= BASE_URL ?>penggajian" class="menu-link">
-                        <i class="bx bx-money me-2"> Gaji</i>
+                        <i class="bx bx-money me-2"></i>
+                        <span>Gaji</span>
                     </a>
                 </div>
             </li>
@@ -372,7 +378,8 @@ use App\Enums\Menu; ?>
             <li class="menu-item active">
                 <div>
                     <a href="<?= BASE_URL ?>laporan/omzet_sales" class="menu-link">
-                        <i class="bx bx-line-chart me-2"> Laporan Omzet</i>
+                        <i class="bx bx-line-chart me-2"></i>
+                        <span>Laporan Omzet</span>
                     </a>
                 </div>
             </li>
@@ -382,7 +389,8 @@ use App\Enums\Menu; ?>
             <li class="menu-item active">
                 <div>
                     <a href="<?= BASE_URL ?>laporan/slipgaji" class="menu-link">
-                        <i class="bx bx-money me-2"> Slip Gaji</i>
+                        <i class="bx bx-money me-2"></i>
+                        <span>Slip Gaji</span>
                     </a>
                 </div>
             </li>
