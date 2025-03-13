@@ -6,23 +6,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 <style>
-/* Ensure all text in the table is black */
-#table_list_user.table-striped tbody tr:nth-of-type(odd),
-#table_list_user.table-striped tbody tr:nth-of-type(odd) td {
-    background-color: #696cff; /* Light blue color */
-    color: white !important; /* Force white text for odd rows */
-}
 
-#table_list_user.table-striped tbody tr:nth-of-type(even),
-#table_list_user.table-striped tbody tr:nth-of-type(even) td {
-    background-color: #c8c9ff; /* Light blue color */
-    color: black !important; /* Force black text for even rows */
-}
-/* Optional: Ensure the header and other elements look consistent */
-#table_list_user thead th {
-    background-color: #007bff; /* Bootstrap primary blue */
-    color: white; /* White text for better contrast */
-}
 .excel-green {
         background-color: #28a745 !important; /* Excel green */
         border-color: #218838 !important; /* Slightly darker green for border */

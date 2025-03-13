@@ -286,7 +286,7 @@ body:has(.menu-item.laporan:hover) .sub-menu.laporan,
 
 /* Set background color and font color for all accordion items */
 #accordionExample .accordion-item {
-  background-color: #696cff; /* Background color */
+  background-color: #008DEE; /* Background color */
   color: white; /* Font color */
   margin-bottom: 0.25rem; /* Small gap between items */
   border-radius: 0.25rem;
@@ -367,7 +367,7 @@ body:has(.menu-item.laporan:hover) .sub-menu.laporan,
 }
 
 #accordionExample .accordion-body {
-  background-color: #e5e6ff; /* White background for the accordion body */
+  background-color: #fff; /* White background for the accordion body */
   color: #000000; /* Black font color for the accordion body */
   padding: 0.5rem; /* Reduced padding */
   width: 100%; /* Ensure full width */
@@ -376,7 +376,7 @@ body:has(.menu-item.laporan:hover) .sub-menu.laporan,
 
 /* Ensure links inside the accordion body have the correct text color */
 #accordionExample .accordion-body a {
-  color: #000000; /* Set text color to black */
+  color: #016de0; /* Set text color to black */
   text-decoration: none; /* Remove underline */
 }
 

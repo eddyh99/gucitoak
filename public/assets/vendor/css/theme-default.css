@@ -104,7 +104,7 @@
 }
 
 .bg-primary {
-  background-color: #696cff !important;
+  background-color: #008DEE !important;
 }
 
 a.bg-primary:hover, a.bg-primary:focus {
@@ -132,8 +132,8 @@ a.bg-primary:hover, a.bg-primary:focus {
 .pagination li.active > a:not(.page-link),
 .pagination li.active > a:not(.page-link):hover,
 .pagination li.active > a:not(.page-link):focus {
-  border-color: #696cff;
-  background-color: #696cff;
+  border-color: #008DEE;
+  background-color: #008DEE;
   color: #fff;
   box-shadow: 0 0.125rem 0.25rem rgba(105, 108, 255, 0.4);
 }
@@ -207,14 +207,14 @@ button.list-group-item-primary.active {
 
 .btn-primary {
   color: #fff;
-  background-color: #696cff;
-  border-color: #696cff;
+  background-color: #008DEE;
+  border-color: #008DEE;
   box-shadow: 0 0.125rem 0.25rem 0 rgba(105, 108, 255, 0.4);
 }
 .btn-primary:hover {
   color: #fff;
-  background-color: #5f61e6;
-  border-color: #5f61e6;
+  background-color: #008DEE;
+  border-color: #008DEE;
   transform: translateY(-1px);
 }
 .btn-check:focus + .btn-primary, .btn-primary:focus, .btn-primary.focus {
@@ -557,7 +557,7 @@ html[dir=rtl] .border-primary {
 }
 
 a {
-  color: #696cff;
+  color: #008DEE;
 }
 a:hover {
   color: #787bff;
@@ -633,7 +633,8 @@ a:hover {
 }
 
 .layout-navbar {
-  background-color: rgba(255, 255, 255, 0.95) !important;
+  /* background-color: rgba(255, 255, 255, 0.95) !important; */
+  background-color: #f1fbff !important;
   -webkit-backdrop-filter: saturate(200%) blur(6px);
           backdrop-filter: saturate(200%) blur(6px);
 }

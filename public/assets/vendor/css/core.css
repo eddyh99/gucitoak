@@ -46,7 +46,7 @@
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.53;
   --bs-body-color: #697a8d;
-  --bs-body-bg: #f5f5f9;
+  --bs-body-bg: #f1fbff;
 }
 
 *,
@@ -1943,7 +1943,7 @@ progress {
   }
 }
 .table {
-  --bs-table-bg: transparent;
+  --bs-table-bg: #007bff;
   --bs-table-accent-bg: transparent;
   --bs-table-striped-color: #697a8d;
   --bs-table-striped-bg: #f9fafb;
@@ -1953,7 +1953,7 @@ progress {
   --bs-table-hover-bg: rgba(67, 89, 113, 0.06);
   width: 100%;
   margin-bottom: 1rem;
-  color: #697a8d;
+  color: #fff;
   vertical-align: middle;
   border-color: #d9dee3;
 }
@@ -3838,7 +3838,7 @@ textarea.form-control-lg {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #fff;
+  background-color: #f1fbff;
   background-clip: border-box;
   border: 0 solid #d9dee3;
   border-radius: 0.5rem;
@@ -6228,7 +6228,7 @@ a.invert-bg-dark:hover, a.invert-bg-dark:focus {
   letter-spacing: 1px;
 }
 .table:not(.table-dark) th {
-  color: #566a7f;
+  color: #fff;
 }
 
 .table-border-bottom-0 tr:last-child td,
@@ -16644,14 +16644,14 @@ html:not(.layout-footer-fixed) .content-wrapper {
 /* Ensure all text in the table is black */
 .table-striped tbody tr:nth-of-type(odd),
 .table-striped tbody tr:nth-of-type(odd) td {
-    background-color: #696cff; /* Light blue color */
-    color: white !important; /* Force white text for odd rows */
+    background-color: white; /* Light blue color */
+    color: black !important; /* Force white text for odd rows */
 }
 
 .table-striped tbody tr:nth-of-type(even),
 .table-striped tbody tr:nth-of-type(even) td {
-    background-color: #c8c9ff; /* Light blue color */
-    color: black !important; /* Force black text for even rows */
+    background-color: #4fc3ff; /* Light blue color */
+    color: white !important; /* Force black text for even rows */
 }
 
 .excel-green {
