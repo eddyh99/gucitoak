@@ -36,7 +36,7 @@ use App\Enums\Menu; ?>
                     <span>Setup Data</span>
                 </button>
               </h2>
-              <div id="collapseSetup" class="accordion-collapse <?= isset($menuactive_setup) ? 'show' : 'collapse' ?>" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+              <div id="collapseSetup" class="accordion-collapse show" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                     <?php if ($isAdmin || $hasPermission(Menu::DAFTAR_PENGGUNA, 'setup')): ?>
                         <li class="menu-item <?= isset($user_active) ? 'active' : '' ?>">
@@ -125,7 +125,7 @@ use App\Enums\Menu; ?>
                     <span>Persediaan</span>
                 </button>
               </h2>
-              <div id="collapsePersediaan" class="accordion-collapse <?= isset($menuactive_persediaan) ? 'active' : 'collapse' ?>" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+              <div id="collapsePersediaan" class="accordion-collapse active" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                     <?php if ($isAdmin || $hasPermission(Menu::INPUT_STOK, 'persediaan')): ?>
                         <li class="menu-item <?= isset($stokbarang_active) ? 'active' : '' ?>">
@@ -195,7 +195,7 @@ use App\Enums\Menu; ?>
                     <span>Transaksi</span>
                 </button>
               </h2>
-              <div id="collapseTransaksi" class="accordion-collapse <?= isset($menuactive_transaksi) ? 'active' : 'collapse' ?>" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+              <div id="collapseTransaksi" class="accordion-collapse active" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                         <?php if ($isAdmin || $hasPermission(Menu::PEMBELIAN, 'transaksi')): ?>
                             <li class="menu-item">
@@ -265,12 +265,12 @@ use App\Enums\Menu; ?>
                     <span>Laporan</span>
                 </button>
               </h2>
-              <div id="collapseLaporan" class="accordion-collapse <?= isset($menuactive_laporan) ? 'active' : 'collapse' ?>" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+              <div id="collapseLaporan" class="accordion-collapse active" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                     <?php if ($isAdmin || $hasPermission(Menu::STOK_MIN_BARANG, 'laporan')): ?>
                         <li class="menu-item">
                             <a href="<?= BASE_URL ?>laporan/barang" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">
-                                <i class="menu-icon fs-5 tf-icons bx bx-purchase-tag-alt"></i>
+                            <img src="<?= BASE_URL ?>assets/img/icons/118927_network_server_icon.png" alt="Home Icon" class="me-2" width="24" height="24"> 
                                 <div data-i18n="Laporan" style="font-size: 12px;">Stok Min Barang</div>
                             </a>
                         </li>
@@ -279,7 +279,7 @@ use App\Enums\Menu; ?>
                     <?php if ($isAdmin || $hasPermission(Menu::MUTASI_STOK, 'laporan')): ?>
                         <li class="menu-item">
                             <a href="<?= BASE_URL ?>laporan/mutasistok" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">
-                                <i class="menu-icon fs-5 tf-icons bx bx-purchase-tag-alt"></i>
+                            <img src="<?= BASE_URL ?>assets/img/icons/118824_windows_preferences_system_icon.png" alt="Home Icon" class="me-2" width="24" height="24"> 
                                 <div data-i18n="Laporan" style="font-size: 12px;">Mutasi Stok</div>
                             </a>
                         </li>
@@ -288,7 +288,7 @@ use App\Enums\Menu; ?>
                     <?php if ($isAdmin || $hasPermission(Menu::PENJUALAN_SUMMARY, 'laporan')): ?>
                         <li class="menu-item">
                             <a href="<?= BASE_URL ?>laporan/penjualan" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">
-                                <i class="menu-icon fs-5 tf-icons bx bx-purchase-tag-alt"></i>
+                            <img src="<?= BASE_URL ?>assets/img/icons/118805_text_accessories_editor_icon.png" alt="Home Icon" class="me-2" width="24" height="24"> 
                                 <div data-i18n="Laporan" style="font-size: 12px;">Penjualan</div>
                             </a>
                         </li>
@@ -297,7 +297,7 @@ use App\Enums\Menu; ?>
                     <?php if ($isAdmin || $hasPermission(Menu::PEMBELIAN_SUMMARY, 'laporan')): ?>
                         <li class="menu-item">
                             <a href="<?= BASE_URL ?>laporan/pembelian" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">
-                                <i class="menu-icon fs-5 tf-icons bx bx-purchase-tag-alt"></i>
+                            <img src="<?= BASE_URL ?>assets/img/icons/118805_text_accessories_editor_icon.png" alt="Home Icon" class="me-2" width="24" height="24">
                                 <div data-i18n="Laporan" style="font-size: 12px;">Pembelian</div>
                             </a>
                         </li>
@@ -306,7 +306,7 @@ use App\Enums\Menu; ?>
                     <?php if ($isAdmin || $hasPermission(Menu::LAP_RETUR_SUPLIER, 'laporan')): ?>
                         <li class="menu-item">
                             <a href="<?= BASE_URL ?>laporan/retursup" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">
-                                <i class="menu-icon fs-5 tf-icons bx bx-purchase-tag-alt"></i>
+                            <img src="<?= BASE_URL ?>assets/img/icons/118801_refresh_icon.png" alt="Home Icon" class="me-2" width="24" height="24">
                                 <div data-i18n="Laporan" style="font-size: 12px;">Retur Suplier</div>
                             </a>
                         </li>
@@ -315,7 +315,7 @@ use App\Enums\Menu; ?>
                     <?php if ($isAdmin || $hasPermission(Menu::LAP_RETUR_PELANGGAN, 'laporan')): ?>
                         <li class="menu-item">
                             <a href="<?= BASE_URL ?>laporan/returpel" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">
-                                <i class="menu-icon fs-5 tf-icons bx bx-purchase-tag-alt"></i>
+                            <img src="<?= BASE_URL ?>assets/img/icons/118801_refresh_icon.png" alt="Home Icon" class="me-2" width="24" height="24">
                                 <div data-i18n="Laporan" style="font-size: 12px;">Retur Pelanggan</div>
                             </a>
                         </li>
@@ -324,7 +324,7 @@ use App\Enums\Menu; ?>
                     <?php if ($isAdmin || $hasPermission(Menu::OMZET_OUTLET, 'laporan')): ?>
                         <li class="menu-item">
                             <a href="<?= BASE_URL ?>laporan/omzet_outlet" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">
-                                <i class="menu-icon fs-5 tf-icons bx bx-purchase-tag-alt"></i>
+                            <img src="<?= BASE_URL ?>assets/img/icons/chart-2.png" alt="Home Icon" class="me-2" width="24" height="24"> 
                                 <div data-i18n="Laporan" style="font-size: 12px;">Omzet Outlet</div>
                             </a>
                         </li>
@@ -333,7 +333,7 @@ use App\Enums\Menu; ?>
                     <?php if ($isAdmin || $hasPermission(Menu::OUTLET_IDLE, 'laporan')): ?>
                         <li class="menu-item">
                             <a href="<?= BASE_URL ?>laporan/outlet_idle" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">
-                                <i class="menu-icon fs-5 tf-icons bx bx-purchase-tag-alt"></i>
+                            <img src="<?= BASE_URL ?>assets/img/icons/118937_battery_caution_icon.png" alt="Home Icon" class="me-2" width="24" height="24"> 
                                 <div data-i18n="Laporan" style="font-size: 12px;">Outlet Idle</div>
                             </a>
                         </li>
@@ -342,7 +342,7 @@ use App\Enums\Menu; ?>
                     <?php if ($isAdmin || $hasPermission(Menu::PENJUALAN_OUTLET, 'laporan')): ?>
                         <li class="menu-item">
                             <a href="<?= BASE_URL ?>laporan/penjualan_outlet" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">
-                                <i class="menu-icon fs-5 tf-icons bx bx-purchase-tag-alt"></i>
+                            <img src="<?= BASE_URL ?>assets/img/icons/118811_calendar_office_icon.png" alt="Home Icon" class="me-2" width="24" height="24"> 
                                 <div data-i18n="Laporan" style="font-size: 12px;">Penjualan Outlet</div>
                             </a>
                         </li>
@@ -351,7 +351,7 @@ use App\Enums\Menu; ?>
                     <?php if ($isAdmin || $hasPermission(Menu::KATALOG, 'laporan')): ?>
                         <li class="menu-item">
                             <a href="<?= BASE_URL ?>laporan/katalog" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">
-                                <i class="menu-icon fs-5 tf-icons bx bx-purchase-tag-alt"></i>
+                            <img src="<?= BASE_URL ?>assets/img/icons/118911_document_open_icon.png" alt="Home Icon" class="me-2" width="24" height="24"> 
                                 <div data-i18n="Laporan" style="font-size: 12px;">Katalog</div>
                             </a>
                         </li>
