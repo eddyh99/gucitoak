@@ -16644,7 +16644,7 @@ html:not(.layout-footer-fixed) .content-wrapper {
 /* Ensure all text in the table is black */
 .table-striped tbody tr:nth-of-type(odd),
 .table-striped tbody tr:nth-of-type(odd) td {
-    background-color: #696cff; /* Light blue color */
+    background-color: #008DEE; /* Light blue color */
     color: white !important; /* Force white text for odd rows */
 }
 

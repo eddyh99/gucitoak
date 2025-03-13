@@ -286,7 +286,7 @@ body:has(.menu-item.laporan:hover) .sub-menu.laporan,
 
 /* Set background color and font color for all accordion items */
 #accordionExample .accordion-item {
-  background-color: #696cff; /* Background color */
+  background-color: #008DEE; /* Background color */
   color: white; /* Font color */
   margin-bottom: 0.25rem; /* Small gap between items */
   border-radius: 0.25rem;

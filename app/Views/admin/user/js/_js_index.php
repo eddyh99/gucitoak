@@ -9,7 +9,7 @@
 /* Ensure all text in the table is black */
 #table_list_user.table-striped tbody tr:nth-of-type(odd),
 #table_list_user.table-striped tbody tr:nth-of-type(odd) td {
-    background-color: #696cff; /* Light blue color */
+    background-color: #008DEE; /* Light blue color */
     color: white !important; /* Force white text for odd rows */
 }
 
