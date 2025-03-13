@@ -181,7 +181,7 @@
 }
 
 .menu-vertical, .menu-vertical .menu-block, .menu-vertical .menu-inner > .menu-item, .menu-vertical .menu-inner > .menu-header {
-  width: 11.25rem;
+  width: 13rem;
 }
 
 @media (min-width: 1200px) {
@@ -275,5 +275,112 @@ body:has(.menu-item.laporan:hover) .sub-menu.laporan,
 
 .dt-buttons {
   margin-top: 1rem !important;
+}
+
+/* Ensure the accordion has a consistent width */
+#accordionExample {
+  width: 100%; /* Ensure full width */
+  max-width: 300px; /* Set a fixed max-width if needed */
+  margin: 0 auto; /* Center the accordion if desired */
+}
+
+/* Set background color and font color for all accordion items */
+#accordionExample .accordion-item {
+  background-color: #696cff; /* Background color */
+  color: white; /* Font color */
+  margin-bottom: 0.25rem; /* Small gap between items */
+  border-radius: 0.25rem;
+  overflow: hidden; /* Ensure the border-radius is applied correctly */
+  width: 100%; /* Ensure full width */
+}
+
+/* Ensure the background color and font color cover the entire item */
+#accordionExample .accordion-header .accordion-button {
+  background-color: inherit; /* Inherit the background color from the parent */
+  color: white; /* Inherit the font color from the parent */
+  width: 100%; /* Ensure full width */
+  display: flex;
+  align-items: center; /* Center align content vertically */
+  justify-content: flex-start; /* Align content to the start */
+  padding: 0.5rem 1rem; /* Add padding for spacing */
+  position: relative; /* Ensure relative positioning for the chevron */
+  border: none; /* Remove any default borders */
+  box-shadow: none; /* Remove any default shadows */
+}
+
+/* Add small gap between headers */
+#accordionExample .accordion-header {
+  margin-bottom: 0.25rem; /* Small gap between headers */
+}
+
+/* Remove the arrow from the first item */
+.accordion-header > a.accordion-button::after {
+  display: none; /* Hide the chevron icon */
+}
+
+/* Ensure the first item has proper padding */
+.accordion-header > a.accordion-button {
+  padding-right: 1rem; /* Adjust padding as needed */
+}
+
+/* Align the accordion arrow to the right and change color to white */
+.accordion-button::after {
+  position: absolute;
+  right: 1rem; /* Adjust the spacing from the right edge */
+  transform: rotate(-90deg); /* Default rotation for collapsed state */
+  transition: transform 0.2s ease-in-out; /* Smooth transition for rotation */
+  filter: brightness(0) invert(1); /* Change the chevron color to white */
+}
+
+/* Ensure the accordion button has consistent width */
+.accordion-button {
+  text-align: left;
+  padding-right: 3.8rem; /* Add padding for the chevron */
+  width: 100%; /* Ensure consistent width */
+}
+
+/* Rotate the chevron when the accordion is expanded */
+.accordion-button:not(.collapsed)::after {
+  transform: rotate(0deg); /* Rotate back to default position */
+}
+
+/* Ensure the accordion body has the same width as the header */
+#accordionExample .accordion-body {
+  background-color: #ffffff; /* White background for the accordion body */
+  color: #000000; /* Black font color for the accordion body */
+  padding: 1rem; /* Add padding for consistency */
+  width: 100%; /* Ensure full width */
+  box-sizing: border-box; /* Include padding and border in the width calculation */
+}
+
+/* Center the accordion within the menu */
+.menu-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center align the accordion */
+  width: 100%; /* Ensure full width */
+}
+
+/* Ensure consistent width for all accordion items */
+.accordion-item {
+  width: 100%; /* Ensure all items have the same width */
+}
+
+#accordionExample .accordion-body {
+  background-color: #e5e6ff; /* White background for the accordion body */
+  color: #000000; /* Black font color for the accordion body */
+  padding: 0.5rem; /* Reduced padding */
+  width: 100%; /* Ensure full width */
+  box-sizing: border-box; /* Include padding and border in the width calculation */
+}
+
+/* Ensure links inside the accordion body have the correct text color */
+#accordionExample .accordion-body a {
+  color: #000000; /* Set text color to black */
+  text-decoration: none; /* Remove underline */
+}
+
+.menu-icon{
+    color:#000000 !important;
 }
 

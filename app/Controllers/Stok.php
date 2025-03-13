@@ -53,7 +53,7 @@ class Stok extends BaseController
             'title'     => 'Tambah Stok Barang - ' . NAMETITLE,
             'content'   => 'admin/stok/tambah_stokbarang',
             'extra'     => 'admin/stok/js/_js_tambahbarang',
-            'menuactive_persediaan'   => 'active open',
+            'menuactive_persediaan'   => 'show',
             'stokbarang_active'   => 'active', 
             'barang'    => $resultBarang,
             'cabang'    => $resultCabang

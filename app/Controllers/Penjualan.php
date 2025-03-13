@@ -189,55 +189,59 @@ class Penjualan extends BaseController
 
     public function cetakPDF($nonota)
     {
+        // Start output buffering
+        ob_start();
+    
         $logo = FCPATH . 'assets/img/logo-no-text.png';
         $data = file_get_contents($logo);
         $base64 = 'data:image/png' . ';base64,' . base64_encode($data);
-        $date = date('Y-m-d-His');
+    
         // Load view yang ingin dicetak sebagai PDF
         $mdata = $this->list_barang($nonota);
         $html = view('admin/penjualan/cetak', ['mdata' => json_decode($mdata), 'logo' => $base64]);
-
+    
         // Konfigurasi Dompdf
         $options = new Options();
         $options->set('defaultFont', 'NotaFonts');
-        
+    
         // Buat instance Dompdf
         $dompdf = new Dompdf($options);
         $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'landscape'); // HAPUS ini
+        $dompdf->setPaper([0, 0, 595.28, 10000], 'portrait'); // Width: 21cm, Height: Very large
         $dompdf->render();
-
-        $folderPath = 'assets/pdf/';
-        $fileName = "invoice-$date.pdf";
-        // Pastikan folder tersedia
-        if (!is_dir($folderPath)) {
-            mkdir($folderPath, 0777, true);
-        }
-        file_put_contents($folderPath . $fileName, $dompdf->output());
-
-        // Eksekusi print
-        // exec("print /D:\\\\NamaPrinter " . escapeshellarg($folderPath)); //windows
-        exec("lp '$folderPath . $fileName' > /dev/null 2>&1 &");
-        // exec("lp " . escapeshellarg($folderPath)); //linux
-        unlink($folderPath . $fileName); //hapus file pdf
-
-        // Return response
-        return json_encode([
-            "status" => "success",
-            "path" => "assets/pdf/$fileName"
-        ]);
-
-        // $dompdf->stream("invoice-$date.pdf", ["Attachment" => false]);
+    
+        // Clear any previous output
+        ob_end_clean();
+    
+        // Set the Content-Type header to application/pdf
+        header('Content-Type: application/pdf');
+    
+        // Stream the PDF to the browser
+        $dompdf->stream("invoice-$nonota.pdf", ["Attachment" => false]);
+        exit; // Ensure no further output is sent
     }
 
     // for testing
-    // public function cetak()
-    // {
-    //     // Load view yang ingin dicetak sebagai PDF
-    //     $mdata = $this->list_barang('MDAwMDAy');
-    //     $html = view('admin/penjualan/cetak', ['mdata' => json_decode($mdata)]);
-    //     return $html;
-    // }
+    public function cetak()
+    {
+        ob_start();
+
+        // Buat instance Dompdf
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml('<h1>Hello, World!</h1>');
+        $dompdf->setPaper('A4', 'landscape');
+        $dompdf->render();
+    
+        // Clear any previous output
+        ob_end_clean();
+    
+        // Set the Content-Type header to application/pdf
+        header('Content-Type: application/pdf');
+    
+        // Stream the PDF to the browser
+        $dompdf->stream("test.pdf", ["Attachment" => false]);
+        exit; // Ensure no further output is sent
+    }
 
 
 }

@@ -46,7 +46,7 @@
                     <div class="card border-expat w-100">
                         <div class="card-body">
                             <h5 class="card-title fw-semibold mb-4">List Pelanggan</h5>
-                            <table id="table_list" class="table table-striped" style="width:100%">
+                            <table id="table_list" class="table nowrap table-striped" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>Nama Toko</th>

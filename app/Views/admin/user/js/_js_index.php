@@ -5,7 +5,36 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<style>
+/* Ensure all text in the table is black */
+#table_list_user.table-striped tbody tr:nth-of-type(odd),
+#table_list_user.table-striped tbody tr:nth-of-type(odd) td {
+    background-color: #696cff; /* Light blue color */
+    color: white !important; /* Force white text for odd rows */
+}
 
+#table_list_user.table-striped tbody tr:nth-of-type(even),
+#table_list_user.table-striped tbody tr:nth-of-type(even) td {
+    background-color: #c8c9ff; /* Light blue color */
+    color: black !important; /* Force black text for even rows */
+}
+/* Optional: Ensure the header and other elements look consistent */
+#table_list_user thead th {
+    background-color: #007bff; /* Bootstrap primary blue */
+    color: white; /* White text for better contrast */
+}
+.excel-green {
+        background-color: #28a745 !important; /* Excel green */
+        border-color: #218838 !important; /* Slightly darker green for border */
+        color: white !important;
+    }
+
+.pdf-red {
+    background-color: #dc3545 !important; /* PDF red */
+    border-color: #bd2130 !important; /* Slightly darker red for border */
+    color: white !important;
+}
+</style>
 
 <script>
       $(function() {
@@ -26,7 +55,7 @@
                   data: null,
                   "mRender": function(data, type, full, meta) {
                         var edit = `<a href="<?= BASE_URL ?>user/edit_user/${encodeURI(btoa(full.id))}">
-                                                <i class="bx bx-edit bx-md fs-5 text-black"></i>
+                                                <i class="bx bx-edit bx-md fs-5 text-white"></i>
                                           </a>`;
                         var del = `<a href="<?= BASE_URL ?>user/hapus_user/${encodeURI(btoa(full.id))}/${encodeURI(btoa(full.username))}" class="del-data">
                                                 <i class="bx bx-trash bx-md fs-5 text-danger"></i>
@@ -40,11 +69,16 @@
             "dom": 'lBfrtip',
             "buttons": [{
                         extend: 'pdf',
+                        className: 'pdf-red',
                         exportOptions: {
                               columns: "th:not(:last-child)" //remove last column in pdf
                         }
                   },
-                  'excel'
+                  {
+                    extend: 'excelHtml5',
+                    text: 'Excel',
+                    className: 'excel-green', // Apply custom green style
+                  },
             ],
             "lengthMenu": [
                   [10, 25, 50, -1],

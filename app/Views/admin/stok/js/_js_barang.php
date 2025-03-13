@@ -30,7 +30,16 @@
         "scrollX": true,
         "dom": 'Bfrtip',
         "buttons": [
-            'excel', 'pdf',
+            {
+                extend: 'pdfHtml5',
+                text: 'PDF',
+                className: 'pdf-red', // Apply custom red style
+            },
+            {
+                extend: 'excelHtml5',
+                text: 'Excel',
+                className: 'excel-green', // Apply custom green style
+            },
         ],
         "ajax": {
             "url": "<?= BASE_URL ?>stok/list_all_stokbarang",
@@ -48,7 +57,7 @@
                 data: null,
                 render: function (data, type, row) {
                     var detail = `<a href="#" onclick='detailharga("`+encodeURI(btoa(data.kodebrg))+`")'>
-                                                <i class="bx bx-detail bx-md fs-5 text-primary"></i>
+                                                <i class="bx bx-detail bx-md fs-5 text-black"></i>
                                           </a>`;
                     return `${detail}`;
                 }

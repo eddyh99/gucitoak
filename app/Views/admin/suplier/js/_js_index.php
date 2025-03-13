@@ -36,9 +36,6 @@
             {
                   data: 'namabank'
             },
-            {
-                  data: 'anbank'
-            }
       ]
       if (role == 'admin') {
             cols.push({
@@ -59,11 +56,16 @@
             "dom": 'lBfrtip',
             "buttons": [{
                         extend: 'pdf',
+                        className: 'pdf-red',
                         exportOptions: {
                               columns: "th:not(:last-child)" //remove last column in pdf
                         }
                   },
-                  'excel'
+                  {
+                    extend: 'excelHtml5',
+                    text: 'Excel',
+                    className: 'excel-green', // Apply custom green style
+                  },
             ],
             "lengthMenu": [
                   [10, 25, 50, -1],

@@ -14634,7 +14634,7 @@ body {
 .container-xl,
 .container-xxl {
     padding-right: 1.625rem;
-    padding-left: 1.625rem;
+    padding-left: 3.5rem;
   }
 }
 
@@ -15087,7 +15087,7 @@ html:not(.layout-menu-fixed) .menu-inner-shadow {
 }
 .menu-vertical .menu-item .menu-link,
 .menu-vertical .menu-block {
-  padding: 1.625rem 1rem;
+  padding: 1.1rem 1rem;
 }
 .menu-vertical .menu-header {
   margin: 1rem 0 0.5rem 0;
@@ -15297,7 +15297,7 @@ html:not(.layout-menu-fixed) .menu-inner-shadow {
   padding: 0 1.5rem;
 }
 .layout-navbar.navbar-detached.container-xxl {
-  max-width: calc(1440px - calc(1.625rem * 2));
+  max-width: calc(1400px - calc(3.5rem * 2));
 }
 .layout-navbar-fixed .layout-navbar.navbar-detached {
   width: calc(100% - calc(1.625rem * 2) - 16.25rem);
@@ -15510,6 +15510,7 @@ html:not(.layout-footer-fixed) .content-wrapper {
 .layout-menu-fixed body:not(.modal-open) .layout-content-navbar .layout-navbar,
 .layout-menu-fixed-offcanvas body:not(.modal-open) .layout-content-navbar .layout-navbar {
   z-index: 1000;
+  margin-left:3.5rem;
 }
 
 .layout-footer-fixed .content-footer {
@@ -16638,4 +16639,29 @@ html:not(.layout-footer-fixed) .content-wrapper {
 }
 .footer.bg-light hr {
   border-color: rgba(105, 122, 141, 0.0783835294);
+}
+
+/* Ensure all text in the table is black */
+.table-striped tbody tr:nth-of-type(odd),
+.table-striped tbody tr:nth-of-type(odd) td {
+    background-color: #696cff; /* Light blue color */
+    color: white !important; /* Force white text for odd rows */
+}
+
+.table-striped tbody tr:nth-of-type(even),
+.table-striped tbody tr:nth-of-type(even) td {
+    background-color: #c8c9ff; /* Light blue color */
+    color: black !important; /* Force black text for even rows */
+}
+
+.excel-green {
+        background-color: #28a745 !important; /* Excel green */
+        border-color: #218838 !important; /* Slightly darker green for border */
+        color: white !important;
+    }
+
+.pdf-red {
+    background-color: #dc3545 !important; /* PDF red */
+    border-color: #bd2130 !important; /* Slightly darker red for border */
+    color: white !important;
 }

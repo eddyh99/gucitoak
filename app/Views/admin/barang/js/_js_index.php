@@ -11,7 +11,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 
-
 <script>
       $(function() {
             setTimeout(() => {
@@ -50,6 +49,11 @@
             {
                   data: "harga1",
                   "mRender": function(data, type, full, meta) {
+                      // Check if the value is NaN
+                        if (data === null || data === undefined) {
+                            return ""; // Replace null/undefined with blank
+                        }
+
                         if (type === 'display') {
                               return parseFloat(data).toLocaleString('en-US', {
                                     minimumFractionDigits: 0,
@@ -62,6 +66,10 @@
             {
                   data: "harga2",
                   "mRender": function(data, type, full, meta) {
+                      // Check if the value is NaN
+                        if (data === null || data === undefined) {
+                            return ""; // Replace null/undefined with blank
+                        }
                         if (type === 'display') {
                               return parseFloat(data).toLocaleString('en-US', {
                                     minimumFractionDigits: 0,
@@ -74,6 +82,9 @@
             {
                   data: "harga3",
                   "mRender": function(data, type, full, meta) {
+                        if (data === null || data === undefined) {
+                            return ""; // Replace null/undefined with blank
+                        }
                         if (type === 'display') {
                               return parseFloat(data).toLocaleString('en-US', {
                                     minimumFractionDigits: 0,
@@ -89,7 +100,7 @@
                   data: null,
                   "mRender": function(data, type, full, meta) {
                         var detail = `<a href="#" onclick='detailharga("` + encodeURI(btoa(full.id)) + `")'>
-                                                <i class="bx bx-detail bx-md fs-5 text-primary"></i>
+                                                <i class="bx bx-detail bx-md fs-5 text-white"></i>
                                           </a>`;
                         var edit = `<a href="<?= BASE_URL ?>barang/edit_barang/${encodeURI(btoa(full.id))}">
                                                 <i class="bx bx-edit bx-md fs-5 text-black"></i>
@@ -106,11 +117,16 @@
             "dom": 'lBfrtip',
             "buttons": [{
                         extend: 'pdf',
+                        className: 'pdf-red',
                         exportOptions: {
                               columns: "th:not(:last-child)" //remove last column in pdf
                         }
                   },
-                  'excel'
+                   {
+                    extend: 'excelHtml5',
+                    text: 'Excel',
+                    className: 'excel-green', // Apply custom green style
+                  },
             ],
             "lengthMenu": [
                   [10, 25, 50, -1],

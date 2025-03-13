@@ -2,7 +2,21 @@
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<style>
+    /* Custom light blue striped color for the table */
+#table_list.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #e6f7ff; /* Light blue color */
+}
+#table_list.table-striped tbody tr:nth-of-type(even) {
+    background-color: #add8e6; /* Light blue color */
+}
 
+/* Optional: Ensure the header and other elements look consistent */
+#table_list thead th {
+    background-color: #007bff; /* Bootstrap primary blue */
+    color: white; /* White text for better contrast */
+}
+</style>
 
 <script>
 $(function () { 
@@ -140,24 +154,21 @@ var table=$('#table_list').DataTable({
 
     function generatePDF(nonota) {
         console.log(nonota);
-        
-        $.ajax({
-            url: "<?= BASE_URL ?>penjualan/cetakPDF/" + nonota,
-            type: "GET",
-            success: function (response) {
-                const mdata = JSON.parse(response)
-                if (mdata.status === "success") {
-                    alert("Berhasil print PDF!");
-                    // window.open("<?= BASE_URL ?>" + mdata.path, '_blank');
-                } else {
-                    alert("Gagal print PDF!");
-                }
-            },
-            error: function () {
-                alert("Terjadi kesalahan saat menyimpan PDF.");
-            }
-        });
-}
+    
+        // Open the PDF in a new tab
+        const pdfWindow = window.open("<?= BASE_URL ?>penjualan/cetakPDF/" + nonota, '_blank');
+    
+        // Check if the new window was successfully opened
+        if (pdfWindow) {
+            // Wait for the PDF to load, then trigger the print dialog
+            pdfWindow.onload = function () {
+                pdfWindow.print(); // Trigger the print dialog
+            };
+        } else {
+            // Handle the case where the new window could not be opened
+            alert("Gagal membuka PDF. Pastikan pop-up diizinkan di browser Anda.");
+        }
+    }
 
 
 </script>

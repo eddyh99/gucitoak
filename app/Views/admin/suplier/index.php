@@ -46,7 +46,7 @@
                     <div class="card border-expat w-100">
                         <div class="card-body">
                             <h5 class="card-title fw-semibold mb-4">List Suplier</h5>
-                            <table id="table_list" class="table table-striped" style="width:100%">
+                            <table id="table_list" class="table nowrap table-striped" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>Nama Suplier</th>
@@ -56,7 +56,6 @@
                                         <th>No. Telp</th>
                                         <th>No. Rek</th>
                                         <th>Nama Bank</th>
-                                        <th>An. Rek</th>
                                         <?php if($isAdmin): ?>
                                         <th>Action</th>
                                         <?php endif ?>

@@ -6,8 +6,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 
-
-
 <script>
       $(function() {
             setTimeout(() => {
@@ -37,11 +35,16 @@
             "dom": 'lBfrtip',
             "buttons": [{
                         extend: 'pdf',
+                        className: 'pdf-red',
                         exportOptions: {
                               columns: "th:not(:last-child)" //remove last column in pdf
                         }
                   },
-                  'excel'
+                   {
+                    extend: 'excelHtml5',
+                    text: 'Excel',
+                    className: 'excel-green', // Apply custom green style
+                  },
             ],
             "lengthMenu": [
                   [10, 25, 50, -1],
