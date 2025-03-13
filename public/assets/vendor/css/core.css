@@ -46,7 +46,7 @@
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.53;
   --bs-body-color: #697a8d;
-  --bs-body-bg: #f5f5f9;
+  --bs-body-bg: #f1fbff;
 }
 
 *,
@@ -3838,7 +3838,7 @@ textarea.form-control-lg {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #fff;
+  background-color: #f1fbff;
   background-clip: border-box;
   border: 0 solid #d9dee3;
   border-radius: 0.5rem;

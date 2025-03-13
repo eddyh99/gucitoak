@@ -125,7 +125,7 @@ use App\Enums\Menu; ?>
                     <span>Persediaan</span>
                 </button>
               </h2>
-              <div id="collapsePersediaan" class="accordion-collapse active" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+              <div id="collapsePersediaan" class="accordion-collapse show" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                     <?php if ($isAdmin || $hasPermission(Menu::INPUT_STOK, 'persediaan')): ?>
                         <li class="menu-item <?= isset($stokbarang_active) ? 'active' : '' ?>">
@@ -195,7 +195,7 @@ use App\Enums\Menu; ?>
                     <span>Transaksi</span>
                 </button>
               </h2>
-              <div id="collapseTransaksi" class="accordion-collapse active" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+              <div id="collapseTransaksi" class="accordion-collapse show" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                         <?php if ($isAdmin || $hasPermission(Menu::PEMBELIAN, 'transaksi')): ?>
                             <li class="menu-item">
@@ -265,7 +265,7 @@ use App\Enums\Menu; ?>
                     <span>Laporan</span>
                 </button>
               </h2>
-              <div id="collapseLaporan" class="accordion-collapse active" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+              <div id="collapseLaporan" class="accordion-collapse show" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                     <?php if ($isAdmin || $hasPermission(Menu::STOK_MIN_BARANG, 'laporan')): ?>
                         <li class="menu-item">
