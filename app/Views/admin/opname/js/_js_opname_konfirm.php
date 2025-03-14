@@ -46,7 +46,7 @@
 			// { 
             //     data: null, "mRender": function(data, type, full, meta) {
             //         var edit = `<a href="<?= BASE_URL ?>barang/edit_barang/${encodeURI(btoa(full.id))}">
-            //                         <i class="bx bx-edit bx-md fs-5 text-black"></i>
+            //                         <img src="<?= BASE_URL ?>assets/img/icons/pencil.png" alt="Home Icon" width="30" height="30">
             //                     </a>`;
             //         var del = `<a href="<?= BASE_URL ?>barang/hapus_barang/${encodeURI(btoa(full.id))}">
             //                         <img src="<?= BASE_URL ?>assets/img/icons/118794_process_stop_icon.png" alt="Home Icon" width="20" height="20">

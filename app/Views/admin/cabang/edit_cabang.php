@@ -83,7 +83,9 @@
                                     </div>
                                 </div>
                                 <small>Tips mencari Latitude dan Longitude<a target="_blank" href="https://support.google.com/maps/answer/18539?hl=en&co=GENIE.Platform%3DDesktop"> click disini</a></small><br><br>
-                                <button type="submit" class="btn btn-primary">Edit Data</button>
+                                <button type="submit"  class="btn btn-primary d-flex align-items-center">
+    <img src="<?= BASE_URL ?>assets/img/icons/118856_floppy_media_icon.png" alt="Floppy Disk" class="me-2" width="20" height="20">
+    Edit Data</button>
                             </form>
                         </div>
                     </div>
