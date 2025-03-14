@@ -32,7 +32,9 @@ var table=$('#table_list').DataTable({
         "dom": 'lBfrtip',
         "buttons": [
               {
-                    extend: 'pdf'
+                    extend: 'pdf',
+                    className: 'pdf-red',
+                        text: '<img src="<?= BASE_URL ?>assets/img/icons/118861_printer_icon.png" alt="add" class="me-2" width="20" height="20"> PDF'
               }
               , 
               'excel'

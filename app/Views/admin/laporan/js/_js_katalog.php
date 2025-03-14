@@ -22,7 +22,8 @@
         "buttons": [
             {
                 extend: 'pdfHtml5',
-                text: 'Export PDF',
+                className: 'pdf-red',
+                text: '<img src="<?= BASE_URL ?>assets/img/icons/118861_printer_icon.png" alt="add" class="me-2" width="20" height="20"> PDF',
                 action: function (e, dt, button, config) {
                     Swal.fire({
                         title: 'Processing...',

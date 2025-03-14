@@ -65,7 +65,7 @@ if(!empty(session('failed'))): ?>
                                     <button class="btn btn-primary" id="lihat">Lihat</button>
                                 </div>
                             </div>
-                            <h5 class="card-title fw-semibold mb-4 mt-3">Mutasi Penjualan</h5>
+                            <h5 class="card-title fw-semibold mb-4 mt-3">Retur Suplier</h5>
                             <table id="table_list" class="table table-striped" style="width:100%">
                                 <thead>
                                     <tr>

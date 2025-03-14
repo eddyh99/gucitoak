@@ -36,7 +36,8 @@
             "dom": 'lBfrtip',
             "buttons": [{
                         extend: 'pdf',
-                        className: 'pdf-red', // Apply custom green style
+                        className: 'pdf-red',
+                        text: '<img src="<?= BASE_URL ?>assets/img/icons/118861_printer_icon.png" alt="add" class="me-2" width="20" height="20"> PDF', // Apply custom green style
                         exportOptions: {
                               columns: "th:not(:last-child)" //remove last column in pdf
                         }
