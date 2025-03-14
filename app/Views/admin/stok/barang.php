@@ -31,7 +31,7 @@
                         <div class="col-lg-12 col-md-12 col-12 mb-2">
                             <div class="card">
                                 <div class="card-body">
-                                    <a href="<?= BASE_URL?>stok/tambah_stokbarang" class="btn btn-primary">Tambah Stok Awal</a>
+                                    <a href="<?= BASE_URL?>stok/tambah_stokbarang" class="btn btn-primary"><img src="<?= BASE_URL ?>assets/img/icons/plus.png" alt="add" class="me-2" width="20" height="20"> Tambah Stok Awal</a>
                                 </div>
                             </div>
                         </div>

@@ -35,7 +35,7 @@ if(!empty(session('failed'))): ?>
                             <div class="card">
                                 <div class="card-body">
                                     <a href="<?= BASE_URL?>pembelian/tambah_pembelian" class="btn btn-primary">
-                                        Input Nota Pembelian
+                                    <img src="<?= BASE_URL ?>assets/img/icons/plus.png" alt="add" class="me-2" width="20" height="20"> Input Nota Pembelian
                                     </a>
                                 </div>
                             </div>

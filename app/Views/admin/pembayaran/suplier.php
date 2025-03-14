@@ -35,7 +35,7 @@ if(!empty(session('failed'))): ?>
                             <div class="card">
                                 <div class="card-body">
                                     <a href="<?= BASE_URL?>pembayaran/suplier/tambah" class="btn btn-primary">
-                                        Input Pembayaran
+                                    <img src="<?= BASE_URL ?>assets/img/icons/plus.png" alt="add" class="me-2" width="20" height="20"> Input Pembayaran
                                     </a>
                                 </div>
                             </div>
