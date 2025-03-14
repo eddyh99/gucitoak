@@ -40,7 +40,11 @@ var table=$('#table_list').DataTable({
                     }
               }
               , 
-              'excel'
+              {
+                    extend: 'excelHtml5',
+                   text: '<img src="<?= BASE_URL ?>assets/img/icons/118918_edit_copy_icon.png" alt="add" class="me-2" width="20" height="20"> Excel',
+                    className: 'excel-green', // Apply custom green style
+                  },
         ],
         "lengthMenu": [
               [ 10, 25, 50, -1 ],
