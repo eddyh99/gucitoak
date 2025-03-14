@@ -63,7 +63,7 @@
             { data: null,
 		    render: function (data, type, row) {
                     var detail = `<a href="#" onclick='detailInvoice("`+encodeURI(btoa(data.detailnota))+`")'>
-                                                <i class="bx bx-detail bx-md fs-5 text-primary"></i>
+                                                <img src="<?= BASE_URL ?>assets/img/icons/118864_important_emblem_icon.png" alt="Home Icon" width="20" height="20">
                                           </a>`;
                     return `${detail}`;
                 }

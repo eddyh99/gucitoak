@@ -18,7 +18,7 @@
                                                 <i class="bx bx-edit bx-md fs-5 text-black"></i>
                                           </a>`;
                               var del = `<a href="<?= BASE_URL ?>user/hapus_user/${encodeURI(btoa(full.username))}">
-                                                <i class="bx bx-trash bx-md fs-5 text-danger"></i>
+                                                <img src="<?= BASE_URL ?>assets/img/icons/118794_process_stop_icon.png" alt="Home Icon" width="20" height="20">
                                           </a>`;
                               return `${edit} ${del}`;
                         } 

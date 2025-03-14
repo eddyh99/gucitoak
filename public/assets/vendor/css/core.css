@@ -1943,7 +1943,7 @@ progress {
   }
 }
 .table {
-  --bs-table-bg: #007bff;
+  --bs-table-bg: #008dee;
   --bs-table-accent-bg: transparent;
   --bs-table-striped-color: #697a8d;
   --bs-table-striped-bg: #f9fafb;
@@ -3838,7 +3838,7 @@ textarea.form-control-lg {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #f1fbff;
+  background-color: #D0E7FA;
   background-clip: border-box;
   border: 0 solid #d9dee3;
   border-radius: 0.5rem;
