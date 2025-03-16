@@ -93,7 +93,9 @@
                                     </div>
                                 </div>
 
-                                <button type="button" id="submit" class="btn btn-primary">Simpan</button>
+                                <button type="button" id="submit" class="btn btn-primary d-flex align-items-center">
+    <img src="<?= BASE_URL ?>assets/img/icons/118856_floppy_media_icon.png" alt="Floppy Disk" class="me-2" width="20" height="20">
+    Simpan</button>
                         </div>
                     </div>
                 </div>

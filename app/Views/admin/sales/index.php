@@ -36,7 +36,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <a href="<?= BASE_URL?>sales/tambah_sales" class="btn btn-primary">
-                                        Tambah Sales
+                                    <img src="<?= BASE_URL ?>assets/img/icons/plus.png" alt="add" class="me-2" width="20" height="20"> Tambah Sales
                                     </a>
                                 </div>
                             </div>

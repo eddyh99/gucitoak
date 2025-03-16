@@ -35,7 +35,7 @@
                         <div class="col-lg-12 col-md-12 col-12 mb-2">
                             <div class="card">
                                 <div class="card-body">
-                                    <a href="<?= BASE_URL?>suplier/tambah_suplier" class="btn btn-primary">Tambah Suplier</a>
+                                    <a href="<?= BASE_URL?>suplier/tambah_suplier" class="btn btn-primary"><img src="<?= BASE_URL ?>assets/img/icons/plus.png" alt="add" class="me-2" width="20" height="20"> Tambah Suplier</a>
                                 </div>
                             </div>
                         </div>

@@ -32,7 +32,7 @@
                         <div class="col-lg-12 col-md-12 col-12 mb-2">
                             <div class="card">
                                 <div class="card-body">
-                                    <a href="<?= BASE_URL?>sales/assign_sales" class="btn btn-primary">Assign Sales</a>
+                                    <a href="<?= BASE_URL?>sales/assign_sales" class="btn btn-primary"> <img src="<?= BASE_URL ?>assets/img/icons/plus.png" alt="add" class="me-2" width="20" height="20"> Assign Sales</a>
                                 </div>
                             </div>
                         </div>

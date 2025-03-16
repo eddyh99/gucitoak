@@ -53,10 +53,10 @@
                   data: null,
                   "mRender": function(data, type, full, meta) {
                         var edit = `<a href="<?= BASE_URL ?>sales/edit_sales/${encodeURI(btoa(full.id))}">
-                                                <i class="bx bx-edit bx-md fs-5 text-black"></i>
+                                                <img src="<?= BASE_URL ?>assets/img/icons/pencil.png" alt="Home Icon" width="30" height="30">
                                           </a>`;
                         var del = `<a href="<?= BASE_URL ?>sales/hapus_sales/${encodeURI(btoa(full.id))}" class="del-data">
-                                                <i class="bx bx-trash bx-md fs-5 text-danger"></i>
+                                                <img src="<?= BASE_URL ?>assets/img/icons/118794_process_stop_icon.png" alt="Home Icon" width="20" height="20">
                                           </a>`;
                         return `${edit} ${del}`;
                   }
@@ -68,13 +68,14 @@
             "buttons": [{
                         extend: 'pdf',
                         className: 'pdf-red',
+                        text: '<img src="<?= BASE_URL ?>assets/img/icons/118861_printer_icon.png" alt="add" class="me-2" width="20" height="20"> PDF',
                         exportOptions: {
                               columns: "th:not(:last-child)" //remove last column in pdf
                         }
                   },
                    {
                     extend: 'excelHtml5',
-                    text: 'Excel',
+                   text: '<img src="<?= BASE_URL ?>assets/img/icons/118918_edit_copy_icon.png" alt="add" class="me-2" width="20" height="20"> Excel',
                     className: 'excel-green', // Apply custom green style
                   },
             ],

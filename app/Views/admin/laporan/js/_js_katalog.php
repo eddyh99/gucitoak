@@ -22,7 +22,8 @@
         "buttons": [
             {
                 extend: 'pdfHtml5',
-                text: 'Export PDF',
+                className: 'pdf-red',
+                text: '<img src="<?= BASE_URL ?>assets/img/icons/118861_printer_icon.png" alt="add" class="me-2" width="20" height="20"> PDF',
                 action: function (e, dt, button, config) {
                     Swal.fire({
                         title: 'Processing...',
@@ -81,7 +82,11 @@
                     });
                 }
             },
-            'excel'
+            {
+                    extend: 'excelHtml5',
+                   text: '<img src="<?= BASE_URL ?>assets/img/icons/118918_edit_copy_icon.png" alt="add" class="me-2" width="20" height="20"> Excel',
+                    className: 'excel-green', // Apply custom green style
+                  },
         ],
         "lengthMenu": [
             [10, 25, 50, -1],

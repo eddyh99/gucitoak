@@ -90,7 +90,7 @@ var table=$('#table_list').DataTable({
 		{ data: null,
 		    render: function (data, type, row) {
                     var detail = `<a href="#" onclick='detailbarang("`+encodeURI(btoa(data.nonota))+`")'>
-                                                <i class="bx bx-detail bx-md fs-5 text-primary"></i>
+                                                <img src="<?= BASE_URL ?>assets/img/icons/118864_important_emblem_icon.png" alt="Home Icon" width="20" height="20">
                                           </a>`;
                     // Tombol Edit
                     var terima = data.is_terima != 1 ? `<a href="#" onclick='terimaBarang("` + encodeURI(btoa(data.nonota)) + `")'>

@@ -33,11 +33,12 @@
             {
                 extend: 'pdfHtml5',
                 text: 'PDF',
-                className: 'pdf-red', // Apply custom red style
+                className: 'pdf-red',
+                        text: '<img src="<?= BASE_URL ?>assets/img/icons/118861_printer_icon.png" alt="add" class="me-2" width="20" height="20"> PDF', // Apply custom red style
             },
             {
                 extend: 'excelHtml5',
-                text: 'Excel',
+               text: '<img src="<?= BASE_URL ?>assets/img/icons/118918_edit_copy_icon.png" alt="add" class="me-2" width="20" height="20"> Excel',
                 className: 'excel-green', // Apply custom green style
             },
         ],

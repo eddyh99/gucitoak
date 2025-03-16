@@ -35,7 +35,7 @@ if(!empty(session('failed'))): ?>
                             <div class="card">
                                 <div class="card-body">
                                     <a href="<?= BASE_URL?>pembayaran/suplier/tambah" class="btn btn-primary">
-                                        Input Pembayaran
+                                    <img src="<?= BASE_URL ?>assets/img/icons/plus.png" alt="add" class="me-2" width="20" height="20"> Input Pembayaran
                                     </a>
                                 </div>
                             </div>
@@ -117,7 +117,7 @@ if(!empty(session('failed'))): ?>
         </table>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><img src="<?= BASE_URL ?>assets/img/icons/118788_media_playback_stop_icon.png" alt="Home Icon" width="20" height="20">Close</button>
       </div>
     </div>
   </div>

@@ -20,11 +20,17 @@
         "dom": 'lBfrtip',
         "buttons": [{
                 extend: 'pdf',
+                className: 'pdf-red',
+                        text: '<img src="<?= BASE_URL ?>assets/img/icons/118861_printer_icon.png" alt="add" class="me-2" width="20" height="20"> PDF',
                 exportOptions: {
                     columns: "th:not(:last-child)" //remove last column in pdf
                 }
             },
-            'excel'
+            {
+                    extend: 'excelHtml5',
+                   text: '<img src="<?= BASE_URL ?>assets/img/icons/118918_edit_copy_icon.png" alt="add" class="me-2" width="20" height="20"> Excel',
+                    className: 'excel-green', // Apply custom green style
+                  },
         ],
         "lengthMenu": [
             [10, 25, 50, -1],
@@ -70,7 +76,7 @@
                 data: null,
                 render: function(data, type, row) {
                     var detail = `<a href="#" onclick='detailbarang("` + encodeURI(btoa(data.nonota)) + `")'>
-                                                <i class="bx bx-detail bx-md fs-5 text-primary"></i>
+                                                <img src="<?= BASE_URL ?>assets/img/icons/118864_important_emblem_icon.png" alt="Home Icon" width="20" height="20">
                                           </a>`;
                     return `${detail}`;
                 }

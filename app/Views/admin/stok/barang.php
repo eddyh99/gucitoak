@@ -31,7 +31,7 @@
                         <div class="col-lg-12 col-md-12 col-12 mb-2">
                             <div class="card">
                                 <div class="card-body">
-                                    <a href="<?= BASE_URL?>stok/tambah_stokbarang" class="btn btn-primary">Tambah Stok Awal</a>
+                                    <a href="<?= BASE_URL?>stok/tambah_stokbarang" class="btn btn-primary"><img src="<?= BASE_URL ?>assets/img/icons/plus.png" alt="add" class="me-2" width="20" height="20"> Tambah Stok Awal</a>
                                 </div>
                             </div>
                         </div>
@@ -101,7 +101,7 @@
         </table>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><img src="<?= BASE_URL ?>assets/img/icons/118788_media_playback_stop_icon.png" alt="Home Icon" width="20" height="20">Close</button>
       </div>
     </div>
   </div>
