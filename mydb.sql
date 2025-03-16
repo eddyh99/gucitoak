@@ -1,9 +1,9 @@
 /*M!999999\- enable the sandbox mode */ 
--- MariaDB dump 10.19-11.4.4-MariaDB, for Linux (x86_64)
+-- MariaDB dump 10.19-11.7.2-MariaDB, for Linux (x86_64)
 --
 -- Host: localhost    Database: trxspider_gucitoak
 -- ------------------------------------------------------
--- Server version	11.4.4-MariaDB
+-- Server version	11.7.2-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -22,7 +22,7 @@
 
 DROP TABLE IF EXISTS `assignsales`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `assignsales` (
   `id_sales` int(11) NOT NULL,
   `id_barang` int(11) NOT NULL,
@@ -52,7 +52,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `barang`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `barang` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `namabarang` varchar(100) NOT NULL,
@@ -100,7 +100,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `barang_detail`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `barang_detail` (
   `barcode` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `barang_id` int(11) NOT NULL,
@@ -130,7 +130,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `cabang`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cabang` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `namacabang` varchar(100) NOT NULL,
@@ -165,7 +165,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `cicilansuplier`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cicilansuplier` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_nota` int(11) NOT NULL,
@@ -199,7 +199,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `cicilansuplier_detail`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cicilansuplier_detail` (
   `cicilan_id` int(11) NOT NULL,
   `tanggal` date NOT NULL,
@@ -234,7 +234,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `disposal_detail`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `disposal_detail` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tanggal` date NOT NULL,
@@ -265,7 +265,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `gaji`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `gaji` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `sales_id` int(11) NOT NULL,
@@ -299,7 +299,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `harga`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `harga` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_barang` int(11) NOT NULL,
@@ -364,7 +364,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `kategori`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `kategori` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `namakategori` varchar(20) NOT NULL,
@@ -401,7 +401,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `pelanggan`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `pelanggan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `namapelanggan` varchar(100) NOT NULL,
@@ -440,7 +440,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `pembayaran`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `pembayaran` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nonota` varchar(6) NOT NULL,
@@ -471,7 +471,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `pembayaran_detail`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `pembayaran_detail` (
   `bayar_id` int(11) NOT NULL,
   `tanggal` date NOT NULL,
@@ -501,7 +501,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `pembelian`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `pembelian` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nonota` varchar(30) NOT NULL,
@@ -534,7 +534,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `pembelian_detail`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `pembelian_detail` (
   `id` int(11) NOT NULL,
   `barcode` varchar(30) NOT NULL,
@@ -566,7 +566,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `pengguna`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `pengguna` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(10) NOT NULL,
@@ -603,7 +603,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `penjualan`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `penjualan` (
   `nonota` varchar(6) NOT NULL,
   `tanggal` datetime NOT NULL,
@@ -612,6 +612,7 @@ CREATE TABLE `penjualan` (
   `method` enum('cash','tempo') NOT NULL,
   `waktu` int(11) NOT NULL,
   `discount` int(11) NOT NULL,
+  `ppn` decimal(5,2) NOT NULL DEFAULT 0.00,
   `is_terima` tinyint(1) DEFAULT 0,
   PRIMARY KEY (`nonota`),
   KEY `pelanggan_id` (`pelanggan_id`),
@@ -628,10 +629,10 @@ CREATE TABLE `penjualan` (
 LOCK TABLES `penjualan` WRITE;
 /*!40000 ALTER TABLE `penjualan` DISABLE KEYS */;
 INSERT INTO `penjualan` VALUES
-('000001','2024-12-03 00:00:00',1,1,'tempo',7,0,1),
-('000002','2024-11-13 02:25:36',2,4,'tempo',5,0,0),
-('000003','2024-11-13 02:25:36',2,4,'tempo',5,0,1),
-('000004','2025-01-21 07:54:27',1,3,'cash',0,0,0);
+('000001','2024-12-03 00:00:00',1,1,'tempo',7,0,0.00,1),
+('000002','2024-11-13 02:25:36',2,4,'tempo',5,0,0.00,0),
+('000003','2024-11-13 02:25:36',2,4,'tempo',5,0,0.00,1),
+('000004','2025-01-21 07:54:27',1,3,'cash',0,0,0.00,0);
 /*!40000 ALTER TABLE `penjualan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -641,7 +642,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `penjualan_detail`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `penjualan_detail` (
   `nonota` varchar(6) NOT NULL,
   `barcode` varchar(30) NOT NULL,
@@ -673,7 +674,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `penyesuaian`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `penyesuaian` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `barcode` varchar(30) NOT NULL,
@@ -708,7 +709,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `retur_beli`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `retur_beli` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_suplier` int(11) NOT NULL,
@@ -737,7 +738,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `retur_beli_detail`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `retur_beli_detail` (
   `id` int(11) NOT NULL,
   `barcode` varchar(30) NOT NULL,
@@ -766,7 +767,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `retur_jual`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `retur_jual` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tanggal` datetime NOT NULL,
@@ -795,7 +796,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `retur_jual_detail`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `retur_jual_detail` (
   `id` int(11) NOT NULL,
   `barcode` varchar(30) NOT NULL,
@@ -824,7 +825,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `sales`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `sales` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `namasales` varchar(100) NOT NULL,
@@ -878,7 +879,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `satuan`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `satuan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `namasatuan` varchar(10) NOT NULL,
@@ -910,7 +911,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `suplier`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `suplier` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `namasuplier` varchar(100) NOT NULL,
@@ -947,7 +948,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `user_role`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user_role` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `pengguna_id` int(11) NOT NULL,
@@ -980,4 +981,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*M!100616 SET NOTE_VERBOSITY=@OLD_NOTE_VERBOSITY */;
 
--- Dump completed on 2025-02-03 23:14:37
+-- Dump completed on 2025-03-16 14:29:53
