@@ -5,6 +5,30 @@ use App\Enums\Menu;
 
 class Laporan extends BaseController
 {
+
+    public function barangexp() {
+        // if (!hasPermission(Menu::STOK_MIN_BARANG, 'laporan')) {
+        //     return view('errors/html/error_403');
+        // }
+        $mdata = [
+            'title'     => 'Laporan Barang Expired - ' . NAMETITLE,
+            'content'   => 'admin/laporan/barang-expired',
+            'extra'     => 'admin/laporan/js/_js_barang-exp',
+            'menuactive_laporan'   => 'active open',
+            'user_active'   => 'active'
+        ];
+
+        return view('admin/layout/wrapper', $mdata);
+    }
+
+    public function get_barang_expired(){
+        $url = URLAPI . "/v1/laporan/get_barangexpired";
+		$response = gucitoakAPI($url);
+        $result = $response->message;
+        echo json_encode($result);
+        
+    }
+
     public function barang() {
         if (!hasPermission(Menu::STOK_MIN_BARANG, 'laporan')) {
             return view('errors/html/error_403');

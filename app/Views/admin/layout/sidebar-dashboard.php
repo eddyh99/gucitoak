@@ -267,6 +267,12 @@ use App\Enums\Menu; ?>
               </h2>
               <div id="collapseLaporan" class="accordion-collapse show" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
+                <li class="menu-item">
+                            <a href="<?= BASE_URL ?>laporan/barangexp" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">
+                            <img src="<?= BASE_URL ?>assets/img/icons/118911_document_open_icon.png" alt="Home Icon" class="me-2" width="24" height="24"> 
+                                <div data-i18n="Laporan" style="font-size: 12px;">Barang Expired</div>
+                            </a>
+                    </li>
                     <?php if ($isAdmin || $hasPermission(Menu::STOK_MIN_BARANG, 'laporan')): ?>
                         <li class="menu-item">
                             <a href="<?= BASE_URL ?>laporan/barang" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">
