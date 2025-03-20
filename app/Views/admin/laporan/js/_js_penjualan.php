@@ -60,17 +60,12 @@
             {
                 data: 'namasales'
             },
-            {
-                data: 'amount',
-                "mRender": function(data, type, full, meta) {
-                    if (type === 'display') {
-                        return parseFloat(data).toLocaleString('en-US', {
-                            minimumFractionDigits: 0,
-                            maximumFractionDigits: 0
-                        });
-                    }
-                    return data;
-                }
+            { 
+            data: 'amount',
+            render: function(data, type, row) {
+                let total = (row.amount - row.discount) + (row.ppn * (row.amount - row.discount));
+                return $.fn.dataTable.render.number('.', ',', 0, '').display(total);
+            } 
             },
             {
                 data: null,
@@ -106,10 +101,15 @@
                 let harga = parseFloat(item.harga);
                 let jumlah = parseInt(item.jumlah);
                 let total = jumlah * harga;
+                let diskon = parseFloat(item.discount);
+                let ppn = parseFloat(item.ppn) * (total- diskon);
+                let totalHarga = total - diskon + ppn;
 
                 // Format harga and total to IDR format
                 let hargaFormatted = harga.toLocaleString("id-ID");
-                let totalFormatted = total.toLocaleString("id-ID");
+                let diskonFormatted = diskon.toLocaleString("id-ID");
+                let ppnFormatted = ppn.toLocaleString("id-ID");
+                let totalFormatted = totalHarga.toLocaleString("id-ID");
 
                 // Construct the HTML for each row
                 html += `
@@ -117,6 +117,8 @@
                         <td>${item.namabarang}</td>
                         <td>${jumlah}</td>
                         <td>${hargaFormatted}</td>
+                        <td>${diskonFormatted}</td>
+                        <td>${ppnFormatted}</td>
                         <td>${totalFormatted}</td>
                     </tr>
                 `;
