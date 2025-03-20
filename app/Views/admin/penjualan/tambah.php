@@ -154,14 +154,14 @@
                                                 </tr>
                                                 <tr>
                                                     <td colspan="5" style="text-align: right;">Diskon:</td>
-                                                    <td><input type="number" id="diskon" class="form-control form-control-sm" placeholder="-" min="0" style="width: 145px;"></td>
+                                                    <td><input type="number" id="diskon" name="diskon" class="form-control form-control-sm" placeholder="-" min="0" style="width: 145px;"></td>
                                                     <td></td>
                                                 </tr>
                                                 <tr>
                                                     <td colspan="5" style="text-align: right;">PPN (%):</td>
                                                     <td>
                                                         <div class="d-flex gap-1">
-                                                            <input type="number" id="ppn" class="form-control form-control-sm" placeholder="0%" min="0" max="100" style="width: 70px;">
+                                                            <input type="number" id="ppn" name="ppn" class="form-control form-control-sm" placeholder="0%" min="0" max="100" style="width: 70px;">
                                                             <input type="number" id="hasil_ppn" class="form-control form-control-sm" placeholder="-" min="0" style="width: 70px;" readonly>
                                                         </div>
                                                     </td>

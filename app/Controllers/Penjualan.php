@@ -144,6 +144,8 @@ class Penjualan extends BaseController
             'sales_id'      => trim($this->request->getVar('sales')),
             'method'        => trim(htmlspecialchars($this->request->getVar('pembayaran'))),
             'waktu'         => trim(htmlspecialchars($this->request->getVar('lama'))),
+            'discount'      => trim($this->request->getVar('diskon')),
+            'ppn'           => trim($this->request->getVar('ppn')),
             'detail'        => $_SESSION["barangjual"]
         ];
         
@@ -156,10 +158,10 @@ class Penjualan extends BaseController
         // Check response API
         if ($response->code == 200 || $response->code == 201) {
             $this->cetakPDF(base64_encode($result->nonota));
-            session()->setFlashdata('success', $result->success);
+            session()->setFlashdata('success', $result->message);
             return redirect()->to(BASE_URL . "penjualan");
         }else{
-            session()->setFlashdata('failed', $result);
+            session()->setFlashdata('failed', $result->message);
             return redirect()->to(BASE_URL . "penjualan/tambah_penjualan")->withInput();
         }
 

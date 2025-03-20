@@ -26,7 +26,8 @@
         }
 
         p {
-            margin: 0 0; /* Mengurangi margin antar paragraf */
+            margin: 0 0;
+            /* Mengurangi margin antar paragraf */
         }
 
         table {
@@ -59,6 +60,7 @@
             margin-top: 10px;
             font-size: 10px;
         }
+
         .signature-line {
             display: block;
             width: 90%;
@@ -75,17 +77,17 @@
                 <p>No Faktur: <?= $mdata[0]->nonota ?? '-' ?></p>
                 <p>Tanggal: <?= $mdata[0]->tanggal ?? '-' ?></p>
                 <table style="width: 100%; border-collapse: collapse;">
-        <tr>
-            <td style="width: 60px; vertical-align: top;">
-                <img src="<?= $logo ?>" alt="logo" width="50">
-            </td>
-            <td style="vertical-align: top;">
-                <p><strong>GUCI LUWAK</strong></p>
-                <p>Alamat: Perum GSM Kaja, Jln. Cempaka Kaja No 99, Gianyar</p>
-                <p>Telp: 085648247182, 0361-4794548</p>
-            </td>
-        </tr>
-    </table>
+                    <tr>
+                        <td style="width: 60px; vertical-align: top;">
+                            <img src="<?= $logo ?>" alt="logo" width="50">
+                        </td>
+                        <td style="vertical-align: top;">
+                            <p><strong>GUCI LUWAK</strong></p>
+                            <p>Alamat: Perum GSM Kaja, Jln. Cempaka Kaja No 99, Gianyar</p>
+                            <p>Telp: 085648247182, 0361-4794548</p>
+                        </td>
+                    </tr>
+                </table>
                 <p>Telp: 085648247182, 0361-4794548</p>
                 <p>Tgl Kirim: <?= date('d-m-Y') ?></p>
             </td>
@@ -113,26 +115,28 @@
             </tr>
         </thead>
         <tbody>
-            <?php 
+            <?php
             $t_jumlah = 0;
-            foreach($mdata as $barang): 
-                $harga = $barang->harga ?? 0; 
+            $ppn = $mdata[0]->ppn ?? 0;
+            $diskon = $mdata[0]->discount ??0;
+            foreach ($mdata as $barang):
+                $harga = $barang->harga ?? 0;
                 $diskon1 = $barang->diskon1 ?? 0;
                 $diskon2 = $barang->diskon2 ?? 0;
                 $jumlah = $harga - $diskon1 - $diskon2;
                 $t_jumlah += $jumlah;
             ?>
-            <tr>
-                <td>1</td>
-                <td><?= $barang->kd_barang ?? '-' ?></td>
-                <td><?= $barang->namabarang ?? '-' ?></td>
-                <td><?= $barang->jumlah ?? '-' ?></td>
-                <td><?= $barang->namasatuan ?? '-' ?></td>
-                <td><?= $harga ?></td>
-                <td><?= $diskon1 ?></td>
-                <td><?= $diskon2 ?></td>
-                <td><?= $jumlah ?></td>
-            </tr>
+                <tr>
+                    <td>1</td>
+                    <td><?= $barang->kd_barang ?? '-' ?></td>
+                    <td><?= $barang->namabarang ?? '-' ?></td>
+                    <td><?= $barang->jumlah ?? '-' ?></td>
+                    <td><?= $barang->namasatuan ?? '-' ?></td>
+                    <td><?= $harga ?></td>
+                    <td><?= $diskon1 ?></td>
+                    <td><?= $diskon2 ?></td>
+                    <td><?= $jumlah ?></td>
+                </tr>
             <?php endforeach ?>
         </tbody>
     </table>
@@ -152,15 +156,16 @@
                     </tr>
                     <tr>
                         <td style="text-align: right;">Diskon:</td>
-                        <td style="text-align: right;"><?= $mdata[0]->diskon ?? '-' ?></td>
+                        <td style="text-align: right;"><?= $diskon != 0 ? $diskon : '-' ?></td>
                     </tr>
                     <tr>
                         <td style="text-align: right;">PPN:</td>
-                        <td style="text-align: right;"><?= $mdata[0]->ppn ?? '-' ?></td>
+                        <td style="text-align: right;"><?= $ppn != 0 ? $ppn . '%' : '-' ?></td>
                     </tr>
                     <tr>
                         <td style="text-align: right;"><strong>Total:</strong></td>
-                        <td style="text-align: right;"><strong><?= $t_jumlah ?? 0 ?></strong></td>
+                        <td style="text-align: right;"><strong><?= ($t_jumlah - $diskon) + (($t_jumlah - $diskon) * $ppn) ?>
+                            </strong></td>
                     </tr>
                 </table>
             </td>
