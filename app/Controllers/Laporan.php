@@ -7,9 +7,9 @@ class Laporan extends BaseController
 {
 
     public function barangexp() {
-        // if (!hasPermission(Menu::STOK_MIN_BARANG, 'laporan')) {
-        //     return view('errors/html/error_403');
-        // }
+        if (!hasPermission(Menu::BARANG_EXPIRED, 'laporan')) {
+            return view('errors/html/error_403');
+        }
         $mdata = [
             'title'     => 'Laporan Barang Expired - ' . NAMETITLE,
             'content'   => 'admin/laporan/barang-expired',
