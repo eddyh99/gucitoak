@@ -23,121 +23,136 @@
     $("#sales").select2({
         placeholder: "--- PILIH SALES ---"
     });
-    
+
     $("#pelanggan").select2({
         placeholder: "--- PILIH PELANGGAN ---",
         allowClear: true
     });
 
-    $("#pembayaran").on("change",function(){
-        if ($(this).val()=="tempo"){
+    $("#pembayaran").on("change", function() {
+        if ($(this).val() == "tempo") {
             $("#tempo").show();
-        }else{
+        } else {
             $("#tempo").hide();
         }
     });
-    
-    $('#pelanggan').on('change', function () {
+
+    $('#pelanggan').on('change', function() {
         const selectedOption = $(this).find('option:selected');
         const maxNota = parseInt(selectedOption.data('maxnota'));
         const countNota = parseInt(selectedOption.data('totalnotacount'));
         const plafon = parseInt(selectedOption.data('plafon'));
         const totalNotaValue = parseInt(selectedOption.data('totalnotavalue'));
 
-        if (countNota >= maxNota && plafon==0) {
+        if (countNota >= maxNota && plafon == 0) {
             alertSwal('Pelanggan harus membayar nota sebelumnya karena melebihi jumlah max nota.');
             $(this).val(null).trigger('change');
         }
 
-        if (totalNotaValue >= plafon && maxNota==0) {
+        if (totalNotaValue >= plafon && maxNota == 0) {
             alertSwal('Pelanggan harus membayar nota sebelumnya karena total nota melebihi plafon.');
             $(this).val(null).trigger('change');
         }
     });
-    
+
     var table = $('#preview_stok').DataTable({
         "scrollX": true,
         "lengthMenu": [
-                [ 10, 25, 50, -1 ],
-                [ '10 rows', '25 rows', '50 rows', 'Show all' ]
+            [10, 25, 50, -1],
+            ['10 rows', '25 rows', '50 rows', 'Show all']
         ],
-		"ajax": {
-			"url": "<?= BASE_URL ?>penjualan/get_list_stokbarang",
-			"type": "POST",
-			"dataSrc":function (data){
-				console.log(data);
-				return data;							
-			}
-		},
-		"drawCallback": function () {
-            var api = this.api();
-    
-            // Use the sum() plugin to calculate the sum of the 'total' column
-            var totalSum = api.column(5, { page: 'current' }).data().sum();
-    
-            // Update the footer with the total sum
-            $(api.table().footer()).find('td.total').html(totalSum.toLocaleString("ID"));
+        "ajax": {
+            "url": "<?= BASE_URL ?>penjualan/get_list_stokbarang",
+            "type": "POST",
+            "dataSrc": function(data) {
+                console.log(data);
+                return data;
+            }
         },
-        "columns": [
-			{ data: 'barcode' },
-			{ data: 'expdate' },
-			{ data: 'barang' },
-			{ data: 'jml' },
-			{ data: 'harga',render: $.fn.dataTable.render.number( '.', ',','', '' ) },
-			{ data: 'total',render: $.fn.dataTable.render.number( '.', ',','', '' ) },
-			{ 
-                data: null, 
+        "drawCallback": function() {
+            var api = this.api();
+
+            // Use the sum() plugin to calculate the sum of the 'total' column
+            var totalSum = api.column(5, {
+                page: 'current'
+            }).data().sum() || '-';
+
+            // Update the footer with the total sum
+            $(api.table().footer()).find('td.subtotal').html(totalSum.toLocaleString("ID"));
+        },
+        "columns": [{
+                data: 'barcode'
+            },
+            {
+                data: 'expdate'
+            },
+            {
+                data: 'barang'
+            },
+            {
+                data: 'jml'
+            },
+            {
+                data: 'harga',
+                render: $.fn.dataTable.render.number('.', ',', '', '')
+            },
+            {
+                data: 'total',
+                render: $.fn.dataTable.render.number('.', ',', '', '')
+            },
+            {
+                data: null,
                 render: function(data, type, row) {
                     return `<button type="button" class="btn btn-danger btn-sm delete-row" data-barcode="${row.barcode}">Delete</button>`;
                 }
             }
-		],
-      });
+        ],
+    });
 
-    let stok=0;
-    $("#barcode").on("keypress", function(e){
+    let stok = 0;
+    $("#barcode").on("keypress", function(e) {
         if (e.which === 13) { // Check if Enter key is pressed
             let barcodeValue = $(this).val(); // Store the barcode value here
             if ($("#pelanggan").val().trim() == "") {
                 alertSwal('Silahkan pilih pelanggan terlebih dahulu');
                 return;
             }
-            
+
             const selectedOption = $("#pelanggan").find('option:selected');
             const hargaNota = selectedOption.data('harganota');
             console.log("Selected hargaNota:", hargaNota); // Debugging step
-            
+
             $.ajax({
                 url: "<?= BASE_URL ?>opname/detailbarcode/" + barcodeValue,
                 type: "POST",
-                success: function (response) {
+                success: function(response) {
                     try {
                         let mdata = JSON.parse(response);
                         console.log("Parsed mdata:", mdata);
-                        
+
                         // Check if mdata is defined and has the expected properties
                         if (mdata && mdata.nama_barang && mdata.stok) {
                             let barcode = barcodeValue;
-                            stok=mdata.stok;
+                            stok = mdata.stok;
                             console.log("Stok:", mdata.stok);
-                            
+
                             // Extract the last 6 digits for the date
                             const lastSix = barcode.slice(-6);
                             const day = lastSix.slice(0, 2);
                             const month = lastSix.slice(2, 4);
                             const year = lastSix.slice(4, 6);
-            
+
                             // Format as d/m/y
                             const formattedDate = `${day}/${month}/${year}`;
-                            
+
                             // You can now use mdata values as needed
                             $("#barang").val(mdata.nama_barang);
                             $("#expired").val(formattedDate);
-                            if (hargaNota=="Harga 1"){
+                            if (hargaNota == "Harga 1") {
                                 $("#harga").val(mdata.harga1);
-                            }else if (hargaNota=="Harga 2"){
+                            } else if (hargaNota == "Harga 2") {
                                 $("#harga").val(mdata.harga2);
-                            }else if (hargaNota=="Harga 3"){
+                            } else if (hargaNota == "Harga 3") {
                                 $("#harga").val(mdata.harga3);
                             }
 
@@ -163,7 +178,7 @@
     $("#batalstok").on("click", function() {
         // Set semua null
         $("#harga").val(null);
-        $("#barang").val(null); 
+        $("#barang").val(null);
         $("#barcode").val(null);
         $("#expired").val(null);
         $("#stok").val(null);
@@ -177,53 +192,55 @@
         const barcode = $("#barcode").val();
         const expired = $("#expired").val();
         const namabrg = $("#barang").val();
-        const harga   = $("#harga").val();
+        const harga = $("#harga").val();
         const validationstok = $("#stok");
-        validationstok.prop('required',true);
+        validationstok.prop('required', true);
         const jml = $("#stok").val();
-        
-        
+
+
         // Check jika stok kosong akan tidak refresh page
         if (stok !== "" && barang !== "" && barcode !== "") {
             e.preventDefault();
-            if (jml>parseInt(stok)){
-                alertSwal("Harap periksa jumlah, karena stok tersisa : "+stok);
+            if (jml > parseInt(stok)) {
+                alertSwal("Harap periksa jumlah, karena stok tersisa : " + stok);
                 return;
             }
-            
-            if (jml<6){
-                alertSwal('Minimum pembelian 6');
-                return;
-            }
-            
+
+            // if (jml<6){
+            //     alertSwal('Minimum pembelian 6');
+            //     return;
+            // }
+
             let mdata = {
-                "barcode": barcode, 
+                "barcode": barcode,
                 "barang": namabrg,
                 "expdate": expired,
-                "jml"    : jml,
-                "harga"  : harga,
-                "total"  : parseInt(jml*harga),
-                "stok_barang" : stok
+                "jml": jml,
+                "harga": harga,
+                "total": parseInt(jml * harga),
+                "stok_barang": stok
             }
-            
-             console.log(mdata);
+
+            console.log(mdata);
 
             $.ajax({
                 url: `<?= BASE_URL ?>penjualan/save_stok_session`,
                 type: "POST",
-                data: {data: mdata},
-                success: function (response) {
+                data: {
+                    data: mdata
+                },
+                success: function(response) {
                     console.log(response);
                     var result = JSON.parse(response);
                     if (result.success) {
                         table.ajax.reload();
                         $("#stokModal").modal("hide");
-                        $("#harga").val(null); 
-                        $("#barang").val(null); 
+                        $("#harga").val(null);
+                        $("#barang").val(null);
                         $("#barcode").val(null);
                         $("#expired").val(null);
                         $("#stok").val(null);
-                        stok=0;
+                        stok = 0;
                     } else {
                         alertSwal(result.message);
                     }
@@ -232,7 +249,7 @@
                     console.log(textStatus);
                 }
             });
-            
+
         } else {
             e.preventDefault();
             alertSwal('Data tidak boleh kosong');
@@ -241,16 +258,18 @@
     });
 
     // Event listener for delete button
-    $('#preview_stok').on('click', '.delete-row', function () {
+    $('#preview_stok').on('click', '.delete-row', function() {
         var barcode = $(this).data('barcode');
-        
+
         // Confirmation dialog
         if (confirm('Apakah akan membatalkan barang ini?')) {
             // Perform AJAX call to delete item
             $.ajax({
                 url: "<?= BASE_URL ?>penjualan/delete_stok_session",
                 type: "POST",
-                data: { barcode: barcode },
+                data: {
+                    barcode: barcode
+                },
                 success: function(response) {
                     var result = JSON.parse(response);
                     console.log(result.success);
@@ -265,16 +284,18 @@
                     alertSwal('An error occurred: ' + error);
                 }
             });
-            
-        } else {$("#frmjual").submit()};
+
+        } else {
+            $("#frmjual").submit()
+        };
     });
 
 
-    $("#clearallstok").on("click", function(){
+    $("#clearallstok").on("click", function() {
         $.ajax({
             url: `<?= BASE_URL ?>penjualan/clear_stok_session`,
             type: "POST",
-            success: function (response) {
+            success: function(response) {
                 table.ajax.reload();
             },
             error: function(jqXHR, textStatus, errorThrown) {
@@ -282,10 +303,37 @@
             }
         });
     });
-    
-    $("#submit").on('click', function(){
+
+    $('#ppn, #diskon').on('input', function() {
+        let subtotalText = $('#subtotal').text().trim();
+
+        // Ubah format angka dengan menghapus titik ribuan dan mengganti koma desimal
+        let subtotal = parseFloat(subtotalText.replace(/\./g, '').replace(',', '.')) || 0;
+        let disc = parseFloat($('#diskon').val()) || 0;
+        let percent = parseFloat($('#ppn').val()) || 0; // Pastikan ini berupa angka
+
+        // Validasi max 100% dan min 0%
+        if (percent > 100) {
+            percent = 100;
+            $('#ppn').val(100);
+        } else if (percent < 0) {
+            percent = 0;
+            $('#ppn').val(0);
+        }
+
+        // Hitung PPN
+        let ppn = ((subtotal - disc) * percent) / 100;
+
+        // Hitung Total
+        let total = subtotal - disc + ppn;
+
+        // Set hasil dengan 2 angka desimal
+        $('#hasil_ppn').val(ppn);
+        $('#total').val(total);
+    });
+
+
+    $("#submit").on('click', function() {
         $("#frmjual").submit();
     })
-    
-
 </script>
