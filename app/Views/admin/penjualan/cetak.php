@@ -159,8 +159,8 @@
                         <td style="text-align: right;"><?= $diskon != 0 ? $diskon : '-' ?></td>
                     </tr>
                     <tr>
-                        <td style="text-align: right;">PPN:</td>
-                        <td style="text-align: right;"><?= $ppn != 0 ? $ppn*100 . '%' : '-' ?></td>
+                        <td style="text-align: right;">PPN<?= $ppn != 0 ? ' (' .$ppn*100 . '%)' : '' ?>:</td>
+                        <td style="text-align: right;"><?= $ppn != 0 ? $ppn * ($t_jumlah - $diskon) : '-' ?></td>
                     </tr>
                     <tr>
                         <td style="text-align: right;"><strong>Total:</strong></td>
