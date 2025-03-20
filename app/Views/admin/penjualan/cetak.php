@@ -124,7 +124,7 @@
                 $diskon1 = $barang->diskon1 ?? 0;
                 $diskon2 = $barang->diskon2 ?? 0;
                 $jumlah = $harga - $diskon1 - $diskon2;
-                $t_jumlah += $jumlah;
+                $t_jumlah += $jumlah * $barang->jumlah;
             ?>
                 <tr>
                     <td>1</td>
@@ -160,7 +160,7 @@
                     </tr>
                     <tr>
                         <td style="text-align: right;">PPN:</td>
-                        <td style="text-align: right;"><?= $ppn != 0 ? $ppn . '%' : '-' ?></td>
+                        <td style="text-align: right;"><?= $ppn != 0 ? $ppn*100 . '%' : '-' ?></td>
                     </tr>
                     <tr>
                         <td style="text-align: right;"><strong>Total:</strong></td>
