@@ -18,7 +18,7 @@ class Penjualan extends BaseController
             'content'   => 'admin/penjualan/index',
             'extra'     => 'admin/penjualan/js/_js_index',
             'menuactive_transaksi'   => 'active open',
-            'user_active'   => 'active'
+            'trx_penjualan'   => 'active'
         ];
 
         return view('admin/layout/wrapper', $mdata);

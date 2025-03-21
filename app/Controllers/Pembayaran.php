@@ -18,7 +18,7 @@ class Pembayaran extends BaseController
             'content'   => 'admin/pembayaran/pelanggan',
             'extra'     => 'admin/pembayaran/js/_js_pelanggan',
             'menuactive_transaksi'   => 'active open',
-            'user_active'   => 'active'
+            'trx_pembayaranpel'   => 'active'
         ];
 
         return view('admin/layout/wrapper', $mdata);
@@ -99,7 +99,7 @@ class Pembayaran extends BaseController
             'content'   => 'admin/pembayaran/suplier',
             'extra'     => 'admin/pembayaran/js/_js_suplier',
             'menuactive_transaksi'   => 'active open',
-            'user_active'   => 'active'
+            'trx_pembayaransup'   => 'active'
         ];
 
         return view('admin/layout/wrapper', $mdata);

@@ -23,7 +23,7 @@ class Hakakses extends BaseController
             'title'     => 'Hak Akses - ' . NAMETITLE,
             'content'   => 'admin/hak-akses/index',
             'extra'     => 'admin/hak-akses/js/_js_index',
-            'active_dash'   => 'active',
+            'hakakses_active'   => 'active',
             'users' => $users,
             'submenu_setup' => $submenu_setup,
             'submenu_persediaan' => $submenu_persediaan,
