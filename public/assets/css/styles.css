@@ -380,6 +380,14 @@ body:has(.menu-item.laporan:hover) .sub-menu.laporan,
   text-decoration: none; /* Remove underline */
 }
 
+#accordionExample .accordion-body li.active {
+  background-color: #4FC3ff;
+}
+
+#accordionExample .accordion-body li.active a {
+  color: white !important;
+}
+
 .menu-icon{
     color:#000000 !important;
 }

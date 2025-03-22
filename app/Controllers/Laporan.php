@@ -5,6 +5,30 @@ use App\Enums\Menu;
 
 class Laporan extends BaseController
 {
+
+    public function barangexp() {
+        if (!hasPermission(Menu::BARANG_EXPIRED, 'laporan')) {
+            return view('errors/html/error_403');
+        }
+        $mdata = [
+            'title'     => 'Laporan Barang Expired - ' . NAMETITLE,
+            'content'   => 'admin/laporan/barang-expired',
+            'extra'     => 'admin/laporan/js/_js_barang-exp',
+            'menuactive_laporan'   => 'active open',
+            'barangexp_active'   => 'active'
+        ];
+
+        return view('admin/layout/wrapper', $mdata);
+    }
+
+    public function get_barang_expired(){
+        $url = URLAPI . "/v1/laporan/get_barangexpired";
+		$response = gucitoakAPI($url);
+        $result = $response->message;
+        echo json_encode($result);
+        
+    }
+
     public function barang() {
         if (!hasPermission(Menu::STOK_MIN_BARANG, 'laporan')) {
             return view('errors/html/error_403');
@@ -14,7 +38,7 @@ class Laporan extends BaseController
             'content'   => 'admin/laporan/barang',
             'extra'     => 'admin/laporan/js/_js_barang',
             'menuactive_laporan'   => 'active open',
-            'user_active'   => 'active'
+            'stokminbrg_active'   => 'active'
         ];
 
         return view('admin/layout/wrapper', $mdata);
@@ -38,7 +62,7 @@ class Laporan extends BaseController
             'content'   => 'admin/laporan/mutasistok',
             'extra'     => 'admin/laporan/js/_js_mutasi',
             'menuactive_laporan'   => 'active open',
-            'user_active'   => 'active'
+            'mutasistok_active'   => 'active'
         ];
 
         return view('admin/layout/wrapper', $mdata);
@@ -64,7 +88,7 @@ class Laporan extends BaseController
             'content'   => 'admin/laporan/penjualan',
             'extra'     => 'admin/laporan/js/_js_penjualan',
             'menuactive_laporan'   => 'active open',
-            'user_active'   => 'active'
+            'penjualan_active'   => 'active'
         ];
 
         return view('admin/layout/wrapper', $mdata);
@@ -92,7 +116,7 @@ class Laporan extends BaseController
             'content'   => 'admin/laporan/pembelian',
             'extra'     => 'admin/laporan/js/_js_pembelian',
             'menuactive_laporan'   => 'active open',
-            'user_active'   => 'active',
+            'pembelian_active'   => 'active',
             'barang'    => $barang
         ];
 
@@ -123,7 +147,7 @@ class Laporan extends BaseController
             'content'   => 'admin/laporan/retursup',
             'extra'     => 'admin/laporan/js/_js_retursup',
             'menuactive_laporan'   => 'active open',
-            'user_active'   => 'active',
+            'retursup_active'   => 'active',
             'suplier' => $suplier
         ];
 
@@ -154,7 +178,7 @@ class Laporan extends BaseController
             'content'   => 'admin/laporan/returpel',
             'extra'     => 'admin/laporan/js/_js_returpel',
             'menuactive_laporan'   => 'active open',
-            'user_active'   => 'active',
+            'returpel_active'   => 'active',
             'pelanggan' => $pelanggan
         ];
 
@@ -186,7 +210,7 @@ class Laporan extends BaseController
             'content'   => 'admin/laporan/omzetpel',
             'extra'     => 'admin/laporan/js/_js_omzetpel',
             'menuactive_laporan'   => 'active open',
-            'user_active'   => 'active',
+            'omzetoutlet_active'   => 'active',
             'pelanggan' => $pelanggan
         ];
 
@@ -203,7 +227,7 @@ class Laporan extends BaseController
             'content'   => 'sales/laporan/omzet',
             'extra'     => 'sales/laporan/js/_js_omzetsales',
             'menuactive_laporan'   => 'active open',
-            'user_active'   => 'active',
+            'omzetsales_active'   => 'active',
             'sales' => $sales
         ];
 
@@ -233,7 +257,7 @@ class Laporan extends BaseController
             'content'   => 'admin/laporan/outletidle',
             'extra'     => 'admin/laporan/js/_js_outlet_idle',
             'menuactive_laporan'   => 'active open',
-            'user_active'   => 'active',
+            'outletidle_active'   => 'active',
         ];
 
         return view('admin/layout/wrapper', $mdata);
@@ -259,7 +283,7 @@ class Laporan extends BaseController
             'content'   => 'admin/laporan/penjualanoutlet',
             'extra'     => 'admin/laporan/js/_js_penjualan_outlet',
             'menuactive_laporan'   => 'active open',
-            'user_active'   => 'active',
+            'penjualanoutlet_active'   => 'active',
             'pelanggan' => $pelanggan
         ];
 
@@ -288,7 +312,7 @@ class Laporan extends BaseController
             'content'   => 'admin/laporan/katalog',
             'extra'     => 'admin/laporan/js/_js_katalog',
             'menuactive_laporan'   => 'active open',
-            'user_active'   => 'active',
+            'katalog_active'   => 'active',
             'kategori' => $kategori
         ];
 

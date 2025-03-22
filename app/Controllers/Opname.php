@@ -32,7 +32,7 @@ class Opname extends BaseController
             'content'   => 'admin/opname/konfirm_opname',
             'extra'     => 'admin/opname/js/_js_konfirm_opname',
             'menuactive_persediaan'   => 'active open',
-            'stokbarang_active'   => 'active'
+            'stokopnamekonfirm_active'   => 'active'
         ];
 
         return view('admin/layout/wrapper', $mdata);
@@ -148,7 +148,7 @@ class Opname extends BaseController
             'content'   => 'admin/opname/konfirm_dispose',
             'extra'     => 'admin/opname/js/_js_konfirm_dispose',
             'menuactive_persediaan'   => 'active open',
-            'stokbarang_active'   => 'active'
+            'stokdisposekonfirm_active'   => 'active'
         ];
 
         return view('admin/layout/wrapper', $mdata);

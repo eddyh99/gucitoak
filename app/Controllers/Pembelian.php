@@ -17,7 +17,7 @@ class Pembelian extends BaseController
             'content'   => 'admin/pembelian/index',
             'extra'     => 'admin/pembelian/js/_js_index',
             'menuactive_transaksi'   => 'active open',
-            'user_active'   => 'active'
+            'trx_pembelian'   => 'active'
         ];
 
         return view('admin/layout/wrapper', $mdata);

@@ -16,7 +16,7 @@ class Retur extends BaseController
             'content'   => 'admin/retur/pelanggan',
             'extra'     => 'admin/retur/js/_js_pelanggan',
             'menuactive_transaksi'   => 'active open',
-            'user_active'   => 'active'
+            'trx_returpel'   => 'active'
         ];
 
         return view('admin/layout/wrapper', $mdata);
@@ -32,7 +32,7 @@ class Retur extends BaseController
             'content'   => 'admin/retur/suplier',
             'extra'     => 'admin/retur/js/_js_suplier',
             'menuactive_transaksi'   => 'active open',
-            'user_active'   => 'active'
+            'trx_retursup'   => 'active'
         ];
 
         return view('admin/layout/wrapper', $mdata);

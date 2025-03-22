@@ -35,6 +35,7 @@ CONST OMZET_OUTLET = 'omzet_outlet';
 CONST OUTLET_IDLE = 'outlet_idle';
 CONST PENJUALAN_OUTLET = 'penjualan_outlet';
 CONST KATALOG = 'katalog';
+CONST BARANG_EXPIRED = 'barang_expired';
 CONST PENGGAJIAN_SALES = 'penggajian_sales';
 
     public static function subMenu_setup()
@@ -79,6 +80,7 @@ CONST PENGGAJIAN_SALES = 'penggajian_sales';
         public static function subMenu_laporan()
         {
             return [
+                self::BARANG_EXPIRED,
                 self::STOK_MIN_BARANG,
                 self::MUTASI_STOK,
                 self::PENJUALAN_SUMMARY,
