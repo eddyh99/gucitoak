@@ -172,7 +172,7 @@ CREATE TABLE `cicilansuplier` (
   PRIMARY KEY (`id`),
   KEY `cicilansuplier_ibfk_1` (`id_nota`),
   CONSTRAINT `cicilansuplier_ibfk_1` FOREIGN KEY (`id_nota`) REFERENCES `pembelian` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -184,6 +184,7 @@ LOCK TABLES `cicilansuplier` WRITE;
 INSERT INTO `cicilansuplier` VALUES
 (3,1),
 (9,1),
+(18,1),
 (10,2),
 (13,2),
 (16,2),
@@ -224,7 +225,8 @@ INSERT INTO `cicilansuplier_detail` VALUES
 (13,'2023-11-21',10000,'retur'),
 (15,'2025-01-14',2,'retur'),
 (16,'2025-01-14',7,'valid'),
-(17,'2025-01-14',1,'oke');
+(17,'2025-01-14',1,'oke'),
+(18,'2025-03-23',80000,'r');
 /*!40000 ALTER TABLE `cicilansuplier_detail` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -447,7 +449,7 @@ CREATE TABLE `pembayaran` (
   PRIMARY KEY (`id`),
   KEY `pembayaran_ibfk_1` (`nonota`),
   CONSTRAINT `pembayaran_ibfk_1` FOREIGN KEY (`nonota`) REFERENCES `penjualan` (`nonota`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -463,7 +465,8 @@ INSERT INTO `pembayaran` VALUES
 (4,'000002'),
 (5,'000002'),
 (7,'000003'),
-(17,'000003');
+(17,'000003'),
+(18,'000003');
 /*!40000 ALTER TABLE `pembayaran` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -496,7 +499,8 @@ INSERT INTO `pembayaran_detail` VALUES
 (5,'2025-01-14',12,'maknyus'),
 (6,'2025-03-21',100,''),
 (7,'2025-03-23',40000,'cicil #1'),
-(17,'2025-03-23',1000,'');
+(17,'2025-03-23',1000,''),
+(18,'2025-03-23',33000,'');
 /*!40000 ALTER TABLE `pembayaran_detail` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -559,9 +563,10 @@ CREATE TABLE `pembelian_detail` (
 LOCK TABLES `pembelian_detail` WRITE;
 /*!40000 ALTER TABLE `pembelian_detail` DISABLE KEYS */;
 INSERT INTO `pembelian_detail` VALUES
-(1,'139875032890250525',2,0),
+(1,'139875032890250525',2,50000),
 (2,'139875032890250525',5,25000),
-(3,'139875032890250525',1,15000);
+(3,'139875032890250525',1,15000),
+(2,'139875032890250625',5,15000);
 /*!40000 ALTER TABLE `pembelian_detail` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -720,10 +725,14 @@ CREATE TABLE `retur_beli` (
   `id_suplier` int(11) NOT NULL,
   `tanggal` date NOT NULL,
   `status` enum('proses','tukar') NOT NULL,
+  `id_nota` int(11) NOT NULL,
+  `is_used` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   KEY `retur_beli_ibfk_1` (`id_suplier`),
+  KEY `fk_retur_beli_id_nota` (`id_nota`),
+  CONSTRAINT `fk_retur_beli_id_nota` FOREIGN KEY (`id_nota`) REFERENCES `pembelian` (`id`),
   CONSTRAINT `retur_beli_ibfk_1` FOREIGN KEY (`id_suplier`) REFERENCES `suplier` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -733,7 +742,7 @@ CREATE TABLE `retur_beli` (
 LOCK TABLES `retur_beli` WRITE;
 /*!40000 ALTER TABLE `retur_beli` DISABLE KEYS */;
 INSERT INTO `retur_beli` VALUES
-(1,1,'2024-12-28','proses');
+(3,1,'2025-03-23','tukar',2,1);
 /*!40000 ALTER TABLE `retur_beli` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -750,8 +759,7 @@ CREATE TABLE `retur_beli_detail` (
   `jumlah` int(11) NOT NULL,
   KEY `retur_beli_detail_ibfk_2` (`barcode`),
   KEY `retur_beli_detail_ibfk_1` (`id`),
-  CONSTRAINT `retur_beli_detail_ibfk_1` FOREIGN KEY (`id`) REFERENCES `retur_beli` (`id`),
-  CONSTRAINT `retur_beli_detail_ibfk_2` FOREIGN KEY (`barcode`) REFERENCES `barang_detail` (`barcode`)
+  CONSTRAINT `retur_beli_detail_ibfk_1` FOREIGN KEY (`id`) REFERENCES `retur_beli` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -762,7 +770,8 @@ CREATE TABLE `retur_beli_detail` (
 LOCK TABLES `retur_beli_detail` WRITE;
 /*!40000 ALTER TABLE `retur_beli_detail` DISABLE KEYS */;
 INSERT INTO `retur_beli_detail` VALUES
-(1,'139875032890250525',6);
+(3,'139875032890250625',2),
+(3,'139875032890250525',2);
 /*!40000 ALTER TABLE `retur_beli_detail` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -795,7 +804,7 @@ CREATE TABLE `retur_jual` (
 LOCK TABLES `retur_jual` WRITE;
 /*!40000 ALTER TABLE `retur_jual` DISABLE KEYS */;
 INSERT INTO `retur_jual` VALUES
-(2,'2025-03-23 06:50:24',2,'','000002',0),
+(2,'2025-03-23 06:50:24',2,'','000002',1),
 (3,'2025-03-23 09:56:05',1,'','000001',0);
 /*!40000 ALTER TABLE `retur_jual` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -992,4 +1001,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*M!100616 SET NOTE_VERBOSITY=@OLD_NOTE_VERBOSITY */;
 
--- Dump completed on 2025-03-23 17:01:28
+-- Dump completed on 2025-03-23 21:06:14
