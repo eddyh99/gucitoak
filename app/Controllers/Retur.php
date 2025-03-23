@@ -177,6 +177,10 @@ class Retur extends BaseController
                 'label'     => 'Nama Suplier',
                 'rules'     => 'required'
             ],
+            'nonota'     => [
+                'label'     => 'No. Nota',
+                'rules'     => 'required'
+            ],
         ]);
 
         // Checking Validation
@@ -190,6 +194,7 @@ class Retur extends BaseController
         // FILER Trim char
         $mdata = [
             'id_suplier'  => trim($this->request->getVar('suplier')),
+            'nonota'        => trim($this->request->getVar('nonota')),
             'detail'        => $_SESSION["barangretur"]
         ];
         
