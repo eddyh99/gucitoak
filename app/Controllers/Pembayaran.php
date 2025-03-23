@@ -156,7 +156,8 @@ class Pembayaran extends BaseController
         $mdata = [
             'id_nota'    => trim($this->request->getVar('id')),
             'amount'    => $cicilan,
-            'keterangan' => trim($this->request->getVar('keterangan'))
+            'keterangan' => trim($this->request->getVar('keterangan')),
+            'nonota_retur' => trim($this->request->getVar('id_notaretur'))
         ];
 
         $url = URLAPI . "/v1/pembayaran/inputCicilan_suplier";

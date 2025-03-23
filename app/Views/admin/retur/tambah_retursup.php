@@ -54,7 +54,7 @@
                                                     type="text"
                                                     class="form-control"
                                                     id="nonota"
-                                                    placeholder="No. Nota"
+                                                    placeholder="09x23"
                                                     name="nonota"
                                                     autocomplete="off"
                                                     required
