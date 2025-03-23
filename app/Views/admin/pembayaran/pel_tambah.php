@@ -84,6 +84,12 @@
                                         </div>
                                     </div>
                                     <div class="mb-3">
+                                        <label class="form-label" for="barang">Nota Retur</label>
+                                        <div class="input-group input-group-merge">
+                                            <input type="number" name="nonotaretur" id="nonotaretur" placeholder="Masukkan Nominal" class="form-control" readonly required>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
                                         <label class="form-label" for="barang">Total Cicilan</label>
                                         <div class="input-group input-group-merge">
                                             <input type="number" name="t_cicilan" id="t_cicilan" placeholder="Masukkan Nominal" class="form-control" value="<?= old('t_cicilan') ?>" readonly required>

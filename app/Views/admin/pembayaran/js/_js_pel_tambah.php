@@ -122,13 +122,24 @@
             {
                 data: 'nominal'
             },
-            { data: null,
-		    render: function (data, type, row) {
-                var print = `<button class="btn btn-sm btn-warning">select</button>`;
-                    return print;
+            {
+                data: null,
+                render: function(data, type, row) {
+                    var nominal = `<button class="btn btn-sm btn-warning" onclick="setNominal('` + data.nonota + `', ` + data.nominal + `)">select</button>`;
+                    return nominal;
                 }
-		},
+            },
         ]
+    });
+
+    function setNominal(nonota, nominal) {
+        $('#nonotaretur').val(nonota)
+        $("#cicil").val(nominal);
+        $("#notaretur").modal('hide');
+    }
+
+    $("#cicil").on("input", function() {
+        $('#nonotaretur').val('');
     });
 
     $('#select-notaretur').on('click', function() {
