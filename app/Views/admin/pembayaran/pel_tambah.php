@@ -67,6 +67,7 @@
                                     <label class="form-label" for="barang">Amount</label>
                                     <div class="input-group input-group-merge">
                                         <input type="number" name="amount" id="cicil" placeholder="Masukkan Nominal" class="form-control" value="<?= old('amount', 0) ?>"  disabled required>
+                                        <button type="button" id="select-notaretur" class="btn btn-primary" disabled>Pilih</button>
                                     </div>
                                 </div>
                                 <div class="mb-3">
@@ -148,6 +149,34 @@
 
 </div>
 
+<!-- Modal Nota Retur -->
+<div class="modal fade" id="notaretur" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Detail Nota Retur</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table id="nota_retur" class="table table-bordered w-100">
+          <thead>
+            <tr>
+              <th>Nonota</th>
+              <th>Nominal</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Data will be inserted here -->
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><img src="<?= BASE_URL ?>assets/img/icons/118788_media_playback_stop_icon.png" alt="Home Icon" width="20" height="20">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Modal Stok -->
 <div class="modal fade show" id="stokModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="stokModalLabel" aria-hidden="true">

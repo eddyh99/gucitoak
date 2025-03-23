@@ -243,4 +243,11 @@ class Retur extends BaseController
 
     }
 
+    public function listnota_returpel(){
+        $url = URLAPI . "/v1/retur/getnota_returpel";
+        $response = gucitoakAPI($url)->message;
+        echo json_encode($response,true);
+
+    }
+
 }
