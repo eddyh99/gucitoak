@@ -62,7 +62,7 @@ class Pembayaran extends BaseController
     public function inputCicilan_pelanggan() {
         $totalCicilan = trim($this->request->getVar('t_cicilan'));
         $notaJual = trim($this->request->getVar('notajual'));
-        $cicilan = trim($this->request->getVar('amount'));
+        $cicilan = trim($this->request->getVar('amount'));        
         
         // validasi agar cicilan > nota_penjualan
         if(($cicilan +$totalCicilan) > $notaJual) {
@@ -73,7 +73,8 @@ class Pembayaran extends BaseController
         $mdata = [
             'nonota'    => trim($this->request->getVar('nonota')),
             'amount'    => $cicilan,
-            'keterangan' => trim($this->request->getVar('keterangan'))
+            'keterangan' => trim($this->request->getVar('keterangan')),
+            'nonota_retur' => trim($this->request->getVar('nonotaretur'))
         ];
 
         $url = URLAPI . "/v1/pembayaran/inputCicilan_pelanggan";
@@ -155,7 +156,8 @@ class Pembayaran extends BaseController
         $mdata = [
             'id_nota'    => trim($this->request->getVar('id')),
             'amount'    => $cicilan,
-            'keterangan' => trim($this->request->getVar('keterangan'))
+            'keterangan' => trim($this->request->getVar('keterangan')),
+            'nonota_retur' => trim($this->request->getVar('id_notaretur'))
         ];
 
         $url = URLAPI . "/v1/pembayaran/inputCicilan_suplier";

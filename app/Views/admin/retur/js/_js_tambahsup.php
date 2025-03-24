@@ -5,6 +5,14 @@
 
 
 <script>
+    $(function() {
+        setTimeout(() => {
+            $("#failedtoast").toast('show')
+            $("#successtoast").toast('show')
+        }, 0)
+    });
+
+
     $("#suplier").select2({
         placeholder: "--- PILIH SUPLIER ---",
         allowClear: true
@@ -117,10 +125,10 @@
                 return;
             }
             
-            if (jml<6){
-                alert("Minimum pembelian 6");
-                return;
-            }
+            // if (jml<6){
+            //     alert("Minimum pembelian 6");
+            //     return;
+            // }
             
             let mdata = {
                 "barcode": barcode, 

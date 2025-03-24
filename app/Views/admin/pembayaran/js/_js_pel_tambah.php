@@ -29,6 +29,7 @@
                     $("#notajual").val(mdata.notajual);
                     $("#t_cicilan").val(mdata.totalcicilan);
                     $("#cicil").prop("disabled", mdata.isLunas == 1);
+                    $("#select-notaretur").prop("disabled", mdata.isLunas == 1);
                     $("#keterangan").prop("disabled", mdata.isLunas == 1);
 
                     if (mdata.isLunas == 1) {
@@ -97,5 +98,51 @@
 
     $("#submit").on('click', function() {
         $("#frmCicilan").submit();
+    })
+
+    var table_notaretur = $('#nota_retur').DataTable({
+        "scrollX": false,
+        "dom": 'lBfrtip',
+        "buttons": [],
+        "lengthMenu": [
+            [10, 25, 50, -1],
+            ['10 rows', '25 rows', '50 rows', 'Show all']
+        ],
+        "ajax": {
+            "url": "<?= BASE_URL ?>retur/listnota_returpel/",
+            "type": "GET",
+            "dataSrc": function(data) {
+                console.log(data);
+                return data ?? [];
+            }
+        },
+        "columns": [{
+                data: 'nonota'
+            },
+            {
+                data: 'nominal'
+            },
+            {
+                data: null,
+                render: function(data, type, row) {
+                    var nominal = `<button class="btn btn-sm btn-warning" onclick="setNominal('` + data.nonota + `', ` + data.nominal + `)">select</button>`;
+                    return nominal;
+                }
+            },
+        ]
+    });
+
+    function setNominal(nonota, nominal) {
+        $('#nonotaretur').val(nonota)
+        $("#cicil").val(nominal);
+        $("#notaretur").modal('hide');
+    }
+
+    $("#cicil").on("input", function() {
+        $('#nonotaretur').val('');
+    });
+
+    $('#select-notaretur').on('click', function() {
+        $("#notaretur").modal('show');
     })
 </script>

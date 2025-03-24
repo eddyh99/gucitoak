@@ -52,7 +52,21 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row row-cols-2">
+                                        <div class="mb-3">
+                                            <label class="form-label" for="barcode">No. Nota</label>
+                                            <div class="input-group input-group-merge">
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="nonota"
+                                                    placeholder="No. Nota"
+                                                    name="nonota"
+                                                    autocomplete="off"
+                                                    required
+                                                />
+                                            </div>
+                                        </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="barcode">Barcode</label>
                                             <div class="input-group input-group-merge">

@@ -133,6 +133,10 @@ class Retur extends BaseController
                 'label'     => 'Nama Pelanggan',
                 'rules'     => 'required'
             ],
+            'nonota'     => [
+                'label'     => 'No. Nota',
+                'rules'     => 'required'
+            ],
         ]);
 
         // Checking Validation
@@ -146,6 +150,7 @@ class Retur extends BaseController
         // FILER Trim char
         $mdata = [
             'pelanggan_id'  => trim($this->request->getVar('pelanggan')),
+            'nonota'        => trim($this->request->getVar('nonota')),
             'detail'        => $_SESSION["barangretur"]
         ];
         
@@ -172,6 +177,10 @@ class Retur extends BaseController
                 'label'     => 'Nama Suplier',
                 'rules'     => 'required'
             ],
+            'nonota'     => [
+                'label'     => 'No. Nota',
+                'rules'     => 'required'
+            ],
         ]);
 
         // Checking Validation
@@ -185,6 +194,7 @@ class Retur extends BaseController
         // FILER Trim char
         $mdata = [
             'id_suplier'  => trim($this->request->getVar('suplier')),
+            'nonota'        => trim($this->request->getVar('nonota')),
             'detail'        => $_SESSION["barangretur"]
         ];
         
@@ -233,6 +243,20 @@ class Retur extends BaseController
 
     public function list_barangpel($id){
         $url = URLAPI . "/v1/retur/getbarang_returpel?id=".base64_decode($id);
+        $response = gucitoakAPI($url)->message;
+        echo json_encode($response,true);
+
+    }
+
+    public function listnota_returpel(){
+        $url = URLAPI . "/v1/retur/getnota_returpel";
+        $response = gucitoakAPI($url)->message;
+        echo json_encode($response,true);
+
+    }
+
+    public function listnota_retursupl(){
+        $url = URLAPI . "/v1/retur/getnota_retursup";
         $response = gucitoakAPI($url)->message;
         echo json_encode($response,true);
 
