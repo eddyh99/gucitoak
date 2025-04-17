@@ -72,6 +72,7 @@ if(!empty(session('failed'))): ?>
                                         <th>No. Nota</th>
                                         <th>Pelanggan</th>
                                         <th>Tanggal</th>
+                                        <th>Tanggal Diterima</th>
                                         <th>Sales</th>
                                         <th>Nominal</th>
                                         <th>Cara Bayar</th>

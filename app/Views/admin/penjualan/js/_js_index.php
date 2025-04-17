@@ -70,6 +70,12 @@ var table=$('#table_list').DataTable({
 		{ data: 'nonota' },
 		{ data: 'namapelanggan' },
 		{ data: 'tanggal' },
+        { data: 'tanggal_diterima',
+            render: function(data, type, row) {
+                return data ? data : '-';
+            },
+            className: 'text-center'
+         },
 		{ data: 'namasales' },
         { 
             data: 'amount',
