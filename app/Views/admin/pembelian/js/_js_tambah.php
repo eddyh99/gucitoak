@@ -62,9 +62,13 @@
     $("#barcode").on("keypress", function(e){
         if (e.which === 13) { // Check if Enter key is pressed
             let barcodeValue = $(this).val(); // Store the barcode value here
+
+            if (barcodeValue.length != 18 ) {
+                return alert("Barcode tidak valid!");
+            }
             
             $.ajax({
-                url: "<?= BASE_URL ?>opname/detailbarcode/" + barcodeValue,
+                url: "<?= BASE_URL ?>pembelian/detailbarcode/" + barcodeValue,
                 type: "POST",
                 success: function (response) {
                     try {
@@ -91,6 +95,11 @@
                             $("#expired").val(formattedDate);
                             $("#stokModal").modal("show");
                         } else {
+                            if(mdata.newbarcode) {
+                                return alert('membuat barcode baru');
+                            }
+
+                            alert('Barcode not found');
                             console.log("Unexpected response structure:", mdata);
                         }
                     } catch (error) {

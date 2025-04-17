@@ -157,4 +157,11 @@ class Pembelian extends BaseController
         echo json_encode($response,true);
     }
 
+    public function detailbarcode($barcode){
+        $url = URLAPI . "/v1/pembelian/getStokBy_barcode?id=".$barcode;
+		$response = gucitoakAPI($url);
+        $result = $response->message;
+        echo json_encode($result);
+    }
+
 }
