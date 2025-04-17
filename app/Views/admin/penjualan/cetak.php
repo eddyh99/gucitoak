@@ -174,10 +174,10 @@
 
     <table style="width: 100%; margin-top: 20px; text-align: center;">
         <tr>
-            <td style="width: 25%;">Mengetahui:<br><br><br><br><br><span class="signature-line"></span></td>
-            <td style="width: 25%;">Sales:<br><br><br><br><br><span class="signature-line"></span></td>
-            <td style="width: 25%;">Pengirim:<br><br><br><br><br><span class="signature-line"></span></td>
-            <td style="width: 25%;">Penerima:<br><br><br><br><br><span class="signature-line"></span></td>
+            <td style="width: 25%;">Mengetahui:<br><br><br><br><br><span class="signature-line">&nbsp;</span></td>
+            <td style="width: 25%;">Sales:<br><br><br><br><br><span class="signature-line"><?= $mdata[0]->namasales ?? '&nbsp;' ?></span></td>
+            <td style="width: 25%;">Pengirim:<br><br><br><br><br><span class="signature-line">&nbsp;</span></td>
+            <td style="width: 25%;">Penerima:<br><br><br><br><br><span class="signature-line">&nbsp;</span></td>
         </tr>
     </table>
 </body>
