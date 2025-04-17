@@ -93,7 +93,7 @@
                                                 type="text"
                                                 class="form-control"
                                                 id="telp"
-                                                placeholder="Telphone"
+                                                placeholder="Telephone"
                                                 name="telp"
                                                 maxlength="13"
                                                 required
@@ -110,7 +110,7 @@
                                                 id="norek"
                                                 placeholder="No Rekening"
                                                 name="norek"
-                                                required
+                                                
                                                 value="<?= set_value('norek') ?>"
                                             />
                                         </div>
@@ -124,7 +124,7 @@
                                                 id="namabank"
                                                 placeholder="Nama Bank"
                                                 name="namabank"
-                                                required
+                                                
                                                 value="<?= set_value('namabank') ?>"
                                             />
                                         </div>
@@ -138,7 +138,7 @@
                                                 id="anbank"
                                                 placeholder="Atas Nama Bank "
                                                 name="anbank"
-                                                required
+                                                
                                                 value="<?= set_value('anbank') ?>"
                                             />
                                         </div>

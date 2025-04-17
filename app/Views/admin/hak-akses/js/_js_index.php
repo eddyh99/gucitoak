@@ -35,7 +35,9 @@
     function handleChange() {
         const userId = $("#user").val();
         const data = JSON.parse(atob($('#user').data('user')));
+        console.log(data);
         const selectedUser = data.find(user => user.id == userId)
+        console.log(selectedUser);
         if (selectedUser.role == 'admin') {
             // Pilih semua opsi di dropdown
             $('#laporan, #persediaan, #transaksi, #setup').each(function() {

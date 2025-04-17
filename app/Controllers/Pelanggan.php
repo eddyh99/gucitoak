@@ -131,7 +131,6 @@ class Pelanggan extends BaseController
 		$response = gucitoakAPI($url);
         $result = $response->message;
 
-        
         $mdata = [
             'title'     => 'Edit pelanggan - ' . NAMETITLE,
             'content'   => 'admin/pelanggan/edit_pelanggan',

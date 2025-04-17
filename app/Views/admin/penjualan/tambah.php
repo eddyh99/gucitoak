@@ -226,7 +226,7 @@
                 <div class="mt-3">
                     <div class="input-group input-group-merge">
                         <input
-                            type="text"
+                            type="number"
                             class="form-control"
                             id="stok"
                             placeholder="Jumlah"

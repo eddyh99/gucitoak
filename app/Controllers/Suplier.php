@@ -68,18 +68,6 @@ class Suplier extends BaseController
                 'label'     => 'Telp',
                 'rules'     => 'required'
             ],
-            'norek'     => [
-                'label'     => 'No Rekening',
-                'rules'     => 'required'
-            ],
-            'namabank'     => [
-                'label'     => 'Nama Bank',
-                'rules'     => 'required'
-            ],
-            'anbank'     => [
-                'label'     => 'Atas Nama Bank',
-                'rules'     => 'required'
-            ],
         ]);
 
         // Checking Validation
@@ -163,18 +151,6 @@ class Suplier extends BaseController
             ],
             'telp'     => [
                 'label'     => 'Telp',
-                'rules'     => 'required'
-            ],
-            'norek'     => [
-                'label'     => 'No Rekening',
-                'rules'     => 'required'
-            ],
-            'namabank'     => [
-                'label'     => 'Nama Bank',
-                'rules'     => 'required'
-            ],
-            'anbank'     => [
-                'label'     => 'Atas Nama Bank',
                 'rules'     => 'required'
             ],
         ]);

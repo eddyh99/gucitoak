@@ -209,7 +209,7 @@ class Penjualan extends BaseController
         // Buat instance Dompdf
         $dompdf = new Dompdf($options);
         $dompdf->loadHtml($html);
-        $dompdf->setPaper([0, 0, 595.28, 10000], 'portrait'); // Width: 21cm, Height: Very large
+        $dompdf->setPaper([0, 0, 10000, 595.28], 'potrait'); // Width: 21cm, Height: Very large
         $dompdf->render();
     
         // Clear any previous output

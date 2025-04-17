@@ -46,6 +46,14 @@ use App\Enums\Menu; ?>
                             </a>
                         </li>
                     <?php endif ?>
+                    <?php if ($isAdmin): ?>
+                        <li class="menu-item <?= $hakakses_active ?? '' ?>">
+                            <a href="<?= BASE_URL ?>hakakses" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">
+                            <img src="<?= BASE_URL ?>assets/img/icons/118795_lock_screen_system_icon.png" alt="Home Icon" class="me-2" width="24" height="24">
+                                <div data-i18n="Assign Sales" style="font-size: 12px;">Hak Akses</div>
+                            </a>
+                        </li>
+                    <?php endif ?>
                     <?php if ($isAdmin || $hasPermission(Menu::DAFTAR_SALES, 'setup')): ?>
                         <li class="menu-item <?= $sales_active ?? '' ?>">
                             <a href="<?= BASE_URL ?>sales" class="menu-link-inside d-flex justify-content-start align-items-center px-3 py-2">
@@ -100,14 +108,6 @@ use App\Enums\Menu; ?>
                             <a href="<?= BASE_URL ?>sales/list_assign_sales" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">
                             <img src="<?= BASE_URL ?>assets/img/icons/118825_manager_system_icon.png" alt="Home Icon" class="me-2" width="24" height="24">
                                 <div data-i18n="Assign Sales" style="font-size: 12px;">Daftar Barang Sales</div>
-                            </a>
-                        </li>
-                    <?php endif ?>
-                    <?php if ($isAdmin): ?>
-                        <li class="menu-item <?= $hakakses_active ?? '' ?>">
-                            <a href="<?= BASE_URL ?>hakakses" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">
-                            <img src="<?= BASE_URL ?>assets/img/icons/118795_lock_screen_system_icon.png" alt="Home Icon" class="me-2" width="24" height="24">
-                                <div data-i18n="Assign Sales" style="font-size: 12px;">Hak Akses</div>
                             </a>
                         </li>
                     <?php endif ?>

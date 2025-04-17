@@ -60,8 +60,7 @@
                                     <div class="mb-3">
                                         <label for="role" class="form-label">Pilih Role</label>
                                         <select class="form-select" name="role" id="role" aria-label="Default select Role">
-                                            <option value="admin">Admin</option>
-                                            <option value="kasir">Kasir</option>
+                                            <option value="kasir">Staff</option>
                                             <option value="sales">Sales</option>
                                         </select>
                                     </div>
