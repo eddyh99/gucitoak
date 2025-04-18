@@ -16,6 +16,14 @@
             $("#successtoast").toast('show')
         }, 0)
     });
+
+    function alertError(message) {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: message
+        });
+    }
     
 
     $("#pembayaran").on("change",function(){
@@ -99,7 +107,7 @@
             let barcodeValue = $(this).val(); // Store the barcode value here
 
             if (barcodeValue.length != 18 ) {
-                return alert("Barcode tidak valid!");
+                return alertError("Barcode tidak valid!");
             }
             
             $.ajax({
@@ -135,7 +143,7 @@
                                 return barcodeConfimartion(mdata.namabarang);
                             }
 
-                            alert('Barcode not found');
+                            alertError('Barcode not found');
                             console.log("Unexpected response structure:", mdata);
                         }
                     } catch (error) {
