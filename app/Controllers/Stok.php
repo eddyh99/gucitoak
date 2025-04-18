@@ -187,11 +187,11 @@ class Stok extends BaseController
             $last6 = substr($barcode, -6);
             $day = (int) substr($last6, 0, 2);
             $month = (int) substr($last6, 2, 2);
-            $year = (int) substr($last6, 4, 2);
+            $year = '20' . substr($last6, 4, 2);
             $expdate = sprintf('%02d/%02d/%02d', $day, $month, $year);
         
             // Validate expiration date
-            if (!checkdate($month, $day, '20' . $year)) {
+            if (!checkdate($month, $day, $year)) {
                 return (object) [
                     'validated' => false,
                     'message' => 'Tanggal expired tidak valid.'

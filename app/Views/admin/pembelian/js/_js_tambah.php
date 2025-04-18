@@ -243,12 +243,45 @@
         showCancelButton: true,
         confirmButtonText: 'Ya',
         cancelButtonText: 'Batal'
-    }).then((result) => {
+    }).then(async (result) => {
         if (result.isConfirmed) {
             $("#newbarcodex").val($("#barcode").val());
-            $("#newbarcode").modal("show");
+            try {                
+                await getListBarang();
+                $("#newbarcode").modal("show");
+            } catch (error) {
+                alert(error);
+            }
         }
     });
+
+    async function getListBarang() {
+        return new Promise ((resolve, reject) => {
+            $.ajax({
+                url: '<?= BASE_URL ?>barang/list_all_barang',
+                method: 'GET',
+                success: function(response) {
+                    // Menghapus semua opsi yang ada sebelumnya
+                    const data = JSON.parse(response);
+            
+                    $('#listbarang').empty();
+    
+                    // Menambahkan opsi default lagi
+                    $('#listbarang').append('<option value="" readonly>--Pilih Barang--</option>');
+    
+                    // Mengisi select dengan data yang diterima dari server
+                    $.each(data, function(index, item) {
+                        $('#listbarang').append('<option value="' + item.id + '">' + item.namabarang + '</option>');
+                    });
+
+                    resolve();
+                },
+                error: function() {
+                    reject('Terjadi kesalahan saat mengambil list barang.');
+                }
+            });
+        })
+    }
 }
     
 
