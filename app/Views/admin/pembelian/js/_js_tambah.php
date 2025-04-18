@@ -93,6 +93,7 @@
                             // You can now use mdata values as needed
                             $("#barang").val(mdata.nama_barang);
                             $("#expired").val(formattedDate);
+                            $('#harga').val(mdata.harga);
                             $("#stokModal").modal("show");
                         } else {
                             if(mdata.newbarcode) {
