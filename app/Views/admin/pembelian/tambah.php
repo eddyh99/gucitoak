@@ -151,8 +151,32 @@
                                             </tbody>
                                             <tfoot>
                                                 <tr>
-                                                    <td colspan="5" style="text-align: right;">Total:</td>
-                                                    <td class="total"></td>
+                                                    <td colspan="5" style="text-align: right;">Subtotal:</td>
+                                                    <td id="subtotal" class="subtotal"></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="5" style="text-align: right;">Diskon:</td>
+                                                    <td><input type="number" id="diskon" name="diskon" class="form-control form-control-sm" placeholder="-" min="0" style="width: 145px;"></td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="5" style="text-align: right;">PPN (%):</td>
+                                                    <td>
+                                                        <div class="d-flex gap-1">
+                                                            <input type="number" id="ppn" name="ppn" class="form-control form-control-sm" placeholder="0%" min="0" max="100" style="width: 70px;">
+                                                            <input type="number" id="hasil_ppn" class="form-control form-control-sm" placeholder="-" min="0" style="width: 70px;" readonly>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td colspan="5" style="text-align: right; font-weight: bold;">Total:</td>
+                                                    <td>
+                                                        <input type="number" id="total" class="form-control form-control-sm" placeholder="-" min="0" style="width: 145px;" readonly>
+                                                    </td>
                                                     <td></td>
                                                 </tr>
                                             </tfoot>

@@ -127,6 +127,8 @@ class Pembelian extends BaseController
             'tanggal'       => date_format(date_create($this->request->getVar('tanggal')),"Y-m-d"),
             'method'        => trim(htmlspecialchars($this->request->getVar('pembayaran'))),
             'waktu'         => trim(htmlspecialchars($this->request->getVar('lama'))),
+            'discount'      => trim($this->request->getVar('diskon')),
+            'ppn'           => trim($this->request->getVar('ppn')),
             'detail'        => $_SESSION["barangbeli"]
         ];
         

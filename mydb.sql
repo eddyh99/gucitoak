@@ -520,10 +520,12 @@ CREATE TABLE `pembelian` (
   `tanggal` date NOT NULL,
   `method` enum('cash','tempo') NOT NULL,
   `waktu` int(11) NOT NULL,
+  `discount` int(11) NOT NULL,
+  `ppn` decimal(5,2) NOT NULL DEFAULT 0.00,
   PRIMARY KEY (`id`),
   KEY `pembelian_ibfk_1` (`id_suplier`),
   CONSTRAINT `pembelian_ibfk_1` FOREIGN KEY (`id_suplier`) REFERENCES `suplier` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -533,9 +535,9 @@ CREATE TABLE `pembelian` (
 LOCK TABLES `pembelian` WRITE;
 /*!40000 ALTER TABLE `pembelian` DISABLE KEYS */;
 INSERT INTO `pembelian` VALUES
-(1,'09/XII/2025',1,'2024-12-23','cash',0),
-(2,'09x22',1,'2024-12-28','cash',0),
-(3,'09x23',1,'2024-12-28','cash',0);
+(1,'09/XII/2025',1,'2024-12-23','cash',0,0,0.00),
+(2,'09x22',1,'2024-12-28','cash',0,0,0.00),
+(3,'09x23',1,'2024-11-28','cash',0,0,0.00);
 /*!40000 ALTER TABLE `pembelian` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -697,7 +699,7 @@ CREATE TABLE `penyesuaian` (
   PRIMARY KEY (`id`),
   KEY `penyesuaian_ibfk_1` (`barcode`),
   CONSTRAINT `penyesuaian_ibfk_1` FOREIGN KEY (`barcode`) REFERENCES `barang_detail` (`barcode`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -795,7 +797,7 @@ CREATE TABLE `retur_jual` (
   KEY `retur_jual_ibfk_2` (`nonota`),
   CONSTRAINT `retur_jual_ibfk_1` FOREIGN KEY (`pelanggan_id`) REFERENCES `pelanggan` (`id`),
   CONSTRAINT `retur_jual_ibfk_2` FOREIGN KEY (`nonota`) REFERENCES `penjualan` (`nonota`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1002,4 +1004,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*M!100616 SET NOTE_VERBOSITY=@OLD_NOTE_VERBOSITY */;
 
--- Dump completed on 2025-04-17 14:09:10
+-- Dump completed on 2025-04-18 16:55:31
