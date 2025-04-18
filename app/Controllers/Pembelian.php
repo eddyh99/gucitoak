@@ -88,6 +88,7 @@ class Pembelian extends BaseController
     
             // Update the session with the new array
             $this->session->set("barangbeli", $stokdata);
+            echo json_encode(['success' => true, 'message' => 'Deleted.']);
         } else {
             echo json_encode(['success' => false, 'message' => 'No data in session to delete.']);
         }
@@ -103,6 +104,10 @@ class Pembelian extends BaseController
             ],
             'pembayaran'     => [
                 'label'     => 'Pembayaran',
+                'rules'     => 'required'
+            ],
+            'nonota'     => [
+                'label'     => 'Nonota',
                 'rules'     => 'required'
             ],
         ]);

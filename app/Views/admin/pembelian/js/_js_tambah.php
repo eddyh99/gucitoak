@@ -9,6 +9,13 @@
     $("#suplier").select2({
         placeholder: "--- PILIH SUPLIER ---"
     });
+
+    $(function() {
+        setTimeout(() => {
+            $("#failedtoast").toast('show')
+            $("#successtoast").toast('show')
+        }, 0)
+    });
     
 
     $("#pembayaran").on("change",function(){
@@ -97,7 +104,7 @@
                             $("#stokModal").modal("show");
                         } else {
                             if(mdata.newbarcode) {
-                                return alert('membuat barcode baru');
+                                return barcodeConfimartion(mdata.namabarang);
                             }
 
                             alert('Barcode not found');
@@ -227,6 +234,22 @@
     $("#submit").on('click', function(){
         $("#frmjual").submit();
     })
+
+    function barcodeConfimartion(title = 'unknown') {
+    Swal.fire({
+        title: title,
+        text: "Ingin membuat barcode baru untuk barang ini?",
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonText: 'Ya',
+        cancelButtonText: 'Batal'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $("#newbarcodex").val($("#barcode").val());
+            $("#newbarcode").modal("show");
+        }
+    });
+}
     
 
 </script>
