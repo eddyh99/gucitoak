@@ -113,12 +113,16 @@
             mdata.forEach(item => {
                 // Ensure harga is a valid number before formatting
                 let harga = parseFloat(item.harga);
+                let diskon = parseFloat(item.discount);
+                let ppn = parseFloat(item.ppn * 100);
+                let totalHarga = parseFloat(item.totalharga);
                 let jumlah = parseInt(item.jumlah);
-                let total = jumlah * harga;
 
                 // Format harga and total to IDR format
                 let hargaFormatted = harga.toLocaleString("id-ID");
-                let totalFormatted = total.toLocaleString("id-ID");
+                let diskonFormatted = diskon.toLocaleString("id-ID");
+                let ppnFormatted = ppn.toLocaleString("id-ID");
+                let totalFormatted = totalHarga.toLocaleString("id-ID");
 
                 // Construct the HTML for each row
                 html += `
@@ -126,6 +130,8 @@
                         <td>${item.namabarang}</td>
                         <td>${jumlah}</td>
                         <td>${hargaFormatted}</td>
+                        <td>${diskonFormatted}</td>
+                        <td>${ppnFormatted}%</td>
                         <td>${totalFormatted}</td>
                     </tr>
                 `;

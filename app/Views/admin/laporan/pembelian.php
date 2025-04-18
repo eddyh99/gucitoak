@@ -111,6 +111,8 @@ if (!empty(session('failed'))): ?>
                             <th>Nama Barang</th>
                             <th>Jumlah</th>
                             <th>Harga</th>
+                            <th>Diskon</th>
+                            <th>PPN</th>
                             <th>Total</th>
                         </tr>
                     </thead>
