@@ -57,6 +57,12 @@
                                 <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                             </div>
                         </div>
+                        <div class="form-check">
+                            <input class="form-check-input" id="remember" name="remember" type="checkbox">
+                            <label class="form-check-label" for="remember">
+                                Remember me
+                            </label>
+                            </div>
                         <div class="my-5">
                             <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
                             <a  href="<?= BASE_URL ?>auth/sales" class="d-block text-end mt-2"><u>Are you a Sales?</u></a>

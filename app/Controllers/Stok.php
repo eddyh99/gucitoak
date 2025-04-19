@@ -122,13 +122,104 @@ class Stok extends BaseController
     }
 
     public function savestok(){
+
+        $postData = $this->request->getPost();
+
+        if (!empty($postData)) {
+            $data = $this->validate_stokform($postData);
+            if(!$data->validated) {
+                session()->setFlashdata('failed', $data->message);
+                return redirect()->to(BASE_URL . "pembelian/tambah_pembelian")->withInput();
+            }
+
+            $data = $data->message;
+
+        } else {
+            $data = $_SESSION["stokbarang"];
+        }
+
         $urlBarang = URLAPI . "/v1/barang/add_stok";
-		$responseBarang = gucitoakAPI($urlBarang,json_encode($_SESSION["stokbarang"]));
-        $resultBarang = $responseBarang->message;
-        unset($_SESSION['stokbarang']);
-        return redirect()->to(BASE_URL . "stok")->withInput();
+		$responseBarang = gucitoakAPI($urlBarang,json_encode($data));
+
+        if (isset($_SESSION['stokbarang'])) {
+            unset($_SESSION['stokbarang']);
+            return redirect()->to(BASE_URL . "stok")->withInput();
+        }
+
+        session()->setFlashdata('success', $responseBarang->message);
+        return redirect()->to(BASE_URL . "pembelian/tambah_pembelian")->withInput();
         
     }
+
+    private function validate_stokform($data) {
+        $validation = $this->validation;
+
+            $validation->setRules([
+                'id_barang' => [
+                    'rules'  => 'required',
+                    'errors' => [
+                        'required' => 'Kode barang wajib diisi',
+                    ]
+                ],
+                'barcodex' => [
+                    'rules'  => 'required|exact_length[18]',
+                    'errors' => [
+                        'required' => 'Barcode wajib diisi',
+                    ]
+                ],
+                'stok' => [
+                    'rules'  => 'required|integer',
+                    'errors' => [
+                        'required' => 'Jumlah stok wajib diisi',
+                        'integer'  => 'Stok harus berupa angka',
+                    ]
+                ],
+            ]);
+    
+            if (!$validation->withRequest($this->request)->run()) {
+                return (object) [
+                    'validated' => false,
+                    'message' => $validation->listErrors()
+                ];
+            }
+    
+            $barcode = $this->request->getVar('barcodex');
+            $last6 = substr($barcode, -6);
+            $day = (int) substr($last6, 0, 2);
+            $month = (int) substr($last6, 2, 2);
+            $year = '20' . substr($last6, 4, 2);
+            $expdate = sprintf('%02d/%02d/%02d', $day, $month, $year);
+        
+            // Validate expiration date
+            if (!checkdate($month, $day, $year)) {
+                return (object) [
+                    'validated' => false,
+                    'message' => 'Tanggal expired tidak valid.'
+                ];
+            }
+
+            $data = [
+                [
+                'kodebrg' => $this->request->getVar('id_barang'),
+                'barcode' => $barcode,
+                'expdate' => $expdate,
+                'stok' => $this->request->getVar('stok'),
+            ]];
+
+            return (object) [
+                'validated' => true,
+                'message' => $data
+            ];
+    }
+
+    // public function savestok(){
+    //     $urlBarang = URLAPI . "/v1/barang/add_stok";
+	// 	$responseBarang = gucitoakAPI($urlBarang,json_encode($_SESSION["stokbarang"]));
+    //     $resultBarang = $responseBarang->message;
+    //     unset($_SESSION['stokbarang']);
+    //     return redirect()->to(BASE_URL . "stok")->withInput();
+        
+    // }
     
     public function list_barcode($id){
         $id=base64_decode($id);

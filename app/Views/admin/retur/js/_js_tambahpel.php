@@ -47,7 +47,7 @@
             {
                 data: null,
                 render: function(data, type, row) {
-                    return `<button class="btn btn-danger btn-sm delete-row" data-barcode="${row.barcode}">Delete</button>`;
+                    return `<button type="button" class="btn btn-danger btn-sm delete-row" data-barcode="${row.barcode}">Delete</button>`;
                 }
             }
         ],
@@ -180,6 +180,8 @@
                     barcode: barcode
                 },
                 success: function(response) {
+                    console.log(response);
+                    
                     var result = JSON.parse(response);
                     if (result.success) {
                         alert('Item deleted successfully!');

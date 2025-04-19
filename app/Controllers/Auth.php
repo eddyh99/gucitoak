@@ -8,7 +8,7 @@ class Auth extends BaseController
     public function index()
     {
         $session = session();
-        if($session->has('logged_user')){
+        if($session->has('logged_user') ||  isset($_COOKIE['logged_user'])){
             return redirect()->to(BASE_URL . "dashboard");
             exit();
         }
@@ -42,6 +42,8 @@ class Auth extends BaseController
             session()->setFlashdata('failed', $this->validation->listErrors());
             return redirect()->to(BASE_URL)->withInput();
         }
+
+        $remember = filter_var($this->request->getVar('remember'), FILTER_VALIDATE_BOOLEAN);
         
         // Initial Data 
         // FILTER HTML SPECIAL CHARS
@@ -70,6 +72,10 @@ class Auth extends BaseController
         $mdata['akses'] = json_decode($result->akses);
 
         // Set SESSION logged_user
+        if ($remember) {
+            setcookie('logged_user', json_encode($mdata), time() + (86400 * 30), "/");
+        }
+
         $this->session->set('logged_user', $mdata);
 
         // If Success set session and redirect
@@ -82,6 +88,7 @@ class Auth extends BaseController
     public function logout(){
         // unset($_SESSION['item']);
         session()->destroy();
+        setcookie('logged_user', '', time() - 3600, "/");
         return redirect()->to(BASE_URL)->withInput();
         exit;
     }

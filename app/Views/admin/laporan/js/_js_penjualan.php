@@ -63,8 +63,8 @@
             { 
             data: 'amount',
             render: function(data, type, row) {
-                let total = (row.amount - row.discount) + (row.ppn * (row.amount - row.discount));
-                return $.fn.dataTable.render.number('.', ',', 0, '').display(total);
+                // let total = (row.amount - row.discount) + (row.ppn * (row.amount - row.discount));
+                return $.fn.dataTable.render.number('.', ',', 0, '').display(data);
             } 
             },
             {
@@ -99,11 +99,10 @@
             mdata.forEach(item => {
                 // Ensure harga is a valid number before formatting
                 let harga = parseFloat(item.harga);
-                let jumlah = parseInt(item.jumlah);
-                let total = jumlah * harga;
                 let diskon = parseFloat(item.discount);
-                let ppn = parseFloat(item.ppn) * (total- diskon);
-                let totalHarga = total - diskon + ppn;
+                let ppn = parseFloat(item.ppn * 100);
+                let totalHarga = parseFloat(item.totalharga);
+                let jumlah = parseInt(item.jumlah);
 
                 // Format harga and total to IDR format
                 let hargaFormatted = harga.toLocaleString("id-ID");
@@ -118,7 +117,7 @@
                         <td>${jumlah}</td>
                         <td>${hargaFormatted}</td>
                         <td>${diskonFormatted}</td>
-                        <td>${ppnFormatted}</td>
+                        <td>${ppnFormatted}%</td>
                         <td>${totalFormatted}</td>
                     </tr>
                 `;

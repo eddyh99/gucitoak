@@ -11,6 +11,13 @@ class LoginFilter implements FilterInterface
     public function before(RequestInterface $request, $arguments = null)
     {
         $session = session();
+
+        // Jika cookie 'logged_user' ada, simpan ke sesi
+        if (isset($_COOKIE['logged_user'])) {
+            $userData = json_decode($_COOKIE['logged_user'], true);
+            $session->set('logged_user', $userData);
+        }
+
         if(!$session->has('logged_user')){
             header("Location:".BASE_URL );
             exit();

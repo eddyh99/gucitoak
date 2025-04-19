@@ -120,6 +120,7 @@ class Retur extends BaseController
     
             // Update the session with the new array
             $this->session->set("barangretur", $stokdata);
+            echo json_encode(['success' => true, 'message' => 'Deleted.']);
         } else {
             echo json_encode(['success' => false, 'message' => 'No data in session to delete.']);
         }
@@ -158,9 +159,10 @@ class Retur extends BaseController
         $url = URLAPI . "/v1/retur/add_returpel";
         $response = gucitoakAPI($url, json_encode($mdata));
         $result = $response->message;
-        unset($_SESSION['barangretur']);
+        
         // Check response API
         if ($response->code == 200 || $response->code == 201) {
+            unset($_SESSION['barangretur']);
             session()->setFlashdata('success', $result);
             return redirect()->to(BASE_URL . "retur/pelanggan");
         }else{

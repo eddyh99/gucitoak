@@ -118,6 +118,10 @@
                 return;
             }
 
+            if (barcodeValue.length != 18 ) {
+                return alertSwal("Barcode tidak valid!");
+            }
+
             const selectedOption = $("#pelanggan").find('option:selected');
             const hargaNota = selectedOption.data('harganota');
             console.log("Selected hargaNota:", hargaNota); // Debugging step
@@ -158,6 +162,7 @@
 
                             $("#stokModal").modal("show");
                         } else {
+                            alertSwal('Barcode not found');
                             console.log("Unexpected response structure:", mdata);
                         }
                     } catch (error) {

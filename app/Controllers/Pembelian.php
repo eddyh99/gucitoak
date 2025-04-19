@@ -88,6 +88,7 @@ class Pembelian extends BaseController
     
             // Update the session with the new array
             $this->session->set("barangbeli", $stokdata);
+            echo json_encode(['success' => true, 'message' => 'Deleted.']);
         } else {
             echo json_encode(['success' => false, 'message' => 'No data in session to delete.']);
         }
@@ -103,6 +104,10 @@ class Pembelian extends BaseController
             ],
             'pembayaran'     => [
                 'label'     => 'Pembayaran',
+                'rules'     => 'required'
+            ],
+            'nonota'     => [
+                'label'     => 'Nonota',
                 'rules'     => 'required'
             ],
         ]);
@@ -122,6 +127,8 @@ class Pembelian extends BaseController
             'tanggal'       => date_format(date_create($this->request->getVar('tanggal')),"Y-m-d"),
             'method'        => trim(htmlspecialchars($this->request->getVar('pembayaran'))),
             'waktu'         => trim(htmlspecialchars($this->request->getVar('lama'))),
+            'discount'      => trim($this->request->getVar('diskon')),
+            'ppn'           => trim($this->request->getVar('ppn')),
             'detail'        => $_SESSION["barangbeli"]
         ];
         
@@ -155,6 +162,13 @@ class Pembelian extends BaseController
         $url = URLAPI . "/v1/pembelian/get_barangbeli?id=".base64_decode($id);
         $response = gucitoakAPI($url)->message;
         echo json_encode($response,true);
+    }
+
+    public function detailbarcode($barcode){
+        $url = URLAPI . "/v1/pembelian/getStokBy_barcode?id=".$barcode;
+		$response = gucitoakAPI($url);
+        $result = $response->message;
+        echo json_encode($result);
     }
 
 }

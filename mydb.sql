@@ -172,7 +172,7 @@ CREATE TABLE `cicilansuplier` (
   PRIMARY KEY (`id`),
   KEY `cicilansuplier_ibfk_1` (`id_nota`),
   CONSTRAINT `cicilansuplier_ibfk_1` FOREIGN KEY (`id_nota`) REFERENCES `pembelian` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -184,7 +184,8 @@ LOCK TABLES `cicilansuplier` WRITE;
 INSERT INTO `cicilansuplier` VALUES
 (3,1),
 (9,1),
-(18,1),
+(19,1),
+(20,1),
 (10,2),
 (13,2),
 (16,2),
@@ -226,7 +227,8 @@ INSERT INTO `cicilansuplier_detail` VALUES
 (15,'2025-01-14',2,'retur'),
 (16,'2025-01-14',7,'valid'),
 (17,'2025-01-14',1,'oke'),
-(18,'2025-03-23',80000,'r');
+(19,'2025-03-23',5000,'cicil #3'),
+(20,'2025-03-23',50000,'r');
 /*!40000 ALTER TABLE `cicilansuplier_detail` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -518,10 +520,12 @@ CREATE TABLE `pembelian` (
   `tanggal` date NOT NULL,
   `method` enum('cash','tempo') NOT NULL,
   `waktu` int(11) NOT NULL,
+  `discount` int(11) NOT NULL,
+  `ppn` decimal(5,2) NOT NULL DEFAULT 0.00,
   PRIMARY KEY (`id`),
   KEY `pembelian_ibfk_1` (`id_suplier`),
   CONSTRAINT `pembelian_ibfk_1` FOREIGN KEY (`id_suplier`) REFERENCES `suplier` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -531,9 +535,9 @@ CREATE TABLE `pembelian` (
 LOCK TABLES `pembelian` WRITE;
 /*!40000 ALTER TABLE `pembelian` DISABLE KEYS */;
 INSERT INTO `pembelian` VALUES
-(1,'09/XII/2025',1,'2024-12-23','cash',0),
-(2,'09x22',1,'2024-12-28','cash',0),
-(3,'09x23',1,'2024-12-28','cash',0);
+(1,'09/XII/2025',1,'2024-12-23','cash',0,0,0.00),
+(2,'09x22',1,'2024-12-28','cash',0,0,0.00),
+(3,'09x23',1,'2024-11-28','cash',0,0,0.00);
 /*!40000 ALTER TABLE `pembelian` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -565,8 +569,7 @@ LOCK TABLES `pembelian_detail` WRITE;
 INSERT INTO `pembelian_detail` VALUES
 (1,'139875032890250525',2,50000),
 (2,'139875032890250525',5,25000),
-(3,'139875032890250525',1,15000),
-(2,'139875032890250625',5,15000);
+(3,'139875032890250525',1,15000);
 /*!40000 ALTER TABLE `pembelian_detail` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -624,6 +627,7 @@ CREATE TABLE `penjualan` (
   `discount` int(11) NOT NULL,
   `ppn` decimal(5,2) NOT NULL DEFAULT 0.00,
   `is_terima` tinyint(1) DEFAULT 0,
+  `tanggal_diterima` datetime DEFAULT NULL,
   PRIMARY KEY (`nonota`),
   KEY `pelanggan_id` (`pelanggan_id`),
   KEY `penjualan_ibfk_2` (`sales_id`),
@@ -639,11 +643,11 @@ CREATE TABLE `penjualan` (
 LOCK TABLES `penjualan` WRITE;
 /*!40000 ALTER TABLE `penjualan` DISABLE KEYS */;
 INSERT INTO `penjualan` VALUES
-('000001','2024-12-03 00:00:00',1,1,'tempo',7,0,0.00,1),
-('000002','2024-11-13 02:25:36',2,4,'tempo',5,40000,0.10,0),
-('000003','2024-11-13 02:25:36',2,4,'tempo',5,0,0.00,1),
-('000004','2025-03-20 06:33:31',1,2,'cash',0,1000,0.11,0),
-('000005','2025-03-20 07:32:14',1,2,'cash',0,50000,0.10,0);
+('000001','2024-12-03 00:00:00',1,1,'tempo',7,0,0.00,1,'2024-12-03 00:00:00'),
+('000002','2024-11-13 02:25:36',2,4,'tempo',5,40000,0.10,1,'2025-04-17 14:01:53'),
+('000003','2024-11-13 02:25:36',2,4,'tempo',5,0,0.00,1,'2024-12-03 00:00:00'),
+('000004','2025-03-20 06:33:31',1,2,'cash',0,1000,0.11,0,NULL),
+('000005','2025-03-20 07:32:14',1,2,'cash',0,50000,0.10,0,NULL);
 /*!40000 ALTER TABLE `penjualan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -695,7 +699,7 @@ CREATE TABLE `penyesuaian` (
   PRIMARY KEY (`id`),
   KEY `penyesuaian_ibfk_1` (`barcode`),
   CONSTRAINT `penyesuaian_ibfk_1` FOREIGN KEY (`barcode`) REFERENCES `barang_detail` (`barcode`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -770,7 +774,6 @@ CREATE TABLE `retur_beli_detail` (
 LOCK TABLES `retur_beli_detail` WRITE;
 /*!40000 ALTER TABLE `retur_beli_detail` DISABLE KEYS */;
 INSERT INTO `retur_beli_detail` VALUES
-(3,'139875032890250625',2),
 (3,'139875032890250525',2);
 /*!40000 ALTER TABLE `retur_beli_detail` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -794,7 +797,7 @@ CREATE TABLE `retur_jual` (
   KEY `retur_jual_ibfk_2` (`nonota`),
   CONSTRAINT `retur_jual_ibfk_1` FOREIGN KEY (`pelanggan_id`) REFERENCES `pelanggan` (`id`),
   CONSTRAINT `retur_jual_ibfk_2` FOREIGN KEY (`nonota`) REFERENCES `penjualan` (`nonota`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1001,4 +1004,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*M!100616 SET NOTE_VERBOSITY=@OLD_NOTE_VERBOSITY */;
 
--- Dump completed on 2025-03-23 21:06:14
+-- Dump completed on 2025-04-18 16:55:31

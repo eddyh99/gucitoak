@@ -9,6 +9,21 @@
     $("#suplier").select2({
         placeholder: "--- PILIH SUPLIER ---"
     });
+
+    $(function() {
+        setTimeout(() => {
+            $("#failedtoast").toast('show')
+            $("#successtoast").toast('show')
+        }, 0)
+    });
+
+    function alertError(message) {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: message
+        });
+    }
     
 
     $("#pembayaran").on("change",function(){
@@ -17,6 +32,34 @@
         }else{
             $("#tempo").hide();
         }
+    });
+
+    $('#ppn, #diskon').on('input', function() {
+        let subtotalText = $('#subtotal').text().trim();
+
+        // Ubah format angka dengan menghapus titik ribuan dan mengganti koma desimal
+        let subtotal = parseFloat(subtotalText.replace(/\./g, '').replace(',', '.')) || 0;
+        let disc = parseFloat($('#diskon').val()) || 0;
+        let percent = parseFloat($('#ppn').val()) || 0; // Pastikan ini berupa angka
+
+        // Validasi max 100% dan min 0%
+        if (percent > 100) {
+            percent = 100;
+            $('#ppn').val(100);
+        } else if (percent < 0) {
+            percent = 0;
+            $('#ppn').val(0);
+        }
+
+        // Hitung PPN
+        let ppn = ((subtotal - disc) * percent) / 100;
+
+        // Hitung Total
+        let total = subtotal - disc + ppn;
+
+        // Set hasil dengan 2 angka desimal
+        $('#hasil_ppn').val(ppn);
+        $('#total').val(total);
     });
 
     var table = $('#preview_stok').DataTable({
@@ -40,7 +83,7 @@
             var totalSum = api.column(5, { page: 'current' }).data().sum();
     
             // Update the footer with the total sum
-            $(api.table().footer()).find('td.total').html(totalSum.toLocaleString("ID"));
+            $(api.table().footer()).find('td.subtotal').html(totalSum.toLocaleString("ID"));
         },
         "columns": [
 			{ data: 'barcode' },
@@ -62,9 +105,13 @@
     $("#barcode").on("keypress", function(e){
         if (e.which === 13) { // Check if Enter key is pressed
             let barcodeValue = $(this).val(); // Store the barcode value here
+
+            if (barcodeValue.length != 18 ) {
+                return alertError("Barcode tidak valid!");
+            }
             
             $.ajax({
-                url: "<?= BASE_URL ?>opname/detailbarcode/" + barcodeValue,
+                url: "<?= BASE_URL ?>pembelian/detailbarcode/" + barcodeValue,
                 type: "POST",
                 success: function (response) {
                     try {
@@ -89,8 +136,14 @@
                             // You can now use mdata values as needed
                             $("#barang").val(mdata.nama_barang);
                             $("#expired").val(formattedDate);
+                            $('#harga').val(mdata.harga);
                             $("#stokModal").modal("show");
                         } else {
+                            if(mdata.newbarcode) {
+                                return barcodeConfimartion(mdata.namabarang);
+                            }
+
+                            alertError('Barcode not found');
                             console.log("Unexpected response structure:", mdata);
                         }
                     } catch (error) {
@@ -217,6 +270,55 @@
     $("#submit").on('click', function(){
         $("#frmjual").submit();
     })
+
+    function barcodeConfimartion(title = 'unknown') {
+    Swal.fire({
+        title: title,
+        text: "Ingin membuat barcode baru untuk barang ini?",
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonText: 'Ya',
+        cancelButtonText: 'Batal'
+    }).then(async (result) => {
+        if (result.isConfirmed) {
+            $("#newbarcodex").val($("#barcode").val());
+            try {                
+                await getListBarang();
+                $("#newbarcode").modal("show");
+            } catch (error) {
+                alert(error);
+            }
+        }
+    });
+
+    async function getListBarang() {
+        return new Promise ((resolve, reject) => {
+            $.ajax({
+                url: '<?= BASE_URL ?>barang/list_all_barang',
+                method: 'GET',
+                success: function(response) {
+                    // Menghapus semua opsi yang ada sebelumnya
+                    const data = JSON.parse(response);
+            
+                    $('#listbarang').empty();
+    
+                    // Menambahkan opsi default lagi
+                    $('#listbarang').append('<option value="" readonly>--Pilih Barang--</option>');
+    
+                    // Mengisi select dengan data yang diterima dari server
+                    $.each(data, function(index, item) {
+                        $('#listbarang').append('<option value="' + item.id + '">' + item.namabarang + '</option>');
+                    });
+
+                    resolve();
+                },
+                error: function() {
+                    reject('Terjadi kesalahan saat mengambil list barang.');
+                }
+            });
+        })
+    }
+}
     
 
 </script>
