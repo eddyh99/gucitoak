@@ -21,8 +21,11 @@
             success: function(response) {
                 try {
                     let mdata = JSON.parse(response);
-                    const tanggal = mdata.tanggal.split(" ")[0];
                     console.log(mdata);
+                    if(!mdata) {
+                        return alert('Nota not found!');
+                    }
+                    const tanggal = mdata.tanggal.split(" ")[0];
 
                     $("#id").val(mdata.id);
                     $("#tgl").val(tanggal);
