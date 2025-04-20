@@ -59,7 +59,7 @@ if(!empty(session('failed'))): ?>
                                 <thead>
                                     <tr>
                                         <th>No. Nota</th>
-                                        <th>Pelanggan</th>
+                                        <th>Suplier</th>
                                         <th>Tanggal</th>
                                         <th>Aksi</th>
                                     </tr>

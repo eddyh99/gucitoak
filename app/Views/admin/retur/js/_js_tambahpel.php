@@ -13,7 +13,7 @@
     });
 
     $("#pelanggan").select2({
-        placeholder: "--- PILIH PELANGGAN ---",
+        placeholder: "--- PILIH OUTLET ---",
         allowClear: true
     });
 

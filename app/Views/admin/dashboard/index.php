@@ -49,7 +49,7 @@ $role = session()->get('logged_user')['role'];
                     <div class="col-lg-6 mb-4 order-1">
                         <div class="card border-expat w-100">
                         <div class="card-header bg-primary pb-2">
-                            <h5 class="card-title text-white">Pembayaran Pelanggan</h5>
+                            <h5 class="card-title text-white">Pembayaran Outlet</h5>
                         </div>
                             <div class="card-body mt-2">
                                 <table id="pembayaran_pelanggan" class="table table-striped" style="width:100%">

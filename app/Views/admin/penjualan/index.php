@@ -70,7 +70,7 @@ if(!empty(session('failed'))): ?>
                                 <thead>
                                     <tr>
                                         <th>No. Nota</th>
-                                        <th>Pelanggan</th>
+                                        <th>Outlet</th>
                                         <th>Tanggal</th>
                                         <th>Tanggal Diterima</th>
                                         <th>Sales</th>

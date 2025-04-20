@@ -35,7 +35,7 @@
                         <div class="col-lg-12 col-md-12 col-12 mb-2">
                             <div class="card">
                                 <div class="card-body">
-                                    <a href="<?= BASE_URL?>pelanggan/tambah_pelanggan" class="btn btn-primary"><img src="<?= BASE_URL ?>assets/img/icons/plus.png" alt="add" class="me-2" width="20" height="20"> Tambah Pelanggan</a>
+                                    <a href="<?= BASE_URL?>pelanggan/tambah_pelanggan" class="btn btn-primary"><img src="<?= BASE_URL ?>assets/img/icons/plus.png" alt="add" class="me-2" width="20" height="20"> Tambah Outlet</a>
                                 </div>
                             </div>
                         </div>
@@ -45,7 +45,7 @@
                 <div class="col-lg-12 mb-4 order-1">
                     <div class="card border-expat w-100">
                         <div class="card-body">
-                            <h5 class="card-title fw-semibold mb-4">List Pelanggan</h5>
+                            <h5 class="card-title fw-semibold mb-4">List Outlet</h5>
                             <table id="table_list" class="table nowrap table-striped" style="width:100%">
                                 <thead>
                                     <tr>

@@ -54,12 +54,12 @@ if(!empty(session('failed'))): ?>
                                     <button class="btn btn-primary" id="lihat">Lihat</button>
                                 </div>
                             </div>
-                            <h5 class="card-title fw-semibold mb-4 mt-3">Retur Pelanggan</h5>
+                            <h5 class="card-title fw-semibold mb-4 mt-3">Retur Outlet</h5>
                             <table id="table_list" class="table table-striped" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>No. Nota</th>
-                                        <th>Pelanggan</th>
+                                        <th>Outlet</th>
                                         <th>Tanggal</th>
                                         <th>Aksi</th>
                                     </tr>
