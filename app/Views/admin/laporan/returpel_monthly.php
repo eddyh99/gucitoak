@@ -10,6 +10,7 @@
                 				<label class="col-form-label col-sm-1">Outlet</label>
                 				<div class="col-sm-2">
                 				    <select name="pelanggan" id="pelanggan" class="form-control">
+                              <option value="">Semua Pelanggan</option>
                                         <?php foreach ($pelanggan as $pel) : ?>
                                             <option value="<?= $pel->id ?>"><?= $pel->namapelanggan ?></option>
                                         <?php endforeach; ?>
@@ -22,12 +23,13 @@
                                     <button class="btn btn-primary" id="lihat">Lihat</button>
                                 </div>
                             </div>
-                            <h5 class="card-title fw-semibold mb-4 mt-3">Penjualan Barang</h5>
+                            <h5 class="card-title fw-semibold mb-4 mt-3">Retur Outlet Bulanan</h5>
                             <div id="chart"></div>
                             <table id="table_list" class="table table-striped" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>Nama Barang</th>
+                                        <th>Outlet</th>
                                         <th>Jan</th>
                                         <th>Feb</th>
                                         <th>Mar</th>

@@ -329,6 +329,13 @@ use App\Enums\Menu; ?>
                         </li>
                     <?php endif ?>
 
+                    <li class="menu-item <?= $returpelm_active ?? '' ?>">
+                            <a href="<?= BASE_URL ?>laporan/returpel_monthly" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">
+                            <img src="<?= BASE_URL ?>assets/img/icons/118801_refresh_icon.png" alt="Home Icon" class="me-2" width="24" height="24">
+                                <div data-i18n="Laporan" style="font-size: 12px;">Retur Outlet <small><b>(Bulanan)</b></small></div>
+                            </a>
+                        </li>
+
                     <li class="menu-item <?= $hutangsuplier_active ?? '' ?>">
                             <a href="<?= BASE_URL ?>laporan/hutang_suplier" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">
                             <img src="<?= BASE_URL ?>assets/img/icons/cash-out.png" alt="Home Icon" class="me-2" width="24" height="24">
