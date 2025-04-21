@@ -118,10 +118,10 @@
                 return;
             }
 
-            if (barcodeValue.length != 18 ) {
-                return alertSwal("Barcode tidak valid!");
+            if (barcodeValue.length < 18 || barcodeValue.length > 19) {
+                return alertError("Barcode tidak valid!");
             }
-
+            
             const selectedOption = $("#pelanggan").find('option:selected');
             const hargaNota = selectedOption.data('harganota');
             console.log("Selected hargaNota:", hargaNota); // Debugging step

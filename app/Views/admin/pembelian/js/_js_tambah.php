@@ -113,8 +113,8 @@
     $("#barcode").on("keypress", function(e){
         if (e.which === 13) { // Check if Enter key is pressed
             let barcodeValue = $(this).val(); // Store the barcode value here
-
-            if (barcodeValue.length != 18 ) {
+            
+            if (barcodeValue.length < 18 || barcodeValue.length > 19) {
                 return alertError("Barcode tidak valid!");
             }
             
