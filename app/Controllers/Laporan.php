@@ -334,5 +334,35 @@ class Laporan extends BaseController
     
         return $this->response->setJSON($response);
     }
+
+    public function hutang_suplier() {
+        // if (!hasPermission(Menu::STOK_MIN_BARANG, 'laporan')) {
+        //     return view('errors/html/error_403');
+        // }
+        $mdata = [
+            'title'     => 'Laporan Hutang Outlet - ' . NAMETITLE,
+            'content'   => 'admin/laporan/hutang_suplier',
+            'extra'     => 'admin/laporan/js/_js_hutang_suplier',
+            'menuactive_laporan'   => 'active open',
+            'hutangsuplier_active'   => 'active'
+        ];
+
+        return view('admin/layout/wrapper', $mdata);
+    }
     
+
+    public function hutang_outlet() {
+        // if (!hasPermission(Menu::STOK_MIN_BARANG, 'laporan')) {
+        //     return view('errors/html/error_403');
+        // }
+        $mdata = [
+            'title'     => 'Laporan Hutang Outlet - ' . NAMETITLE,
+            'content'   => 'admin/laporan/hutang_outlet',
+            'extra'     => 'admin/laporan/js/_js_hutang_outlet',
+            'menuactive_laporan'   => 'active open',
+            'hutangoutlet_active'   => 'active'
+        ];
+
+        return view('admin/layout/wrapper', $mdata);
+    }
 }
