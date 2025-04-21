@@ -42,6 +42,7 @@
             "data": function(d) {
                 d.bulan = $('#bulan').val();
                 d.tahun = $('#tahun').val();
+                d.sales = $('#sales').val();
             },
             "dataSrc": function(data) {
                 console.log(data);
