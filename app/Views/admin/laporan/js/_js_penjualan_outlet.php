@@ -49,6 +49,7 @@ var table=$('#table_list').DataTable({
 	},
         "columns": [
 		{ data: 'namabarang'},
+            { data: 'namasales'},
         { data: 'jan'},
         { data: 'feb'},
         { data: 'mar'},

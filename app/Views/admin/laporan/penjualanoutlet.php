@@ -28,6 +28,7 @@
                                 <thead>
                                     <tr>
                                         <th>Nama Barang</th>
+                                        <th>Sales</th>
                                         <th>Jan</th>
                                         <th>Feb</th>
                                         <th>Mar</th>
