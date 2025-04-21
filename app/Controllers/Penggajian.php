@@ -22,7 +22,7 @@ class Penggajian extends BaseController
             'content'   => 'admin/penggajian/index',
             'extra'     => 'admin/penggajian/js/_js_index',
             'menuactive_penggajian'   => 'active open',
-            'user_active'   => 'active'
+            'gaji_active'   => 'active'
         ];
 
         return view('admin/layout/wrapper', $mdata);

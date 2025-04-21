@@ -69,8 +69,8 @@
                 const month = lastSix.slice(2, 4);
                 const year = lastSix.slice(4, 6);
 
-                // Format as d/m/y
-                const formattedDate = `${day}/${month}/${year}`;
+                // Format as d/m/Y
+                const formattedDate = `${day}/${month}/20${year}`;
 
                 // Display or use the formatted date
                 $("#hiddenexpdate").val(formattedDate);

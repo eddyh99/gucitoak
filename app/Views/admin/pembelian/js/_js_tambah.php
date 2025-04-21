@@ -14,7 +14,15 @@
         setTimeout(() => {
             $("#failedtoast").toast('show')
             $("#successtoast").toast('show')
-        }, 0)
+        }, 0);
+
+        $('#listbarang').select2({
+            placeholder: "Pilih Barang",
+            allowClear: true,
+            theme: "bootstrap",
+            width: "100%",
+            dropdownParent: $('#newbarcode') 
+        });
     });
 
     function alertError(message) {

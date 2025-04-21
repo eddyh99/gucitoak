@@ -1,29 +1,3 @@
-<?php
-if(!empty(session('failed'))): ?>
-    <div id="failedtoast" class="bs-toast toast toast-placement-ex m-3 fade bg-danger top-0 end-0" role="alert" aria-live="assertive" aria-atomic="true" data-delay="1000">
-        <div class="toast-header">
-            <i class="bx bx-x me-2"></i>
-            <div class="me-auto fw-semibold">Error</div>
-            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-        <div class="toast-body">
-            <?= session('failed')?>
-        </div>
-    </div>
-<?php endif;?>
-
-<?php if(!empty($_SESSION['success'])): ?>
-    <div id="successtoast" class="bs-toast toast toast-placement-ex m-3 fade bg-success top-0 end-0" role="alert" aria-live="assertive" aria-atomic="true" data-delay="1000">
-        <div class="toast-header">
-            <i class="bx bx-bell me-2"></i>
-            <div class="me-auto fw-semibold">Berhasil</div>
-            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-        <div class="toast-body">
-            <?= session('success')?>
-        </div>
-    </div>
-<?php endif;?>
  <!-- Content wrapper -->
     <div class="content-wrapper">
         <!-- Content -->
@@ -33,39 +7,51 @@ if(!empty(session('failed'))): ?>
                     <div class="card w-100">
                         <div class="card-body">
                             <div class="row form-group">
-                				<label class="col-form-label col-sm-1">Pelanggan</label>
+                				<label class="col-form-label col-sm-1">Outlet</label>
                 				<div class="col-sm-2">
                 				    <select name="pelanggan" id="pelanggan" class="form-control">
+                              <option value="">Semua Pelanggan</option>
                                         <?php foreach ($pelanggan as $pel) : ?>
                                             <option value="<?= $pel->id ?>"><?= $pel->namapelanggan ?></option>
                                         <?php endforeach; ?>
                 				    </select>
                 				</div>
+                        <div class="col-sm-1">
+                				    <input type="text" name="tahun" id="tahun" class="form-control" value="<?=date("Y")?>">
+                				</div>
                                 <div class="col-2">
                                     <button class="btn btn-primary" id="lihat">Lihat</button>
                                 </div>
                             </div>
-                            <h5 class="card-title fw-semibold mb-4 mt-3">Grafik Penjualan</h5>
+                            <h5 class="card-title fw-semibold mb-4 mt-3">Retur Outlet Bulanan</h5>
                             <div id="chart"></div>
-                            <!-- <table id="table_list" class="table table-striped" style="width:100%">
+                            <table id="table_list" class="table table-striped" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>No. Nota</th>
+                                        <th>Nama Barang</th>
                                         <th>Outlet</th>
-                                        <th>Tanggal</th>
-                                        <th>Sales</th>
-                                        <th>Nominal</th>
-                                        <th>Aksi</th>
+                                        <th>Jan</th>
+                                        <th>Feb</th>
+                                        <th>Mar</th>
+                                        <th>Apr</th>
+                                        <th>Mei</th>
+                                        <th>Jun</th>
+                                        <th>Jul</th>
+                                        <th>Ags</th>
+                                        <th>Sep</th>
+                                        <th>Okt</th>
+                                        <th>Nov</th>
+                                        <th>Des</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 </tbody>
-                                <tfoot class="total-row">
+                                <!-- <tfoot class="total-row">
                                     <td colspan="4" class="text-end fw-bold">Total</td>
                                     <td id="total_amount" class="fw-bold"></td>
                                     <td></td>
-                                </tfoot>
-                            </table> -->
+                                </tfoot> -->
+                            </table>
                         </div>
                     </div>
                 </div>

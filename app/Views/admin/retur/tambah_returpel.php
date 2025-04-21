@@ -23,7 +23,7 @@
                                 <i class="bx bx-chevron-left fs-2"></i>
                                 Kembali
                             </a>
-                            <h5 class="mb-1">Retur Pelanggan</h5>
+                            <h5 class="mb-1">Retur Outlet</h5>
                         </div>
                             <div class="card-body">
                                 <form id="frmjual" action="<?=BASE_URL ?>retur/simpanreturpel" method="POST" >
@@ -35,7 +35,7 @@
                                             </div>
                                         </div>
                                         <div class="mb-3">
-                                            <label class="form-label" for="expired">Pelanggan</label>
+                                            <label class="form-label" for="expired">Outlet</label>
                                             <select id="pelanggan" name="pelanggan" class="form-select" required>
                                                 <option></option>
                                                 <?php foreach ($pelanggan as $p) : ?>

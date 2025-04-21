@@ -73,8 +73,8 @@ use App\Enums\Menu; ?>
                     <?php if ($isAdmin || $hasPermission(Menu::DAFTAR_PELANGGAN, 'setup')): ?>
                         <li class="menu-item <?= $pelanggan_active ?? '' ?>">
                             <a href="<?= BASE_URL ?>pelanggan" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">
-                            <img src="<?= BASE_URL ?>assets/img/icons/118828_system_users_icon.png" alt="Home Icon" class="me-2" width="24" height="24">
-                                <div data-i18n="Pelanggan" style="font-size: 12px;">Daftar Pelanggan</div>
+                            <img src="<?= BASE_URL ?>assets/img/icons/outlet.ico" alt="Home Icon" class="me-2" width="24" height="24">
+                                <div data-i18n="Pelanggan" style="font-size: 12px;">Daftar Outlet</div>
                             </a>
                         </li>
                     <?php endif ?>
@@ -229,7 +229,7 @@ use App\Enums\Menu; ?>
                             <li class="menu-item <?= $trx_returpel ?? '' ?>">
                                 <a href="<?= BASE_URL ?>retur/pelanggan" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">
                                 <img src="<?= BASE_URL ?>assets/img/icons/118801_refresh_icon.png" alt="Home Icon" class="me-2" width="24" height="24">
-                                    <div data-i18n="Penjualan" style="font-size: 12px;">Retur Pelanggan</div>
+                                    <div data-i18n="Penjualan" style="font-size: 12px;">Retur Outlet</div>
                                 </a>
                             </li>
                         <?php endif ?>
@@ -239,7 +239,7 @@ use App\Enums\Menu; ?>
                             <li class="menu-item <?= $trx_pembayaranpel ?? '' ?>">
                                 <a href="<?= BASE_URL ?>pembayaran/pelanggan" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">
                                 <img src="<?= BASE_URL ?>assets/img/icons/cash-out.png" alt="Home Icon" class="me-2" width="24" height="24">
-                                    <div data-i18n="Penjualan" style="font-size: 12px;">Pembayaran Pelanggan</div>
+                                    <div data-i18n="Penjualan" style="font-size: 12px;">Pembayaran Outlet</div>
                                 </a>
                             </li>
                         <?php endif ?>
@@ -310,7 +310,7 @@ use App\Enums\Menu; ?>
                             </a>
                         </li>
                     <?php endif ?>
-        
+        <hr>
                     <?php if ($isAdmin || $hasPermission(Menu::LAP_RETUR_SUPLIER, 'laporan')): ?>
                         <li class="menu-item <?= $retursup_active ?? '' ?>">
                             <a href="<?= BASE_URL ?>laporan/retursup" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">
@@ -324,10 +324,31 @@ use App\Enums\Menu; ?>
                         <li class="menu-item <?= $returpel_active ?? '' ?>">
                             <a href="<?= BASE_URL ?>laporan/returpel" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">
                             <img src="<?= BASE_URL ?>assets/img/icons/118801_refresh_icon.png" alt="Home Icon" class="me-2" width="24" height="24">
-                                <div data-i18n="Laporan" style="font-size: 12px;">Retur Pelanggan</div>
+                                <div data-i18n="Laporan" style="font-size: 12px;">Retur Outlet</div>
                             </a>
                         </li>
                     <?php endif ?>
+
+                    <li class="menu-item <?= $returpelm_active ?? '' ?>">
+                            <a href="<?= BASE_URL ?>laporan/returpel_monthly" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">
+                            <img src="<?= BASE_URL ?>assets/img/icons/118801_refresh_icon.png" alt="Home Icon" class="me-2" width="24" height="24">
+                                <div data-i18n="Laporan" style="font-size: 12px;">Retur Outlet <small><b>(Bulanan)</b></small></div>
+                            </a>
+                        </li>
+
+                    <li class="menu-item <?= $hutangsuplier_active ?? '' ?>">
+                            <a href="<?= BASE_URL ?>laporan/hutang_suplier" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">
+                            <img src="<?= BASE_URL ?>assets/img/icons/cash-out.png" alt="Home Icon" class="me-2" width="24" height="24">
+                                <div data-i18n="Laporan" style="font-size: 12px;">Hutang Suplier</div>
+                            </a>
+                    </li>
+
+                    <li class="menu-item <?= $hutangoutlet_active ?? '' ?>">
+                            <a href="<?= BASE_URL ?>laporan/hutang_outlet" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">
+                            <img src="<?= BASE_URL ?>assets/img/icons/cash-out.png" alt="Home Icon" class="me-2" width="24" height="24">
+                                <div data-i18n="Laporan" style="font-size: 12px;">Hutang Outlet</div>
+                            </a>
+                    </li>
                     <hr>
                     <?php if ($isAdmin || $hasPermission(Menu::OMZET_OUTLET, 'laporan')): ?>
                         <li class="menu-item <?= $omzetoutlet_active ?? '' ?>">

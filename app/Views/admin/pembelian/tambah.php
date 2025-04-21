@@ -269,7 +269,7 @@
             <div class="modal-body py-1">
                 <div class="mt-1">
                     <div class="input-group input-group-merge">
-                        <select class="form-control" id="listbarang" name="id_barang">
+                        <select id="listbarang" name="id_barang">
                             <option value="" readonly>--Pilih Barang--</option>
                         </select>
 

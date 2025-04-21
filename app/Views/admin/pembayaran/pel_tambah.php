@@ -52,7 +52,7 @@
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label" for="barang">Pelanggan</label>
+                                    <label class="form-label" for="barang">Outlet</label>
                                     <div class="input-group input-group-merge">
                                         <input id="pelanggan" type="text" name="pelanggan" class="form-control" value="<?= old('pelanggan') ?>" readonly>
                                     </div>

@@ -334,5 +334,64 @@ class Laporan extends BaseController
     
         return $this->response->setJSON($response);
     }
+
+    public function hutang_suplier() {
+        // if (!hasPermission(Menu::STOK_MIN_BARANG, 'laporan')) {
+        //     return view('errors/html/error_403');
+        // }
+        $mdata = [
+            'title'     => 'Laporan Hutang Outlet - ' . NAMETITLE,
+            'content'   => 'admin/laporan/hutang_suplier',
+            'extra'     => 'admin/laporan/js/_js_hutang_suplier',
+            'menuactive_laporan'   => 'active open',
+            'hutangsuplier_active'   => 'active'
+        ];
+
+        return view('admin/layout/wrapper', $mdata);
+    }
     
+
+    public function hutang_outlet() {
+        // if (!hasPermission(Menu::STOK_MIN_BARANG, 'laporan')) {
+        //     return view('errors/html/error_403');
+        // }
+        $mdata = [
+            'title'     => 'Laporan Hutang Outlet - ' . NAMETITLE,
+            'content'   => 'admin/laporan/hutang_outlet',
+            'extra'     => 'admin/laporan/js/_js_hutang_outlet',
+            'menuactive_laporan'   => 'active open',
+            'hutangoutlet_active'   => 'active'
+        ];
+
+        return view('admin/layout/wrapper', $mdata);
+    }
+
+    public function returpel_monthly() {
+        // if (!hasPermission(Menu::PENJUALAN_OUTLET, 'laporan')) {
+        //     return view('errors/html/error_403');
+        // }
+
+        $url = URLAPI . "/v1/pelanggan/getall_pelanggan";
+        $response = gucitoakAPI($url);
+        $pelanggan = $response->message;
+
+        $mdata = [
+            'title'     => 'Mutasi Stok - ' . NAMETITLE,
+            'content'   => 'admin/laporan/returpel_monthly',
+            'extra'     => 'admin/laporan/js/_js_returpel_monthly',
+            'menuactive_laporan'   => 'active open',
+            'returpelm_active'   => 'active',
+            'pelanggan' => $pelanggan
+        ];
+
+        return view('admin/layout/wrapper', $mdata);
+    }
+
+    public function getretur_outletmonthly(){
+        $id  = $this->request->getVar('id');
+        $tahun  = $this->request->getVar('tahun');
+        $url = URLAPI . "/v1/laporan/getretur_outletmonthly?id=".$id."&tahun=".$tahun;
+        $response = gucitoakAPI($url)->message;
+        echo json_encode($response,true);
+    }
 }

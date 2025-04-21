@@ -7,7 +7,7 @@
                     <div class="card w-100">
                         <div class="card-body">
                             <div class="row form-group">
-                				<label class="col-form-label col-sm-1">Pelanggan</label>
+                				<label class="col-form-label col-sm-1">Outlet</label>
                 				<div class="col-sm-2">
                 				    <select name="pelanggan" id="pelanggan" class="form-control">
                                         <?php foreach ($pelanggan as $pel) : ?>
