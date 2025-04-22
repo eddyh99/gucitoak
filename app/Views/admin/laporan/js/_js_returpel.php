@@ -64,7 +64,7 @@ var table=$('#table_list').DataTable({
 		}
 	},
         "columns": [
-		{ data: 'id' },
+		{ data: 'nonota' },
 		{ data: 'namapelanggan' },
 		{ data: 'tanggal' },
     	{ data: null,
