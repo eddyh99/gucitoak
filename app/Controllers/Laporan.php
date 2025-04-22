@@ -415,4 +415,20 @@ class Laporan extends BaseController
 
         return view('admin/layout/wrapper', $mdata);
     }
+
+    // laba/rugi
+    public function pnl() {
+        // if (!hasPermission(Menu::LAP_BIAYA, 'laporan')) {
+        //     return view('errors/html/error_403');
+        // }
+        $mdata = [
+            'title'     => 'Laporan Biaya - ' . NAMETITLE,
+            'content'   => 'admin/laporan/pnl',
+            'extra'     => 'admin/laporan/js/_js_pnl',
+            'menuactive_laporan'   => 'active open',
+            'pnl_active'   => 'active'
+        ];
+
+        return view('admin/layout/wrapper', $mdata);
+    }
 }

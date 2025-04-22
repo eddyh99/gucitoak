@@ -392,6 +392,13 @@ use App\Enums\Menu; ?>
                             </a>
                         </li>
                     <?php endif ?>
+
+                    <li class="menu-item <?= $pnl_active ?? '' ?>">
+                            <a href="<?= BASE_URL ?>laporan/pnl" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">
+                            <img src="<?= BASE_URL ?>assets/img/icons/chart-2.png" alt="Home Icon" class="me-2" width="24" height="24"> 
+                                <div data-i18n="Laporan" style="font-size: 12px;">Laba Rugi</div>
+                            </a>
+                        </li>
         
                     <?php if ($isAdmin || $hasPermission(Menu::OUTLET_IDLE, 'laporan')): ?>
                         <li class="menu-item <?= $outletidle_active ?? '' ?>">

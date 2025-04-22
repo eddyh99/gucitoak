@@ -55,13 +55,13 @@
                                 <div class="mb-3">
                                     <label class="form-label" for="expired">Uang Harian</label>
                                     <div class="input-group input-group-merge">
-                                        <input id="uangharian" type="number" name="uangharian" class="form-control" value="<?= old('uangharian', 0) ?>">
+                                        <input id="uangharian" type="text" name="uangharian" class="form-control" value="<?= old('uangharian', 0) ?>">
                                     </div>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="barang">Insentif</label>
                                     <div class="input-group input-group-merge">
-                                        <input type="number" name="insentif" id="insentif" insentif="Masukkan Nominal" class="form-control" value="<?= old('insentif', 0) ?>">
+                                        <input type="text" name="insentif" id="insentif" insentif="Masukkan Nominal" class="form-control" value="<?= old('insentif', 0) ?>">
                                     </div>
                                 </div>
                                 <div class="mb-3">

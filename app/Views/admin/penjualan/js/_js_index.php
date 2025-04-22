@@ -143,8 +143,6 @@ var table=$('#table_list').DataTable({
                         <td>${item.namabarang}</td>
                         <td>${jumlah}</td>
                         <td>${hargaFormatted}</td>
-                        <td>${diskonFormatted}</td>
-                        <td>${ppnFormatted}%</td>
                         <td>${totalFormatted}</td>
                     </tr>
                 `;
