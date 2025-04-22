@@ -301,6 +301,15 @@ use App\Enums\Menu; ?>
                             </a>
                         </li>
                     <?php endif ?>
+
+                    <?php if ($isAdmin || $hasPermission(Menu::PENJUALAN_OUTLET, 'laporan')): ?>
+                        <li class="menu-item <?= $penjualanoutlet_active ?? '' ?>">
+                            <a href="<?= BASE_URL ?>laporan/penjualan_outlet" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">
+                            <img src="<?= BASE_URL ?>assets/img/icons/118811_calendar_office_icon.png" alt="Home Icon" class="me-2" width="24" height="24"> 
+                                <div data-i18n="Laporan" style="font-size: 12px;">Penjualan Outlet</div>
+                            </a>
+                        </li>
+                    <?php endif ?>
         
                     <?php if ($isAdmin || $hasPermission(Menu::PEMBELIAN_SUMMARY, 'laporan')): ?>
                         <li class="menu-item <?= $pembelian_active ?? '' ?>">
@@ -364,15 +373,6 @@ use App\Enums\Menu; ?>
                             <a href="<?= BASE_URL ?>laporan/outlet_idle" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">
                             <img src="<?= BASE_URL ?>assets/img/icons/118937_battery_caution_icon.png" alt="Home Icon" class="me-2" width="24" height="24"> 
                                 <div data-i18n="Laporan" style="font-size: 12px;">Outlet Idle</div>
-                            </a>
-                        </li>
-                    <?php endif ?>
-        
-                    <?php if ($isAdmin || $hasPermission(Menu::PENJUALAN_OUTLET, 'laporan')): ?>
-                        <li class="menu-item <?= $penjualanoutlet_active ?? '' ?>">
-                            <a href="<?= BASE_URL ?>laporan/penjualan_outlet" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">
-                            <img src="<?= BASE_URL ?>assets/img/icons/118811_calendar_office_icon.png" alt="Home Icon" class="me-2" width="24" height="24"> 
-                                <div data-i18n="Laporan" style="font-size: 12px;">Penjualan Outlet</div>
                             </a>
                         </li>
                     <?php endif ?>

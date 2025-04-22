@@ -83,21 +83,27 @@ class Laporan extends BaseController
             return view('errors/html/error_403');
         }
 
+        $url =  URLAPI . "/v1/sales/getall_sales";
+        $response = gucitoakAPI($url);
+        $sales = $response->message;
+
         $mdata = [
             'title'     => 'Mutasi Stok - ' . NAMETITLE,
             'content'   => 'admin/laporan/penjualan',
             'extra'     => 'admin/laporan/js/_js_penjualan',
             'menuactive_laporan'   => 'active open',
-            'penjualan_active'   => 'active'
+            'penjualan_active'   => 'active',
+            'sales' => $sales
         ];
 
         return view('admin/layout/wrapper', $mdata);
     }
 
     public function get_penjualan(){
+        $sales  = $this->request->getVar('sales');
         $bulan  = $this->request->getVar('bulan');
         $tahun  = $this->request->getVar('tahun');
-        $url = URLAPI . "/v1/laporan/mutasi_penjualan?bulan=".$bulan."&tahun=".$tahun;
+        $url = URLAPI . "/v1/laporan/mutasi_penjualan?". "sales=".$sales."&bulan=".$bulan."&tahun=".$tahun;
         $response = gucitoakAPI($url)->message;
         echo json_encode($response,true);
         
