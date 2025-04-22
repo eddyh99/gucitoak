@@ -85,12 +85,6 @@ var table=$('#table_list').DataTable({
             } 
         },
 		{ data: 'method' },
-        {
-            data: 'is_terima',
-            render: function(data, type, row) {
-                return data == 1 ? 'sudah diterima' : '-';
-            }
-        },
         { data: null,
 		    render: function (data, type, row) {
                 var print = `<a href="#" onclick='generatePDF("`+encodeURI(btoa(data.nonota))+`")'>
@@ -106,9 +100,9 @@ var table=$('#table_list').DataTable({
                                           </a>`;
                     // Tombol Edit
                     var terima = data.is_terima != 1 ? `<a href="#" onclick='terimaBarang("` + encodeURI(btoa(data.nonota)) + `")'>
-                                                      <i class="bx bx-check bx-md fs-3 text-success"></i>
+                                                      <img src="<?= BASE_URL ?>assets/img/icons/check.png" alt="Home Icon" width="20" height="20">
                                                     </a>` : '';
-                    return `${detail} ${terima}`;
+                    return `${terima} ${detail}`;
                 }
 		},
 	],

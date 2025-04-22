@@ -76,7 +76,7 @@ if(!empty(session('failed'))): ?>
                                         <th>Sales</th>
                                         <th>Nominal</th>
                                         <th>Cara Bayar</th>
-                                        <th>Keterangan</th>
+                                        <!-- <th>Keterangan</th> -->
                                         <th>Cetak</th>
                                         <th>Aksi</th>
                                     </tr>

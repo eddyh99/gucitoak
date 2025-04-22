@@ -51,14 +51,25 @@ class Penggajian extends BaseController
                 'label'     => 'Sales',
                 'rules'     => 'required'
             ],
+            'detailnota'     => [
+                'label'     => 'Penjualan',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Sales belum melakukan penjualan.'
+                ]
+            ],
             'uangharian'     => [
                 'label'     => 'Uang Harian',
-                'rules'     => 'required'
+                'rules'     => 'required|numeric'
+            ],
+            'gajipokok' => [
+                'label'   => 'Gaji Pokok',
+                'rules'   => 'required|numeric|greater_than[0]'
             ],
             'insentif'     => [
                 'label'     => 'Insentif',
-                'rules'     => 'required'
-            ],
+                'rules'     => 'required|numeric'
+            ]
         ]);
 
         // Checking Validation
