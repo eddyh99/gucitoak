@@ -56,6 +56,9 @@
     });
 
     $("#submit").on('click', function() {
+        ["gajipokok", "komisi", "uangharian", "insentif"].forEach(id => {
+            $("#" + id).val(getInt(id));
+        });
         $("#frmGaji").submit();
     })
 </script>
