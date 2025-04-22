@@ -12,7 +12,7 @@
 
     <style>
         @page {
-            size: 21cm 14cm landscape;
+            size: 21cm auto;
             margin: 0;
         }
 
