@@ -31,7 +31,7 @@
     });
 
     var table = $('#table_list').DataTable({
-        "scrollX": true,
+        "scrollX": false,
         "dom": 'lBfrtip',
         "buttons": [{
                 extend: 'pdf',
@@ -70,6 +70,16 @@
             } 
         },
         ],
+        "footerCallback": function(row, data, start, end, display) {
+            var api = this.api();
+            var totalAmount = api.column(2).data().reduce(function(a, b) {
+                return a + (parseFloat(b) || 0);
+            }, 0);
+            $(api.column(2).footer()).html(totalAmount.toLocaleString('en-US', {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            }) || '');
+        }
     });
 
     $("#lihat").on("click", function() {

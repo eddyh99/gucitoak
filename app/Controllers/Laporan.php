@@ -400,4 +400,19 @@ class Laporan extends BaseController
         $response = gucitoakAPI($url)->message;
         echo json_encode($response,true);
     }
+
+    public function biaya() {
+        // if (!hasPermission(Menu::STOK_MIN_BARANG, 'laporan')) {
+        //     return view('errors/html/error_403');
+        // }
+        $mdata = [
+            'title'     => 'Laporan Biaya - ' . NAMETITLE,
+            'content'   => 'admin/laporan/biaya',
+            'extra'     => 'admin/biaya/js/_js_index',
+            'menuactive_laporan'   => 'active open',
+            'biaya_active'   => 'active'
+        ];
+
+        return view('admin/layout/wrapper', $mdata);
+    }
 }
