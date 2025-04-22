@@ -56,7 +56,12 @@ var table=$('#table_list').DataTable({
 		{ data: 'namasuplier' },
 		{ data: 'nonota' },
 		{ data: 'tanggal' },
-		{ data: 'amount',render:$.fn.dataTable.render.number( '.', ',', 0, '' )},
+		{ data: 'amount',
+            render: function(data, type, row) {
+                let total = (row.amount - row.discount) + (row.ppn * (row.amount - row.discount));
+                return $.fn.dataTable.render.number('.', ',', 0, '').display(total);
+            } 
+        },
 		{ data: null,
 		    render: function (data, type, row) {
                     var detail = `<a href="#" onclick='detailbarang("`+encodeURI(btoa(data.id))+`")'>
@@ -77,21 +82,24 @@ var table=$('#table_list').DataTable({
         $.get("<?=BASE_URL?>pembelian/list_barang/" + idb, function(data, status) {
             let mdata = JSON.parse(data);
             let html = '';
-            console.log(mdata);
+            // console.log(mdata);
+            let ppn = parseFloat(mdata[0].ppn *100);
+            let diskon = parseFloat(mdata[0].discount);
+            
+            let diskonFormatted = diskon.toLocaleString("id-ID");
+            let ppnFormatted = ppn.toLocaleString("id-ID");
         
              mdata.forEach(item => {
                 // Ensure harga is a valid number before formatting
                 let harga = parseFloat(item.harga);
                 let jumlah = parseInt(item.jumlah);
-                let diskon = parseFloat(item.discount);
-                let ppn = parseFloat(item.ppn * 100);
                 let total = parseFloat(item.totalharga);
+
     
                 // Format harga and total to IDR format
                 let hargaFormatted = harga.toLocaleString("id-ID");
                 let totalFormatted = total.toLocaleString("id-ID");
-                let diskonFormatted = diskon.toLocaleString("id-ID");
-                let ppnFormatted = ppn.toLocaleString("id-ID");
+
     
                 // Construct the HTML for each row
                 html += `
@@ -99,12 +107,13 @@ var table=$('#table_list').DataTable({
                         <td>${item.namabarang}</td>
                         <td>${jumlah}</td>
                         <td>${hargaFormatted}</td>
-                        <td>${diskonFormatted}</td>
-                        <td>${ppnFormatted}%</td>
                         <td>${totalFormatted}</td>
                     </tr>
                 `;
+
             });
+            $("#ppn").text(ppnFormatted + '%');
+            $("#diskon").text(diskonFormatted);
         
             // Insert rows into the table body
             $('#modalDataBody').html(html);
