@@ -402,9 +402,9 @@ class Laporan extends BaseController
     }
 
     public function biaya() {
-        // if (!hasPermission(Menu::STOK_MIN_BARANG, 'laporan')) {
-        //     return view('errors/html/error_403');
-        // }
+        if (!hasPermission(Menu::LAP_BIAYA, 'laporan')) {
+            return view('errors/html/error_403');
+        }
         $mdata = [
             'title'     => 'Laporan Biaya - ' . NAMETITLE,
             'content'   => 'admin/laporan/biaya',

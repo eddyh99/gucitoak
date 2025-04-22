@@ -25,6 +25,7 @@ CONST RETUR_SUPLIER = 'retur_suplier';
 CONST RETUR_PELANGGAN = 'retur_outlet';
 CONST PEMBAYARAN_PELANGGAN = 'pembayaran_outlet';
 CONST PEMBAYARAN_SUPLIER = 'pembayaran_suplier';
+CONST BIAYA = 'biaya';
 CONST STOK_MIN_BARANG = 'stok_min_barang';
 CONST MUTASI_STOK = 'mutasi_stok';
 CONST PENJUALAN_SUMMARY = 'penjualan_summary';
@@ -40,6 +41,7 @@ CONST PENGGAJIAN_SALES = 'penggajian_sales';
 CONST HUTANG_OUTLET = 'hutang_outlet';
 CONST HUTANG_SUPLIER = 'hutang_suplier';
 CONST LAP_RETUR_PELANGGAN_MONTHLY = 'laporan_retur_outlet30';
+CONST LAP_BIAYA = 'laporan_biaya';
 
     public static function subMenu_setup()
         {
@@ -76,7 +78,8 @@ CONST LAP_RETUR_PELANGGAN_MONTHLY = 'laporan_retur_outlet30';
                 self::RETUR_SUPLIER,
                 self::RETUR_PELANGGAN,
                 self::PEMBAYARAN_PELANGGAN,
-                self::PEMBAYARAN_SUPLIER
+                self::PEMBAYARAN_SUPLIER,
+                self::BIAYA
             ];
         }
 
@@ -96,7 +99,8 @@ CONST LAP_RETUR_PELANGGAN_MONTHLY = 'laporan_retur_outlet30';
                 self::KATALOG,
                 self::LAP_RETUR_PELANGGAN_MONTHLY,
                 self::HUTANG_OUTLET,
-                self::HUTANG_SUPLIER
+                self::HUTANG_SUPLIER,
+                self::LAP_BIAYA
             ];
         }
 

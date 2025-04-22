@@ -253,12 +253,14 @@ use App\Enums\Menu; ?>
                             </li>
                         <?php endif ?>
 
+                        <?php if ($isAdmin || $hasPermission(Menu::BIAYA, 'transaksi')): ?>
                         <li class="menu-item <?= $trx_biaya ?? '' ?>">
                                 <a href="<?= BASE_URL ?>biaya" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">
                                 <img src="<?= BASE_URL ?>assets/img/icons/cash-out.png" alt="Home Icon" class="me-2" width="24" height="24">
                                     <div data-i18n="Penjualan" style="font-size: 12px;">Pencatatan Biaya</div>
                                 </a>
                             </li>
+                        <?php endif ?>
                 </div>
               </div>
             </div>
@@ -372,12 +374,14 @@ use App\Enums\Menu; ?>
                     </li>
                     <?php endif ?>
 
+                    <?php if ($isAdmin || $hasPermission(Menu::LAP_BIAYA, 'laporan')): ?>
                     <li class="menu-item <?= $biaya_active ?? '' ?>">
                             <a href="<?= BASE_URL ?>laporan/biaya" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">
                             <img src="<?= BASE_URL ?>assets/img/icons/cash-out.png" alt="Home Icon" class="me-2" width="24" height="24">
                                 <div data-i18n="Laporan" style="font-size: 12px;">Biaya</div>
                             </a>
                     </li>
+                    <?php endif ?>
                     
                     <hr>
                     <?php if ($isAdmin || $hasPermission(Menu::OMZET_OUTLET, 'laporan')): ?>
