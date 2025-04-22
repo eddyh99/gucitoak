@@ -342,9 +342,9 @@ class Laporan extends BaseController
     }
 
     public function hutang_suplier() {
-        // if (!hasPermission(Menu::STOK_MIN_BARANG, 'laporan')) {
-        //     return view('errors/html/error_403');
-        // }
+        if (!hasPermission(Menu::HUTANG_SUPLIER, 'laporan')) {
+            return view('errors/html/error_403');
+        }
         $mdata = [
             'title'     => 'Laporan Hutang Outlet - ' . NAMETITLE,
             'content'   => 'admin/laporan/hutang_suplier',
@@ -358,9 +358,9 @@ class Laporan extends BaseController
     
 
     public function hutang_outlet() {
-        // if (!hasPermission(Menu::STOK_MIN_BARANG, 'laporan')) {
-        //     return view('errors/html/error_403');
-        // }
+        if (!hasPermission(Menu::HUTANG_OUTLET, 'laporan')) {
+            return view('errors/html/error_403');
+        }
         $mdata = [
             'title'     => 'Laporan Hutang Outlet - ' . NAMETITLE,
             'content'   => 'admin/laporan/hutang_outlet',
@@ -373,9 +373,9 @@ class Laporan extends BaseController
     }
 
     public function returpel_monthly() {
-        // if (!hasPermission(Menu::PENJUALAN_OUTLET, 'laporan')) {
-        //     return view('errors/html/error_403');
-        // }
+        if (!hasPermission(Menu::LAP_RETUR_PELANGGAN_MONTHLY, 'laporan')) {
+            return view('errors/html/error_403');
+        }
 
         $url = URLAPI . "/v1/pelanggan/getall_pelanggan";
         $response = gucitoakAPI($url);

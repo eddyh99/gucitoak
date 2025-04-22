@@ -37,6 +37,9 @@ CONST PENJUALAN_OUTLET = 'penjualan_outlet';
 CONST KATALOG = 'katalog';
 CONST BARANG_EXPIRED = 'barang_expired';
 CONST PENGGAJIAN_SALES = 'penggajian_sales';
+CONST HUTANG_OUTLET = 'hutang_outlet';
+CONST HUTANG_SUPLIER = 'hutang_suplier';
+CONST LAP_RETUR_PELANGGAN_MONTHLY = 'laporan_retur_outlet30';
 
     public static function subMenu_setup()
         {
@@ -90,7 +93,10 @@ CONST PENGGAJIAN_SALES = 'penggajian_sales';
                 self::OMZET_OUTLET,
                 self::OUTLET_IDLE,
                 self::PENJUALAN_OUTLET,
-                self::KATALOG
+                self::KATALOG,
+                self::LAP_RETUR_PELANGGAN_MONTHLY,
+                self::HUTANG_OUTLET,
+                self::HUTANG_SUPLIER
             ];
         }
 
