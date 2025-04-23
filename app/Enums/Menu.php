@@ -42,6 +42,8 @@ CONST HUTANG_OUTLET = 'hutang_outlet';
 CONST HUTANG_SUPLIER = 'hutang_suplier';
 CONST LAP_RETUR_PELANGGAN_MONTHLY = 'laporan_retur_outlet30';
 CONST LAP_BIAYA = 'laporan_biaya';
+CONST LAP_LABARUGI = 'laporan_labarugi';
+CONST LAP_ARUSKAS = 'laporan_aruskas';
 
     public static function subMenu_setup()
         {
@@ -100,7 +102,9 @@ CONST LAP_BIAYA = 'laporan_biaya';
                 self::LAP_RETUR_PELANGGAN_MONTHLY,
                 self::HUTANG_OUTLET,
                 self::HUTANG_SUPLIER,
-                self::LAP_BIAYA
+                self::LAP_BIAYA,
+                self::LAP_LABARUGI,
+                self::LAP_ARUSKAS
             ];
         }
 
