@@ -31,6 +31,15 @@ class User extends BaseController
         echo json_encode($result);
     }
 
+    public function getpengguna_byid()
+    {
+        $id = $this->request->getVar('id');
+        $url = URLAPI . "/v1/pengguna/getpengguna_byid?id=".$id;
+		$response = gucitoakAPI($url);
+        $result = $response->message;
+        echo json_encode($result);
+    }
+
     public function tambah_user()
     {
         $mdata = [
@@ -77,6 +86,8 @@ class User extends BaseController
             'username'  => trim(htmlspecialchars($this->request->getVar('username'))),
             'password'  => sha1(trim(htmlspecialchars($this->request->getVar('password')))),
             'role'      => trim(htmlspecialchars($this->request->getVar('role'))),
+            'gajipokok'     => trim(filter_var($this->request->getVar('gapok'), FILTER_SANITIZE_NUMBER_INT)),
+            'komisi'        => trim(filter_var($this->request->getVar('komisi'), FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION))
         ];
         
         // CALL API
@@ -155,6 +166,8 @@ class User extends BaseController
             'username'  => trim(htmlspecialchars($this->request->getVar('username'))),
             'password'  => ((empty($newpass)) ? $resultDetail->passwd : sha1(trim(htmlspecialchars($newpass)))),
             'role'      => trim(htmlspecialchars($this->request->getVar('role'))),
+            'gajipokok'     => trim(filter_var($this->request->getVar('gapok'), FILTER_SANITIZE_NUMBER_INT)),
+            'komisi'        => trim(filter_var($this->request->getVar('komisi'), FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION))
         ];
 
         // CALL API

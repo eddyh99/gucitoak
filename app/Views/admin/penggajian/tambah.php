@@ -24,18 +24,19 @@
                             <i class="bx bx-chevron-left fs-2"></i>
                             Kembali
                         </a>
-                        <h5 class="mb-1">Gaji Sales</h5>
+                        <h5 class="mb-1">Gaji <?= $_GET['user'] ?></h5>
                     </div>
                     <div class="card-body">
-                        <form id="frmGaji" action="<?= BASE_URL ?>penggajian/input_gaji" method="POST">
+                        <form id="frmGaji" action="<?= BASE_URL ?>penggajian/input_gaji/<?= $_GET['user'] ?>" method="POST">
                             <div class="row row-cols-2">
+                                <input type="hidden" name="user_type" value="<?= $_GET['user'] ?>">
                                 <div class="mb-3">
-                                    <label class="form-label" for="expired">Sales</label>
+                                    <label class="form-label" for="expired"><?= $_GET['user'] ?></label>
                                     <div class="input-group input-group-merge">
                                         <select name="sales" id="sales" class="form-select" onchange="handleChange()" required>
                                             <option></option>
-                                            <?php foreach ($sales as $dt) { ?>
-                                                <option value="<?= $dt->id ?>"><?= $dt->namasales ?></option>
+                                            <?php foreach ($user as $dt) { ?>
+                                                <option value="<?= $dt->id ?>"><?= $dt->namasales ?? $dt->username ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
@@ -64,10 +65,10 @@
                                         <input type="text" name="insentif" id="insentif" insentif="Masukkan Nominal" class="form-control" value="<?= old('insentif', 0) ?>">
                                     </div>
                                 </div>
-                                <div class="mb-3">
+                                <div class="mb-3 <?= $_GET['user'] == 'admin' ? 'invisible' : '' ?>">
                                     <label class="form-label" for="barang">Komisi</label>
                                     <div class="input-group input-group-merge">
-                                        <input type="number" name="komisi" id="komisi" class="form-control" value="<?= old('komisi') ?>" readonly>
+                                        <input type="number" name="komisi" id="komisi" class="form-control" value="<?= old('komisi') ?>" readonly <?= $_GET['user'] == 'admin' ? 'disabled' : '' ?>>
                                     </div>
                                 </div>
                                 <div class="mb-3" hidden>
