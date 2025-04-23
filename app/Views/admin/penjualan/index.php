@@ -76,7 +76,7 @@ if(!empty(session('failed'))): ?>
                                         <th>Sales</th>
                                         <th>Nominal</th>
                                         <th>Cara Bayar</th>
-                                        <th>Keterangan</th>
+                                        <!-- <th>Keterangan</th> -->
                                         <th>Cetak</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -125,14 +125,24 @@ if(!empty(session('failed'))): ?>
               <th>Nama Barang</th>
               <th>Jumlah</th>
               <th>Harga</th>
-              <th>Diskon</th>
-              <th>PPN</th>
+              <!-- <th>Diskon</th>
+              <th>PPN</th> -->
               <th>Total</th>
             </tr>
           </thead>
           <tbody id="modalDataBody">
             <!-- Data will be inserted here -->
           </tbody>
+          <tfoot>
+            <tr>
+                <td class="text-end" colspan="3">PPN:</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="text-end" colspan="3">Diskon:</td>
+                <td></td>
+            </tr>
+          </tfoot>
         </table>
       </div>
       <div class="modal-footer">

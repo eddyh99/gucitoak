@@ -22,25 +22,43 @@
             let mdata = JSON.parse(data);
             const gajipokok = parseInt(mdata.gajipokok) || 0;
             const komisi = parseFloat(mdata.komisi) || 0;
+            const total = gajipokok + komisi + uangharian + insentif;
 
-            $('#gajipokok').val(gajipokok);
+            $('#gajipokok').val(formatRupiah(gajipokok));
             $('#komisi').val(komisi);
             $('#detailnota').val(mdata.detailnota);
-            $("#totalgaji").html(gajipokok + komisi + uangharian + insentif);
+            $("#totalgaji").html(formatRupiah(total));
         });
 
     }
 
-    $("#uangharian, #insentif").on("keyup", function () {
-        const gajipokok = parseInt($("#gajipokok").val()) || 0;
-        const komisi = parseFloat($("#komisi").val()) || 0;
-        const uangharian = parseInt($("#uangharian").val()) || 0;
-        const insentif = parseInt($("#insentif").val()) || 0;
+    function formatRupiah(angka) {
+        return angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
 
-        $("#totalgaji").html(gajipokok + komisi + uangharian + insentif);
+    function getInt(id) {
+        return parseInt($("#" + id).val().replace(/\./g, "")) || 0;
+    }
+
+    $("#uangharian, #insentif").on("input", function () {
+        const val = getInt(this.id);
+        $(this).val(formatRupiah(val));
+    });
+
+    $("#uangharian, #insentif").on("keyup", function () {
+        const gajipokok = getInt("gajipokok");
+        const komisi = parseFloat($("#komisi").val().replace(/\./g, "")) || 0;
+        const uangharian = getInt("uangharian");
+        const insentif = getInt("insentif");
+
+        const total = gajipokok + komisi + uangharian + insentif;
+        $("#totalgaji").html(formatRupiah(total));
     });
 
     $("#submit").on('click', function() {
+        ["gajipokok", "komisi", "uangharian", "insentif"].forEach(id => {
+            $("#" + id).val(getInt(id));
+        });
         $("#frmGaji").submit();
     })
 </script>

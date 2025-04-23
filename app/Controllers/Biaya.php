@@ -10,9 +10,9 @@ class Biaya extends BaseController
 {
     public function index()
     {
-        // if (!hasPermission(Menu::PEMBAYARAN_PELANGGAN, 'transaksi')) {
-        //     return view('errors/html/error_403');
-        // }
+        if (!hasPermission(Menu::BIAYA, 'transaksi')) {
+            return view('errors/html/error_403');
+        }
         $mdata = [
             'title'     => 'List Biaya - ' . NAMETITLE,
             'content'   => 'admin/biaya/index',

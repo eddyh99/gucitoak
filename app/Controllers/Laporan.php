@@ -400,4 +400,35 @@ class Laporan extends BaseController
         $response = gucitoakAPI($url)->message;
         echo json_encode($response,true);
     }
+
+    public function biaya() {
+        if (!hasPermission(Menu::LAP_BIAYA, 'laporan')) {
+            return view('errors/html/error_403');
+        }
+        $mdata = [
+            'title'     => 'Laporan Biaya - ' . NAMETITLE,
+            'content'   => 'admin/laporan/biaya',
+            'extra'     => 'admin/biaya/js/_js_index',
+            'menuactive_laporan'   => 'active open',
+            'biaya_active'   => 'active'
+        ];
+
+        return view('admin/layout/wrapper', $mdata);
+    }
+
+    // laba/rugi
+    public function pnl() {
+        // if (!hasPermission(Menu::LAP_BIAYA, 'laporan')) {
+        //     return view('errors/html/error_403');
+        // }
+        $mdata = [
+            'title'     => 'Laporan Biaya - ' . NAMETITLE,
+            'content'   => 'admin/laporan/pnl',
+            'extra'     => 'admin/laporan/js/_js_pnl',
+            'menuactive_laporan'   => 'active open',
+            'pnl_active'   => 'active'
+        ];
+
+        return view('admin/layout/wrapper', $mdata);
+    }
 }
