@@ -431,4 +431,12 @@ class Laporan extends BaseController
 
         return view('admin/layout/wrapper', $mdata);
     }
+
+    public function get_labarugi(){
+        $bulan  = $this->request->getVar('bulan');
+        $tahun  = $this->request->getVar('tahun');
+        $url = URLAPI . "/v1/laporan/labarugi?bulan=".$bulan."&tahun=".$tahun;
+        $response = gucitoakAPI($url)->message;
+        echo json_encode($response,true);
+    }
 }

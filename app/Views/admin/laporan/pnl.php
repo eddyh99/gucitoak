@@ -42,7 +42,7 @@
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div>
                                             <p class="text-muted mb-1">Total Nota Penjualan</p>
-                                            <h4 class="fw-bold text-success mb-0">Rp 0</h4>
+                                            <h4 id="notajual" class="fw-bold text-success mb-0"></h4>
                                         </div>
                                         <i class="fas fa-receipt text-primary fs-4"></i>
                                     </div>
@@ -52,7 +52,7 @@
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div>
                                             <p class="text-muted mb-1">Total HPP</p>
-                                            <h4 class="fw-bold text-danger mb-0">Rp 0</h4>
+                                            <h4 id="notabeli" class="fw-bold text-danger mb-0"></h4>
                                         </div>
                                     </div>
                                 </div>
@@ -61,7 +61,7 @@
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div>
                                             <p class="text-muted mb-1">Biaya Gaji</p>
-                                            <h4 class="fw-bold text-danger mb-0">Rp 0</h4>
+                                            <h4 id="totalgaji" class="fw-bold text-danger mb-0"></h4>
                                         </div>
                                         <button class="btn btn-sm btn-outline-primary rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#detailgaji">
                                             <i class="fas fa-info-circle me-1"></i> Detail
@@ -73,7 +73,7 @@
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div>
                                             <p class="text-muted mb-1">Biaya Lain-lain</p>
-                                            <h4 class="fw-bold text-danger mb-0">Rp 0</h4>
+                                            <h4 id="totalbiaya" class="fw-bold text-danger mb-0"></h4>
                                         </div>
                                         <button class="btn btn-sm btn-outline-primary rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#detailbiaya">
                                             <i class="fas fa-info-circle me-1"></i> Detail
@@ -85,7 +85,7 @@
                             <div class="card-footer bg-light border-0 rounded-bottom-3">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <span class="text-muted">Laba / Rugi</span>
-                                    <span class="fw-bold fs-5">Rp 0</span>
+                                    <span id="labarugi" class="fw-bold fs-5"></span>
                                 </div>
                             </div>
                         </div>
