@@ -1130,7 +1130,8 @@ DROP TABLE IF EXISTS `gaji`;
 /*!40101 SET character_set_client = utf8mb4 */;
 CREATE TABLE `gaji` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `sales_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `user_type` enum('sales','admin') NOT NULL DEFAULT 'sales',
   `bulan` char(7) NOT NULL,
   `gajipokok` int(11) NOT NULL,
   `uangharian` int(11) DEFAULT 0,
@@ -1139,9 +1140,8 @@ CREATE TABLE `gaji` (
   `detailnota` text DEFAULT NULL,
   `status` enum('dibayar','belum') NOT NULL DEFAULT 'belum',
   PRIMARY KEY (`id`),
-  KEY `fk_sales` (`sales_id`),
-  CONSTRAINT `fk_sales` FOREIGN KEY (`sales_id`) REFERENCES `sales` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  KEY `idx_user_role` (`user_id`,`user_type`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1151,7 +1151,8 @@ CREATE TABLE `gaji` (
 LOCK TABLES `gaji` WRITE;
 /*!40000 ALTER TABLE `gaji` DISABLE KEYS */;
 INSERT INTO `gaji` VALUES
-(8,10,'2025-04',400000,400000,400000,0,'000001','dibayar');
+(12,2,'admin','2025-04',400000,100,100,0,'','belum'),
+(14,10,'sales','2025-04',400000,20000,30000,0,'000003,000003','belum');
 /*!40000 ALTER TABLE `gaji` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2678,6 +2679,7 @@ CREATE TABLE `pengguna` (
   `status` enum('active','disabled') NOT NULL DEFAULT 'active',
   `created_at` datetime NOT NULL,
   `update_at` datetime DEFAULT NULL,
+  `gajipokok` int(11) DEFAULT 0,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
@@ -2690,9 +2692,9 @@ CREATE TABLE `pengguna` (
 LOCK TABLES `pengguna` WRITE;
 /*!40000 ALTER TABLE `pengguna` DISABLE KEYS */;
 INSERT INTO `pengguna` VALUES
-(1,'admin','f865b53623b121fd34ee5426c792e5c33af8c227','superadmin','active','2025-01-25 11:21:27',NULL),
-(2,'bayu','f865b53623b121fd34ee5426c792e5c33af8c227','admin','active','2025-01-25 03:29:49','2025-01-25 03:37:31'),
-(3,'indah','dd784bae5a4de57cdfce22850bfc7e5f229f58c9','sales','active','2025-04-01 06:11:14',NULL);
+(1,'admin','f865b53623b121fd34ee5426c792e5c33af8c227','superadmin','active','2025-01-25 11:21:27',NULL,0),
+(2,'bayu','f865b53623b121fd34ee5426c792e5c33af8c227','admin','active','2025-01-25 03:29:49','2025-04-23 06:27:07',400000),
+(3,'indah','dd784bae5a4de57cdfce22850bfc7e5f229f58c9','sales','active','2025-04-01 06:11:14',NULL,0);
 /*!40000 ALTER TABLE `pengguna` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2845,8 +2847,12 @@ CREATE TABLE `retur_beli` (
   `id_suplier` int(11) NOT NULL,
   `tanggal` date NOT NULL,
   `status` enum('proses','tukar') NOT NULL,
+  `id_nota` int(11) NOT NULL,
+  `is_used` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   KEY `retur_beli_ibfk_1` (`id_suplier`),
+  KEY `fk_retur_beli_id_nota` (`id_nota`),
+  CONSTRAINT `fk_retur_beli_id_nota` FOREIGN KEY (`id_nota`) REFERENCES `pembelian` (`id`),
   CONSTRAINT `retur_beli_ibfk_1` FOREIGN KEY (`id_suplier`) REFERENCES `suplier` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -2899,9 +2905,13 @@ CREATE TABLE `retur_jual` (
   `tanggal` datetime NOT NULL,
   `pelanggan_id` int(11) NOT NULL,
   `alasan` varchar(100) NOT NULL,
+  `nonota` varchar(6) NOT NULL,
+  `is_used` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   KEY `retur_jual_ibfk_1` (`pelanggan_id`),
-  CONSTRAINT `retur_jual_ibfk_1` FOREIGN KEY (`pelanggan_id`) REFERENCES `pelanggan` (`id`)
+  KEY `retur_jual_ibfk_2` (`nonota`),
+  CONSTRAINT `retur_jual_ibfk_1` FOREIGN KEY (`pelanggan_id`) REFERENCES `pelanggan` (`id`),
+  CONSTRAINT `retur_jual_ibfk_2` FOREIGN KEY (`nonota`) REFERENCES `penjualan` (`nonota`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -2911,8 +2921,6 @@ CREATE TABLE `retur_jual` (
 
 LOCK TABLES `retur_jual` WRITE;
 /*!40000 ALTER TABLE `retur_jual` DISABLE KEYS */;
-INSERT INTO `retur_jual` VALUES
-(1,'2025-04-03 07:17:40',1,'');
 /*!40000 ALTER TABLE `retur_jual` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2940,8 +2948,6 @@ CREATE TABLE `retur_jual_detail` (
 
 LOCK TABLES `retur_jual_detail` WRITE;
 /*!40000 ALTER TABLE `retur_jual_detail` DISABLE KEYS */;
-INSERT INTO `retur_jual_detail` VALUES
-(1,'8997241921374140226',1);
 /*!40000 ALTER TABLE `retur_jual_detail` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -3168,4 +3174,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*M!100616 SET NOTE_VERBOSITY=@OLD_NOTE_VERBOSITY */;
 
--- Dump completed on 2025-04-23 13:18:31
+-- Dump completed on 2025-04-23 14:45:42
