@@ -38,7 +38,7 @@
         console.log(data);
         const selectedUser = data.find(user => user.id == userId)
         console.log(selectedUser);
-        if (selectedUser.role == 'admin') {
+        if (selectedUser.role == 'superadmin') {
             // Pilih semua opsi di dropdown
             $('#laporan, #persediaan, #transaksi, #setup').each(function() {
                 $(this).val($(this).find('option').map(function() {

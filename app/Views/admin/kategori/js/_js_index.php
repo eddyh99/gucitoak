@@ -16,7 +16,7 @@
       let cols = [{
             data: 'namakategori'
       }]
-      if (role == 'admin') {
+      if (role == 'superadmin') {
             cols.push({
                   data: null,
                   "mRender": function(data, type, full, meta) {
