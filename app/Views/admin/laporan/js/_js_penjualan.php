@@ -80,8 +80,10 @@
         ],
         "footerCallback": function(row, data, start, end, display) {
             var api = this.api();
-            var totalAmount = api.column(4).data().reduce(function(a, b) {
-                return a + (parseFloat(b) || 0);
+            var totalAmount = data.reduce(function(total, row) {
+                let netto = (row.amount - row.discount);
+                let totalRow = netto + (row.ppn * netto);
+                return total + totalRow;
             }, 0);
             $(api.column(4).footer()).html(totalAmount.toLocaleString('en-US', {
                 minimumFractionDigits: 0,
