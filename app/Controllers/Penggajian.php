@@ -30,8 +30,19 @@ class Penggajian extends BaseController
 
     public function tambah()
     {
-        $url   = URLAPI . "/v1/sales/getall_sales";
-		$sales      = gucitoakAPI($url)->message;
+        $user = $this->request->getVar('user');
+
+        switch ($user) {
+            case 'sales':
+                $url   = URLAPI . "/v1/sales/getall_sales";
+                break;
+            case 'admin':
+                $url   = URLAPI . "/v1/pengguna/getall_pengguna";
+                break;
+            default:
+                return redirect()->to(BASE_URL . 'penggajian');
+        }
+		$user      = gucitoakAPI($url)->message;
 
         $mdata = [
             'title'     => 'Gaji Sales - ' . NAMETITLE,
@@ -39,43 +50,47 @@ class Penggajian extends BaseController
             'extra'     => 'admin/penggajian/js/_js_tambah',
             'menuactive_penggajian'   => 'active open',
             'user_active'   => 'active',
-            'sales'         => $sales
+            'user'         => $user
         ];
 
         return view('admin/layout/wrapper', $mdata);
     }
 
-    public function input_gaji() {
-        $rules = $this->validate([
-            'sales'     => [
-                'label'     => 'Sales',
-                'rules'     => 'required'
+    public function input_gaji($user) {
+        $rules = [
+            'sales' => [
+                'label' => 'Sales',
+                'rules' => 'required'
             ],
-            'detailnota'     => [
-                'label'     => 'Penjualan',
+            'uangharian' => [
+                'label' => 'Uang Harian',
+                'rules' => 'required|numeric'
+            ],
+            'gajipokok' => [
+                'label' => 'Gaji Pokok',
+                'rules' => 'required|numeric|greater_than[0]'
+            ],
+            'insentif' => [
+                'label' => 'Insentif',
+                'rules' => 'required|numeric'
+            ]
+        ];
+    
+        // Jika user adalah sales, tambahkan validasi detailnota
+        if ($user === 'sales') {
+            $rules['detailnota'] = [
+                'label' => 'Penjualan',
                 'rules' => 'required',
                 'errors' => [
                     'required' => 'Sales belum melakukan penjualan.'
                 ]
-            ],
-            'uangharian'     => [
-                'label'     => 'Uang Harian',
-                'rules'     => 'required|numeric'
-            ],
-            'gajipokok' => [
-                'label'   => 'Gaji Pokok',
-                'rules'   => 'required|numeric|greater_than[0]'
-            ],
-            'insentif'     => [
-                'label'     => 'Insentif',
-                'rules'     => 'required|numeric'
-            ]
-        ]);
+            ];
+        }
 
         // Checking Validation
-        if(!$rules){
+        if(!$this->validate($rules)){
             session()->setFlashdata('failed', $this->validation->listErrors());
-            return redirect()->to(BASE_URL . 'penggajian/tambah')->withInput();
+            return redirect()->to(BASE_URL . 'penggajian/tambah?user=' . $user)->withInput();
         }
         
 
@@ -86,6 +101,7 @@ class Penggajian extends BaseController
             'uangharian'  => $this->request->getVar('uangharian'),
             'insentif'  => $this->request->getVar('insentif'),
             'komisi'  => $this->request->getVar('komisi'),
+            'user_type'  => $this->request->getVar('user_type'),
             'detailnota'  => $this->request->getVar('detailnota')
         ];
 
@@ -98,7 +114,7 @@ class Penggajian extends BaseController
             return redirect()->to(BASE_URL . "penggajian");
         }else{
             session()->setFlashdata('failed', $result);
-            return redirect()->to(BASE_URL . "penggajian/tambah")->withInput();
+            return redirect()->to(BASE_URL . "penggajian/tambah?user=".$user)->withInput();
         }
     }
 

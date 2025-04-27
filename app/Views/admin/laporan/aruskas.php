@@ -41,7 +41,7 @@
                                 <div class="mb-4 pb-2 border-bottom">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div>
-                                            <p class="text-muted mb-1">Total Nota Penjualan</p>
+                                            <p class="text-muted mb-1">Total Penjualan (Uang Masuk)</p>
                                             <h4 id="notajual" class="fw-bold text-success mb-0"></h4>
                                         </div>
                                         <i class="fas fa-receipt text-primary fs-4"></i>
@@ -51,7 +51,7 @@
                                 <div class="mb-4 pb-2 border-bottom">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div>
-                                            <p class="text-muted mb-1">Total HPP</p>
+                                            <p class="text-muted mb-1">Total Pembelian (Uang Keluar)</p>
                                             <h4 id="notabeli" class="fw-bold text-danger mb-0"></h4>
                                         </div>
                                     </div>

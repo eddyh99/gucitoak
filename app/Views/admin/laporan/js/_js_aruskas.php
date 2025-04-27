@@ -17,7 +17,7 @@
             const bulan = $('#bulan').val();
             const tahun = $('#tahun').val();
 
-            $.get(`<?= BASE_URL ?>laporan/get_labarugi?bulan=` + bulan + `&tahun=` + tahun, function(data) {
+            $.get(`<?= BASE_URL ?>laporan/get_aruskas?bulan=` + bulan + `&tahun=` + tahun, function(data) {
                 try {
                     
                     const mdata = JSON.parse(data);

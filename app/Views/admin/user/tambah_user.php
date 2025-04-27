@@ -60,9 +60,36 @@
                                     <div class="mb-3">
                                         <label for="role" class="form-label">Pilih Role</label>
                                         <select class="form-select" name="role" id="role" aria-label="Default select Role">
+                                            <option value="admin">Admin</option>
                                             <option value="kasir">Staff</option>
                                             <option value="sales">Sales</option>
                                         </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="omzet">Gaji Pokok</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="text"
+                                                class="form-control price-input"
+                                                id="gapok"
+                                                placeholder="Gaji Pokok"
+                                                name="gapok"
+                                                value="<?= set_value('gapok') ?>"
+                                                required />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="omzet">Komisi (%)</label>
+                                        <div class="input-group input-group-merge">
+                                            <input
+                                                type="text"
+                                                class="form-control price-input"
+                                                id="komisi"
+                                                placeholder="Komisi"
+                                                name="komisi"
+                                                value="<?= set_value('komisi') ?>"
+                                                required />
+                                        </div>
                                     </div>
                                 </div>
                                 <button type="submit"  class="btn btn-primary d-flex align-items-center">

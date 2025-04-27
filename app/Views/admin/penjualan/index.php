@@ -136,11 +136,11 @@ if(!empty(session('failed'))): ?>
           <tfoot>
             <tr>
                 <td class="text-end" colspan="3">PPN:</td>
-                <td></td>
+                <td id="ppn"></td>
             </tr>
             <tr>
                 <td class="text-end" colspan="3">Diskon:</td>
-                <td></td>
+                <td id="diskon"></td>
             </tr>
           </tfoot>
         </table>

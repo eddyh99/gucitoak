@@ -34,7 +34,7 @@
                   data: 'role'
             }
       ]
-      if (role == 'admin') {
+      if (role == 'superadmin') {
             cols.push({
                   data: null,
                   "mRender": function(data, type, full, meta) {
@@ -44,7 +44,7 @@
                         var del = `<a href="<?= BASE_URL ?>user/hapus_user/${encodeURI(btoa(full.id))}/${encodeURI(btoa(full.username))}" class="del-data">
                                                 <img src="<?= BASE_URL ?>assets/img/icons/118794_process_stop_icon.png" alt="Home Icon" width="20" height="20">
                                           </a>`;
-                        return `${edit} ${data.username !== 'admin' ? del : ''}`;
+                        return `${edit} ${data.username !== 'superadmin' ? del : ''}`;
                   }
             }, )
       }

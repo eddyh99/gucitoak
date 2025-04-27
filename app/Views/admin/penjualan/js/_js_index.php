@@ -80,8 +80,8 @@ var table=$('#table_list').DataTable({
         { 
             data: 'amount',
             render: function(data, type, row) {
-                // let total = (row.amount - row.discount) + (row.ppn * (row.amount - row.discount));
-                return $.fn.dataTable.render.number('.', ',', 0, '').display(data);
+                let total = (row.amount - row.discount) + (row.ppn * (row.amount - row.discount));
+                return $.fn.dataTable.render.number('.', ',', 0, '').display(total);
             } 
         },
 		{ data: 'method' },
@@ -118,6 +118,11 @@ var table=$('#table_list').DataTable({
             let mdata = JSON.parse(data);
             let html = '';
             console.log(mdata);
+            let ppn = parseFloat(mdata[0].ppn *100);
+            let diskon = parseFloat(mdata[0].discount);
+            
+            let diskonFormatted = diskon.toLocaleString("id-ID");
+            let ppnFormatted = ppn.toLocaleString("id-ID");
         
              mdata.forEach(item => {
                 // Ensure harga is a valid number before formatting
@@ -147,6 +152,9 @@ var table=$('#table_list').DataTable({
                     </tr>
                 `;
             });
+
+            $("#ppn").text(ppnFormatted + '%');
+            $("#diskon").text(diskonFormatted);
         
             // Insert rows into the table body
             $('#modalDataBody').html(html);

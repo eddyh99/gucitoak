@@ -64,8 +64,8 @@
             { 
             data: 'amount',
             render: function(data, type, row) {
-                // let total = (row.amount - row.discount) + (row.ppn * (row.amount - row.discount));
-                return $.fn.dataTable.render.number('.', ',', 0, '').display(data);
+                let total = (row.amount - row.discount) + (row.ppn * (row.amount - row.discount));
+                return $.fn.dataTable.render.number('.', ',', 0, '').display(total);
             } 
             },
             {
@@ -80,8 +80,10 @@
         ],
         "footerCallback": function(row, data, start, end, display) {
             var api = this.api();
-            var totalAmount = api.column(4).data().reduce(function(a, b) {
-                return a + (parseFloat(b) || 0);
+            var totalAmount = data.reduce(function(total, row) {
+                let netto = (row.amount - row.discount);
+                let totalRow = netto + (row.ppn * netto);
+                return total + totalRow;
             }, 0);
             $(api.column(4).footer()).html(totalAmount.toLocaleString('en-US', {
                 minimumFractionDigits: 0,
@@ -96,19 +98,20 @@
             let mdata = JSON.parse(data);
             let html = '';
             console.log(mdata);
+            let ppn = parseFloat(mdata[0].ppn *100);
+            let diskon = parseFloat(mdata[0].discount);
+            
+            let diskonFormatted = diskon.toLocaleString("id-ID");
+            let ppnFormatted = ppn.toLocaleString("id-ID");
 
             mdata.forEach(item => {
                 // Ensure harga is a valid number before formatting
                 let harga = parseFloat(item.harga);
-                let diskon = parseFloat(item.discount);
-                let ppn = parseFloat(item.ppn * 100);
                 let totalHarga = parseFloat(item.totalharga);
                 let jumlah = parseInt(item.jumlah);
 
                 // Format harga and total to IDR format
                 let hargaFormatted = harga.toLocaleString("id-ID");
-                let diskonFormatted = diskon.toLocaleString("id-ID");
-                let ppnFormatted = ppn.toLocaleString("id-ID");
                 let totalFormatted = totalHarga.toLocaleString("id-ID");
 
                 // Construct the HTML for each row
@@ -117,12 +120,13 @@
                         <td>${item.namabarang}</td>
                         <td>${jumlah}</td>
                         <td>${hargaFormatted}</td>
-                        <td>${diskonFormatted}</td>
-                        <td>${ppnFormatted}%</td>
                         <td>${totalFormatted}</td>
                     </tr>
                 `;
             });
+
+            $("#ppn").text(ppnFormatted + '%');
+            $("#diskon").text(diskonFormatted);
 
             // Insert rows into the table body
             $('#modalDataBody').html(html);

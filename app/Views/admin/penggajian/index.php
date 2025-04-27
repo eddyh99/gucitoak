@@ -35,9 +35,9 @@ if(!empty(session('failed'))): ?>
                         <div class="col-lg-12 col-md-12 col-12 mb-2">
                             <div class="card">
                                 <div class="card-body">
-                                    <a href="<?= BASE_URL?>penggajian/tambah" class="btn btn-primary">
+                                    <button class="btn btn-primary" onclick="redirect()">
                                         Input Gaji
-                                    </a>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -76,6 +76,7 @@ if(!empty(session('failed'))): ?>
                                 <thead>
                                     <tr>
                                         <th>Nama</th>
+                                        <th>Role</th>
                                         <th>Gaji Pokok</th>
                                         <th>Uang Harian</th>
                                         <th>Insentif</th>

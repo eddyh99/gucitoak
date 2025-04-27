@@ -9,19 +9,33 @@
         }, 0)
     });
 
+    const user = "<?= $_GET['user'] ?>";
+
     $("#sales").select2({
-        placeholder: "--- PILIH SALES ---"
+        placeholder: "--- PILIH ---"
     });
 
     function handleChange() {
         const id = $("#sales").val();
         const uangharian = parseInt($("#uangharian").val()) || 0;
         const insentif = parseInt($("#insentif").val()) || 0;
+        let url;
 
-        $.get("<?= BASE_URL ?>sales/get_sales_report?id=" + id, function(data, status) {
+        switch (user) {
+            case 'sales':
+                url = "<?= BASE_URL ?>sales/get_sales_report?id="
+                break;
+            case 'admin':
+                url = "<?= BASE_URL ?>user/getpengguna_byid?id="
+                break;
+        }
+
+        $.get(url + id, function(data, status) {
             let mdata = JSON.parse(data);
             const gajipokok = parseInt(mdata.gajipokok) || 0;
             const komisi = parseFloat(mdata.komisi) || 0;
+            console.log(komisi);
+            
             const total = gajipokok + komisi + uangharian + insentif;
 
             $('#gajipokok').val(formatRupiah(gajipokok));

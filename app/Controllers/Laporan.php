@@ -418,9 +418,9 @@ class Laporan extends BaseController
 
     // laba/rugi
     public function pnl() {
-        // if (!hasPermission(Menu::LAP_BIAYA, 'laporan')) {
-        //     return view('errors/html/error_403');
-        // }
+        if (!hasPermission(Menu::LAP_LABARUGI, 'laporan')) {
+            return view('errors/html/error_403');
+        }
         $mdata = [
             'title'     => 'Laporan Biaya - ' . NAMETITLE,
             'content'   => 'admin/laporan/pnl',
@@ -430,5 +430,36 @@ class Laporan extends BaseController
         ];
 
         return view('admin/layout/wrapper', $mdata);
+    }
+
+    public function get_labarugi(){
+        $bulan  = $this->request->getVar('bulan');
+        $tahun  = $this->request->getVar('tahun');
+        $url = URLAPI . "/v1/laporan/labarugi?bulan=".$bulan."&tahun=".$tahun;
+        $response = gucitoakAPI($url)->message;
+        echo json_encode($response,true);
+    }
+
+    public function aruskas() {
+        if (!hasPermission(Menu::LAP_ARUSKAS, 'laporan')) {
+            return view('errors/html/error_403');
+        }
+        $mdata = [
+            'title'     => 'Laporan Arus Kas - ' . NAMETITLE,
+            'content'   => 'admin/laporan/aruskas',
+            'extra'     => 'admin/laporan/js/_js_aruskas',
+            'menuactive_laporan'   => 'active open',
+            'aruskas_active'   => 'active'
+        ];
+
+        return view('admin/layout/wrapper', $mdata);
+    }
+
+    public function get_aruskas(){
+        $bulan  = $this->request->getVar('bulan');
+        $tahun  = $this->request->getVar('tahun');
+        $url = URLAPI . "/v1/laporan/aruskas?bulan=".$bulan."&tahun=".$tahun;
+        $response = gucitoakAPI($url)->message;
+        echo json_encode($response,true);
     }
 }

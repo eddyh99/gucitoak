@@ -6,6 +6,24 @@
         }, 0)
     });
 
+    function redirect() {
+        Swal.fire({
+            title: 'Konfirmasi',
+            // text: 'Kemana kamu ingin melanjutkan?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Gaji Sales',
+            cancelButtonText: 'Gaji Admin',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "<?= BASE_URL ?>penggajian/tambah?user=sales";
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                window.location.href = "<?= BASE_URL ?>penggajian/tambah?user=admin";
+            }
+        });
+    }
+ 
     var table = $('#table_list').DataTable({
         "scrollX": true,
         "dom": 'lBfrtip',
@@ -37,6 +55,9 @@
                 data: 'namasales'
             },
             {
+                data: 'user_type'
+            },
+            {
                 data: 'gajipokok'
             },
             {
@@ -65,7 +86,7 @@
                     var detail = `<a href="#" onclick='detailInvoice("`+encodeURI(btoa(data.detailnota))+`")'>
                                                 <img src="<?= BASE_URL ?>assets/img/icons/118864_important_emblem_icon.png" alt="Home Icon" width="20" height="20">
                                           </a>`;
-                    return `${detail}`;
+                    return `${data.detailnota ? detail : ''}`;
                 }
 		    },
         ],

@@ -11,7 +11,7 @@ if (!function_exists('hasPermission')) {
     function hasPermission(string $permission, string $menu): bool
     {
         $session = session()->get('logged_user');
-        if ($session['role'] === 'admin') return true;
+        if ($session['role'] === 'superadmin') return true;
         $akses = $session['akses'] ?? [];
 
         // Check if the menu exists and contains the specific permission
