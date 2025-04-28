@@ -73,7 +73,7 @@
 <body>
     <table style="width: 100%; margin-bottom: 10px;">
         <tr>
-            <td style="width: 50%; vertical-align: top;">
+            <td style="width: 60%; vertical-align: top;">
                 <p>No Faktur: <?= $mdata[0]->nonota ?? '-' ?></p>
                 <p>Tanggal: <?= $mdata[0]->tanggal ?? '-' ?></p>
                 <table style="width: 100%; border-collapse: collapse;">
@@ -91,7 +91,7 @@
                 <p>Telp: 085648247182, 0361-4794548</p>
                 <p>Tgl Kirim: <?= date('d-m-Y') ?></p>
             </td>
-            <td style="width: 50%; vertical-align: top;">
+            <td style="width: 40%; vertical-align: top;">
                 <p>Nama: <?= $mdata[0]->namapelanggan ?? '-' ?></p>
                 <p>Alamat: <?= $mdata[0]->alamat ?? '-' ?></p>
                 <p>No. Telp: <?= $mdata[0]->telp ?? '-' ?></p>
@@ -132,10 +132,10 @@
                     <td><?= $barang->namabarang ?? '-' ?></td>
                     <td><?= $barang->jumlah ?? '-' ?></td>
                     <td><?= $barang->namasatuan ?? '-' ?></td>
-                    <td><?= $harga ?></td>
-                    <td><?= $diskon1 ?></td>
-                    <td><?= $diskon2 ?></td>
-                    <td><?= $jumlah ?></td>
+                    <td><?= number_format($harga) ?></td>
+                    <td><?= number_format($diskon1) ?></td>
+                    <td><?= number_format($diskon2) ?></td>
+                    <td><?= number_format($jumlah*$barang->jumlah) ?></td>
                 </tr>
             <?php endforeach ?>
         </tbody>
@@ -143,28 +143,28 @@
 
     <table style="width: 100%; margin-top: 10px;">
         <tr>
-            <td style="width: 50%; vertical-align: top; font-size: 12px;">
+            <td style="width: 50%; vertical-align: top; font-size: 12px;line-height: 1.6; letter-spacing: 0.3px;">
                 <strong>Note:</strong> Pembayaran dan cheque dianggap lunas setelah dapat dicairkan. Faktur asli
                 merupakan bukti yang sah untuk penagihan/pelunasan. Retur diterima hanya sebelum 3 bulan masa exp/rusak
                 saat pengiriman.
             </td>
             <td style="width: 50%; vertical-align: top;">
-                <table style="width: 100%; border-collapse: collapse;">
+                <table style="width: 95%; border-collapse: collapse;">
                     <tr>
                         <td style="text-align: right;">Subtotal:</td>
-                        <td style="text-align: right;"><?= $t_jumlah ?? '-' ?></td>
+                        <td style="text-align: right;"><?= number_format($t_jumlah) ?? '-' ?></td>
                     </tr>
                     <tr>
                         <td style="text-align: right;">Diskon:</td>
-                        <td style="text-align: right;"><?= $diskon != 0 ? $diskon : '-' ?></td>
+                        <td style="text-align: right;"><?= number_format($diskon) != 0 ? $diskon : '-' ?></td>
                     </tr>
                     <tr>
                         <td style="text-align: right;">PPN<?= $ppn != 0 ? ' (' .$ppn*100 . '%)' : '' ?>:</td>
-                        <td style="text-align: right;"><?= $ppn != 0 ? $ppn * ($t_jumlah - $diskon) : '-' ?></td>
+                        <td style="text-align: right;"><?= $ppn != 0 ? number_format($ppn * ($t_jumlah - $diskon)) : '-' ?></td>
                     </tr>
                     <tr>
                         <td style="text-align: right;"><strong>Total:</strong></td>
-                        <td style="text-align: right;"><strong><?= ($t_jumlah - $diskon) + (($t_jumlah - $diskon) * $ppn) ?>
+                        <td style="text-align: right;"><strong><?= number_format(($t_jumlah - $diskon) + (($t_jumlah - $diskon) * $ppn)) ?>
                             </strong></td>
                     </tr>
                 </table>
