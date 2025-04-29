@@ -454,7 +454,7 @@ use App\Enums\Menu; ?>
             </div>
         <?php endif ?>
     
-        <?php if (!$isAdmin): ?>
+        <?php if ($isSales): ?>
         <div class="accordion-item">
           <h2 class="accordion-header">
             <a href="<?= BASE_URL ?>laporan/omzet_sales" class="accordion-button">
@@ -465,7 +465,7 @@ use App\Enums\Menu; ?>
         </div>
         <?php endif ?>
     
-        <?php if (!$isAdmin): ?>
+        <?php if ($isSales): ?>
             <div class="accordion-item">
               <h2 class="accordion-header">
                 <a href="<?= BASE_URL ?>laporan/slipgaji" class="accordion-button">
@@ -475,7 +475,7 @@ use App\Enums\Menu; ?>
               </h2>
             </div>
         <?php endif ?>
-        <?php if (!$isAdmin): ?>
+        <?php if ($isSales): ?>
             <div class="accordion-item">
               <h2 class="accordion-header">
                 <a href="<?= BASE_URL ?>mobile/profile" class="accordion-button">

@@ -108,7 +108,7 @@
                                                 id="omzet"
                                                 placeholder="Omzet"
                                                 name="omzet"
-                                                value="<?= $sales->omzet ?>" />
+                                                value="<?= $sales->omzet ?>" <?= !$isAdmin ? 'readonly' : '' ?> />
                                         </div>
                                     </div>
                                     <div class="mb-3">
@@ -121,7 +121,7 @@
                                                 placeholder="Gaji Pokok"
                                                 name="gapok"
                                                 value="<?= $sales->gajipokok ?>"
-                                                required />
+                                                <?= !$isAdmin ? 'readonly' : '' ?> />
                                         </div>
                                     </div>
                                     <div class="mb-3">
@@ -134,7 +134,7 @@
                                                 placeholder="Komisi"
                                                 name="komisi"
                                                 value="<?= $sales->komisi * 100 ?>"
-                                                required />
+                                                <?= !$isAdmin ? 'readonly' : '' ?> />
                                         </div>
                                     </div>
                                     <div class="mb-3">

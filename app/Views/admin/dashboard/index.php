@@ -24,7 +24,7 @@ $role = session()->get('logged_user')['role'];
         <!-- Content -->
         <div class="container-xxl flex-grow-1 container-p-y">
             <div class="row">
-                <?php if ($role == 'superadmin') : ?>
+                <?php if ($role == 'superadmin' || $role == 'admin') : ?>
                     <div class="col-lg-6 mb-4 order-1">
                         <div class="card border-expat w-100">
                         <div class="card-header bg-primary pb-2">
@@ -121,7 +121,7 @@ $role = session()->get('logged_user')['role'];
         </div>
         <!-- / Content -->
 
-        <?php if ($role == 'superadmin') : ?>
+        <?php if ($role == 'superadmin' || $role == 'admin') : ?>
             <!-- Modal -->
             <div class="modal fade" id="detailcicilan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">

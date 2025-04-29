@@ -74,10 +74,10 @@ class Sales extends BaseController
                 'label'     => 'Telphone',
                 'rules'     => 'required'
             ],
-            'omzet'     => [
-                'label'     => 'Omzet',
-                'rules'     => 'required'
-            ],
+            // 'omzet'     => [
+            //     'label'     => 'Omzet',
+            //     'rules'     => 'required'
+            // ],
             'confirm_password'     => [
                 'label'     => 'Konfirmasi Password',
                 'rules'     => 'matches[password]'
@@ -110,13 +110,12 @@ class Sales extends BaseController
             'alamat'        => trim(htmlspecialchars($this->request->getVar('alamat'))),
             'kota'          => trim(htmlspecialchars($this->request->getVar('kota'))),
             'telp'          => trim(htmlspecialchars($this->request->getVar('telp'))),
-            'omzet'         => trim(filter_var($this->request->getVar('omzet'), FILTER_SANITIZE_NUMBER_INT)),
-            'gajipokok'     => trim(filter_var($this->request->getVar('gapok'), FILTER_SANITIZE_NUMBER_INT)),
-            'komisi'        => trim(filter_var($this->request->getVar('komisi'), FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION)),
+            'omzet'         => (float) $this->request->getVar('omzet'),
+            'gajipokok'     => (float) $this->request->getVar('gapok'),
+            'komisi'        => (float) $this->request->getVar('komisi'),
             'username'      => trim(htmlspecialchars($this->request->getVar('username'))),
             'password'      => ((!empty($password)) ? sha1(trim(htmlspecialchars($password))) : null)
         ];
-
 
         // CALL API
         $url = URLAPI . "/v1/sales/add_sales";
@@ -130,7 +129,7 @@ class Sales extends BaseController
             return redirect()->to(BASE_URL . "sales");
             exit();
         }else{
-            session()->setFlashdata('failed', $result->message);
+            session()->setFlashdata('failed', $result);
             return redirect()->to(BASE_URL . "sales/tambah_sales")->withInput();
             exit();
         }
@@ -187,10 +186,10 @@ class Sales extends BaseController
                 'label'     => 'Telphone',
                 'rules'     => 'required'
             ],
-            'omzet'     => [
-                'label'     => 'Omzet',
-                'rules'     => 'required'
-            ],
+            // 'omzet'     => [
+            //     'label'     => 'Omzet',
+            //     'rules'     => 'required'
+            // ],
             'confirm_password'     => [
                 'label'     => 'Konfirmasi Password',
                 'rules'     => 'matches[password]'
@@ -224,9 +223,9 @@ class Sales extends BaseController
             'alamat'        => trim(htmlspecialchars($this->request->getVar('alamat'))),
             'kota'          => trim(htmlspecialchars($this->request->getVar('kota'))),
             'telp'          => trim(htmlspecialchars($this->request->getVar('telp'))),
-            'omzet'         => trim(filter_var($this->request->getVar('omzet'), FILTER_SANITIZE_NUMBER_INT)),
-            'gajipokok'     => trim(filter_var($this->request->getVar('gapok'), FILTER_SANITIZE_NUMBER_INT)),
-            'komisi'        => trim(filter_var($this->request->getVar('komisi'), FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION)),
+            'omzet'         => (float) $this->request->getVar('omzet'),
+            'gajipokok'     => (float) $this->request->getVar('gapok'),
+            'komisi'        => (float) $this->request->getVar('komisi'),
             'username'      => trim(htmlspecialchars($this->request->getVar('username'))),
             'password'      => ((!empty($newpass)) ? sha1(trim(htmlspecialchars($newpass))) : null)
         ];
