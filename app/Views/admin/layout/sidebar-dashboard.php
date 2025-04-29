@@ -467,6 +467,16 @@ use App\Enums\Menu; ?>
               </h2>
             </div>
         <?php endif ?>
+        <?php if (!$isAdmin): ?>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <a href="<?= BASE_URL ?>mobile/profile" class="accordion-button">
+                    <i class="bx bx-group me-2"></i>
+                    <span>Profile</span>
+                </a>
+              </h2>
+            </div>
+        <?php endif ?>
       </div>
     </ul>
 </aside>

@@ -104,8 +104,9 @@
     });
 
     $('#omzet_sales').DataTable({
-        "scrollX": false,
+        "scrollX": true,
         "dom": 'Bfrtip',
+        "autoWidth": false,
         "ajax": {
             "url": "<?= BASE_URL ?>dashboard/get_penjualan_sales",
             "type": "POST",

@@ -94,7 +94,7 @@ $role = session()->get('logged_user')['role'];
                         <div class="card-header bg-primary pb-2">
                             <h5 class="card-title text-white">Penjualan Bulan Ini</h5>
                         </div>
-                            <div class="card-body mt-2">
+                            <div class="card-body mt-2" style="overflow: auto;">
                                 <table id="omzet_sales" class="table table-striped" style="width:100%">
                                     <thead>
                                         <tr>
