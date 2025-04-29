@@ -162,7 +162,7 @@ class Stok extends BaseController
                     ]
                 ],
                 'barcodex' => [
-                    'rules'  => 'required|exact_length[18]',
+                    'rules'  => 'required|min_length[18]',
                     'errors' => [
                         'required' => 'Barcode wajib diisi',
                     ]
