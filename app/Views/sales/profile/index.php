@@ -20,9 +20,9 @@
                                     <div class="flip-container">
                                         <div class="flipper">
                                             <?php if ($sales->avatar): ?>
-                                                <img class="img-preview d-block mb-3 mx-auto" data-barcode="<?= BASE_URL . $sales->barcode ?>" src="<?= BASE_URL . 'assets/img/avatars/' . $sales->avatar ?>" width="300">
+                                                <img class="img-preview d-block mb-3 mx-auto" data-barcode="<?= $sales->barcode ?>" src="<?= BASE_URL . 'assets/img/avatars/' . $sales->avatar ?>" width="300">
                                             <?php else: ?>
-                                                <img class="img-preview d-block mx-auto" data-barcode="<?= BASE_URL . $sales->barcode ?>" src="<?= BASE_URL ?>assets/img/avatars/anonim.jpg" width="300">
+                                                <img class="img-preview d-block mx-auto" data-barcode="<?= $sales->barcode ?>" src="<?= BASE_URL ?>assets/img/avatars/anonim.jpg" width="300">
                                             <?php endif; ?>
                                         </div>
                                     </div>
@@ -183,10 +183,10 @@
                                     <div class="flip-container">
                                         <div class="flipper">
                                             <?php if ($sales->avatar): ?>
-                                                <img class="img-preview d-block mb-3 mx-auto" data-barcode="<?= BASE_URL . $sales->barcode ?>" src="<?= BASE_URL . 'assets/img/avatars/' . $sales->avatar ?>" width="300">
+                                                <img class="img-preview d-block mb-3 mx-auto" data-barcode="<?= $sales->barcode ?>" width="300">
                                                 <input type="hidden" name="avatar_lama" value="<?= $sales->avatar ?>">
                                             <?php else: ?>
-                                                <img class="img-preview d-block mx-auto" data-barcode="<?= BASE_URL . $sales->barcode ?>" src="<?= BASE_URL ?>assets/img/avatars/anonim.jpg" width="300">
+                                                <img class="img-preview d-block mx-auto" data-barcode="<?= $sales->barcode ?>" src="<?= BASE_URL ?>assets/img/avatars/anonim.jpg" width="300">
                                             <?php endif; ?>
                                         </div>
                                     </div>

@@ -35,7 +35,7 @@ abstract class BaseController extends Controller
      *
      * @var list<string>
      */
-    protected $helpers = ["form", "guci_helpers", "permission_helpers"];
+    protected $helpers = ["form", "guci_helpers", "permission_helpers", "barcode_helper"];
     protected $isAdmin = false; 
 
     /**

@@ -62,6 +62,14 @@ use App\Enums\Menu; ?>
                             </a>
                         </li>
                     <?php endif ?>
+                    <?php if ($isAdmin || $hasPermission(Menu::DAFTAR_SALES, 'setup')): ?>
+                        <li class="menu-item <?= $absensi_active ?? '' ?>">
+                            <a href="<?= BASE_URL ?>sales/absensi" class="menu-link-inside d-flex justify-content-start align-items-center px-3 py-2">
+                            <img src="<?= BASE_URL ?>assets/img/icons/118828_system_users_icon.png" alt="Home Icon" class="me-2" width="24" height="24">
+                                <div data-i18n="Sales" style="font-size: 12px;">Absensi Sales</div>
+                            </a>
+                        </li>
+                    <?php endif ?>
                     <?php if ($isAdmin || $hasPermission(Menu::DAFTAR_SUPLIER, 'setup')): ?>
                         <li class="menu-item <?= $supplier_active ?? '' ?>">
                             <a href="<?= BASE_URL ?>suplier" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">

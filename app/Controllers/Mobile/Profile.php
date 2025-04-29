@@ -17,9 +17,8 @@ class Profile extends BaseController
         $url = URLAPI . "/v1/sales/getsales_byid?id=".$sales;
 		$response = gucitoakAPI($url);
         $result = $response->message;
-        if($result) {
-            $result->barcode = 'assets/img/logo-no-text.png';
-        }
+        $barcode = createBarcode($sales);
+        $result->barcode = $barcode;
         
         $mdata = [
             'title'     => 'Edit sales - ' . NAMETITLE,

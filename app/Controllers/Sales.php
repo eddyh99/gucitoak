@@ -379,6 +379,63 @@ class Sales extends BaseController
         echo json_encode($result);
     }
 
+    public function absensi()
+    {
+        // if (!hasPermission(Menu::PENYESUAIAN_STOK, 'persediaan')) {
+        //     return view('errors/html/error_403');
+        // }
+        $mdata = [
+            'title'     => 'Absensi Sales - ' . NAMETITLE,
+            'content'   => 'admin/sales/absensi',
+            'extra'     => 'admin/sales/js/_js_absensi',
+            'menuactive_persediaan'   => 'active open',
+            'absensi_active'   => 'active'
+        ];
 
+        return view('admin/layout/wrapper', $mdata);
+    }
+
+    public function process_absensi() {
+        $barcode = $this->request->getVar("barcode");
+        $type = $this->request->getVar("type");
+        $result = [
+            'valid' => false,
+            'message' => null,
+            'checkin' => false,
+        ];
+    
+        $valid = validateBarcode($barcode);
+        if (!$valid) {
+            $result['message'] = 'Barcode tidak valid';
+            return $this->response->setJSON($result);
+        };
+    
+        $mdata = [
+            'id_sales' => $valid,
+            'type'     => $type
+        ];
+    
+        $result['valid'] = true;
+        $url = URLAPI . "/v1/sales/absensi";
+        $response = gucitoakAPI($url, json_encode($mdata));
+    
+        // Perbaiki kondisi pengecekan untuk response code
+        if ($response->code != 200 && $response->code != 201) {
+            $result['checkin'] = false;
+            $result['message'] = $response->message;
+            return $this->response->setJSON($result);
+        }
+    
+        // Jika response code adalah 200 atau 201
+        $result['checkin'] = true;
+        $result['message'] = $response->message;
+    
+        // Cek jika response code adalah 200 untuk memicu checkout
+        if ($response->code == 200) {
+            $result['show_checkout_confirmation'] = true;
+        }
+    
+        return $this->response->setJSON($result);
+    }
 
 }
