@@ -43,10 +43,13 @@
                 data: 'namasales'
             },
             {
-                data: 'checkin'
+                data: 'checkin',
+                className: 'text-center'
             },
             {
-                data: 'checkout'
+                data: 'checkout',
+                defaultContent: '-',
+                className: 'text-center'
             },
             {
                 data: 'jamkerja',
