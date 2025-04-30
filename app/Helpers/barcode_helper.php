@@ -36,6 +36,10 @@ function validateBarcode($barcode) {
         return false; // Token tidak sah
     }
 
+    if($tanggal != date('Ymd')) {
+        return false;
+    }
+
     return (int)$id; // Return ID jika valid
 }
 

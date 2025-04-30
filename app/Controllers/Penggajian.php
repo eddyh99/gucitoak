@@ -8,12 +8,12 @@ use DateTime;
 
 class Penggajian extends BaseController
 {
-    private $isSales;
+    // private $isSales;
 
-    public function __construct()
-    {
-        $this->isSales = session()->get('logged_user')['role'] == 'sales';
-    }
+    // public function __construct()
+    // {
+    //     $this->isSales = session()->get('logged_user')['role'] == 'sales';
+    // }
 
     public function index()
     {
