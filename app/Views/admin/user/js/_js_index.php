@@ -39,12 +39,12 @@
                   data: null,
                   "mRender": function(data, type, full, meta) {
                         var edit = `<a href="<?= BASE_URL ?>user/edit_user/${encodeURI(btoa(full.id))}">
-                                                <i class="bx bx-edit bx-md fs-5 text-white"></i>
+                                                <i class="bx bx-edit bx-md fs-5 text-black"></i>
                                           </a>`;
                         var del = `<a href="<?= BASE_URL ?>user/hapus_user/${encodeURI(btoa(full.id))}/${encodeURI(btoa(full.username))}" class="del-data">
                                                 <img src="<?= BASE_URL ?>assets/img/icons/118794_process_stop_icon.png" alt="Home Icon" width="20" height="20">
                                           </a>`;
-                        return `${edit} ${data.username !== 'superadmin' ? del : ''}`;
+                        return `${edit + (data.role != 'superadmin' ? del : '')}`;
                   }
             }, )
       }

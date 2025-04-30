@@ -30,27 +30,25 @@
             },
             {
                   data: 'telp'
-            },
+            }
       ]
-      
-      if (role == 'superadmin'){
-          cols.push({
+      if (role == 'superadmin') {
+            cols.push({
                   data: 'omzet',
                   render: $.fn.dataTable.render.number(",", ".", 0, ""),
                   className: 'text-end',
-            },
-            {
+            }, {
                   data: 'gajipokok',
                   render: $.fn.dataTable.render.number(",", ".", 0, ""),
                   className: 'text-end',
-            },
-            {
+            }, {
                   data: 'komisi',
                   render: function(data, type, row) {
                         return (data * 100).toFixed(0) + '%';
                   }
-            });
+            })
       }
+
       if (role == 'superadmin' || role == 'admin') {
             cols.push({
                   data: null,
@@ -76,10 +74,10 @@
                               columns: "th:not(:last-child)" //remove last column in pdf
                         }
                   },
-                   {
-                    extend: 'excelHtml5',
-                   text: '<img src="<?= BASE_URL ?>assets/img/icons/118918_edit_copy_icon.png" alt="add" class="me-2" width="20" height="20"> Excel',
-                    className: 'excel-green', // Apply custom green style
+                  {
+                        extend: 'excelHtml5',
+                        text: '<img src="<?= BASE_URL ?>assets/img/icons/118918_edit_copy_icon.png" alt="add" class="me-2" width="20" height="20"> Excel',
+                        className: 'excel-green', // Apply custom green style
                   },
             ],
             "lengthMenu": [
