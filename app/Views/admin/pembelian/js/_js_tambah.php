@@ -127,6 +127,7 @@
     let stok = 0;
     $("#barcode").on("keypress", function(e) {
         if (e.which === 13) { // Check if Enter key is pressed
+            e.preventDefault();
             let barcodeValue = $(this).val(); // Store the barcode value here
 
             if (barcodeValue.length < 18 || barcodeValue.length > 19) {
@@ -252,34 +253,34 @@
 
     });
 
-    // Event listener for delete button
-    $('#preview_stok').on('click', '.delete-row', function() {
-        var barcode = $(this).data('barcode');
+    // // Event listener for delete button
+    // $('#preview_stok').on('click', '.delete-row', function() {
+    //     var barcode = $(this).data('barcode');
 
-        // Confirmation dialog
-        if (confirm('Apakah akan membatalkan barang ini?')) {
-            // Perform AJAX call to delete item
-            $.ajax({
-                url: "<?= BASE_URL ?>pembelian/delete_stok_session",
-                type: "POST",
-                data: {
-                    barcode: barcode
-                },
-                success: function(response) {
-                    var result = JSON.parse(response);
-                    if (result.success) {
-                        alert('Item deleted successfully!');
-                        table.ajax.reload(); // Reload the table data
-                    } else {
-                        alert('Failed to delete item: ' + result.message);
-                    }
-                },
-                error: function(xhr, status, error) {
-                    alert('An error occurred: ' + error);
-                }
-            });
-        }
-    });
+    //     // Confirmation dialog
+    //     if (confirm('Apakah akan membatalkan barang ini?')) {
+    //         // Perform AJAX call to delete item
+    //         $.ajax({
+    //             url: "<?= BASE_URL ?>pembelian/delete_stok_session",
+    //             type: "POST",
+    //             data: {
+    //                 barcode: barcode
+    //             },
+    //             success: function(response) {
+    //                 var result = JSON.parse(response);
+    //                 if (result.success) {
+    //                     alert('Item deleted successfully!');
+    //                     table.ajax.reload(); // Reload the table data
+    //                 } else {
+    //                     alert('Failed to delete item: ' + result.message);
+    //                 }
+    //             },
+    //             error: function(xhr, status, error) {
+    //                 alert('An error occurred: ' + error);
+    //             }
+    //         });
+    //     }
+    // });
 
 
     $("#clearallstok").on("click", function() {
@@ -295,7 +296,7 @@
         });
     });
 
-    $("#submit").on('click', function() {
+    $("#submit").on('click', function(e) {
         $("#frmjual").submit();
     })
 
