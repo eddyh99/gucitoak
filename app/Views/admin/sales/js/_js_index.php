@@ -31,7 +31,10 @@
             {
                   data: 'telp'
             },
-            {
+      ]
+      
+      if (role == 'superadmin'){
+          cols.push({
                   data: 'omzet',
                   render: $.fn.dataTable.render.number(",", ".", 0, ""),
                   className: 'text-end',
@@ -46,8 +49,8 @@
                   render: function(data, type, row) {
                         return (data * 100).toFixed(0) + '%';
                   }
-            }
-      ]
+            });
+      }
       if (role == 'superadmin' || role == 'admin') {
             cols.push({
                   data: null,

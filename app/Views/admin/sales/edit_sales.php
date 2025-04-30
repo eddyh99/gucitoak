@@ -98,45 +98,47 @@
                                                 value="<?= $sales->telp ?>" />
                                         </div>
                                     </div>
-                                    <div class="mb-3">
-                                        <label class="form-label" for="omzet">Omzet</label>
-                                        <div class="input-group input-group-merge">
-                                            <input
-                                                type="text"
-                                                required
-                                                class="form-control price-input"
-                                                id="omzet"
-                                                placeholder="Omzet"
-                                                name="omzet"
-                                                value="<?= $sales->omzet ?>" <?= !$isAdmin ? 'readonly' : '' ?> />
+                                    <?php if ($isAdmin):?>
+                                        <div class="mb-3">
+                                            <label class="form-label" for="omzet">Omzet</label>
+                                            <div class="input-group input-group-merge">
+                                                <input
+                                                    type="text"
+                                                    required
+                                                    class="form-control price-input"
+                                                    id="omzet"
+                                                    placeholder="Omzet"
+                                                    name="omzet"
+                                                    value="<?= $sales->omzet ?>" <?= !$isAdmin ? 'readonly' : '' ?> />
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label" for="omzet">Gaji Pokok</label>
-                                        <div class="input-group input-group-merge">
-                                            <input
-                                                type="text"
-                                                class="form-control price-input"
-                                                id="gapok"
-                                                placeholder="Gaji Pokok"
-                                                name="gapok"
-                                                value="<?= $sales->gajipokok ?>"
-                                                <?= !$isAdmin ? 'readonly' : '' ?> />
+                                        <div class="mb-3">
+                                            <label class="form-label" for="omzet">Gaji Pokok</label>
+                                            <div class="input-group input-group-merge">
+                                                <input
+                                                    type="text"
+                                                    class="form-control price-input"
+                                                    id="gapok"
+                                                    placeholder="Gaji Pokok"
+                                                    name="gapok"
+                                                    value="<?= $sales->gajipokok ?>"
+                                                    <?= !$isAdmin ? 'readonly' : '' ?> />
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label" for="omzet">Komisi (%)</label>
-                                        <div class="input-group input-group-merge">
-                                            <input
-                                                type="text"
-                                                class="form-control price-input"
-                                                id="komisi"
-                                                placeholder="Komisi"
-                                                name="komisi"
-                                                value="<?= $sales->komisi * 100 ?>"
-                                                <?= !$isAdmin ? 'readonly' : '' ?> />
+                                        <div class="mb-3">
+                                            <label class="form-label" for="omzet">Komisi (%)</label>
+                                            <div class="input-group input-group-merge">
+                                                <input
+                                                    type="text"
+                                                    class="form-control price-input"
+                                                    id="komisi"
+                                                    placeholder="Komisi"
+                                                    name="komisi"
+                                                    value="<?= $sales->komisi * 100 ?>"
+                                                    <?= !$isAdmin ? 'readonly' : '' ?> />
+                                            </div>
                                         </div>
-                                    </div>
+                                    <?php endif;?>
                                     <div class="mb-3">
                                         <label class="form-label" for="username">Username</label>
                                         <div class="input-group input-group-merge">

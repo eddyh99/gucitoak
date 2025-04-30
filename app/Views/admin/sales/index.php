@@ -54,10 +54,13 @@
                                         <th>Nama Sales</th>
                                         <th>Foto</th>
                                         <th>No. Telp</th>
+                                        <?php if ($isAdmin):?>
                                         <th>Omzet</th>
                                         <th>Gaji Pokok</th>
                                         <th>Komisi</th>
-                                        <?php if($isAdmin || $isSubAdmin): ?>
+                                        <?php
+                                            endif;
+                                            if($isAdmin || $isSubAdmin): ?>
                                         <th>Action</th>
                                         <?php endif ?>
                                     </tr>

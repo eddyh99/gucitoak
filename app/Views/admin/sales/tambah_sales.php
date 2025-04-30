@@ -98,6 +98,7 @@
                                                 maxlength="13" />
                                         </div>
                                     </div>
+                                    <?php if ($isAdmin):?>
                                     <div class="mb-3">
                                         <label class="form-label" for="omzet">Omzet</label>
                                         <div class="input-group input-group-merge">
@@ -137,6 +138,7 @@
                                                 <?= !$isAdmin ? 'readonly' : '' ?> />
                                         </div>
                                     </div>
+                                    <?php endif ?>
                                     <div class="mb-3">
                                         <label class="form-label" for="username">Username</label>
                                         <div class="input-group input-group-merge">
