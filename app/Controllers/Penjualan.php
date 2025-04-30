@@ -58,28 +58,21 @@ class Penjualan extends BaseController
     public function save_stok_session()
     {
         $data = $this->request->getVar('data');
-        $stokdata = @$_SESSION['barangjual'];
 
-        $barang = substr($data['barcode'], 0, 12);
+        $stokdata = @$_SESSION['barangjual'];
+        $barang = substr($data['barcode'], 0, -6);
         $jumlah = $data['jml'];
+        if($jumlah > $data['stok_barang']) {
+            echo json_encode(['success' => false, 'message' => 'Out of stock']);
+        }
         // Cek jika Session kosong
         if(empty($stokdata)){
             $this->session->set("barangjual", [$data]);
             echo json_encode(['success' => true]);
         }else{
-            foreach ($stokdata as &$item) {
-                if (substr($item['barcode'], 0, 12) == $barang) {
-                    $jumlah += $item['jml'];
-                }
-            }
-            // cek jumlah stok disession apakah lebih dari stok database
-            if($jumlah > $data['stok_barang']) {
-                echo json_encode(['success' => false, 'message' => 'Out of stock']);
-            } else {
-                array_push($stokdata, $data);
-                $this->session->set("barangjual", $stokdata);
-                echo json_encode(['success' => true, 'message' => $jumlah]);
-            }   
+            array_push($stokdata, $data);
+            $this->session->set("barangjual", $stokdata);
+            echo json_encode(['success' => true, 'message' => $jumlah]);
         }
         die;
     }

@@ -62,8 +62,8 @@
                                     <div class="mb-3">
                                         <label for="role" class="form-label">Select Role</label>
                                         <select class="form-select" name="role" id="role" aria-label="Default select Role">
-                                            <option value="superadmin" <?= ($username->role == "superadmin") ? "selected": ""?>>Superadmin</option>
                                             <option value="admin" <?= ($username->role == "admin") ? "selected": ""?>>Admin</option>
+                                            <option value="kasir" <?= ($username->role == "kasir") ? "selected": ""?>>Staff</option>
                                             <option value="sales" <?= ($username->role == "sales") ? "selected": ""?>>Sales</option>
                                         </select>
                                     </div>
