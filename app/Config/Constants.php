@@ -106,4 +106,6 @@ defined('BASE_URL') || define('BASE_URL',$protocol);
 
 
 define('NAMETITLE', 'Guci Luwak');
-define("URLAPI",'https://api.guciluwak.com');
+// define("URLAPI",'https://api.guciluwak.com');
+define("URLAPI",'http://localhost:8081');
+define("BARCODE_SECRET",'polkadot');

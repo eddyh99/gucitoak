@@ -35,8 +35,10 @@ abstract class BaseController extends Controller
      *
      * @var list<string>
      */
-    protected $helpers = ["form", "guci_helpers", "permission_helpers"];
+    protected $helpers = ["form", "guci_helpers", "permission_helpers", "barcode_helper"];
     protected $isAdmin = false; 
+    protected $isSubAdmin = false;
+    protected $isSales = false; 
 
     /**
      * Be sure to declare properties for any property fetch you initialized.
@@ -60,7 +62,12 @@ abstract class BaseController extends Controller
         $this->session = \Config\Services::session();
         $this->validation = \Config\Services::validation();
         $this->isAdmin = $role == 'superadmin';
+        $this->isSales = $role == 'sales';
+        $this->isSubAdmin = $role = 'admin';
         // dd($this->isAdmin);
-        service('renderer')->setVar('isAdmin', $this->isAdmin);
+        $renderer = service('renderer');
+        $renderer->setVar('isAdmin', $this->isAdmin);
+        $renderer->setVar('isSubAdmin', $this->isSubAdmin);
+        $renderer->setVar('isSales', $this->isSales);
     }
 }

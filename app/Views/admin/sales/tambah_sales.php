@@ -108,7 +108,7 @@
                                                 placeholder="Omzet"
                                                 name="omzet"
                                                 value="<?= set_value('omzet') ?>"
-                                                required />
+                                                <?= !$isAdmin ? 'readonly' : '' ?> />
                                         </div>
                                     </div>
                                     <div class="mb-3">
@@ -121,7 +121,7 @@
                                                 placeholder="Gaji Pokok"
                                                 name="gapok"
                                                 value="<?= set_value('gapok') ?>"
-                                                required />
+                                                <?= !$isAdmin ? 'readonly' : '' ?> />
                                         </div>
                                     </div>
                                     <div class="mb-3">
@@ -134,7 +134,7 @@
                                                 placeholder="Komisi"
                                                 name="komisi"
                                                 value="<?= set_value('komisi') ?>"
-                                                required />
+                                                <?= !$isAdmin ? 'readonly' : '' ?> />
                                         </div>
                                     </div>
                                     <div class="mb-3">

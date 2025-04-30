@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers\Mobile;
+use App\Controllers\BaseController;
 
 class Dashboard extends BaseController
 {

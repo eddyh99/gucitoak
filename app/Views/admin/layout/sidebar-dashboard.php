@@ -62,6 +62,14 @@ use App\Enums\Menu; ?>
                             </a>
                         </li>
                     <?php endif ?>
+                    <?php if ($isAdmin || $hasPermission(Menu::DAFTAR_SALES, 'setup')): ?>
+                        <li class="menu-item <?= $absensi_active ?? '' ?>">
+                            <a href="<?= BASE_URL ?>sales/absensi" class="menu-link-inside d-flex justify-content-start align-items-center px-3 py-2">
+                            <img src="<?= BASE_URL ?>assets/img/icons/118828_system_users_icon.png" alt="Home Icon" class="me-2" width="24" height="24">
+                                <div data-i18n="Sales" style="font-size: 12px;">Absensi Sales</div>
+                            </a>
+                        </li>
+                    <?php endif ?>
                     <?php if ($isAdmin || $hasPermission(Menu::DAFTAR_SUPLIER, 'setup')): ?>
                         <li class="menu-item <?= $supplier_active ?? '' ?>">
                             <a href="<?= BASE_URL ?>suplier" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">
@@ -445,24 +453,45 @@ use App\Enums\Menu; ?>
               </h2>
             </div>
         <?php endif ?>
+
+        <?php if ($isSales): ?>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <a href="<?= BASE_URL ?>sales/barang_sales" class="accordion-button">
+            <img src="<?= BASE_URL ?>assets/img/icons/118825_manager_system_icon.png" alt="Home Icon" class="me-2" width="24" height="24">
+                <span>Daftar Barang</span>
+            </a>
+          </h2>
+        </div>
+        <?php endif ?>
     
-        <?php if (!$isAdmin): ?>
+        <?php if ($isSales): ?>
         <div class="accordion-item">
           <h2 class="accordion-header">
             <a href="<?= BASE_URL ?>laporan/omzet_sales" class="accordion-button">
-                <i class="bx bx-money me-2"></i>
+            <img src="<?= BASE_URL ?>assets/img/icons/dollar.png" alt="Home Icon" class="me-2" width="24" height="24">
                 <span>Laporan Omzet</span>
             </a>
           </h2>
         </div>
         <?php endif ?>
     
-        <?php if (!$isAdmin): ?>
+        <?php if ($isSales): ?>
             <div class="accordion-item">
               <h2 class="accordion-header">
                 <a href="<?= BASE_URL ?>laporan/slipgaji" class="accordion-button">
-                    <i class="bx bx-money me-2"></i>
+                <img src="<?= BASE_URL ?>assets/img/icons/dollar.png" alt="Home Icon" class="me-2" width="24" height="24">
                     <span>Slip Gaji</span>
+                </a>
+              </h2>
+            </div>
+        <?php endif ?>
+        <?php if ($isSales): ?>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <a href="<?= BASE_URL ?>mobile/profile" class="accordion-button">
+                <img src="<?= BASE_URL ?>assets/img/icons/118828_system_users_icon.png" alt="Home Icon" class="me-2" width="24" height="24">
+                    <span>Profile</span>
                 </a>
               </h2>
             </div>

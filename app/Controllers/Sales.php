@@ -74,10 +74,10 @@ class Sales extends BaseController
                 'label'     => 'Telphone',
                 'rules'     => 'required'
             ],
-            'omzet'     => [
-                'label'     => 'Omzet',
-                'rules'     => 'required'
-            ],
+            // 'omzet'     => [
+            //     'label'     => 'Omzet',
+            //     'rules'     => 'required'
+            // ],
             'confirm_password'     => [
                 'label'     => 'Konfirmasi Password',
                 'rules'     => 'matches[password]'
@@ -110,13 +110,12 @@ class Sales extends BaseController
             'alamat'        => trim(htmlspecialchars($this->request->getVar('alamat'))),
             'kota'          => trim(htmlspecialchars($this->request->getVar('kota'))),
             'telp'          => trim(htmlspecialchars($this->request->getVar('telp'))),
-            'omzet'         => trim(filter_var($this->request->getVar('omzet'), FILTER_SANITIZE_NUMBER_INT)),
-            'gajipokok'     => trim(filter_var($this->request->getVar('gapok'), FILTER_SANITIZE_NUMBER_INT)),
-            'komisi'        => trim(filter_var($this->request->getVar('komisi'), FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION)),
+            'omzet'         => (float) $this->request->getVar('omzet'),
+            'gajipokok'     => (float) $this->request->getVar('gapok'),
+            'komisi'        => (float) $this->request->getVar('komisi'),
             'username'      => trim(htmlspecialchars($this->request->getVar('username'))),
             'password'      => ((!empty($password)) ? sha1(trim(htmlspecialchars($password))) : null)
         ];
-
 
         // CALL API
         $url = URLAPI . "/v1/sales/add_sales";
@@ -130,7 +129,7 @@ class Sales extends BaseController
             return redirect()->to(BASE_URL . "sales");
             exit();
         }else{
-            session()->setFlashdata('failed', $result->message);
+            session()->setFlashdata('failed', $result);
             return redirect()->to(BASE_URL . "sales/tambah_sales")->withInput();
             exit();
         }
@@ -187,10 +186,10 @@ class Sales extends BaseController
                 'label'     => 'Telphone',
                 'rules'     => 'required'
             ],
-            'omzet'     => [
-                'label'     => 'Omzet',
-                'rules'     => 'required'
-            ],
+            // 'omzet'     => [
+            //     'label'     => 'Omzet',
+            //     'rules'     => 'required'
+            // ],
             'confirm_password'     => [
                 'label'     => 'Konfirmasi Password',
                 'rules'     => 'matches[password]'
@@ -224,9 +223,9 @@ class Sales extends BaseController
             'alamat'        => trim(htmlspecialchars($this->request->getVar('alamat'))),
             'kota'          => trim(htmlspecialchars($this->request->getVar('kota'))),
             'telp'          => trim(htmlspecialchars($this->request->getVar('telp'))),
-            'omzet'         => trim(filter_var($this->request->getVar('omzet'), FILTER_SANITIZE_NUMBER_INT)),
-            'gajipokok'     => trim(filter_var($this->request->getVar('gapok'), FILTER_SANITIZE_NUMBER_INT)),
-            'komisi'        => trim(filter_var($this->request->getVar('komisi'), FILTER_SANITIZE_NUMBER_FLOAT,FILTER_FLAG_ALLOW_FRACTION)),
+            'omzet'         => (float) $this->request->getVar('omzet'),
+            'gajipokok'     => (float) $this->request->getVar('gapok'),
+            'komisi'        => (float) $this->request->getVar('komisi'),
             'username'      => trim(htmlspecialchars($this->request->getVar('username'))),
             'password'      => ((!empty($newpass)) ? sha1(trim(htmlspecialchars($newpass))) : null)
         ];
@@ -321,11 +320,17 @@ class Sales extends BaseController
 
     }
 
+    public function listbarang_bysales(){
+        $id = session()->get('logged_user')['id_sales'] ?? null;
+        $url = URLAPI . "/v1/sales/getbarang_sales?idsales=" .$id;
+		$response = gucitoakAPI($url);
+        $result = $response->message;
+        echo json_encode($result);
+        die;
+    }
+
     public function assignsales_proccess()
     {
-
-        
-
 
         // Validation Rules
         $rules = $this->validate([
@@ -379,6 +384,75 @@ class Sales extends BaseController
         echo json_encode($result);
     }
 
+    public function absensi()
+    {
+        // if (!hasPermission(Menu::PENYESUAIAN_STOK, 'persediaan')) {
+        //     return view('errors/html/error_403');
+        // }
+        $mdata = [
+            'title'     => 'Absensi Sales - ' . NAMETITLE,
+            'content'   => 'admin/sales/absensi',
+            'extra'     => 'admin/sales/js/_js_absensi',
+            'menuactive_persediaan'   => 'active open',
+            'absensi_active'   => 'active'
+        ];
 
+        return view('admin/layout/wrapper', $mdata);
+    }
+
+    public function process_absensi() {
+        $barcode = $this->request->getVar("barcode");
+        $type = $this->request->getVar("type");
+        $result = [
+            'valid' => false,
+            'message' => null,
+            'checkin' => false,
+        ];
+    
+        $valid = validateBarcode($barcode);
+        if (!$valid) {
+            $result['message'] = 'Barcode tidak valid';
+            return $this->response->setJSON($result);
+        };
+    
+        $mdata = [
+            'id_sales' => $valid,
+            'type'     => $type
+        ];
+    
+        $result['valid'] = true;
+        $url = URLAPI . "/v1/sales/absensi";
+        $response = gucitoakAPI($url, json_encode($mdata));
+    
+        // Perbaiki kondisi pengecekan untuk response code
+        if ($response->code != 200 && $response->code != 201) {
+            $result['checkin'] = false;
+            $result['message'] = $response->message;
+            return $this->response->setJSON($result);
+        }
+    
+        // Jika response code adalah 200 atau 201
+        $result['checkin'] = true;
+        $result['message'] = $response->message;
+    
+        // Cek jika response code adalah 200 untuk memicu checkout
+        if ($response->code == 200) {
+            $result['show_checkout_confirmation'] = true;
+        }
+    
+        return $this->response->setJSON($result);
+    }
+
+    public function barang_sales() {
+        $mdata = [
+            'title'     => 'Barang Sales - ' . NAMETITLE,
+            'content'   => 'admin/sales/listbarang',
+            'extra'     => 'admin/sales/js/_js_listbarang',
+            'menuactive_master'   => 'active open',
+            'assignsales_active'   => 'active'
+        ];
+
+        return view('admin/layout/wrapper', $mdata);
+    }
 
 }
