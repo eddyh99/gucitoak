@@ -1,6 +1,6 @@
 <?php
 // Pengecekan role di sini
-$role = session()->get('logged_user')['role'];
+$role = session()->get('logged_user')['role'] ?? null;
 ?>
 
 <?php if (!empty(session('success'))): ?>
@@ -88,7 +88,7 @@ $role = session()->get('logged_user')['role'];
                     </div>
                     <?php endif ?>
 
-                    <?php if ($role == 'sales') : ?>
+                    <?php if ($role != 'superadmin' || $role != 'admin') : ?>
                     <div class="col-lg-6 mb-4 order-1">
                         <div class="card border-expat w-100">
                         <div class="card-header bg-primary pb-2">

@@ -108,7 +108,7 @@
         "dom": 'Bfrtip',
         "autoWidth": false,
         "ajax": {
-            "url": "<?= BASE_URL ?>dashboard/get_penjualan_sales",
+            "url": "<?= BASE_URL ?>mobile/dashboard/get_penjualan_sales",
             "type": "POST",
             "dataSrc": function (data) {
                 console.log(data);

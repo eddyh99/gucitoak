@@ -13,8 +13,9 @@ class Profile extends BaseController
         // $sales=base64_decode($sales);
         $sales = 10;
 
+        $id = session()->get('logged_user')['id_sales'] ?? $sales;
         // Call API
-        $url = URLAPI . "/v1/sales/getsales_byid?id=".$sales;
+        $url = URLAPI . "/mobile/sales/getsales_byid?id=".$id;
 		$response = gucitoakAPI($url);
         $result = $response->message;
         $barcode = createBarcode($sales);
