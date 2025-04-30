@@ -320,11 +320,17 @@ class Sales extends BaseController
 
     }
 
+    public function listbarang_bysales(){
+        $id = session()->get('logged_user')['id_sales'] ?? null;
+        $url = URLAPI . "/v1/sales/getbarang_sales?idsales=" .$id;
+		$response = gucitoakAPI($url);
+        $result = $response->message;
+        echo json_encode($result);
+        die;
+    }
+
     public function assignsales_proccess()
     {
-
-        
-
 
         // Validation Rules
         $rules = $this->validate([
@@ -435,6 +441,18 @@ class Sales extends BaseController
         }
     
         return $this->response->setJSON($result);
+    }
+
+    public function barang_sales() {
+        $mdata = [
+            'title'     => 'Barang Sales - ' . NAMETITLE,
+            'content'   => 'admin/sales/listbarang',
+            'extra'     => 'admin/sales/js/_js_listbarang',
+            'menuactive_master'   => 'active open',
+            'assignsales_active'   => 'active'
+        ];
+
+        return view('admin/layout/wrapper', $mdata);
     }
 
 }

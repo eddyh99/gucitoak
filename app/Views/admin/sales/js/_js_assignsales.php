@@ -4,7 +4,7 @@
     }
 
     #table_list .group td {
-        color: white !important;
+        color: red !important;
     }
 </style>
 
