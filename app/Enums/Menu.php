@@ -5,6 +5,7 @@ namespace App\Enums;
 class Menu {
 
 CONST DAFTAR_PENGGUNA = 'daftar_pengguna';
+CONST ABSENSI_SALES = 'absensi_sales';
 CONST DAFTAR_SALES = 'daftar_sales';
 CONST DAFTAR_SUPLIER = 'daftar_suplier';
 CONST DAFTAR_PELANGGAN = 'daftar_outlet';
@@ -44,11 +45,13 @@ CONST LAP_RETUR_PELANGGAN_MONTHLY = 'laporan_retur_outlet30';
 CONST LAP_BIAYA = 'laporan_biaya';
 CONST LAP_LABARUGI = 'laporan_labarugi';
 CONST LAP_ARUSKAS = 'laporan_aruskas';
+CONST LAP_ABSENSI_SALES = 'laporan_absensi_sales';
 
     public static function subMenu_setup()
         {
             return [
                 self::DAFTAR_PENGGUNA,
+                self::ABSENSI_SALES,
                 self::DAFTAR_SALES,
                 self::DAFTAR_SUPLIER,
                 self::DAFTAR_PELANGGAN,
@@ -104,7 +107,8 @@ CONST LAP_ARUSKAS = 'laporan_aruskas';
                 self::HUTANG_SUPLIER,
                 self::LAP_BIAYA,
                 self::LAP_LABARUGI,
-                self::LAP_ARUSKAS
+                self::LAP_ARUSKAS,
+                self::LAP_ABSENSI_SALES
             ];
         }
 

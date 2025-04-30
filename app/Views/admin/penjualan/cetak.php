@@ -119,7 +119,7 @@
             $t_jumlah = 0;
             $ppn = $mdata[0]->ppn ?? 0;
             $diskon = $mdata[0]->discount ??0;
-            foreach ($mdata as $barang):
+            foreach ($mdata as $index => $barang):
                 $harga = $barang->harga ?? 0;
                 $diskon1 = $barang->diskon1 ?? 0;
                 $diskon2 = $barang->diskon2 ?? 0;
@@ -127,7 +127,7 @@
                 $t_jumlah += $jumlah * $barang->jumlah;
             ?>
                 <tr>
-                    <td>1</td>
+                    <td><?= $index +1  ?>.</td>
                     <td><?= $barang->kd_barang ?? '-' ?></td>
                     <td><?= $barang->namabarang ?? '-' ?></td>
                     <td><?= $barang->jumlah ?? '-' ?></td>

@@ -386,9 +386,9 @@ class Sales extends BaseController
 
     public function absensi()
     {
-        // if (!hasPermission(Menu::PENYESUAIAN_STOK, 'persediaan')) {
-        //     return view('errors/html/error_403');
-        // }
+        if (!hasPermission(Menu::ABSENSI_SALES, 'setup')) {
+            return view('errors/html/error_403');
+        }
         $mdata = [
             'title'     => 'Absensi Sales - ' . NAMETITLE,
             'content'   => 'admin/sales/absensi',

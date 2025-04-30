@@ -464,6 +464,9 @@ class Laporan extends BaseController
     }
 
     public function aktivitas_sales() {
+        if (!hasPermission(Menu::LAP_ABSENSI_SALES, 'laporan')) {
+            return view('errors/html/error_403');
+        }
         $url =  URLAPI . "/v1/sales/getall_sales";
         $response = gucitoakAPI($url);
         $sales = $response->message;
