@@ -462,4 +462,31 @@ class Laporan extends BaseController
         $response = gucitoakAPI($url)->message;
         echo json_encode($response,true);
     }
+
+    public function aktivitas_sales() {
+        $url =  URLAPI . "/v1/sales/getall_sales";
+        $response = gucitoakAPI($url);
+        $sales = $response->message;
+
+        $mdata = [
+            'title'     => 'Aktivitas Sales - ' . NAMETITLE,
+            'content'   => 'admin/laporan/aktivitas_sales',
+            'extra'     => 'admin/laporan/js/_js_aktivitas_sales',
+            'menuactive_master'   => 'active open',
+            'salesactivity_active'   => 'active',
+            'sales'     => $sales
+        ];
+
+        return view('admin/layout/wrapper', $mdata);
+    }
+
+    public function getabsensi_sales(){
+        $sales  = $this->request->getVar('sales');
+        $bulan  = $this->request->getVar('bulan');
+        $tahun  = $this->request->getVar('tahun');
+        $url = URLAPI . "/v1/laporan/absensisales?". "sales=".$sales."&bulan=".$bulan."&tahun=".$tahun;
+        $response = gucitoakAPI($url)->message;
+        echo json_encode($response,true);
+        
+    }
 }

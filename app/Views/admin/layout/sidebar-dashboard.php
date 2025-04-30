@@ -62,7 +62,7 @@ use App\Enums\Menu; ?>
                             </a>
                         </li>
                     <?php endif ?>
-                    <?php if ($isAdmin || $hasPermission(Menu::DAFTAR_SALES, 'setup')): ?>
+                    <?php if ($isAdmin || $isSubAdmin || $hasPermission(Menu::DAFTAR_SALES, 'setup')): ?>
                         <li class="menu-item <?= $absensi_active ?? '' ?>">
                             <a href="<?= BASE_URL ?>sales/absensi" class="menu-link-inside d-flex justify-content-start align-items-center px-3 py-2">
                             <img src="<?= BASE_URL ?>assets/img/icons/118828_system_users_icon.png" alt="Home Icon" class="me-2" width="24" height="24">
@@ -284,6 +284,14 @@ use App\Enums\Menu; ?>
               </h2>
               <div id="collapseLaporan" class="accordion-collapse show" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
+                <?php if ($isAdmin || $hasPermission(Menu::BARANG_EXPIRED, 'laporan')): ?>
+                <li class="menu-item <?= $salesactivity_active ?? '' ?>">
+                            <a href="<?= BASE_URL ?>laporan/aktivitas_sales" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">
+                            <img src="<?= BASE_URL ?>assets/img/icons/118828_system_users_icon.png" alt="Home Icon" class="me-2" width="24" height="24">
+                                <div data-i18n="Laporan" style="font-size: 12px;">Aktivitas Sales</div>
+                            </a>
+                    </li>
+                    <?php endif ?>
                 <?php if ($isAdmin || $hasPermission(Menu::BARANG_EXPIRED, 'laporan')): ?>
                 <li class="menu-item <?= $barangexp_active ?? '' ?>">
                             <a href="<?= BASE_URL ?>laporan/barangexp" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">
