@@ -25,18 +25,11 @@ class Dashboard extends BaseController
 
         return view('admin/layout/wrapper', $mdata);
     }
-    
-    public function list_all_stokbarang()
-    {
-        $url = URLAPI . "/v1/barang/getstokmin";
-		$response = gucitoakAPI($url);
-        $result = $response->message;
-        echo json_encode($result);
-    }
 
     public function get_penjualan_sales() {
-        $id = session()->get('logged_user')['id_sales'] ?? null;
-        $url = URLAPI . "/v1/penjualan/penjualan_sales_bulan_sekarang?id=".$id;
+        $sales = 10;
+        $id = session()->get('logged_user')['id_sales'] ?? $sales;
+        $url = URLAPI . "/mobile/sales/penjualan_sales_bulan_sekarang?id=".$id;
         $response = gucitoakAPI($url)->message;
         echo json_encode($response, true);
     }
