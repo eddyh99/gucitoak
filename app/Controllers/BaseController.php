@@ -63,7 +63,7 @@ abstract class BaseController extends Controller
         $this->validation = \Config\Services::validation();
         $this->isAdmin = $role == 'superadmin';
         $this->isSales = $role == 'sales';
-        $this->isSubAdmin = $role = 'admin';
+        $this->isSubAdmin = $role == 'admin';
         // dd($this->isAdmin);
         $renderer = service('renderer');
         $renderer->setVar('isAdmin', $this->isAdmin);
