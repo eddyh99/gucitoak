@@ -291,7 +291,8 @@
             });
 
         } else {
-            $("#frmjual").submit()
+            return
+            // $("#frmjual").submit()
         };
     });
 

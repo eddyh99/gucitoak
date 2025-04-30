@@ -60,7 +60,22 @@ class Pembelian extends BaseController
         if(empty($stokdata)){
             $this->session->set("barangbeli", [$data]);
         }else{
-            array_push($stokdata, $data);
+
+            // Cek apakah barcode sudah ada
+            $found = false;
+            foreach ($stokdata as &$item) {
+                if ($item['barcode'] === $data['barcode']) {
+                    $item['jml'] += $data['jml'];
+                    $found = true;
+                    break;
+                }
+            }
+
+            // jika tidak ada
+            if (!$found) {
+                array_push($stokdata, $data);
+            }
+
             $this->session->set("barangbeli", $stokdata);
         }
         die;
