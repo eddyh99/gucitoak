@@ -27,7 +27,7 @@
             ['10 rows', '25 rows', '50 rows', 'Show all']
         ],
         "ajax": {
-            "url": "<?= BASE_URL ?>laporan/getabsensi_sles",
+            "url": "<?= BASE_URL ?>laporan/getabsensi_sales",
             "type": "POST",
             "data": function(d) {
                 d.bulan = $('#bulan').val();
