@@ -130,7 +130,7 @@
             e.preventDefault();
             let barcodeValue = $(this).val(); // Store the barcode value here
 
-            if (barcodeValue.length < 18 || barcodeValue.length > 19) {
+            if (barcodeValue.length < 7) {
                 return alertError("Barcode tidak valid!");
             }
 

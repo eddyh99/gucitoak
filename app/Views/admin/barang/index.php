@@ -56,7 +56,7 @@
                                         <th>Harga 1</th>
                                         <th>Harga 2</th>
                                         <th>Harga 3</th>
-                                        <?php if($isAdmin): ?>
+                                        <?php if($isAdmin || $isSubAdmin): ?>
                                         <th>Action</th>
                                         <?php endif ?>
                                     </tr>
