@@ -88,7 +88,7 @@ $role = session()->get('logged_user')['role'] ?? null;
                     </div>
                     <?php endif ?>
 
-                    <?php if ($role != 'superadmin' || $role != 'admin') : ?>
+                    <?php if ($role != 'superadmin' && $role != 'admin') : ?>
                     <div class="col-lg-6 mb-4 order-1">
                         <div class="card border-expat w-100">
                         <div class="card-header bg-primary pb-2">

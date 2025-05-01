@@ -3,17 +3,18 @@
 namespace App\Controllers\Mobile;
 
 use App\Controllers\BaseController;
+use CodeIgniter\Exceptions\PageNotFoundException;
 
 class Profile extends BaseController
 {
 
     public function index()
     {
-        // Get segment idsales
-        // $sales=base64_decode($sales);
-        $sales = 10;
-
+        $sales = $this->request->getHeaderLine('sales-id');
         $id = session()->get('logged_user')['id_sales'] ?? $sales;
+        if(!$id) {
+            throw PageNotFoundException::forPageNotFound();
+        }
         // Call API
         $url = URLAPI . "/mobile/sales/getsales_byid?id=".$id;
 		$response = gucitoakAPI($url);

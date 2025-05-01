@@ -8,6 +8,7 @@
     }
 </style>
 <script>
+    const idsales = <?= json_encode($id_sales) ?>;
       $(function () { 
             setTimeout(() => {
                   $("#successtoast").toast('show')
@@ -103,12 +104,13 @@
         ],
     });
 
+if(idsales) {
     $('#omzet_sales').DataTable({
         "scrollX": true,
         "dom": 'Bfrtip',
         "autoWidth": false,
         "ajax": {
-            "url": "<?= BASE_URL ?>mobile/dashboard/get_penjualan_sales",
+            "url":  "<?= BASE_URL ?>mobile/dashboard/get_penjualan_sales/" + idsales,
             "type": "POST",
             "dataSrc": function (data) {
                 console.log(data);
@@ -129,6 +131,7 @@
             $(api.column(3).footer()).html(totalOmzet.toLocaleString("id-ID") || '');
         }
     });
+}
 
     function detailCicilan_pelanggan(idb) {
       console.log(idb);

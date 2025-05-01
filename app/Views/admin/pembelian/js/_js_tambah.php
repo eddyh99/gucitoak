@@ -253,34 +253,37 @@
 
     });
 
-    // // Event listener for delete button
-    // $('#preview_stok').on('click', '.delete-row', function() {
-    //     var barcode = $(this).data('barcode');
+    // Event listener for delete button
+    $('#preview_stok').on('click', '.delete-row', function() {
+        var barcode = $(this).data('barcode');
 
-    //     // Confirmation dialog
-    //     if (confirm('Apakah akan membatalkan barang ini?')) {
-    //         // Perform AJAX call to delete item
-    //         $.ajax({
-    //             url: "<?= BASE_URL ?>pembelian/delete_stok_session",
-    //             type: "POST",
-    //             data: {
-    //                 barcode: barcode
-    //             },
-    //             success: function(response) {
-    //                 var result = JSON.parse(response);
-    //                 if (result.success) {
-    //                     alert('Item deleted successfully!');
-    //                     table.ajax.reload(); // Reload the table data
-    //                 } else {
-    //                     alert('Failed to delete item: ' + result.message);
-    //                 }
-    //             },
-    //             error: function(xhr, status, error) {
-    //                 alert('An error occurred: ' + error);
-    //             }
-    //         });
-    //     }
-    // });
+        // Confirmation dialog
+        if (confirm('Apakah akan membatalkan barang ini?')) {
+            // Perform AJAX call to delete item
+            $.ajax({
+                url: "<?= BASE_URL ?>pembelian/delete_stok_session",
+                type: "POST",
+                data: {
+                    barcode: barcode
+                },
+                success: function(response) {
+                    var result = JSON.parse(response);
+                    if (result.success) {
+                        alert('Item deleted successfully!');
+                        table.ajax.reload(); // Reload the table data
+                    } else {
+                        alert('Failed to delete item: ' + result.message);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    alert('An error occurred: ' + error);
+                }
+            });
+        } else {
+            return;
+            // $("#frmjual").submit();
+        }
+    });
 
 
     $("#clearallstok").on("click", function() {

@@ -70,7 +70,22 @@ class Penjualan extends BaseController
             $this->session->set("barangjual", [$data]);
             echo json_encode(['success' => true]);
         }else{
-            array_push($stokdata, $data);
+
+            // Cek apakah barcode sudah ada
+            $found = false;
+            foreach ($stokdata as &$item) {
+                if ($item['barcode'] === $data['barcode']) {
+                    $item['jml'] += $data['jml'];
+                    $found = true;
+                    break;
+                }
+            }
+
+            // jika tidak ada
+            if (!$found) {
+                array_push($stokdata, $data);
+            }
+
             $this->session->set("barangjual", $stokdata);
             echo json_encode(['success' => true, 'message' => $jumlah]);
         }
