@@ -53,7 +53,7 @@
             }
       ]
 
-      if (role == 'superadmin') {
+      if (role == 'superadmin' || role == 'admin') {
             cols.push({
                   data: 'harga'
             }, {

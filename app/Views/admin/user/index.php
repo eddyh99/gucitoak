@@ -29,7 +29,7 @@
         <!-- Content -->
         <div class="container-xxl flex-grow-1 container-p-y">
             <div class="row">
-                <?php if($isAdmin): ?>
+                <?php if($isAdmin || $isSubAdmin): ?>
                 <div class="col-12 order-0">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-12 mb-2">
@@ -51,7 +51,7 @@
                                     <tr>
                                         <th>Username</th>
                                         <th>Role</th>
-                                        <?php if($isAdmin): ?>
+                                        <?php if($isAdmin || $isSubAdmin): ?>
                                         <th>Action</th>
                                         <?php endif ?>
                                     </tr>

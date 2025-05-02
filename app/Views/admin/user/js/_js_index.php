@@ -34,7 +34,7 @@
                   data: 'role'
             }
       ]
-      if (role == 'superadmin') {
+      if (role == 'superadmin' || role == 'admin') {
             cols.push({
                   data: null,
                   "mRender": function(data, type, full, meta) {
