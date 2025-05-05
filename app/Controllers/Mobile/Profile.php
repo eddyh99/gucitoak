@@ -24,8 +24,8 @@ class Profile extends BaseController
         
         $mdata = [
             'title'     => 'Edit sales - ' . NAMETITLE,
-            'content'   => 'sales/profile/index',
-            'extra'     => 'sales/profile/js/_js_index',
+            'content'   => 'mobile/profile/index',
+            'extra'     => 'mobile/profile/js/_js_index',
             'menuactive_setup'   => 'active open',
             'sales'  => $result
         ];
