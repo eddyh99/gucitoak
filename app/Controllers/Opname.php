@@ -138,7 +138,7 @@ class Opname extends BaseController
 		$responseBarang = gucitoakAPI($urlBarang,json_encode($_SESSION["stokbarang"]));
         $resultBarang = $responseBarang->message;
         unset($_SESSION['stokbarang']);
-        return redirect()->to(BASE_URL . "opname/dispose")->withInput();
+        return redirect()->to(BASE_URL . "opname/hapusstok")->withInput();
         
     }
 
