@@ -105,7 +105,6 @@
         // Check jika stok kosong akan tidak refresh page
         if (stok !== "" && barang !== "" && barcode !== "") {
             e.preventDefault();
-            alert(jml);
             if (jml>parseInt(stok)){
                 alert("Harap periksa jumlah, karena stok tersisa : "+stok);
                 return;
