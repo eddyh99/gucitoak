@@ -121,7 +121,7 @@
             if (barcodeValue.length < 7) {
                 return alertSwal("Barcode tidak valid!");
             }
-            
+
             const selectedOption = $("#pelanggan").find('option:selected');
             const hargaNota = selectedOption.data('harganota');
             console.log("Selected hargaNota:", hargaNota); // Debugging step
@@ -310,15 +310,46 @@
         });
     });
 
-    $('#ppn, #diskon').on('input', function() {
+    let lastChanged = ''; // 'percent' atau 'nominal'
+
+    $('#diskon').on('input', function() {
+        lastChanged = 'percent';
+        updateTotal();
+    });
+
+    $('#hasil_diskon').on('input', function() {
+        lastChanged = 'nominal';
+        updateTotal();
+    });
+
+    $('#ppn').on('input', function() {
+        updateTotal();
+    });
+
+    function updateTotal() {
         let subtotalText = $('#subtotal').text().trim();
-
-        // Ubah format angka dengan menghapus titik ribuan dan mengganti koma desimal
         let subtotal = parseFloat(subtotalText.replace(/\./g, '').replace(',', '.')) || 0;
-        let disc = parseFloat($('#diskon').val()) || 0;
-        let percent = parseFloat($('#ppn').val()) || 0; // Pastikan ini berupa angka
 
-        // Validasi max 100% dan min 0%
+        let percentDisc = parseFloat($('#diskon').val().replace(',', '.')) || 0;
+        let manualDisc = parseFloat($('#hasil_diskon').val().replace(/\./g, '').replace(',', '.')) || 0;
+        let disc = 0;
+
+        if (percentDisc > 100) {
+            percentDisc = 100;
+            $('#diskon').val(100);
+        } else if (percentDisc < 0) {
+            percentDisc = 0;
+            $('#diskon').val(0);
+        }
+
+        if (lastChanged === 'percent') {
+            disc = (percentDisc / 100) * subtotal;
+            $('#hasil_diskon').val(disc);
+        } else {
+            disc = manualDisc;
+        }
+
+        let percent = parseFloat($('#ppn').val().replace(',', '.')) || 0;
         if (percent > 100) {
             percent = 100;
             $('#ppn').val(100);
@@ -327,16 +358,13 @@
             $('#ppn').val(0);
         }
 
-        // Hitung PPN
         let ppn = ((subtotal - disc) * percent) / 100;
-
-        // Hitung Total
         let total = subtotal - disc + ppn;
 
-        // Set hasil dengan 2 angka desimal
         $('#hasil_ppn').val(ppn);
         $('#total').val(total);
-    });
+    }
+
 
 
     $("#submit").on('click', function() {
