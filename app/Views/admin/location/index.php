@@ -22,8 +22,10 @@
                                 <div class="col-3">
                                     <input type="text" class="form-control" name="tgl" id="tgl" value="<?=date("Y-m-d")?>" />
                                 </div>
-                                <div class="col-2">
+                                <div class="col-3">
                                     <button class="btn btn-primary" id="lihat">Lihat</button>
+                                    <button class="btn px-1" id="save"><img src="<?= BASE_URL ?>assets/img/icons/118856_floppy_media_icon.png" alt="Home Icon" width="30" height="30"></button>
+                                    <button class="btn px-0" id="del"><img src="<?= BASE_URL ?>assets/img/icons/118794_process_stop_icon.png" alt="Home Icon" width="30" height="30"></button>
                                 </div>
                             </div>
                             <table class="table table-bordered">

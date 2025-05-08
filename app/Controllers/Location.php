@@ -28,7 +28,8 @@ class Location extends BaseController
             'title'     => 'Location - ' . NAMETITLE,
             'content'   => 'admin/location/index',
             'extra'     => 'admin/location/js/_js_index',
-            'menuactive_setup'   => 'active open',
+            'menuactive_laporan'   => 'active open',
+            'salestracker_active'   => 'active',
             'sales'   => $sales
         ];
 
@@ -40,6 +41,22 @@ class Location extends BaseController
         $tgl    = $this->request->getVar('tanggal');
         $sales = $this->request->getVar('sales');
         $url = URLAPI . "/v1/location/sales_locations?tanggal=".$tgl."&sales=".$sales;
+        $response = gucitoakAPI($url)->message;
+        echo json_encode($response,true);
+        
+    }
+
+    public function saverecord(){
+        $ids    = $this->request->getVar('ids');
+        $url = URLAPI . "/v1/location/save_record?ids=" . $ids;
+        $response = gucitoakAPI($url)->message;
+        echo json_encode($response,true);
+        
+    }
+
+    public function delete(){
+        $ids    = $this->request->getVar('ids');
+        $url = URLAPI . "/v1/location/delete?ids=" . $ids;
         $response = gucitoakAPI($url)->message;
         echo json_encode($response,true);
         

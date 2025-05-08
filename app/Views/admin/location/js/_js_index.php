@@ -1,4 +1,5 @@
 <script>
+    let ids = [];
     async function getLocation() {
         const salesId = $("#sales").val();
         const tgl = $("#tgl").val();
@@ -8,6 +9,7 @@
                 tanggal: tgl
             });
             const loc = JSON.parse(response);
+            ids = loc.map(item => item.id);
             renderMap(loc);
         } catch (error) {
             renderMap(null);
@@ -75,6 +77,17 @@
             tableBody.insertAdjacentHTML('beforeend', row);
         });
 
+        const routePath = new google.maps.Polyline({
+            path: loc.map(l => ({
+                lat: parseFloat(l.latitude),
+                lng: parseFloat(l.longitude)
+            })),
+            geodesic: true,
+            strokeColor: '#FF0000',
+            strokeOpacity: 1.0,
+            strokeWeight: 2
+        });
+        routePath.setMap(map);
         map.fitBounds(bounds);
     }
 
@@ -93,6 +106,49 @@
 
 
     $("#lihat").on('click', () => getLocation());
+
+    $("#save").on('click', async function() {
+        try {
+            const response = await handleAction(ids.toString(), 'location/saverecord');
+            alert(response);
+
+        } catch (err) {
+            alert(err);
+        }
+    });
+
+    $("#del").on('click', async function() {
+        try {
+            const response = await handleAction(ids.toString(), 'location/delete');
+            alert(response);
+            
+        } catch (err) {
+            alert(err);
+        }
+    });
+
+    async function handleAction(id, url) {
+        return new Promise((resolve, reject) => {
+            if (!ids || ids.length === 0) {
+                return reject('Lokasi tidak valid!');
+            }
+
+            $.ajax({
+                url: "<?= BASE_URL ?>" + url,
+                type: "GET",
+                data: {
+                    ids: id
+                },
+                success: function(response) {
+                    resolve(response);
+                },
+                error: function(xhr, status, error) {
+                    reject(error);
+                }
+            });
+        });
+
+    }
 </script>
 
 <script async defer
