@@ -121,7 +121,7 @@
         try {
             const response = await handleAction(ids.toString(), 'location/delete');
             alertSwal(response, 'success');
-            
+            $("#lihat").click();
         } catch (err) {
             alertSwal(err, 'error');
         }
