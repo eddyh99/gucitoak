@@ -4,12 +4,28 @@
         <div class="container-xxl flex-grow-1 container-p-y">
             <div class="row">
                 <div class="col-lg-12 order-0">
-                    <div id="map" style="height: 400px; width: 100%; margin-bottom: 20px;"></div>
+                    <div id="map" style="height: 400px; width: 100%; margin-bottom: 20px;display:none;"></div>
                 </div>
                 <div class="col-lg-12 mb-4 order-1">
                     <div class="card border-expat w-100">
                         <div class="card-body">
                             <h5 class="card-title fw-semibold mb-4">Location</h5>
+                            <div class="row mb-4">
+                                <label class="fw-bold col-1">Sales</label>
+                                <div class="col-3">
+                                <select name="barang" id="sales" class="form-select form-select">
+                                    <?php foreach ($sales as $s) : ?>
+                                        <option value="<?= $s->id ?>"><?= $s->namasales ?></option>
+                                    <?php endforeach; ?>
+                                    </select>
+                                </div>
+                                <div class="col-3">
+                                    <input type="text" class="form-control" name="tgl" id="tgl" value="<?=date("Y-m-d")?>" />
+                                </div>
+                                <div class="col-2">
+                                    <button class="btn btn-primary" id="lihat">Lihat</button>
+                                </div>
+                            </div>
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>

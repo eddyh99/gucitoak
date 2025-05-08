@@ -1,17 +1,44 @@
 <script>
-    const locations = <?= $locationsJson ?>;
+    async function getLocation() {
+        const salesId = $("#sales").val();
+        const tgl = $("#tgl").val();
+        try {
+            const response = await $.get("<?= BASE_URL ?>location/getsales_locations", {
+                sales: salesId,
+                tanggal: tgl
+            });
+            const loc = JSON.parse(response);
+            renderMap(loc);
+        } catch (error) {
+            renderMap(null);
+            console.error('Gagal mengambil data lokasi:', error);
+        }
+    }
 
-    function initMap() {
-        const map = new google.maps.Map(document.getElementById("map"), {
+    function renderMap(loc) {
+        const tableBody = document.getElementById('location-table-body');
+        const mapContainer = document.getElementById('map');
+
+        if (!loc || loc.length === 0) {
+            mapContainer.style.display = 'none';
+            tableBody.innerHTML = `<tr><td class="text-center" colspan="3">Data Tidak Ditemukan</td></tr>`;
+            return;
+        }
+
+        mapContainer.style.display = 'block';
+        const map = new google.maps.Map(mapContainer, {
             zoom: 12,
-            center: { lat: locations[0].latitude, lng: locations[0].longitude },
+            center: {
+                lat: loc[0].latitude,
+                lng: loc[0].longitude
+            },
             mapId: 'YOUR_MAP_ID' // Optional but recommended
         });
 
         const bounds = new google.maps.LatLngBounds();
-        const tableBody = document.getElementById('location-table-body');
 
-        locations.forEach((loc, index) => {
+        tableBody.innerHTML = "";
+        loc.forEach((loc, index) => {
             const latLng = new google.maps.LatLng(
                 parseFloat(loc.latitude),
                 parseFloat(loc.longitude)
@@ -51,7 +78,21 @@
         map.fitBounds(bounds);
     }
 
-    window.initMap = initMap;
+    window.initMap = async function() {
+        await getLocation();
+    }
+
+    $('#tgl').daterangepicker({
+        singleDatePicker: true,
+        showDropdowns: true,
+        startDate: moment(), // default ke hari ini
+        locale: {
+            format: 'YYYY-MM-DD' // format yang kamu inginkan
+        }
+    });
+
+
+    $("#lihat").on('click', () => getLocation());
 </script>
 
 <script async defer
