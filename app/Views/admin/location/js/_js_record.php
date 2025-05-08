@@ -4,7 +4,7 @@
         const salesId = $("#sales").val();
         const tgl = $("#tgl").val();
         try {
-            const response = await $.get("<?= BASE_URL ?>location/getsales_locations", {
+            const response = await $.get("<?= BASE_URL ?>location/getrecord_locations", {
                 sales: salesId,
                 tanggal: tgl
             });
@@ -107,63 +107,6 @@
 
     $("#lihat").on('click', () => getLocation());
 
-    $("#save").on('click', async function() {
-        try {
-            const response = await handleAction(ids.toString(), 'location/saverecord');
-            alertSwal(response, 'success');
-
-        } catch (err) {
-            alertSwal(err, 'error');
-        }
-    });
-
-    $("#del").on('click', async function() {
-        try {
-            const response = await handleAction(ids.toString(), 'location/delete');
-            alertSwal(response, 'success');
-            
-        } catch (err) {
-            alertSwal(err, 'error');
-        }
-    });
-
-    async function handleAction(id, url) {
-        return new Promise((resolve, reject) => {
-            if (!ids || ids.length === 0) {
-                return reject('Lokasi tidak valid!');
-            }
-
-            $.ajax({
-                url: "<?= BASE_URL ?>" + url,
-                type: "GET",
-                data: {
-                    ids: id
-                },
-                success: function(response) {
-                    resolve(response);
-                },
-                error: function(xhr, status, error) {
-                    reject(error);
-                }
-            });
-        });
-
-    }
-
-    function alertSwal(message, status) {
-        Swal.fire({
-            title: "Notifikasi",
-            text: message,
-            icon: status,
-            showConfirmButton: false,
-            customClass: {
-                popup: 'btn-primary'
-            }
-        });
-        setTimeout(() => {
-            $(".swal2-container").css("z-index", "9999");
-        }, 100);
-    }
 </script>
 
 <script async defer

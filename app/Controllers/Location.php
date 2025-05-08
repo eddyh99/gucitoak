@@ -14,11 +14,6 @@ class Location extends BaseController
     }
     
     public function index(){
-        // $locations = [
-        //   ['username' => 'john', 'latitude' => -6.2, 'longitude' => 106.8],
-        //   ['username' => 'john', 'latitude' => -6.21, 'longitude' => 106.81],
-        //   ['username' => 'doe', 'latitude' => -6.22, 'longitude' => 106.82],
-        // ];
 
         $url =  URLAPI . "/v1/sales/getall_sales";
         $response = gucitoakAPI($url);
@@ -36,11 +31,38 @@ class Location extends BaseController
         return view('admin/layout/wrapper', $mdata);
     }
 
+    public function record(){
+
+        $url =  URLAPI . "/v1/sales/getall_sales";
+        $response = gucitoakAPI($url);
+        $sales = $response->message;
+
+        $mdata = [
+            'title'     => 'Record Location - ' . NAMETITLE,
+            'content'   => 'admin/location/index',
+            'extra'     => 'admin/location/js/_js_record',
+            'menuactive_laporan'   => 'active open',
+            'recordloc_active'   => 'active',
+            'isrecord'  => true,
+            'sales'   => $sales
+        ];
+
+        return view('admin/layout/wrapper', $mdata);
+    }
         
     public function getsales_locations(){
         $tgl    = $this->request->getVar('tanggal');
         $sales = $this->request->getVar('sales');
         $url = URLAPI . "/v1/location/sales_locations?tanggal=".$tgl."&sales=".$sales;
+        $response = gucitoakAPI($url)->message;
+        echo json_encode($response,true);
+        
+    }
+
+    public function getrecord_locations(){
+        $tgl    = $this->request->getVar('tanggal');
+        $sales = $this->request->getVar('sales');
+        $url = URLAPI . "/v1/location/record_locations?tanggal=".$tgl."&sales=".$sales;
         $response = gucitoakAPI($url)->message;
         echo json_encode($response,true);
         
