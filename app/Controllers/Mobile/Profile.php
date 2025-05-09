@@ -19,7 +19,7 @@ class Profile extends BaseController
         $url = URLAPI . "/mobile/sales/getsales_byid?id=".$id;
 		$response = gucitoakAPI($url);
         $result = $response->message;
-        $barcode = createBarcode($sales);
+        $barcode = createBarcode($id);
         $result->barcode = $barcode;
         
         $mdata = [
