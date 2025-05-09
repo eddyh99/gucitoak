@@ -152,11 +152,11 @@ class Penjualan extends BaseController
             'sales_id'      => trim($this->request->getVar('sales')),
             'method'        => trim(htmlspecialchars($this->request->getVar('pembayaran'))),
             'waktu'         => trim(htmlspecialchars($this->request->getVar('lama'))),
-            'discount'      => trim($this->request->getVar('diskon')),
+            'discount' => str_replace('.', '', trim($this->request->getVar('diskon'))),
             'ppn'           => trim($this->request->getVar('ppn')),
             'detail'        => $_SESSION["barangjual"]
         ];
-        
+        dd($mdata);
 
         // CALL API
         $url = URLAPI . "/v1/penjualan/add_penjualan";
