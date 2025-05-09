@@ -23,7 +23,7 @@ class Location extends BaseController
             'title'     => 'Location - ' . NAMETITLE,
             'content'   => 'admin/location/index',
             'extra'     => 'admin/location/js/_js_index',
-            'menuactive_laporan'   => 'active open',
+            'menuactive_setup'   => 'active open',
             'salestracker_active'   => 'active',
             'sales'   => $sales
         ];
@@ -41,7 +41,7 @@ class Location extends BaseController
             'title'     => 'Record Location - ' . NAMETITLE,
             'content'   => 'admin/location/index',
             'extra'     => 'admin/location/js/_js_record',
-            'menuactive_laporan'   => 'active open',
+            'menuactive_setup'   => 'active open',
             'recordloc_active'   => 'active',
             'isrecord'  => true,
             'sales'   => $sales
@@ -90,6 +90,7 @@ class Location extends BaseController
             'content'   => 'admin/location/tracker',
             'extra'     => 'admin/location/js/_js_tracker',
             'menuactive_setup'   => 'active open',
+            'saleslive_active'   => 'active',
         ];
 
         return view('admin/layout/wrapper', $mdata);
@@ -144,10 +145,11 @@ class Location extends BaseController
         }
         
         $locations = [
-          ['username' => 'john', 'latitude' => -6.2, 'longitude' => 106.8],
-          ['username' => 'john', 'latitude' => -6.21, 'longitude' => 106.81],
-          ['username' => 'doe', 'latitude' => -6.22, 'longitude' => 106.82],
-        ];
+            ['user_id' => 1, 'username' => 'john', 'latitude' => -8.6500, 'longitude' => 115.2167], // Denpasar
+            ['user_id' => 2, 'username' => 'jane', 'latitude' => -8.6520, 'longitude' => 115.2190], // dekat Denpasar
+            ['user_id' => 3, 'username' => 'doe',  'latitude' => -8.6485, 'longitude' => 115.2135], // dekat Denpasar
+          ];
+          
 
 
         return $this->respond($locations);

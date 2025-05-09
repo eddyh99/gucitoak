@@ -4,7 +4,7 @@
         <div class="container-xxl flex-grow-1 container-p-y">
             <div class="row">
                 <div class="col-lg-12 order-0">
-                    <div id="map" style="margin-bottom: 20px;"></div>
+                <div id="map" style="height: 80vh; width: 100%; margin-bottom: 20px;"></div>
                 </div>
             </div>
         </div>
