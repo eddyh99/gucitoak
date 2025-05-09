@@ -156,7 +156,6 @@ class Penjualan extends BaseController
             'ppn'           => trim($this->request->getVar('ppn')),
             'detail'        => $_SESSION["barangjual"]
         ];
-        dd($mdata);
 
         // CALL API
         $url = URLAPI . "/v1/penjualan/add_penjualan";
