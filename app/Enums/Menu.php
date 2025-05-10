@@ -46,6 +46,9 @@ CONST LAP_BIAYA = 'laporan_biaya';
 CONST LAP_LABARUGI = 'laporan_labarugi';
 CONST LAP_ARUSKAS = 'laporan_aruskas';
 CONST LAP_ABSENSI_SALES = 'laporan_absensi_sales';
+CONST SALES_TRACKER = 'sales_tracker';
+CONST SALES_LIVE_LOCATION = 'sales_live_location';
+CONST RECORD_LOCATION = 'record_location';
 
     public static function subMenu_setup()
         {

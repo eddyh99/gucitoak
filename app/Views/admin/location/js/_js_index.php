@@ -17,11 +17,12 @@
         }
     }
 
-    function renderMap(loc) {
-        const tableBody = document.getElementById('location-table-body');
-        const mapContainer = document.getElementById('map');
 
-        if (!loc || loc.length === 0) {
+    function renderMap(locations) {
+        const mapContainer = document.getElementById('map');
+        const tableBody = document.getElementById('location-table-body');
+
+        if (!locations || locations.length === 0) {
             mapContainer.style.display = 'none';
             tableBody.innerHTML = `<tr><td class="text-center" colspan="3">Data Tidak Ditemukan</td></tr>`;
             return;
@@ -31,22 +32,19 @@
         const map = new google.maps.Map(mapContainer, {
             zoom: 12,
             center: {
-                lat: loc[0].latitude,
-                lng: loc[0].longitude
+                lat: locations[0].latitude,
+                lng: locations[0].longitude
             },
-            mapId: 'YOUR_MAP_ID' // Optional but recommended
+            mapId: 'YOUR_MAP_ID'
         });
 
         const bounds = new google.maps.LatLngBounds();
-
         tableBody.innerHTML = "";
-        loc.forEach((loc, index) => {
-            const latLng = new google.maps.LatLng(
-                parseFloat(loc.latitude),
-                parseFloat(loc.longitude)
-            );
 
-            // Create a custom label element for AdvancedMarker
+        // Display markers
+        locations.forEach((loc, index) => {
+            const latLng = new google.maps.LatLng(loc.latitude, loc.longitude);
+
             const label = document.createElement('div');
             label.style.padding = '4px 8px';
             label.style.background = '#4285F4';
@@ -56,17 +54,15 @@
             label.style.fontSize = '12px';
             label.textContent = `${index + 1}`;
 
-            // Use AdvancedMarkerElement instead of Marker
-            const marker = new google.maps.marker.AdvancedMarkerElement({
+            new google.maps.marker.AdvancedMarkerElement({
                 map,
                 position: latLng,
                 content: label,
-                title: loc.username
+                title: 'agus'
             });
 
             bounds.extend(latLng);
 
-            // Append to table
             const row = `
                 <tr>
                     <td>${index + 1}</td>
@@ -77,18 +73,40 @@
             tableBody.insertAdjacentHTML('beforeend', row);
         });
 
-        const routePath = new google.maps.Polyline({
-            path: loc.map(l => ({
-                lat: parseFloat(l.latitude),
-                lng: parseFloat(l.longitude)
-            })),
-            geodesic: true,
-            strokeColor: '#FF0000',
-            strokeOpacity: 1.0,
-            strokeWeight: 2
-        });
-        routePath.setMap(map);
         map.fitBounds(bounds);
+
+        // Directions API
+        const directionsService = new google.maps.DirectionsService();
+        const directionsRenderer = new google.maps.DirectionsRenderer({
+            map
+        });
+
+        const waypoints = locations.slice(1, -1).map(loc => ({
+            location: {
+                lat: loc.latitude,
+                lng: loc.longitude
+            },
+            stopover: true
+        }));
+
+        directionsService.route({
+            origin: {
+                lat: locations[0].latitude,
+                lng: locations[0].longitude
+            },
+            destination: {
+                lat: locations[locations.length - 1].latitude,
+                lng: locations[locations.length - 1].longitude
+            },
+            waypoints: waypoints,
+            travelMode: google.maps.TravelMode.DRIVING
+        }, (response, status) => {
+            if (status === 'OK') {
+                directionsRenderer.setDirections(response);
+            } else {
+                console.error('Directions request failed due to ' + status);
+            }
+        });
     }
 
     window.initMap = async function() {

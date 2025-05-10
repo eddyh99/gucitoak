@@ -70,6 +70,30 @@ use App\Enums\Menu; ?>
                             </a>
                         </li>
                     <?php endif ?>
+                    <?php if ($isAdmin || $hasPermission(Menu::SALES_TRACKER, 'setup')): ?>
+                <li class="menu-item <?= $salestracker_active ?? '' ?>">
+                            <a href="<?= BASE_URL ?>location" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">
+                            <img src="<?= BASE_URL ?>assets/img/icons/118828_system_users_icon.png" alt="Home Icon" class="me-2" width="24" height="24">
+                                <div data-i18n="Laporan" style="font-size: 12px;">Sales Tracker</div>
+                            </a>
+                    </li>
+                    <?php endif ?>
+                    <?php if ($isAdmin || $hasPermission(Menu::SALES_LIVE_LOCATION, 'setup')): ?>
+                <li class="menu-item <?= $saleslive_active ?? '' ?>">
+                            <a href="<?= BASE_URL ?>location/tracker" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">
+                            <img src="<?= BASE_URL ?>assets/img/icons/118828_system_users_icon.png" alt="Home Icon" class="me-2" width="24" height="24">
+                                <div data-i18n="Laporan" style="font-size: 12px;">Sales Live Location</div>
+                            </a>
+                    </li>
+                    <?php endif ?>
+                    <?php if ($isAdmin || $hasPermission(Menu::RECORD_LOCATION, 'setup')): ?>
+                <li class="menu-item <?= $recordloc_active ?? '' ?>">
+                            <a href="<?= BASE_URL ?>location/record" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">
+                            <img src="<?= BASE_URL ?>assets/img/icons/118828_system_users_icon.png" alt="Home Icon" class="me-2" width="24" height="24">
+                                <div data-i18n="Laporan" style="font-size: 12px;">Record Location</div>
+                            </a>
+                    </li>
+                    <?php endif ?>
                     <?php if ($isAdmin || $hasPermission(Menu::DAFTAR_SUPLIER, 'setup')): ?>
                         <li class="menu-item <?= $supplier_active ?? '' ?>">
                             <a href="<?= BASE_URL ?>suplier" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">
@@ -289,22 +313,6 @@ use App\Enums\Menu; ?>
                             <a href="<?= BASE_URL ?>laporan/aktivitas_sales" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">
                             <img src="<?= BASE_URL ?>assets/img/icons/118828_system_users_icon.png" alt="Home Icon" class="me-2" width="24" height="24">
                                 <div data-i18n="Laporan" style="font-size: 12px;">Aktivitas Sales</div>
-                            </a>
-                    </li>
-                    <?php endif ?>
-                    <?php if ($isAdmin || $hasPermission(Menu::LAP_ABSENSI_SALES, 'laporan')): ?>
-                <li class="menu-item <?= $salestracker_active ?? '' ?>">
-                            <a href="<?= BASE_URL ?>location" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">
-                            <img src="<?= BASE_URL ?>assets/img/icons/118828_system_users_icon.png" alt="Home Icon" class="me-2" width="24" height="24">
-                                <div data-i18n="Laporan" style="font-size: 12px;">Sales Tracker</div>
-                            </a>
-                    </li>
-                    <?php endif ?>
-                    <?php if ($isAdmin || $hasPermission(Menu::LAP_ABSENSI_SALES, 'laporan')): ?>
-                <li class="menu-item <?= $recordloc_active ?? '' ?>">
-                            <a href="<?= BASE_URL ?>location/record" class="menu-link-inside d-flex  justify-content-start align-items-center px-3 py-2">
-                            <img src="<?= BASE_URL ?>assets/img/icons/118828_system_users_icon.png" alt="Home Icon" class="me-2" width="24" height="24">
-                                <div data-i18n="Laporan" style="font-size: 12px;">Record Location</div>
                             </a>
                     </li>
                     <?php endif ?>

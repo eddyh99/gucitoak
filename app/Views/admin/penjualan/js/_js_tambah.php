@@ -326,6 +326,12 @@
         updateTotal();
     });
 
+    $('#hasil_diskon').on('blur', function() {
+        let value = $(this).val().replace(/\./g, '').replace(',', '.');
+        let number = parseFloat(value) || 0;
+        $(this).val(number.toLocaleString('id-ID'));
+    });
+
     function updateTotal() {
         let subtotalText = $('#subtotal').text().trim();
         let subtotal = parseFloat(subtotalText.replace(/\./g, '').replace(',', '.')) || 0;
@@ -344,7 +350,7 @@
 
         if (lastChanged === 'percent') {
             disc = (percentDisc / 100) * subtotal;
-            $('#hasil_diskon').val(disc);
+            $('#hasil_diskon').val(disc.toLocaleString('id-ID'));
         } else {
             disc = manualDisc;
         }
@@ -361,8 +367,8 @@
         let ppn = ((subtotal - disc) * percent) / 100;
         let total = subtotal - disc + ppn;
 
-        $('#hasil_ppn').val(ppn);
-        $('#total').val(total);
+        $('#hasil_ppn').val(ppn.toLocaleString('id-ID'));
+        $('#total').val(total.toLocaleString('id-ID'));
     }
 
 

@@ -9,7 +9,7 @@ function createBarcode($id_sales) {
     $hash = substr(sha1($id_sales . $tanggal . $secret), 0, 4);
     $barcode = "SLS$id_sales-$tanggal-$hash";
     $generator = new BarcodeGeneratorPNG();
-    
+    // dd($barcode);
     return 'data:image/png;base64,' . base64_encode(
         $generator->getBarcode($barcode, $generator::TYPE_CODE_128 ,2 , 80)
     );
