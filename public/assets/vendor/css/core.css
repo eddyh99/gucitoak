@@ -15510,7 +15510,7 @@ html:not(.layout-footer-fixed) .content-wrapper {
 .layout-menu-fixed body:not(.modal-open) .layout-content-navbar .layout-navbar,
 .layout-menu-fixed-offcanvas body:not(.modal-open) .layout-content-navbar .layout-navbar {
   z-index: 1000;
-  margin-left:3.5rem;
+  /* margin-left:3.5rem; */
 }
 
 .layout-footer-fixed .content-footer {

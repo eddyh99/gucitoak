@@ -1,5 +1,6 @@
 <script>
     $(document).ready(function() {
+        const idsales = <?= json_encode($idsales) ?>;
         const chart = new ApexCharts(document.querySelector("#chart"), {
             chart: {
                 type: 'line',
@@ -16,7 +17,7 @@
         chart.render();
 
         function updateChart() {
-            $.get(`<?= BASE_URL ?>laporan/get_omzetsales`, function(data) {
+            $.get(`<?= BASE_URL ?>laporan/get_omzetsales?idsales=` + idsales, function(data) {
                 const mdata = data ? JSON.parse(data) : {};
                 console.log(mdata);
                 chart.updateSeries([{

@@ -11,6 +11,7 @@ class LoginFilter implements FilterInterface
     public function before(RequestInterface $request, $arguments = null)
     {
         $session = session();
+        $sales = $request->getHeaderLine('sales-id');
 
         // Jika cookie 'logged_user' ada, simpan ke sesi
         if (isset($_COOKIE['logged_user'])) {
@@ -18,7 +19,7 @@ class LoginFilter implements FilterInterface
             $session->set('logged_user', $userData);
         }
 
-        if(!$session->has('logged_user')){
+        if(!$session->has('logged_user') && !$sales){
             header("Location:".BASE_URL );
             exit();
         }

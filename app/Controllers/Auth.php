@@ -13,6 +13,11 @@ class Auth extends BaseController
             exit();
         }
 
+        if($this->request->getHeaderLine('sales-id')){
+            return redirect()->to(BASE_URL . "mobile/dashboard");
+            exit();
+        }
+
         $mdata = [
             'title'     => 'Sign in - ' . NAMETITLE,
             'content'   => 'auth/index',

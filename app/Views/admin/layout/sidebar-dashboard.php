@@ -19,7 +19,7 @@ use App\Enums\Menu; ?>
         <!-- Dashboard -->
         <div class="accordion-item">
           <h2 class="accordion-header">
-            <a href="<?= BASE_URL ?>dashboard" class="accordion-button">
+            <a href="<?= BASE_URL . ($id_sales ? 'mobile/dashboard' : 'dashboard') ?>" class="accordion-button">
               <!-- <i class="bx bx-home me-2"></i> -->
               <img src="<?= BASE_URL ?>assets/img/icons/118770_home_icon.png" alt="Home Icon" class="me-2" width="24" height="24">
               <span>Dashboard</span>
@@ -486,7 +486,7 @@ use App\Enums\Menu; ?>
             </div>
         <?php endif ?>
 
-        <?php if ($isSales): ?>
+        <?php if ($isSales || $id_sales): ?>
         <div class="accordion-item">
           <h2 class="accordion-header">
             <a href="<?= BASE_URL ?>sales/barang_sales" class="accordion-button">
@@ -497,7 +497,7 @@ use App\Enums\Menu; ?>
         </div>
         <?php endif ?>
     
-        <?php if ($isSales): ?>
+        <?php if ($isSales || $id_sales): ?>
         <div class="accordion-item">
           <h2 class="accordion-header">
             <a href="<?= BASE_URL ?>laporan/omzet_sales" class="accordion-button">
@@ -508,7 +508,7 @@ use App\Enums\Menu; ?>
         </div>
         <?php endif ?>
     
-        <?php if ($isSales): ?>
+        <?php if ($isSales || $id_sales): ?>
             <div class="accordion-item">
               <h2 class="accordion-header">
                 <a href="<?= BASE_URL ?>laporan/slipgaji" class="accordion-button">
@@ -518,7 +518,7 @@ use App\Enums\Menu; ?>
               </h2>
             </div>
         <?php endif ?>
-        <?php if ($isSales): ?>
+        <?php if ($isSales || $id_sales): ?>
             <div class="accordion-item">
               <h2 class="accordion-header">
                 <a href="<?= BASE_URL ?>mobile/profile" class="accordion-button">
@@ -572,12 +572,14 @@ use App\Enums\Menu; ?>
                         <li>
                             <div class="dropdown-divider"></div>
                         </li>
+                        <?php if(!$id_sales): ?>
                         <li>
                             <a class="dropdown-item" href="<?= BASE_URL ?>auth/logout">
                                 <i class="bx bx-power-off me-2"></i>
                                 <span class="align-middle">Log Out</span>
                             </a>
                         </li>
+                        <?php endif ?>
                     </ul>
                 </li>
                 <!--/ User -->
