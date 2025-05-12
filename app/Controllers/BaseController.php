@@ -65,8 +65,8 @@ abstract class BaseController extends Controller
         $this->isAdmin = $role == 'superadmin';
         $this->isSales = $role == 'sales';
         $this->isSubAdmin = $role == 'admin';
-        $this->idSales = $this->request->getHeaderLine('sales-id') ?:10; //remove
-        // dd($this->isSubAdmin);
+        $this->idSales = $this->request->getHeaderLine('sales-id');
+        // dd($this->idSales);
         $renderer = service('renderer');
         $renderer->setVar('isAdmin', $this->isAdmin);
         $renderer->setVar('isSubAdmin', $this->isSubAdmin);

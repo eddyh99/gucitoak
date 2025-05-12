@@ -9,7 +9,7 @@ function gucitoakAPI($url, $postData = NULL)
     if (isset($_SESSION["logged_user"])) {
         $token = @sha1($_SESSION["logged_user"]["username"] . $_SESSION["logged_user"]["password"]);
     } else {
-        $id_sales = Services::request()->getHeaderLine('sales-id') ?: 10;
+        $id_sales = Services::request()->getHeaderLine('sales-id');
         if ($id_sales) {
             $sales = getSales_permissions();
             $token = @sha1($sales['namasales'] . $sales['password']);

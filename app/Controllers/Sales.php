@@ -447,7 +447,7 @@ class Sales extends BaseController
         $loggedUser = session()->get('logged_user');
         $idsales = (!empty($loggedUser['id_sales']))
             ? $loggedUser['id_sales']
-            : (($this->request->getHeaderLine('sales-id')) ?: 10);
+            : (($this->request->getHeaderLine('sales-id')));
 
         $mdata = [
             'title'     => 'Barang Sales - ' . NAMETITLE,

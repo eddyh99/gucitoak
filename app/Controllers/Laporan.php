@@ -229,9 +229,9 @@ class Laporan extends BaseController
 		// $sales = gucitoakAPI($url)->message;
 
         $loggedUser = session()->get('logged_user');
-        $idsales = (!empty($loggedUser['idsales']))
+        $idsales = (!empty($loggedUser['id_sales']))
             ? $loggedUser['id_sales']
-            : (($this->request->getHeaderLine('sales-id')) ?: 10);
+            : (($this->request->getHeaderLine('sales-id')));
 
         $mdata = [
             'title'     => 'Omzet Sales - ' . NAMETITLE,

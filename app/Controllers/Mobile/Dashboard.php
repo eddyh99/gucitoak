@@ -17,7 +17,7 @@ class Dashboard extends BaseController
 
     public function index()
     {
-        $sales = $this->request->getHeaderLine('sales-id') ?: 10;
+        $sales = $this->request->getHeaderLine('sales-id');
         $id = session()->get('logged_user')['id_sales'] ?? $sales;
         if(!$id) {
             throw PageNotFoundException::forPageNotFound();

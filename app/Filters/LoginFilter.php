@@ -11,7 +11,7 @@ class LoginFilter implements FilterInterface
     public function before(RequestInterface $request, $arguments = null)
     {
         $session = session();
-        $sales = $request->getHeaderLine('sales-id') ?: 10;
+        $sales = $request->getHeaderLine('sales-id');
 
         // Jika cookie 'logged_user' ada, simpan ke sesi
         if (isset($_COOKIE['logged_user'])) {

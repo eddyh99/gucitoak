@@ -1,6 +1,7 @@
 <?php
 
 use \Config\Services;
+
 if (!function_exists('hasPermission')) {
     /**
      * Check if the logged-in user has permission for a specific menu and action
@@ -24,7 +25,8 @@ if (!function_exists('hasPermission')) {
     }
 }
 
-function getSales_permissions() {
+function getSales_permissions()
+{
     $url = URLAPI . "/auth/getsales_permissions";
 
     $ch     = curl_init($url);
