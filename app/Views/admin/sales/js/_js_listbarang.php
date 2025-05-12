@@ -1,4 +1,5 @@
 <script>
+    const idSales = <?= json_encode($id_sales) ?>;
     var groupColumn = 0;
     let cols = [{
             "data": "namasales"
@@ -12,6 +13,9 @@
         "ajax": {
             "url": "<?= BASE_URL ?>sales/listbarang_bysales",
             "type": "POST",
+            "data": function(d) {
+                d.idsales = idSales;
+            },
             "dataSrc": function(data) {
                 console.log(data);
                 return data;

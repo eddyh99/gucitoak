@@ -39,6 +39,7 @@ abstract class BaseController extends Controller
     protected $isAdmin = false; 
     protected $isSubAdmin = false;
     protected $isSales = false; 
+    protected $idSales = false; 
 
     /**
      * Be sure to declare properties for any property fetch you initialized.
@@ -63,11 +64,13 @@ abstract class BaseController extends Controller
         $this->validation = \Config\Services::validation();
         $this->isAdmin = $role == 'superadmin';
         $this->isSales = $role == 'sales';
-        $this->isSubAdmin = $role = 'admin';
-        // dd($this->isAdmin);
+        $this->isSubAdmin = $role == 'admin';
+        $this->idSales = $this->request->getHeaderLine('sales-id') ?:10; //remove
+        // dd($this->isSubAdmin);
         $renderer = service('renderer');
         $renderer->setVar('isAdmin', $this->isAdmin);
         $renderer->setVar('isSubAdmin', $this->isSubAdmin);
         $renderer->setVar('isSales', $this->isSales);
+        $renderer->setVar('id_sales', $this->idSales);
     }
 }

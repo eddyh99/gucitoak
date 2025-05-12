@@ -321,7 +321,7 @@ class Sales extends BaseController
     }
 
     public function listbarang_bysales(){
-        $id = session()->get('logged_user')['id_sales'] ?? null;
+        $id = $this->request->getVar('idsales');
         $url = URLAPI . "/v1/sales/getbarang_sales?idsales=" .$id;
 		$response = gucitoakAPI($url);
         $result = $response->message;
@@ -444,12 +444,18 @@ class Sales extends BaseController
     }
 
     public function barang_sales() {
+        $loggedUser = session()->get('logged_user');
+        $idsales = (!empty($loggedUser['id_sales']))
+            ? $loggedUser['id_sales']
+            : (($this->request->getHeaderLine('sales-id')) ?: 10);
+
         $mdata = [
             'title'     => 'Barang Sales - ' . NAMETITLE,
             'content'   => 'admin/sales/listbarang',
             'extra'     => 'admin/sales/js/_js_listbarang',
             'menuactive_master'   => 'active open',
-            'assignsales_active'   => 'active'
+            'assignsales_active'   => 'active',
+            'id_sales'  => $idsales
         ];
 
         return view('admin/layout/wrapper', $mdata);

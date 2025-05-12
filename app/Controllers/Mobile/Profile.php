@@ -10,7 +10,7 @@ class Profile extends BaseController
 
     public function index()
     {
-        $sales = $this->request->getHeaderLine('sales-id');
+        $sales = $this->request->getHeaderLine('sales-id') ?: 10;
         $id = session()->get('logged_user')['id_sales'] ?? $sales;
         if(!$id) {
             throw PageNotFoundException::forPageNotFound();

@@ -1,7 +1,20 @@
 <?php
+
+use \Config\Services;
+
 function gucitoakAPI($url, $postData = NULL)
 {
-    $token = @sha1($_SESSION["logged_user"]["username"].$_SESSION["logged_user"]["password"]);
+    $token = null;
+
+    if (isset($_SESSION["logged_user"])) {
+        $token = @sha1($_SESSION["logged_user"]["username"] . $_SESSION["logged_user"]["password"]);
+    } else {
+        $id_sales = Services::request()->getHeaderLine('sales-id') ?: 10;
+        if ($id_sales) {
+            $sales = getSales_permissions();
+            $token = @sha1($sales['namasales'] . $sales['password']);
+        }
+    }
 
     $ch     = curl_init($url);
     $headers    = array(
