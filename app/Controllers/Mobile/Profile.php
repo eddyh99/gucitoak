@@ -27,8 +27,7 @@ class Profile extends BaseController
             'content'   => 'mobile/profile/index',
             'extra'     => 'mobile/profile/js/_js_index',
             'menuactive_setup'   => 'active open',
-            'sales'  => $result,
-            'profile_sales' => 'hidden'
+            'sales'  => $result
         ];
 
         return view('admin/layout/wrapper', $mdata);

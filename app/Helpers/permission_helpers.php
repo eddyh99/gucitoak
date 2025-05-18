@@ -39,7 +39,6 @@ function getSales_permissions()
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     $response = json_decode(curl_exec($ch));
-    curl_close($ch);
     $result = $response->message;
     return [
         'namasales' => $result->username,

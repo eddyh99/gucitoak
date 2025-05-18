@@ -120,7 +120,8 @@
                 data: 'nonota'
             },
             {
-                data: 'nominal'
+                data: 'nominal',
+                render: $.fn.dataTable.render.number( '.', ',', '', '' )
             },
             {
                 data: null,
@@ -144,5 +145,7 @@
 
     $('#select-notaretur').on('click', function() {
         $("#notaretur").modal('show');
+        var keyword = $('#nonota').val();
+        table_notaretur.column(0).search(keyword).draw();
     })
 </script>
