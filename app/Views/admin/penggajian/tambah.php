@@ -50,7 +50,7 @@
                                 <div class="mb-3">
                                     <label class="form-label" for="barang">Gaji Pokok</label>
                                     <div class="input-group input-group-merge">
-                                        <input id="gajipokok" type="number" name="gajipokok" class="form-control" value="<?= old('gajipokok') ?>" readonly>
+                                        <input id="gajipokok" type="text" name="gajipokok" class="form-control" value="<?= old('gajipokok') ?>" readonly>
                                     </div>
                                 </div>
                                 <div class="mb-3">

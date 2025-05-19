@@ -111,7 +111,7 @@ class Sales extends BaseController
             'kota'          => trim(htmlspecialchars($this->request->getVar('kota'))),
             'telp'          => trim(htmlspecialchars($this->request->getVar('telp'))),
             'omzet'         => (float) $this->request->getVar('omzet'),
-            'gajipokok'     => (float) $this->request->getVar('gapok'),
+            'gajipokok' => (float) str_replace(',', '', $this->request->getVar('gapok')),
             'komisi'        => (float) $this->request->getVar('komisi'),
             'username'      => trim(htmlspecialchars($this->request->getVar('username'))),
             'password'      => ((!empty($password)) ? sha1(trim(htmlspecialchars($password))) : null)
@@ -148,7 +148,7 @@ class Sales extends BaseController
         $mdata = [
             'title'     => 'Edit sales - ' . NAMETITLE,
             'content'   => 'admin/sales/edit_sales',
-            'extra'     => 'admin/sales/js/_js_index',
+            // 'extra'     => 'admin/sales/js/_js_index',
             'menuactive_setup'   => 'active open',
             'sales'  => $result
         ];
@@ -224,7 +224,7 @@ class Sales extends BaseController
             'kota'          => trim(htmlspecialchars($this->request->getVar('kota'))),
             'telp'          => trim(htmlspecialchars($this->request->getVar('telp'))),
             'omzet'         => (float) $this->request->getVar('omzet'),
-            'gajipokok'     => (float) $this->request->getVar('gapok'),
+            'gajipokok' => (float) str_replace(',', '', $this->request->getVar('gapok')),
             'komisi'        => (float) $this->request->getVar('komisi'),
             'username'      => trim(htmlspecialchars($this->request->getVar('username'))),
             'password'      => ((!empty($newpass)) ? sha1(trim(htmlspecialchars($newpass))) : null)
